@@ -1,0 +1,75 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the Closure to execute when that URI is requested.
+|
+*/
+//Route::get('/', function()
+//{
+//	return View::make('index.index');
+//});
+Route::resource('/','indexController');
+Route::get('/directorio/{directorioCategoria}','DirectorioController@directorio');
+
+Route::get('/directorioClasif/{directorioCategoria}','DirectorioClasifController@directorio');
+Route::get('/directorioClasif','DirectorioClasifController@categorias');
+Route::get('/clasificadoDetalle/{clasificadoId}','ClasificadosDetalleController@verclasif');
+
+// ===============================================
+// SECCION DE ADMINISTRACION =================================
+// ===============================================
+Route::group(array('prefix' => 'administracion'), function(){
+		Route::get('/', function(){
+			return View::make('administracion.pages.index');
+		});
+
+		//CATEGORIAS
+		Route::resource('proveedores/categorias','Proveedor_tipo_Controller');
+		Route::resource('proveedores/categorias/agregar','Proveedor_tipo_Controller');
+
+		//GALERIA
+		Route::get('proveedores/galeria/{nombreDeUsuario}/{idproveedor}', function($nombreDeUsuario,$idproveedor){
+			return View::make('administracion.pages.proveedores.galeria')->with(array('nombreDeUsuario' => $nombreDeUsuario, 'idproveedor' => $idproveedor));
+		});
+
+		//PROVEEDORES
+		Route::get('proveedores/editar/{id}', 'ProveedoresController@edit');	
+		Route::resource('proveedores/nuevo','TipoProveedoresController');
+		Route::resource('proveedores/guardarproveedor','ProveedoresController');
+		Route::resource('proveedores/galeria','Galeria_subirController');
+		Route::resource('proveedores/listar','ProveedoresController');
+
+		//BLOG
+		Route::resource('blog','blogController');
+		Route::resource('blog/publicar','blogController');
+		Route::get('blog/editar/{id}','blogController@edit');
+		Route::Resource('blog/guardarEdicion','blogController');
+		Route::get('blog/borrar/{id}','blogController@destroy');
+
+		Route::resource('anuncios', 'AnunciosController');		
+
+		//CLASIFICADOS
+		Route::resource('clasificados', 'ClasificadosController');
+		Route::resource('clasificadoscategorias', 'ClasificadosCategoriaController');
+
+		//EVENTOS
+		Route::resource('eventos','eventosController');
+		Route::resource('eventos/publicar','eventosController');
+		Route::get('eventos/editar/{id}','eventosController@edit');
+		Route::Resource('eventos/guardarEdicion','eventosController');
+		Route::get('eventos/borrar/{id}','eventosController@destroy');
+
+});
+
+		//PAGINA DE CADA PROVEEDOR
+		// Route::get('proveedores/{nombreDeUsuario}/', function($nombreDeUsuario){
+		// 	return View::make('administracion.pages.proveedores.pagina.pagina')->with(array('nombreDeUsuario' => $nombreDeUsuario));
+		// });
+
+Route::get('/proveedores/{nombreDeUsuario}','ProveedorPaginaController@datosProveedor');

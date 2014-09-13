@@ -1,0 +1,54 @@
+<?php $__env->startSection('contenido'); ?>
+
+<div class="container">
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <h3 class="panel-title">AGREGAR GALERÍA DE FOTOS AL PROVEEDOR (<?php echo $nombreDeUsuario; ?> - <?php echo $idproveedor; ?>)</h3>
+  </div>
+
+  <div class="panel-body">
+  	<?php echo Form::open(array('url' => 'administracion/proveedores/galeria', 'files' => true)); ?>
+		<center><h4>Imagenes</h4></center>
+		<hr>
+		<div class="form-group">
+				<?php echo Form::label('galeria', 'Selecciona las imagenes a subir'); ?>
+				<?php echo Form::file('galeria[]',['multiple' => true]); ?>
+				<?php echo Form::hidden('idproveedor', $idproveedor); ?>
+				<?php echo Form::hidden('nombreDeUsuario', $nombreDeUsuario); ?>
+		</div>
+		<hr>
+		<div class="form-group">
+				<center><?php echo Form::submit('Agregar proveedor', array('class' => 'btn btn-success')); ?></center>
+		</div>
+
+  	<?php echo Form::close(); ?>
+  </div>
+
+<?php
+		$galeria = DB::table('proveedor_galeria')->where('proveedores_idproveedor', '=', $idproveedor)->get();
+		 $numero=1;
+
+?>
+<hr>
+<?php foreach($galeria as $foto): ?>
+		    	<div class="row">
+		    		<div class="col-md-1">
+		        		<center><?php echo "$numero"; $numero++;?></center>
+		        	</div>
+		    		<div class="col-md-10">
+		    			<center><?php echo "<img src=\"/images/proveedores/$nombreDeUsuario/galeria/".$foto->imagen." \" alt=\"foto\" class=\"img-thumbnail\">";?></center>
+		        	</div>
+		        </div>
+		        <hr>
+<?php endforeach; ?>
+
+
+
+</div>
+</div>	
+		
+		
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('administracion.layouts.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
