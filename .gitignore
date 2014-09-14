@@ -1,0 +1,11 @@
+#################
+##Laravel
+#################
+/bootstrap/compiled.php
+.env.*.php
+.env.php
+
+app/storage/
+# Mac crap
+.DS_Store
+
