@@ -2,11 +2,12 @@
 ##Laravel
 #################
 /bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
 .env.*.php
 .env.php
-
-app/storage/*
-app\storage\logs\laravel.log
-# Mac crap
 .DS_Store
+Thumbs.db
+*.log
 
