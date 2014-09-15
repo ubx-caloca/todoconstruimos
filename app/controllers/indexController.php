@@ -19,9 +19,9 @@ class indexController extends \BaseController {
 		//$proveedores_detalle = Proveedor_detalle::where('proveedores_idproveedor', '=', $proveedores->id)->first();
 		//$galeria = DB::table('proveedor_galeria')->where('proveedores_idproveedor', '=', $proveedores->id)->get();
 		
-		$user = Usuario::find(1);
+		//$user = Usuario::find(1);
 		//Auth::logout();
-		Auth::login($user, true);
+		//Auth::login($user, true);
 		
 		$rolusuarioLogueado = '';
 		$mailusuarioLogueado = '';

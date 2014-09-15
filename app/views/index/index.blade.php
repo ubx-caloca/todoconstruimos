@@ -198,7 +198,7 @@
 		
 			<div class="wrap" style="padding-top: 5px;">
 			<ul id="headernav" style="float: right;list-style: none;padding-left: 25px;margin-top: 5px;padding-right: 10px;">
-				<li class="active"><a href="register.php" style="text-decoration: none;"><span>Registrarse </span> <span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span></a></li>	
+				<li class="active"><a href="/signup" style="text-decoration: none;"><span>Registrarse </span> <span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span></a></li>	
 			</ul>
 			
 				<form action="login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)">
@@ -225,15 +225,20 @@ max-height: 28px;">
           <ul class="dropdown-menu">
             <li><a href="#">Configuración de usuario <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
             <li class="divider"></li>
-            <li><a href="#">Agregar nuevo clasificado <span class="glyphicon glyphicon-edit pull-right"></span></a></li>
-            <li class="divider"></li>
+			@if($roluser == 'admin')			
+            <li><a href="administracion/">Ir a vista administrador<span class="glyphicon glyphicon-list-alt pull-right"></span></a></li>
+            <li class="divider"></li>	
+			@else
+				<li><a href="#">Agregar nuevo clasificado <span class="glyphicon glyphicon-edit pull-right"></span></a></li>
+				<li class="divider"></li>			
+			@endif
 			<!--
             <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
             <li class="divider"></li>
             <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
             <li class="divider"></li>
 			-->
-            <li><a href="#">Salir <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+            <li><a href="/signout">Salir <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
           </ul>
         </li>
       </ul>
