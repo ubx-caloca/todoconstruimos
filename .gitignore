@@ -6,6 +6,7 @@
 .env.php
 
 app/storage/*
+app/storage/logs/laravel.log
 # Mac crap
 .DS_Store
 
