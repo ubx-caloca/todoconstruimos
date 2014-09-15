@@ -696,6 +696,11 @@ max-height: 28px;">
 		   		</div>
 		   	  </div>       
 		        
+
+
+
+
+		   	  </div>  
 					<div style="width:100%; background-color:#ffb600;">
 		                            <div class="owl-carousel-clasificados">
 									@foreach ($clasificadosvip as $clasf)
@@ -713,11 +718,7 @@ max-height: 28px;">
     						  </div>
 							@endforeach
 		                            </div>        
-		                </div>  
-
-
-
-		   	  </div>   	 
+		                </div>  			  
    </div>
     <!-- ************* -->
 

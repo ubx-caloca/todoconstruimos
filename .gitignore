@@ -5,7 +5,7 @@
 .env.*.php
 .env.php
 
-app/storage/
+app/storage/*
 # Mac crap
 .DS_Store
 
