@@ -1,108 +1,273 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta charset="utf-8">
+    <head>
+        <meta charset="UTF-8">
+        <title>Todo Construimos | Dashboard</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.0.2 -->
+        <link href="/administracion_files/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- font Awesome -->
+        <link href="/administracion_files/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="/administracion_files/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <!-- Morris chart -->
+        <link href="/administracion_files/css/morris/morris.css" rel="stylesheet" type="text/css" />
+        <!-- jvectormap -->
+        <link href="/administracion_files/css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+        <!-- Date Picker -->
+        <link href="/administracion_files/css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+        <!-- Daterange picker -->
+        <link href="/administracion_files/css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+        <!-- bootstrap wysihtml5 - text editor -->
+        <link href="/administracion_files/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="/administracion_files/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
-    <title>Administracion TODO CONSTRUIMOS</title>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/vendor/bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="/vendor/bootstrap-3.2.0-dist/css/dashboard.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/vendor/bootstrap-3.2.0-dist/js/ie10-viewport-bug-workaround.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="/vendor/blog/lib/css/bootstrap.min.css"></link>
-<link rel="stylesheet" type="text/css" href="/vendor/blog/lib/css/prettify.css"></link>
-<link rel="stylesheet" type="text/css" href="/vendor/blog/src/bootstrap-wysihtml5.css"></link>
-
-</head>
-<body>
-@include('administracion.includes.menu')
-
-
-
-
-<div class="container">
-
-		<div class="hero-unit" style="margin-top:40px">
-			{{ Form::open(array('url' => 'administracion/blog/publicar', 'files' => true)) }}
-				<h2>Nuevo post</h2>
-				<hr/>
-				<div class="form-group">
-						{{ Form::label('titulo', 'Título') }}
-						{{ Form::text('titulo','', array( 'placeholder' => '',  'class' => 'form-control')) }}
-				</div>	
-				<hr>
-				<div class="form-group">
-						{{ Form::label('imagen', 'Selecciona una imagen') }}
-						{{ Form::file('imagen[]',['multiple' => true]) }}
-				</div>					
-				<hr>
-				<textarea name="contenido" class="textarea" placeholder="Escribe el contenido" style="width: 810px; height: 200px"></textarea>
-				<hr>
-				<div class="form-group">
-					<center>{{ Form::submit('Publicar post', array('class' => 'btn btn-success')) }}</center>
-				</div>
-			{{ Form::close() }}
-		</div>
-</div>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="skin-black">
+        <!-- header logo: style can be found in header.less -->
+        <header class="header">
+            <a href="index.html" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                Todo Construimos
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    
 
 
 
-<hr>
-
-
-   	  <div class="container">
-   	  	<center><h1><img src="/index/images/Blog.png" alt="Eventos"></h1></center><br>
-   	   
-
-
-						@foreach ($Posts as $post)
-							<div class="row text-center">
-						   	    <div class="col-md-12 service_grid">
-						   		  <p><img src="/images/blog/{{$post->imagen}} " alt="{{ $post->titulo }}" class="img-thumbnail"></p>
-						   		  <h3 class="m_1">{{$post->titulo}}</h3>
-						   		  <p class="m_2" style="text-align:justify;">{{ $post->contenido }}</p>
-						          <p><br><a class="btn btn-default" href="<?php echo"/administracion/blog/editar/$post->id"; ?>" ><span>Editar</span></a> | <a class="btn btn-default" href="<?php echo"/administracion/blog/borrar/$post->id"; ?>" ><span>Borrar</span></a><br>___________________<br><br></p>
-						   		</div>
-						   	</div>
-								
-						@endforeach
-
-						<center><?php echo $Posts->links(); ?></center>
-
-   	  </div>
-   	  </div>
 
 
 
-<script src="/vendor/blog/lib/js/wysihtml5-0.3.0.js"></script>
-<script src="/vendor/blog/lib/js/jquery-1.7.2.min.js"></script>
-<script src="/vendor/blog/lib/js/prettify.js"></script>
-<script src="/vendor/blog/lib/js/bootstrap.min.js"></script>
-<script src="/vendor/blog/src/bootstrap-wysihtml5.js"></script>
 
-<script>
-	$('.textarea').wysihtml5({
-	"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
-	"emphasis": true, //Italics, bold, etc. Default true
-	"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
-	"html": false, //Button which allows you to edit the generated HTML. Default false
-	"link": false, //Button to insert a link. Default true
-	"image": false, //Button to insert an image. Default true,
-	"color": false //Button to change color of font  
-});
-</script>
+                    @include('administracion.topbar')
 
-<script type="text/javascript" charset="utf-8">
-	$(prettyPrint);
-</script>
 
-</body>
+
+
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                            @include('administracion.userpanel')
+                    </div>
+
+
+                        <!-- 
+                        *****************************************************
+                        *****************************************************
+                        M  E  N  U
+                        *****************************************************
+                        *****************************************************
+                        -->
+
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+
+
+
+                            @include('administracion.menu')
+
+
+
+
+                    </ul>
+
+
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Dashboard
+                        <small>Administración del sistema</small>
+                    </h1>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+
+
+
+
+
+
+
+
+
+
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-7 connectedSortable">                            
+
+
+
+
+
+
+									<div class="container">
+
+											<div class="hero-unit" style="margin-top:40px">
+												{{ Form::open(array('url' => 'administracion/blog/publicar', 'files' => true)) }}
+													<h2>Nuevo post</h2>
+													<hr/>
+													<div class="form-group">
+															{{ Form::label('titulo', 'Título') }}
+															{{ Form::text('titulo','', array( 'placeholder' => '',  'class' => 'form-control')) }}
+													</div>	
+													<hr>
+													<div class="form-group">
+															{{ Form::label('imagen', 'Selecciona una imagen') }}
+															{{ Form::file('imagen[]',['multiple' => true]) }}
+													</div>					
+													<hr>
+													<textarea name="contenido" class="textarea" placeholder="Escribe el contenido" style="width: 810px; height: 200px"></textarea>
+													<hr>
+													<div class="form-group">
+														<center>{{ Form::submit('Publicar post', array('class' => 'btn btn-success')) }}</center>
+													</div>
+												{{ Form::close() }}
+											</div>
+									</div>
+
+
+
+									<hr>
+
+
+									   	  <div class="container">
+									   	  	<center><h1><img src="/index/images/Blog.png" alt="Eventos"></h1></center><br>
+									   	   
+
+
+															@foreach ($Posts as $post)
+																<div class="row text-center">
+															   	    <div class="col-md-12 service_grid">
+															   		  <p><img src="/images/blog/{{$post->imagen}} " alt="{{ $post->titulo }}" class="img-thumbnail"></p>
+															   		  <h3 class="m_1">{{$post->titulo}}</h3>
+															   		  <p class="m_2" style="text-align:justify;">{{ $post->contenido }}</p>
+															          <p><br><a class="btn btn-default" href="<?php echo"/administracion/blog/editar/$post->id"; ?>" ><span>Editar</span></a> | <a class="btn btn-default" href="<?php echo"/administracion/blog/borrar/$post->id"; ?>" ><span>Borrar</span></a><br>___________________<br><br></p>
+															   		</div>
+															   	</div>
+																	
+															@endforeach
+
+															<center><?php echo $Posts->links(); ?></center>
+
+									   	  </div>
+									   	  </div>
+
+
+
+
+
+
+
+                        </section><!-- /.Left col -->
+ 
+                    </div><!-- /.row (main row) -->
+
+
+
+
+
+
+
+
+
+
+
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+
+        <!-- add new calendar event modal -->
+
+
+        <!-- jQuery 2.0.2 -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <!-- jQuery UI 1.10.3 -->
+        <script src="/administracion_files/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+        <!-- Bootstrap -->
+        <script src="/administracion_files/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- Morris.js charts -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="/administracion_files/js/plugins/morris/morris.min.js" type="text/javascript"></script>
+        <!-- Sparkline -->
+        <script src="/administracion_files/js/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+        <!-- jvectormap -->
+        <script src="/administracion_files/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+        <script src="/administracion_files/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="/administracion_files/js/plugins/jqueryKnob/jquery.knob.js" type="text/javascript"></script>
+        <!-- daterangepicker -->
+        <script src="/administracion_files/js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+        <!-- datepicker -->
+        <script src="/administracion_files/js/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="/administracion_files/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+        <!-- iCheck -->
+        <script src="/administracion_files/js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+
+        <!-- AdminLTE App -->
+        <script src="/administracion_files/js/AdminLTE/app.js" type="text/javascript"></script>
+
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="/administracion_files/js/AdminLTE/dashboard.js" type="text/javascript"></script>
+
+        <!-- AdminLTE for demo purposes -->
+        <script src="/administracion_files/js/AdminLTE/demo.js" type="text/javascript"></script>
+
+    </body>
 </html>

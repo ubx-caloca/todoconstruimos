@@ -26,7 +26,7 @@ Route::get('/clasificadoDetalle/{clasificadoId}','ClasificadosDetalleController@
 // ===============================================
 Route::group(array('prefix' => 'administracion'), function(){
 		Route::get('/', function(){
-			return View::make('administracion.pages.index');
+			return View::make('administracion.index');
 		});
 
 		//CATEGORIAS
