@@ -31305,3 +31305,73 @@ Stack trace:
 #9 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(648): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
 #10 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/public/index.php(49): Illuminate\Foundation\Application->run()
 #11 {main} [] []
+[2014-09-16 06:59:38] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php:5465
+Stack trace:
+#0 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4794): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4782): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4774): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(706): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(687): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(7440): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(8047): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(7994): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(10612): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(648): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-09-16 06:59:38] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php:5465
+Stack trace:
+#0 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4794): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4782): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4774): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(706): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(687): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(7440): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(8047): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(7994): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(10612): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(648): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-09-16 06:59:38] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php:5465
+Stack trace:
+#0 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4794): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4782): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4774): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(706): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(687): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(7440): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(8047): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(7994): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(10612): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(648): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-09-16 06:59:38] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php:5465
+Stack trace:
+#0 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4794): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4782): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4774): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(706): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(687): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(7440): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(8047): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(7994): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(10612): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(648): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-09-16 06:59:38] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php:5465
+Stack trace:
+#0 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4794): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4782): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(4774): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(706): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(687): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(7440): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(8047): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(7994): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(10612): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/bootstrap/compiled.php(648): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 /Applications/MAMP/htdocs/todoconstruimos_caloca/todoconstruimos/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []

@@ -237,7 +237,7 @@ font-weight: 700;
             <li><a href="#">Configuración de usuario <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
             <li class="divider"></li>
 			@if($roluser == 'admin')			
-            <li><a href="administracion/">Ir a vista administradores<span class="glyphicon glyphicon-list-alt pull-right"></span></a></li>
+            <li><a href="administracion/">Ir a vista de administrador<span class="glyphicon glyphicon-list-alt pull-right"></span></a></li>
             <li class="divider"></li>	
 			@else
 				<li><a href="#">Agregar nuevo clasificado <span class="glyphicon glyphicon-edit pull-right"></span></a></li>
