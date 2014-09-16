@@ -14,6 +14,22 @@
 //{
 //	return View::make('index.index');
 //});
+
+Route::filter('auth.admin', function($route, $request){
+    // Check user type admin/general etc
+	$authuser = Auth::user();
+	if (Auth::check()){
+    // The user is logged in...
+		$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
+		$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
+		if ($rolusuarioLogueado != 'admin') return Redirect::to('/'); // home
+	}
+	else
+		return Redirect::to('/');
+
+});
+
+
 Route::resource('/','indexController');
 Route::get('/directorio/{directorioCategoria}','DirectorioController@directorio');
 
@@ -24,10 +40,11 @@ Route::get('/clasificadoDetalle/{clasificadoId}','ClasificadosDetalleController@
 Route::get('signup', array('uses' => 'SignupController@showSignup'));
 Route::post('signup', array('uses' => 'SignupController@doSignup'));
 Route::get('signout', array('uses' => 'SignupController@doSignout'));
+Route::post('signin', array('uses' => 'SignupController@doSignin'));
 // ===============================================
 // SECCION DE ADMINISTRACION =================================
 // ===============================================
-Route::group(array('prefix' => 'administracion'), function(){
+Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), function(){
 		Route::get('/', function(){
 			return View::make('administracion.index');
 		});

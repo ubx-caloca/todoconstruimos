@@ -175,6 +175,23 @@
     right: 14px;
     z-index: 9;
 }
+
+.loginText {
+	border-radius: 3px;
+}
+.loginSummitBtn{
+border-radius: 3px;
+-webkit-appearance: button;
+color: #414042; 
+background-color: #FCB200; 
+background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.05)); 
+border: lavender; 
+padding-left: 10px; 
+padding-right: 10px; 
+padding-top: 3px; 
+padding-bottom: 3px; 
+font-weight: 700;
+}
 </style>
 </head>
 
@@ -194,27 +211,21 @@
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs">
 		<div >
+
 		<?php if($username == '' || $roluser == ''): ?>
 		
 			<div class="wrap" style="padding-top: 5px;">
 			<ul id="headernav" style="float: right;list-style: none;padding-left: 25px;margin-top: 5px;padding-right: 10px;">
 				<li class="active"><a href="/signup" style="text-decoration: none;"><span>Registrarse </span> <span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span></a></li>	
 			</ul>
-			
-				<form action="login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)">
-				<script type="text/javascript" src="clientscript/vbulletin_md5.js?v=387"></script>
-				<div id="headeruser" style="float: right;padding-top: 3px;
-max-height: 28px;">
-					<input type="text" class="bginput" name="vb_login_username" id="navbar_username" size="15" accesskey="u" tabindex="101" placeholder="Usuario" style="border-radius: 3px;">
-					<input type="password" class="bginput" name="vb_login_password" id="navbar_password" size="15" tabindex="102" placeholder="Contraseña" style="border-radius: 3px;">
-					<input type="submit" class="button" value="Log in" tabindex="104" accesskey="s" style="border-radius: 3px;-webkit-appearance: button;color: #414042; background-color: #FCB200; background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.05)); border: lavender; padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px; font-weight: 700;">
+				<?php echo Form::open(array('url' => '/signin')); ?>
+				<div id="headeruser" style="float: right;padding-top: 3px; max-height: 28px;">
+					<?php echo Form::text('login_email', '', array('placeholder' => 'email@usuario', 'id'=>'navbar_username', 'size' => '15',  'accesskey'=> 'u', 'tabindex'=>'101', 'class'=> 'loginText')); ?>
+					<?php echo Form::password('login_password', array('placeholder' => 'Contraseña', 'id'=>'navbar_password', 'size' => '15',  'accesskey'=> 'u', 'tabindex'=>'102', 'class'=> 'bginput loginText')); ?>
+					<?php echo Form::submit('Log-in', array('class' => 'button loginSummitBtn', 'tabindex'=>'104', 'accesskey'=>'s')); ?>
+
 				</div>
-				<input type="hidden" name="s" value="">
-				<input type="hidden" name="securitytoken" value="guest">
-				<input type="hidden" name="do" value="login">
-				<input type="hidden" name="vb_login_md5password">
-				<input type="hidden" name="vb_login_md5password_utf">
-				</form>
+				<?php echo Form::close(); ?>
 			
 		    </div>
 		
@@ -243,9 +254,41 @@ max-height: 28px;">
         </li>
       </ul>
 	  <?php endif; ?>
-	  
-		</div>	
-		
+
+
+			<?php if($errors->has()): ?>
+<div style="background: rgba(242,222, 223,255);
+margin: 5px;
+padding-left: 10px;
+padding-right: 10px;
+border: 2px #dd9d9d solid;
+background-color: #F2DEDF;
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+border-radius: 8px;
+color: #a71b2a;
+/* padding-top: 10px; */
+/* padding-bottom: 10px; */
+margin-bottom: 30px;
+width: 300px;
+font-size: 12px;
+position: absolute;
+left: 100%;
+margin-left: -480px;
+top: 35px;
+">
+<p><strong>Errores:</strong> </p>
+	<ul>		
+			<?php foreach($errors->all() as $error): ?>
+				<li>
+				<?php echo $error; ?> 
+				</li>
+
+			<?php endforeach; ?>
+	</ul>
+</div>		
+	<?php endif; ?>	  
+		</div>		
 		
 		<div class="logo">
 			<a href="index.html"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>

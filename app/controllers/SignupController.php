@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\MessageBag;
+
 class SignupController extends \BaseController {
 
 	/**
@@ -32,6 +34,15 @@ class SignupController extends \BaseController {
 			return Redirect::to('signup/')
 				->withErrors($validator)->withInput();
 		} else {
+		
+			//TODO check if email is not already in Usuario table
+			$usuariorepetido = DB::table('usuarios')->where('email', Input::get('user_email'))->first();
+			if(!is_null($usuariorepetido)){
+				$errors = new MessageBag(['user_email' => ['User email already in system']]); // if Auth::attempt fails (wrong credentials) create a new message bag instance.
+				return Redirect::to('signup/')->withErrors($errors)->withInput();		
+			
+			}
+			
 			// store
 						
 			$usuario = new Usuario;
@@ -81,6 +92,41 @@ class SignupController extends \BaseController {
 	{
 		Auth::logout();
 		return Redirect::to('/');
+	}	
+	
+	public function doSignin()
+	{
+		$rules = array(
+			'login_email'       => 'required|email',
+			'login_password'      => 'required|min:6',			
+		);
+		$validator = Validator::make(Input::all(), $rules);		
+		
+		if ($validator->fails()) {
+			return Redirect::to('/')
+				->withErrors($validator);
+		} else {
+		
+		
+		// create our user data for the authentication
+			$userdata = array(
+				'email' 	=> Input::get('login_email'),
+				'password' 	=> Input::get('login_password')
+			);
+
+			// attempt to do the login
+			if (Auth::attempt($userdata)) {
+			
+				return Redirect::to('/');
+
+			} else {	 	
+
+				$errors = new MessageBag(['login_password' => ['Invalid usuario / password combination']]); // if Auth::attempt fails (wrong credentials) create a new message bag instance.
+				return Redirect::to('/')->withErrors($errors)->withInput(Input::except('login_password'));
+
+			}
+		
+		}
 	}	
 	 
 	 
