@@ -276,7 +276,7 @@
 				
 				  	 $i=0;
    	    			echo '';
-					echo '<div class="container" style="margin-top: 150px; background:#ffb500; padding-top: 2em;padding-bottom: 2em">'; 
+					echo '<div class="container" style="margin-top: 50px; background:#ffb500; padding-top: 2em;padding-bottom: 2em">'; 
 					
 						$clasfImgs = $clasificado->imagenes;
 						
@@ -355,7 +355,7 @@
 						echo '</div><br>';		
 						
 						echo '<div class="row" style="padding-left: 2em;padding-right: 2em;"><div class="col-md-2">
-							 <p style="text-align: -webkit-left;font-weight: 700" >Categoria:</p>
+							 <p style="text-align: -webkit-left;font-weight: 700" >Categoría:</p>
 								</div>
 							<div class="col-md-10">
 							 <p style="text-align: -webkit-left;" > '.$clasificado->categoria->categoria.'</p>
@@ -363,10 +363,10 @@
 						echo '</div><br>';	
 								
 						echo '<div class="row" style="padding-left: 2em;padding-right: 2em;"><div class="col-md-2">
-							 <p style="text-align: -webkit-left;font-weight: 700" >Premium:</p>
+							 <p style="text-align: -webkit-left;font-weight: 700" >Creado por:</p>
 								</div>
 							<div class="col-md-10">
-							 <p style="text-align: -webkit-left;" > '.(($clasificado->premium == 1)? 'Si': 'No').'</p>
+							 <p style="text-align: -webkit-left;" > '.$clasificado->usuario->nombre.'</p>
 								</div>';
 						echo '</div><br>';									
 								
