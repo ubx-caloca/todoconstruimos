@@ -237,7 +237,7 @@ font-weight: 700;
             <li><a href="#">Configuración de usuario <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
             <li class="divider"></li>
 			<?php if($roluser == 'admin'): ?>			
-            <li><a href="administracion/">Ir a vista administrador<span class="glyphicon glyphicon-list-alt pull-right"></span></a></li>
+            <li><a href="administracion/">Ir a vista de administrador<span class="glyphicon glyphicon-list-alt pull-right"></span></a></li>
             <li class="divider"></li>	
 			<?php else: ?>
 				<li><a href="#">Agregar nuevo clasificado <span class="glyphicon glyphicon-edit pull-right"></span></a></li>
@@ -691,10 +691,10 @@ top: 35px;
 		                              <div>
 		                                    <div class="row text-center">
 		                                        <div class="col-md-12" style="background-color:#ffffff;">
-		                                              <center><p><img src="images/eventos/<?php echo $evento->imagenes[0]->nombre_imagen; ?> " alt="<?php echo $evento->titulo; ?>" class="img-thumbnail"></p></center>
+		                                              <center><p><img src="images/eventos/<?php echo $evento->imagen; ?> " alt="<?php echo $evento->titulo; ?>" class="img-thumbnail"></p></center>
 		                                               <h3 class="m_1"><a href="#"><?php echo $evento->titulo; ?></a></h3>
-		                                               <p class="m_2" style="text-align:center;">Fecha: <?php echo Str::limit($evento->fecha_inicio,400); ?></p>
-		                                              <p class="m_2" style="text-align:justify;"><?php echo Str::limit($evento->descripcion,400); ?></p>
+		                                               <p class="m_2" style="text-align:center;">Fecha: <?php echo Str::limit($evento->fecha,400); ?></p>
+		                                              <p class="m_2" style="text-align:justify;"><?php echo Str::limit($evento->contenido,400); ?></p>
 		                                        </div>                              
 		                                    </div>                          
 		    						  </div>
@@ -749,7 +749,7 @@ top: 35px;
 
 
 		   	  </div>  
-					<div style="width:100%; background-color:#ffb600;">
+					<div style="width:100%; background-color:#ffb600;margin-bottom: 20px;">
 		                            <div class="owl-carousel-clasificados">
 									<?php foreach($clasificadosvip as $clasf): ?>
 

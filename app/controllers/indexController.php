@@ -14,7 +14,7 @@ class indexController extends \BaseController {
 		$clasificadosvip = Clasificado::where('premium', '=', 1)->where('habilitar', '=', 1)->orderBy('fecha_publicacion','DESC')->get();
 		$categoriasClasif = ClasificadoCategoria::all();
 		$anuncios = Anuncio::all();
-		$eventos = Evento::orderBy('fecha_inicio','desc')->get();
+		$eventos = DB::table('eventos')->orderBy('fecha','desc')->get();
 		//$proveedores = DB::table('proveedores')->where('nombre_usuario', '=', "$nombre_usuario")->first();
 		//$proveedores_detalle = Proveedor_detalle::where('proveedores_idproveedor', '=', $proveedores->id)->first();
 		//$galeria = DB::table('proveedor_galeria')->where('proveedores_idproveedor', '=', $proveedores->id)->get();

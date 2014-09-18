@@ -691,10 +691,10 @@ top: 35px;
 		                              <div>
 		                                    <div class="row text-center">
 		                                        <div class="col-md-12" style="background-color:#ffffff;">
-		                                              <center><p><img src="images/eventos/{{$evento->imagenes[0]->nombre_imagen}} " alt="{{ $evento->titulo }}" class="img-thumbnail"></p></center>
+		                                              <center><p><img src="images/eventos/{{$evento->imagen}} " alt="{{ $evento->titulo }}" class="img-thumbnail"></p></center>
 		                                               <h3 class="m_1"><a href="#">{{$evento->titulo}}</a></h3>
-		                                               <p class="m_2" style="text-align:center;">Fecha: {{Str::limit($evento->fecha_inicio,400)}}</p>
-		                                              <p class="m_2" style="text-align:justify;">{{Str::limit($evento->descripcion,400)}}</p>
+		                                               <p class="m_2" style="text-align:center;">Fecha: {{Str::limit($evento->fecha,400)}}</p>
+		                                              <p class="m_2" style="text-align:justify;">{{Str::limit($evento->contenido,400)}}</p>
 		                                        </div>                              
 		                                    </div>                          
 		    						  </div>
