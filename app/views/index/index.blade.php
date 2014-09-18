@@ -749,7 +749,7 @@ top: 35px;
 
 
 		   	  </div>  
-					<div style="width:100%; background-color:#ffb600;">
+					<div style="width:100%; background-color:#ffb600;margin-bottom: 20px;">
 		                            <div class="owl-carousel-clasificados">
 									@foreach ($clasificadosvip as $clasf)
 
