@@ -62,6 +62,7 @@ class Galeria_subirController extends \BaseController {
 				$proveedores_galeria->id=0;
 				$proveedores_galeria->proveedores_idproveedor=$idproveedor;		        
 				$proveedores_galeria->imagen=$filename;
+				$proveedores_galeria->texto="";
 				$proveedores_galeria->save();
 				unset($proveedores_galeria);
 				//$proveedores_galeria->destroy(1);
