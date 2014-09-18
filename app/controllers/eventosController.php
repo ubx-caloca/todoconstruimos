@@ -9,9 +9,10 @@ class eventosController extends \BaseController {
 	 */
 	public function index()
 	{
+		$authuser = Auth::user();
 		//$listaDePost = Proveedor::paginate(15);
 		$Eventos = DB::table('eventos')->orderBy('id','desc')->paginate(2);
-		return View::make('administracion.pages.eventos.crear')->with('Eventos',$Eventos);
+		return View::make('administracion.pages.eventos.crear')->with(array('Eventos'=>$Eventos, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 	}
 
 
@@ -39,6 +40,7 @@ class eventosController extends \BaseController {
 		//$fecha=''
 		//$titulo=Input::get('titulo');
 		//$idproveedor=Input::get('idproveedor');
+		$authuser = Auth::user();
 		if(!File::exists('images/eventos/')) {
 		    $result = File::makeDirectory('images/eventos/', 0777);
 		}
@@ -78,7 +80,7 @@ class eventosController extends \BaseController {
 		    
 		}
 		
-		return Redirect::to("administracion/eventos");
+		return Redirect::to("administracion/eventos")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		//
 	}
 
@@ -103,8 +105,9 @@ class eventosController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+		$authuser = Auth::user();
 		$evento = Eventos::find($id);
-		return View::make('administracion.pages.eventos.editar')->with(array('evento'=>$evento));		
+		return View::make('administracion.pages.eventos.editar')->with(array('evento'=>$evento, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));		
 		//
 	}
 
@@ -117,6 +120,7 @@ class eventosController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		$authuser = Auth::user();
 		$eventos = Eventos::find($id);
 		//dd($eventos);
 
@@ -150,7 +154,7 @@ class eventosController extends \BaseController {
 				$eventos->contenido=Input::get('contenido');
 				$eventos->save();
 				unset($eventos);	
-				return Redirect::to("administracion/eventos");			
+				return Redirect::to("administracion/eventos")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));			
 
 	}
 
@@ -163,12 +167,12 @@ class eventosController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		
+		$authuser = Auth::user();
 		$evento = Eventos::find($id);
 		if($evento){
 			$evento->delete();
 		}
-		return Redirect::to('administracion/eventos');
+		return Redirect::to('administracion/eventos')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		//
 	}
 

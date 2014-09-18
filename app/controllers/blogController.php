@@ -9,9 +9,10 @@ class blogController extends \BaseController {
 	 */
 	public function index()
 	{
+		$authuser = Auth::user();
 		//$listaDePost = Proveedor::paginate(15);
 		$Posts = DB::table('blog')->orderBy('id','desc')->paginate(2);
-		return View::make('administracion.pages.blog.crear')->with('Posts',$Posts);
+		return View::make('administracion.pages.blog.crear')->with(array('Posts'=>$Posts, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 	}
 
 
@@ -39,6 +40,7 @@ class blogController extends \BaseController {
 		//$fecha=''
 		//$titulo=Input::get('titulo');
 		//$idproveedor=Input::get('idproveedor');
+		$authuser = Auth::user();
 		if(!File::exists('images/blog/')) {
 		    $result = File::makeDirectory('images/blog/', 0777);
 		}
@@ -77,7 +79,7 @@ class blogController extends \BaseController {
 		    
 		}
 		
-		return Redirect::to("administracion/blog");
+		return Redirect::to("administracion/blog")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		//
 	}
 
@@ -102,8 +104,9 @@ class blogController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+		$authuser = Auth::user();
 		$post = Blog::find($id);
-		return View::make('administracion.pages.blog.editar')->with(array('post'=>$post));		
+		return View::make('administracion.pages.blog.editar')->with(array('post'=>$post, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));		
 		//
 	}
 
@@ -116,6 +119,7 @@ class blogController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		$authuser = Auth::user();
 		$blog = Blog::find($id);
 		//dd($blog);
 
@@ -148,7 +152,7 @@ class blogController extends \BaseController {
 				$blog->contenido=Input::get('contenido');
 				$blog->save();
 				unset($blog);	
-				return Redirect::to("administracion/blog");			
+				return Redirect::to("administracion/blog")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));				
 
 	}
 
@@ -161,12 +165,12 @@ class blogController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		
+		$authuser = Auth::user();
 		$post = Blog::find($id);
 		if($post){
 			$post->delete();
 		}
-		return Redirect::to('administracion/blog');
+		return Redirect::to('administracion/blog')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		//
 	}
 

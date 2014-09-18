@@ -9,8 +9,9 @@ class ClasificadosCategoriaController extends \BaseController {
 	 */
 	public function index()
 	{
+		$authuser = Auth::user();
 		$listaDeCategorias = ClasificadoCategoria::all();
-		return View::make('administracion.pages.clasificados.categoria')->with('listaDeCategorias',$listaDeCategorias);
+		return View::make('administracion.pages.clasificados.categoria')->with(array('listaDeCategorias'=>$listaDeCategorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 	}
 
 
@@ -31,6 +32,7 @@ class ClasificadosCategoriaController extends \BaseController {
 	 */
 	public function store()
 	{
+		$authuser = Auth::user();
 		$rules = array(
 			'categoria'       => 'required',
 			'descripcion'      => 'required',
@@ -40,8 +42,7 @@ class ClasificadosCategoriaController extends \BaseController {
 
 		// process the login
 		if ($validator->fails()) {
-			return Redirect::to('administracion/clasificadoscategorias')
-				->withErrors($validator)->withInput();
+			return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre))->withErrors($validator)->withInput();
 		} else {
 			// store
 			$clasfCat = new ClasificadoCategoria;
@@ -52,7 +53,7 @@ class ClasificadosCategoriaController extends \BaseController {
 
 			// redirect
 			Session::flash('message', 'Categoria de clasificado ha sido creada exitosamente!');
-			return Redirect::to('administracion/clasificadoscategorias');
+			return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		}
 		
 	}
@@ -79,12 +80,13 @@ class ClasificadosCategoriaController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+		$authuser = Auth::user();
 		$clasfCat = ClasificadoCategoria::find($id);
 		$listaDeCategorias = ClasificadoCategoria::all();
 
 		// show the edit form and pass the nerd
 		return View::make('administracion.pages.clasificados.categoriaedit')
-			->with('clasfCat', $clasfCat)->with('listaDeCategorias', $listaDeCategorias);
+			->with('clasfCat', $clasfCat)->with(array('listaDeCategorias'=> $listaDeCategorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		//
 	}
 
@@ -97,6 +99,7 @@ class ClasificadosCategoriaController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		$authuser = Auth::user();
 		$rules = array(
 			'categoria'       => 'required',
 			'descripcion'      => 'required',
@@ -106,8 +109,7 @@ class ClasificadosCategoriaController extends \BaseController {
 
 		// process the login
 		if ($validator->fails()) {
-			return Redirect::to('administracion/clasificadoscategorias/' . $id . '/edit')
-				->withErrors($validator)->withInput();
+			return Redirect::to('administracion/clasificadoscategorias/' . $id . '/edit')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre))->withErrors($validator)->withInput();
 		} else {
 			// store
 			$clasfCat = ClasificadoCategoria::find($id);
@@ -118,7 +120,7 @@ class ClasificadosCategoriaController extends \BaseController {
 
 			// redirect
 			Session::flash('message', 'Categoria de clasificado ha sido editada exitosamente!');
-			return Redirect::to('administracion/clasificadoscategorias');
+			return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		}
 	}
 
@@ -132,7 +134,7 @@ class ClasificadosCategoriaController extends \BaseController {
 	public function destroy($id)
 	{
 		//return 'destroy del clasificados categorias '.$id;
-		
+		$authuser = Auth::user();
 		$clasificadoCat = ClasificadoCategoria::find($id);
 		
 		$clasfs = $clasificadoCat->clasificados;
@@ -144,7 +146,7 @@ class ClasificadosCategoriaController extends \BaseController {
 		}	
 		$clasificadoCat->delete();
 		Session::flash('message', 'La categoria ha sido eliminada exitosamente!');
-		return Redirect::to('administracion/clasificadoscategorias');
+		return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 	}
 
 

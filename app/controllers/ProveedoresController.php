@@ -10,7 +10,8 @@ class ProveedoresController extends BaseController {
 	public function index()
 	{
 		$listaDeProveedores = Proveedor::paginate(15);
-		return View::make('administracion.pages.proveedores.listar')->with('listaDeProveedores',$listaDeProveedores);
+		$authuser = Auth::user();
+		return View::make('administracion.pages.proveedores.listar')->with(array('listaDeProveedores'=>$listaDeProveedores, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		//
 	}
 
@@ -33,6 +34,7 @@ class ProveedoresController extends BaseController {
 	 */
 	public function store()
 	{
+		$authuser = Auth::user();
 
 		$proveedores = new Proveedor;
 		$proveedores_detalle = new Proveedor_detalle;
@@ -141,7 +143,7 @@ class ProveedoresController extends BaseController {
 		$proveedores_pago->fecha = DB::raw('NOW()');
 		$proveedores_pago->save();
 
-		return Redirect::to("administracion/proveedores/galeria/$nombreDeUsuario/$idproveedor");		
+		return Redirect::to("administracion/proveedores/galeria/$nombreDeUsuario/$idproveedor")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));		
 		//return Redirect::route("/administracion/proveedores/galeria/{$nombreDeUsuario}/{$idproveedor}");
 		//return Redirect::route('administracion/proveedores/galeria/', array('nombreDeUsuario' => $nombreDeUsuario, 'idproveedor'=>$idproveedor));
 		//
@@ -168,10 +170,11 @@ class ProveedoresController extends BaseController {
 	 */
 	public function edit($id)
 	{
+		$authuser = Auth::user();
 		$proveedores = Proveedor::find($id);
 		$proveedores_detalle = Proveedor_detalle::where('proveedores_idproveedor', '=', $id)->first();
 		$listaTiposDeProveedores = array('NA' => 'Elige un tipo de proveedor')+TipoProveedor::lists('tipo','id');
-		return View::make('administracion.pages.proveedores.editar')->with(array('listaTiposDeProveedores'=>$listaTiposDeProveedores,'proveedores'=>$proveedores,'proveedores_detalle'=>$proveedores_detalle));		
+		return View::make('administracion.pages.proveedores.editar')->with(array('listaTiposDeProveedores'=>$listaTiposDeProveedores,'proveedores'=>$proveedores,'proveedores_detalle'=>$proveedores_detalle, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));		
 		//
 	}
 
@@ -184,6 +187,7 @@ class ProveedoresController extends BaseController {
 	 */
 	public function update($id)
 	{
+		$authuser = Auth::user();
 		//$proveedores = new Proveedor;
 		//$proveedores_detalle = new Proveedor_detalle;
 		//$proveedores_pago = new Proveedor_pago;
@@ -302,7 +306,7 @@ class ProveedoresController extends BaseController {
 		//$proveedores_pago->fecha = DB::raw('NOW()');
 		//$proveedores_pago->save();
 
-		return Redirect::to("administracion");
+		return Redirect::to("administracion")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 
 		//
 	}

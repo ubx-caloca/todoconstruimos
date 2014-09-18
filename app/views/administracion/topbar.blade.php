@@ -1,5 +1,6 @@
 <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
+						<!--
                         <li class="dropdown messages-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope"></i>
@@ -8,9 +9,9 @@
                             <ul class="dropdown-menu">
                                 <li class="header">You have 4 messages</li>
                                 <li>
-                                    <!-- inner menu: contains the actual data -->
+                                   
                                     <ul class="menu">
-                                        <li><!-- start message -->
+                                        <li>
                                             <a href="#">
                                                 <div class="pull-left">
                                                     <img src="img/avatar3.png" class="img-circle" alt="User Image"/>
@@ -21,7 +22,7 @@
                                                 </h4>
                                                 <p>Why not buy a new awesome theme?</p>
                                             </a>
-                                        </li><!-- end message -->
+                                        </li>
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
@@ -75,49 +76,40 @@
                                 <li class="footer"><a href="#">See All Messages</a></li>
                             </ul>
                         </li>
-                        <!-- Notifications: style can be found in dropdown.less -->
+                        -->
+						<!-- Notifications: style can be found in dropdown.less -->
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-warning"></i>
-                                <span class="label label-warning">10</span>
+                                <span class="label label-warning">3</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">You have 10 notifications</li>
+                                <li class="header">Tienes 3 notificaciones</li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
                                         <li>
                                             <a href="#">
-                                                <i class="ion ion-ios7-people info"></i> 5 new members joined today
+                                                <i class="ion ion-ios7-people info"></i> Usuario Ray@gmail.com realizo un pago mensual
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-warning danger"></i> Very long description here that may not fit into the page and may cause design problems
+                                                <i class="fa fa-warning danger"></i> Usuario compro clasficados VIP
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-users warning"></i> 5 new members joined
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#">
-                                                <i class="ion ion-ios7-cart success"></i> 25 sales made
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ion ion-ios7-person danger"></i> You changed your username
+                                                <i class="fa fa-users warning"></i> Se han registrado 4 usuarios nuevos
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="footer"><a href="#">View all</a></li>
+                                <li class="footer"><a href="#">Ver todas</a></li>
                             </ul>
                         </li>
                         <!-- Tasks: style can be found in dropdown.less -->
+						<!--
                         <li class="dropdown tasks-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-tasks"></i>
@@ -126,9 +118,9 @@
                             <ul class="dropdown-menu">
                                 <li class="header">You have 9 tasks</li>
                                 <li>
-                                    <!-- inner menu: contains the actual data -->
+                                    
                                     <ul class="menu">
-                                        <li><!-- Task item -->
+                                        <li>
                                             <a href="#">
                                                 <h3>
                                                     Design some buttons
@@ -140,8 +132,8 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </li><!-- end task item -->
-                                        <li><!-- Task item -->
+                                        </li>
+                                        <li>
                                             <a href="#">
                                                 <h3>
                                                     Create a nice theme
@@ -153,8 +145,8 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </li><!-- end task item -->
-                                        <li><!-- Task item -->
+                                        </li>
+                                        <li>
                                             <a href="#">
                                                 <h3>
                                                     Some task I need to do
@@ -166,8 +158,8 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </li><!-- end task item -->
-                                        <li><!-- Task item -->
+                                        </li>
+                                        <li>
                                             <a href="#">
                                                 <h3>
                                                     Make beautiful transitions
@@ -179,7 +171,7 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </li><!-- end task item -->
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="footer">
@@ -187,15 +179,17 @@
                                 </li>
                             </ul>
                         </li>
-
+						-->
                         <!-- User Account: style can be found in dropdown.less -->
+						
+						<!--
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
                                 <span>Ismael Villanueva <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <!-- User image -->
+                                
                                 <li class="user-header bg-light-blue">
                                     <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                                     <p>
@@ -203,7 +197,7 @@
                                         <small>Member since Nov. 2012</small>
                                     </p>
                                 </li>
-                                <!-- Menu Body -->
+                                
                                 <li class="user-body">
                                     <div class="col-xs-4 text-center">
                                         <a href="#">Followers</a>
@@ -215,7 +209,7 @@
                                         <a href="#">Friends</a>
                                     </div>
                                 </li>
-                                <!-- Menu Footer-->
+                                
                                 <li class="user-footer">
                                     <div class="pull-left">
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
@@ -225,4 +219,5 @@
                                     </div>
                                 </li>
                             </ul>
-                        </li>                        
+                        </li>   
+						-->						

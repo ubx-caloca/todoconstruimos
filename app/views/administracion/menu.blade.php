@@ -92,4 +92,12 @@
                                 <li><a href="/administracion/anuncios/create"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
                                 <li><a href="/administracion/anuncios"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                             </ul>
-                        </li>                                                
+                        </li>    
+						<div style="margin-left: 15px;padding-top: 10px;">
+                        <a href="/signout" >
+                                <i class="fa fa-power-off""></i>
+                                <span style="margin-left: 7px;">Cerrar sesión</span>
+                               
+                        </a>
+						</div> 
+ 						

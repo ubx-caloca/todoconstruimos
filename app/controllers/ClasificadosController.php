@@ -9,9 +9,10 @@ class ClasificadosController extends \BaseController {
 	 */
 	public function index()
 	{
+		$authuser = Auth::user();
 		$listaDeClasificados = Clasificado::paginate(15);
 		$listaDeCategorias = ClasificadoCategoria::all();
-		return View::make('administracion.pages.clasificados.index')->with('listaDeClasificados',$listaDeClasificados)->with('listaDeCategorias',$listaDeCategorias);
+		return View::make('administracion.pages.clasificados.index')->with(array('listaDeClasificados'=>$listaDeClasificados, 'listaDeCategorias'=>$listaDeCategorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 	}
 
 
@@ -23,8 +24,9 @@ class ClasificadosController extends \BaseController {
 	public function create()
 	{
 		//
+		$authuser = Auth::user();
 		$listaCategoriasClasificados = array('NA' => 'Elige una categoria para el clasificado')+ClasificadoCategoria::lists('categoria','id');
-		return View::make('administracion.pages.clasificados.nuevo')->with('listaCategoriasClasificados',$listaCategoriasClasificados);
+		return View::make('administracion.pages.clasificados.nuevo')->with(array('listaCategoriasClasificados'=>$listaCategoriasClasificados, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 	}
 
 
@@ -37,7 +39,7 @@ class ClasificadosController extends \BaseController {
 	{
 		// validate
 		// read more on validation at http://laravel.com/docs/validation
-		
+		$authuser = Auth::user();
 		
 		$rules = array(
 			'categoria_id'       => 'required|numeric',
@@ -48,8 +50,7 @@ class ClasificadosController extends \BaseController {
 		$validator = Validator::make(Input::all(), $rules);		
 		
 		if ($validator->fails()) {
-			return Redirect::to('administracion/clasificados/create')
-				->withErrors($validator)->withInput();
+			return Redirect::to('administracion/clasificados/create')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre))->withErrors($validator)->withInput();
 		} else {
 			// store
 			$clas_imagenes = Input::file('imagenes');	
@@ -126,7 +127,7 @@ class ClasificadosController extends \BaseController {
 					$resString = $resString.' ('.$countImgErr.' imagenes no se agregaron por tener un error)'; 
 			}
 			Session::flash('message', $resString);
-			return Redirect::to('administracion/clasificados');	
+			return Redirect::to('administracion/clasificados')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));	
 		}
 		
 	}
@@ -153,12 +154,13 @@ class ClasificadosController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+		$authuser = Auth::user();
 		$clasificado = Clasificado::find($id);
 		$imgg = $clasificado->imagenes;
 		
 		//return  gettype ( $clasificado->fecha_publicacion ). ' '. $clasificado->fecha_publicacion;
 		$listaCategoriasClasificados = array('NA' => 'Elige una categoria para el clasificado')+ClasificadoCategoria::lists('categoria','id');
-		return View::make('administracion.pages.clasificados.editar')->with('listaCategoriasClasificados',$listaCategoriasClasificados)->with('clasificado',$clasificado)->with('imagenes',$imgg);		
+		return View::make('administracion.pages.clasificados.editar')->with(array('listaCategoriasClasificados'=>$listaCategoriasClasificados, 'clasificado'=>$clasificado, 'imagenes'=>$imgg, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));		
 		//
 	}
 
@@ -172,6 +174,7 @@ class ClasificadosController extends \BaseController {
 	public function update($id)
 	{
 		//
+		$authuser = Auth::user();
 		$rules = array(
 			'categoria_id'       => 'required|numeric',
 			'clasf_titulo'      => 'required',
@@ -182,8 +185,7 @@ class ClasificadosController extends \BaseController {
 		$validator = Validator::make(Input::all(), $rules);		
 		
 		if ($validator->fails()) {
-			return Redirect::to('administracion/clasificados/'.$id.'/edit')
-				->withErrors($validator)->withInput();
+			return Redirect::to('administracion/clasificados/'.$id.'/edit')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre))->withErrors($validator)->withInput();
 		} else {
 			// store
 			$clas_imagenes = Input::file('imagenes');	
@@ -271,7 +273,7 @@ class ClasificadosController extends \BaseController {
 			}
 			$resString = 'Clasificado editado exitosamente!';
 			Session::flash('message', $resString);
-			return Redirect::to('administracion/clasificados');	
+			return Redirect::to('administracion/clasificados')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));	
 		}		
 	}
 
@@ -284,6 +286,7 @@ class ClasificadosController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+		$authuser = Auth::user();
 		$clasificado = Clasificado::find($id);
 		//return $clasificado;
 		$imagenes = $clasificado->imagenes;
@@ -297,7 +300,7 @@ class ClasificadosController extends \BaseController {
 
 		// redirect
 		Session::flash('message', 'El clasificado ha sido eliminado exitosamente!');
-		return Redirect::to('administracion/clasificados');
+		return Redirect::to('administracion/clasificados')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		
 	}
 

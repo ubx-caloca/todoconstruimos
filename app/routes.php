@@ -46,7 +46,8 @@ Route::post('signin', array('uses' => 'SignupController@doSignin'));
 // ===============================================
 Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), function(){
 		Route::get('/', function(){
-			return View::make('administracion.index');
+			$authuser = Auth::user();			
+			return View::make('administracion.index')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		});
 
 		//CATEGORIAS
@@ -55,7 +56,8 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 
 		//GALERIA
 		Route::get('proveedores/galeria/{nombreDeUsuario}/{idproveedor}', function($nombreDeUsuario,$idproveedor){
-			return View::make('administracion.pages.proveedores.galeria')->with(array('nombreDeUsuario' => $nombreDeUsuario, 'idproveedor' => $idproveedor));
+			$authuser = Auth::user();	
+			return View::make('administracion.pages.proveedores.galeria')->with(array('nombreDeUsuario' => $nombreDeUsuario, 'idproveedor' => $idproveedor, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		});
 
 		//PROVEEDORES

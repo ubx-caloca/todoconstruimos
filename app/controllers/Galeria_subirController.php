@@ -31,6 +31,7 @@ class Galeria_subirController extends \BaseController {
 	 */
 	public function store()
 	{
+		$authuser = Auth::user();
 		//$proveedores_galeria = new Proveedor_galeria;
 		//$proveedores_galeria->id=0;
 		//$proveedores_galeria->proveedores_idproveedor=Input::get('idproveedor');
@@ -71,7 +72,7 @@ class Galeria_subirController extends \BaseController {
 		    
 		}
 		
-		return Redirect::to("administracion/proveedores/galeria/$nombreDeUsuario/$idproveedor");
+		return Redirect::to("administracion/proveedores/galeria/$nombreDeUsuario/$idproveedor")->with('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre);
 		//
 	}
 
