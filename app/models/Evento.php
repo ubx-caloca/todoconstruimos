@@ -3,7 +3,7 @@
 class Evento extends Eloquent {
 
 	// LINK THIS MODEL TO OUR DATABASE TABLE ---------------------------------
-	protected $table = 'eventos_';
+	protected $table = 'eventos__';
 
 	// DEFINE RELATIONSHIPS --------------------------------------------------
 	// each Evento has one Usuario
