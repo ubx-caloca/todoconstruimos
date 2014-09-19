@@ -122,7 +122,7 @@
                     <!-- Main row -->
                     <div class="row">
                         <!-- Left col -->
-                        <section class="col-lg-7 connectedSortable">                            
+                        <section class="col-lg-12 connectedSortable">                            
 
 
 
@@ -147,7 +147,7 @@
                                             </div>
                                             <hr>
                                             <div class="form-group">
-                                                    <center>{{ Form::submit('Agregar proveedor', array('class' => 'btn btn-success')) }}</center>
+                                                    <center>{{ Form::submit('Agregar fotos', array('class' => 'btn btn-success')) }}</center>
                                             </div>
 
                                         {{ Form::close() }}
@@ -159,6 +159,9 @@
 
                                     ?>
                                     <hr>
+                                        <CENTER><h2> GALERÍA DE IMAGENES </h2></CENTER>
+                                    <hr>
+                                    {{ Form::open(array('url' => 'administracion/proveedores/galeria/editar', 'method'=>'put', 'files' => true)) }}
                                     @foreach ($galeria as $foto)
                                                     <div class="row">
                                                         <div class="col-md-1">
@@ -166,11 +169,23 @@
                                                         </div>
                                                         <div class="col-md-10">
                                                             <center><?php echo "<img src=\"/images/proveedores/$nombreDeUsuario/galeria/".$foto->imagen." \" alt=\"foto\" class=\"img-thumbnail\">";?></center>
+                                                                <br>
+                                                                <center>Selecciona si deseas eliminar esta foto: {{ Form::checkbox('eliminar[]', $foto->id) }}</center>
+                                                                <br>
+                                                                <div class="form-group">
+                                                                        {{ Form::label('descripcion', 'Descripción:') }}
+                                                                        {{ Form::text('descripcion[]',$foto->texto, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                                        {{ Form::hidden('idimagen[]', $foto->id) }}
+                                                                        {{ Form::hidden('idproveedor[]', $foto->proveedores_idproveedor) }}
+                                                                </div>                                                            
                                                         </div>
                                                     </div>
-                                                    <hr>
+                                                    <hr><hr>
                                     @endforeach
-
+                                    <div class="form-group">
+                                                    <center>{{ Form::submit('Actualizar', array('class' => 'btn btn-success')) }}</center>
+                                    </div>
+                                    {{ Form::close() }}
 
 
                                     </div>

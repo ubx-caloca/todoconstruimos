@@ -65,6 +65,8 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		Route::resource('proveedores/nuevo','TipoProveedoresController');
 		Route::resource('proveedores/guardarproveedor','ProveedoresController');
 		Route::resource('proveedores/galeria','Galeria_subirController');
+		Route::resource('proveedores/galeria/editar','Galeria_subirController');
+
 		Route::resource('proveedores/listar','ProveedoresController');
 
 		//BLOG

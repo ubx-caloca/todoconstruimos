@@ -73,7 +73,7 @@ class Galeria_subirController extends \BaseController {
 		    
 		}
 		
-		return Redirect::to("administracion/proveedores/galeria/$nombreDeUsuario/$idproveedor")->with('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre);
+		return Redirect::to("administracion/proveedores/galeria/$nombreDeUsuario/$idproveedor")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		//
 	}
 
@@ -99,6 +99,8 @@ class Galeria_subirController extends \BaseController {
 	public function edit($id)
 	{
 		//
+			
+
 	}
 
 
@@ -111,6 +113,42 @@ class Galeria_subirController extends \BaseController {
 	public function update($id)
 	{
 		//
+		$authuser = Auth::user();
+//		$proveedorGaleria = Proveedor_galeria::find($id);
+		//dd($blog);
+
+		$descripcion = Input::get('descripcion');
+		$idimagen = Input::get('idimagen');
+		$idproveedor = Input::get('idproveedor');
+		$eliminar = Input::get('eliminar');
+		//echo sizeof($eliminar);
+		if(!empty($descripcion)){
+			$indice = 0;
+			foreach($descripcion as $desc) {
+
+					$proveedorGaleria = Proveedor_galeria::find($idimagen[$indice]);		
+
+					$proveedorGaleria->texto=$desc;						
+					$proveedorGaleria->save();
+					
+
+
+					unset($proveedorGaleria);	
+					$indice++;
+			}
+		}
+		if(!empty($eliminar)){
+			$indice = 0;
+			foreach($eliminar as $el) {
+				$proveedorGaleria = Proveedor_galeria::find($el);
+				//echo "{ $el ] <br>";
+				$proveedorGaleria->delete();
+						//DB::table('proveedor_galeria')->where('id', '=', $idimagen[$indice])->delete();
+				unset($proveedorGaleria);
+				$indice++;
+			}		
+		}
+		return Redirect::to("administracion/proveedores/listar");			
 	}
 
 
