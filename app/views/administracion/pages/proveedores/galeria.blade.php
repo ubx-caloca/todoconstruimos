@@ -172,6 +172,8 @@
                                                                 <br>
                                                                 <center>Selecciona si deseas eliminar esta foto: {{ Form::checkbox('eliminar[]', $foto->id) }}</center>
                                                                 <br>
+                                                                <center>Foto premium?: {{ Form::checkbox('fotopremium[]', $foto->id) }}</center>
+                                                                <br>
                                                                 <div class="form-group">
                                                                         {{ Form::label('descripcion', 'Descripción:') }}
                                                                         {{ Form::text('descripcion[]',$foto->texto, array( 'placeholder' => '',  'class' => 'form-control')) }}
