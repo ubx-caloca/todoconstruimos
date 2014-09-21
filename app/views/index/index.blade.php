@@ -738,6 +738,15 @@ top: 35px;
 								{{-- */$i=0;/* --}}
 							@endif						
 						@endforeach
+						
+						@if ($i==0)
+							<div class="row" style="background:rgba(0,0,0,0.3);">
+						@endif
+						<div class="col-md-6" align="left"  style="padding:20px; color:#FFF;"><a href="../directorioClasif/all" class="fa fa-bars"></i> {{ mb_strtoupper('Todos', 'utf-8')}}</a></div>
+						@if ($i==4)
+							</div>
+							{{-- */$i=0;/* --}}
+						@endif
 						<br>
 						<br>
 						<br>
@@ -875,7 +884,7 @@ top: 35px;
    	<div class="footer">
    		<div class="container">
    			<div class="copy">
-		       <p>&copy; 2014 <a href="index.php" target="_blank"> Todo construimos</a></p>
+		       <p>&copy; 2014 <a href="/" > Todo construimos</a></p>
 		    </div>
 		    <div class="social">	
 		      <ul>	

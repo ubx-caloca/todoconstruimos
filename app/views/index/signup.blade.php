@@ -397,7 +397,7 @@ color: #a71b2a;padding-top: 10px;padding-bottom: 10px;margin-bottom: 30px;
    	<div class="footer">
    		<div class="container">
    			<div class="copy">
-		       <p>&copy; 2014 <a href="index.php" target="_blank"> Todo construimos</a></p>
+		       <p>&copy; 2014 <a href="/" > Todo construimos</a></p>
 		    </div>
 		    <div class="social">	
 		      <ul>	

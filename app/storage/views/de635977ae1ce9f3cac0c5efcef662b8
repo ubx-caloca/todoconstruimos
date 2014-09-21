@@ -286,6 +286,16 @@ margin-bottom: 3px;
 						<?php /* */$i=0;/* */ ?>
 					<?php endif; ?>						
 				<?php endforeach; ?>
+				
+				<?php if($i==0): ?>
+					<div class="row" style="background:rgba(0,0,0,0.3);">
+				<?php endif; ?>
+				<div class="col-md-6" align="left"  style="padding:20px; color:#FFF;"><a href="../directorioClasif/all" class="fa fa-bars"></i> <?php echo mb_strtoupper('Todos', 'utf-8'); ?></a></div>
+				<?php if($i==4): ?>
+					</div>
+					<?php /* */$i=0;/* */ ?>
+				<?php endif; ?>
+				
 				<br>
    		  		
 
@@ -303,14 +313,14 @@ margin-bottom: 3px;
 						$tj_date = $utc_date;
 						$tj_date->setTimeZone(new DateTimeZone('America/Tijuana'));
 						
-						
+						echo ''.(($cat->premium==1)?'<img src="../images/premium2.png" alt="Premium" style="width: 30px;height: 30px; float: left; position: absolute; left: 0; margin-top: -13px; margin-left: 7px;"> ':' ');
 					    echo '<a href="../clasificadoDetalle/'.$cat->id.'"><div class="row" id="clasfListItem" style="padding: 10px; overflow: auto;">
-								<div class="col-md-1">
+								<div class="col-md-1"> 
 								<img src="'.(($lasfImgs->isEmpty())?'../images/No_image_available.png': '../images/clasificados/'.$lasfImgs[0]->nombre_imagen).'" style="width:100px; height: 100px; margin: 0 0 0 -12px;">
 								</div>
 								<div class="col-md-11"  style="padding-left: 20px;">
-								<h3 style="text-align: -webkit-left;color:black">'.(($cat->premium==1)?'<img src="../images/premium.png" style="width:20px; height: 20px; float: left;"> ':' ').mb_strtoupper($cat->titulo, 'utf-8').'</h3>
-								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: mediumblue;" > Publicado el '.date_format($tj_date, "d M Y H:i a").'</p>
+								<h3 style="text-align: -webkit-left;color:black">'.mb_strtoupper($cat->titulo, 'utf-8').'</h3>
+								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: mediumblue;" > Publicado el '.date_format($tj_date, "d M Y H:i a").' por '.$cat->usuario->nombre .'</p>
 								<p style="text-align: -webkit-left;color:black;" >'.Str::limit($cat->descripcion, 1000).'</p><br>
 								<p style="text-align: -webkit-left;color:black;" > Precio: '.$cat->precio.' '.$cat->moneda.'</p>
 								</div>
@@ -333,7 +343,7 @@ margin-bottom: 3px;
 								</div>
 								<div class="col-md-11"  style="padding-left: 20px;">
 								<h3 style="text-align: -webkit-left;color:black">'.(($cat->premium==1)?'<img src="../images/premium.png" style="width:20px; height: 20px; float: left;"> ':' ').strtoupper($cat->titulo).'</h3>
-								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: mediumblue;" > Publicado el '.date_format($tj_date, "d M Y H:i a").'</p>
+								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: mediumblue;" > Publicado el '.date_format($tj_date, "d M Y H:i a").' por '.$cat->usuario->nombre .'</p>
 								<p style="text-align: -webkit-left;color:black;" >'.Str::limit($cat->descripcion, 1000).'</p><br>
 								<p style="text-align: -webkit-left;color:black;" > Precio: '.$cat->precio.' '.$cat->moneda.'</p>
 								</div>
@@ -362,7 +372,7 @@ margin-bottom: 3px;
    	<div class="footer">
    		<div class="container">
    			<div class="copy">
-		       <p>&copy; 2014 <a href="index.php" target="_blank"> Todo construimos</a></p>
+		       <p>&copy; 2014 <a href="/" > Todo construimos</a></p>
 		    </div>
 		    <div class="social">	
 		      <ul>	

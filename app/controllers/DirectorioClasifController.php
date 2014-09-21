@@ -7,13 +7,18 @@ class DirectorioClasifController extends \BaseController {
 	{
 		$anuncios = Anuncio::all();
 		$categoriasClasif = ClasificadoCategoria::all();
-		
+		if($directorioCategoria=='all'){
+			$listaClasificadosPremium = Clasificado::where('premium', '=', 1)->where('habilitar', '=', 1)->orderBy('fecha_publicacion','DESC')->get();
+			$listaClasificadosNormales = Clasificado::where('premium', '=', 0)->where('habilitar', '=', 1)->orderBy('fecha_publicacion','DESC')->get();
+		}
+		else{
 		$categoria = ClasificadoCategoria::find($directorioCategoria);
 		//$clasificados = $categoria->clasificados;
 		$listaClasificadosPremium = Clasificado::where('categoria_id', '=', $directorioCategoria)->where('premium', '=', 1)->where('habilitar', '=', 1)->orderBy('fecha_publicacion','DESC')->get();
 		$listaClasificadosNormales = Clasificado::where('categoria_id', '=', $directorioCategoria)->where('premium', '=', 0)->where('habilitar', '=', 1)->orderBy('fecha_publicacion','DESC')->get();
+		}
 		
-		return View::make('index.directorioClasificados')->with(array('anuncios'=>$anuncios, 'categoriasClasif' => $categoriasClasif, 'listaClasificadosPremium'=> $listaClasificadosPremium, 'directorioCat' => $categoria->categoria, 'listaClasificadosNormales'=> $listaClasificadosNormales));
+		return View::make('index.directorioClasificados')->with(array('anuncios'=>$anuncios, 'categoriasClasif' => $categoriasClasif, 'listaClasificadosPremium'=> $listaClasificadosPremium, 'directorioCat' => (($directorioCategoria=='all')? 'Todos los clasificados':$categoria->categoria ), 'listaClasificadosNormales'=> $listaClasificadosNormales));
 		//
 	}
 	public function categorias()

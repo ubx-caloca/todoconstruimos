@@ -115,7 +115,7 @@
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs">
 		<div class="logo">
-			<a href="index.html"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
+			<a href="/"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
 		</div>
 	    <div class="slider_container">
         
@@ -342,7 +342,7 @@
    	<div class="footer">
    		<div class="container">
    			<div class="copy">
-		       <p>&copy; 2014 <a href="index.php" target="_blank"> Todo construimos</a></p>
+		       <p>&copy; 2014 <a href="/" > Todo construimos</a></p>
 		    </div>
 		    <div class="social">	
 		      <ul>	
