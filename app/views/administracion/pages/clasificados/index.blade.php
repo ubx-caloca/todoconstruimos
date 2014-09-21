@@ -152,7 +152,7 @@
 											    		<div class="col-md-11">
 											        		<p><strong>Título:</strong> {{ $clasificado->titulo }}</p>
 											        		<p><strong>Categoria:</strong> {{ $clasificado->categoria->categoria }}</p>
-											        		<p><strong>Descripción:</strong><br> <textarea readonly style="width:100%">{{ $clasificado->descripcion }} </textarea></p
+											        		<p><strong>Descripción:</strong><br> <textarea readonly rows="5" style="width:100%">{{ $clasificado->descripcion }} </textarea></p
 									<?php
 											$fecPubString = $clasificado->fecha_publicacion;
 											$utc_date = new DateTime(

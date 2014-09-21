@@ -11,7 +11,7 @@ class Proveedor_tipo_Controller extends \BaseController {
 	{
 		$categorias = DB::table('proveedor_tipo')->get();
 		$authuser = Auth::user();
-		return View::make('administracion.pages.proveedores.categorias')->with(array('categorias'=>$categorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return View::make('administracion.pages.proveedores.categorias')->with(array('categorias'=>$categorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		//
 	}
 
@@ -41,7 +41,7 @@ class Proveedor_tipo_Controller extends \BaseController {
 		$proveedores_tipo->save();
 		
 		$authuser = Auth::user();
-		return Redirect::to("administracion/proveedores/categorias")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return Redirect::to("administracion/proveedores/categorias")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 
 		//
 	}

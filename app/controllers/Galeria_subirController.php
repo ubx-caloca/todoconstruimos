@@ -73,7 +73,7 @@ class Galeria_subirController extends \BaseController {
 		    
 		}
 		
-		return Redirect::to("administracion/proveedores/galeria/$nombreDeUsuario/$idproveedor")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return Redirect::to("administracion/proveedores/galeria/$nombreDeUsuario/$idproveedor")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		//
 	}
 
@@ -148,7 +148,7 @@ class Galeria_subirController extends \BaseController {
 				$indice++;
 			}		
 		}
-		return Redirect::to("administracion/proveedores/listar");			
+		return Redirect::to("administracion/proveedores/listar")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));			
 	}
 
 

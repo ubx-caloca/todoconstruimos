@@ -12,7 +12,7 @@ class eventosController extends \BaseController {
 		$authuser = Auth::user();
 		//$listaDePost = Proveedor::paginate(15);
 		$Eventos = DB::table('eventos')->orderBy('id','desc')->paginate(2);
-		return View::make('administracion.pages.eventos.crear')->with(array('Eventos'=>$Eventos, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return View::make('administracion.pages.eventos.crear')->with(array('Eventos'=>$Eventos, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -80,7 +80,7 @@ class eventosController extends \BaseController {
 		    
 		}
 		
-		return Redirect::to("administracion/eventos")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return Redirect::to("administracion/eventos")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		//
 	}
 
@@ -107,7 +107,7 @@ class eventosController extends \BaseController {
 	{
 		$authuser = Auth::user();
 		$evento = Eventos::find($id);
-		return View::make('administracion.pages.eventos.editar')->with(array('evento'=>$evento, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));		
+		return View::make('administracion.pages.eventos.editar')->with(array('evento'=>$evento, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
 		//
 	}
 
@@ -154,7 +154,7 @@ class eventosController extends \BaseController {
 				$eventos->contenido=Input::get('contenido');
 				$eventos->save();
 				unset($eventos);	
-				return Redirect::to("administracion/eventos")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));			
+				return Redirect::to("administracion/eventos")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));			
 
 	}
 
@@ -172,7 +172,7 @@ class eventosController extends \BaseController {
 		if($evento){
 			$evento->delete();
 		}
-		return Redirect::to('administracion/eventos')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return Redirect::to('administracion/eventos')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		//
 	}
 

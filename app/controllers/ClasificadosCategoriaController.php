@@ -11,7 +11,7 @@ class ClasificadosCategoriaController extends \BaseController {
 	{
 		$authuser = Auth::user();
 		$listaDeCategorias = ClasificadoCategoria::all();
-		return View::make('administracion.pages.clasificados.categoria')->with(array('listaDeCategorias'=>$listaDeCategorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return View::make('administracion.pages.clasificados.categoria')->with(array('listaDeCategorias'=>$listaDeCategorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -42,7 +42,7 @@ class ClasificadosCategoriaController extends \BaseController {
 
 		// process the login
 		if ($validator->fails()) {
-			return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre))->withErrors($validator)->withInput();
+			return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id))->withErrors($validator)->withInput();
 		} else {
 			// store
 			$clasfCat = new ClasificadoCategoria;
@@ -53,7 +53,7 @@ class ClasificadosCategoriaController extends \BaseController {
 
 			// redirect
 			Session::flash('message', 'Categoria de clasificado ha sido creada exitosamente!');
-			return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+			return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		}
 		
 	}
@@ -86,7 +86,7 @@ class ClasificadosCategoriaController extends \BaseController {
 
 		// show the edit form and pass the nerd
 		return View::make('administracion.pages.clasificados.categoriaedit')
-			->with('clasfCat', $clasfCat)->with(array('listaDeCategorias'=> $listaDeCategorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+			->with('clasfCat', $clasfCat)->with(array('listaDeCategorias'=> $listaDeCategorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		//
 	}
 
@@ -109,7 +109,7 @@ class ClasificadosCategoriaController extends \BaseController {
 
 		// process the login
 		if ($validator->fails()) {
-			return Redirect::to('administracion/clasificadoscategorias/' . $id . '/edit')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre))->withErrors($validator)->withInput();
+			return Redirect::to('administracion/clasificadoscategorias/' . $id . '/edit')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id))->withErrors($validator)->withInput();
 		} else {
 			// store
 			$clasfCat = ClasificadoCategoria::find($id);
@@ -120,7 +120,7 @@ class ClasificadosCategoriaController extends \BaseController {
 
 			// redirect
 			Session::flash('message', 'Categoria de clasificado ha sido editada exitosamente!');
-			return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+			return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		}
 	}
 
@@ -146,7 +146,7 @@ class ClasificadosCategoriaController extends \BaseController {
 		}	
 		$clasificadoCat->delete();
 		Session::flash('message', 'La categoria ha sido eliminada exitosamente!');
-		return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return Redirect::to('administracion/clasificadoscategorias')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 

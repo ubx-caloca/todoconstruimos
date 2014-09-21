@@ -11,7 +11,7 @@ class AnunciosController extends \BaseController {
 	{
 		$authuser = Auth::user();
 		$listaDeAnuncios = Anuncio::paginate(25);
-		return View::make('administracion.pages.anuncios.index')->with(array('listaDeAnuncios'=>$listaDeAnuncios,'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return View::make('administracion.pages.anuncios.index')->with(array('listaDeAnuncios'=>$listaDeAnuncios,'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -23,7 +23,7 @@ class AnunciosController extends \BaseController {
 	public function create()
 	{
 		$authuser = Auth::user();
-		return View::make('administracion.pages.anuncios.nuevo')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return View::make('administracion.pages.anuncios.nuevo')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -42,7 +42,7 @@ class AnunciosController extends \BaseController {
 		$validator = Validator::make(Input::all(), $rules);		
 		
 		if ($validator->fails()) {
-			return Redirect::to('administracion/anuncios/create')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre))->withErrors($validator)->withInput();
+			return Redirect::to('administracion/anuncios/create')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id))->withErrors($validator)->withInput();
 		} else {
 			// store
 						
@@ -53,7 +53,7 @@ class AnunciosController extends \BaseController {
 			$anuncio->save();
 
 			Session::flash('message', 'Anuncio creado exitosamente!');
-			return Redirect::to('administracion/anuncios')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));	
+			return Redirect::to('administracion/anuncios')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));	
 		}
 	}
 
@@ -80,7 +80,7 @@ class AnunciosController extends \BaseController {
 	{
 		$authuser = Auth::user();
 		$anuncio = Anuncio::find($id);
-		return View::make('administracion.pages.anuncios.editar')->with(array('anuncio'=>$anuncio,'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));		
+		return View::make('administracion.pages.anuncios.editar')->with(array('anuncio'=>$anuncio,'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
 	}
 
 
@@ -100,7 +100,7 @@ class AnunciosController extends \BaseController {
 		$validator = Validator::make(Input::all(), $rules);		
 		
 		if ($validator->fails()) {
-			return Redirect::to('administracion/anuncios/'.$id.'/edit')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre))->withErrors($validator)->withInput();
+			return Redirect::to('administracion/anuncios/'.$id.'/edit')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id))->withErrors($validator)->withInput();
 		} else {
 			// store
 						
@@ -110,7 +110,7 @@ class AnunciosController extends \BaseController {
 			$anuncio->save();
 
 			Session::flash('message', 'Anuncio editado exitosamente!');
-			return Redirect::to('administracion/anuncios')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+			return Redirect::to('administracion/anuncios')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		}
 	}
 
@@ -130,7 +130,7 @@ class AnunciosController extends \BaseController {
 
 		// redirect
 		Session::flash('message', 'El anuncio ha sido eliminado exitosamente!');
-		return Redirect::to('administracion/anuncios')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return Redirect::to('administracion/anuncios')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 

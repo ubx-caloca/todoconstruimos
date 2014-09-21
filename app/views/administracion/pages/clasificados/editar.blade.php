@@ -217,22 +217,7 @@
 														{{ Form::select('clasf_habilitar', array('1' => 'Si', '0' => 'No') , $clasificado->habiitar, array( 'placeholder' => '',  'class' => 'form-control')) }}
 													@endif
 											</div>
-											<div class="form-group">
-											<?php
-											$fecPubString = (($errors->has())?Input::old('clasf_fechapub'): $clasificado->fecha_publicacion);
-											$utc_date = new DateTime(
-									                $fecPubString, 
-									                new DateTimeZone('UTC')
-									);
-
-									$tj_date = $utc_date;
-									$tj_date->setTimeZone(new DateTimeZone('America/Tijuana'));
-											?>
-													{{ Form::label('clasf_fechapub', 'Fecha de publicación') }}
-													{{ Form::input('datetime','clasf_fechapub', date_format($tj_date, 'd M Y H:i a') , array( 'placeholder' => '',  'class' => 'form-control')) }}
-
-											</div>
-											
+											<!--
 											<script type="text/javascript">
 									   $('.clasf_fechapub').datetimepicker({
 									        //language:  'fr',
@@ -245,6 +230,7 @@
 									        showMeridian: 1
 									    });
 									</script>  
+									-->
 											<hr>
 											<center><h4>Imagenes del clasificado</h4></center>
 											<hr>

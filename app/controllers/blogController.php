@@ -12,7 +12,7 @@ class blogController extends \BaseController {
 		$authuser = Auth::user();
 		//$listaDePost = Proveedor::paginate(15);
 		$Posts = DB::table('blog')->orderBy('id','desc')->paginate(2);
-		return View::make('administracion.pages.blog.crear')->with(array('Posts'=>$Posts, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return View::make('administracion.pages.blog.crear')->with(array('Posts'=>$Posts, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -79,7 +79,7 @@ class blogController extends \BaseController {
 		    
 		}
 		
-		return Redirect::to("administracion/blog")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return Redirect::to("administracion/blog")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		//
 	}
 
@@ -106,7 +106,7 @@ class blogController extends \BaseController {
 	{
 		$authuser = Auth::user();
 		$post = Blog::find($id);
-		return View::make('administracion.pages.blog.editar')->with(array('post'=>$post, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));		
+		return View::make('administracion.pages.blog.editar')->with(array('post'=>$post, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
 		//
 	}
 
@@ -152,7 +152,7 @@ class blogController extends \BaseController {
 				$blog->contenido=Input::get('contenido');
 				$blog->save();
 				unset($blog);	
-				return Redirect::to("administracion/blog")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));				
+				return Redirect::to("administracion/blog")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));				
 
 	}
 
@@ -170,7 +170,7 @@ class blogController extends \BaseController {
 		if($post){
 			$post->delete();
 		}
-		return Redirect::to('administracion/blog')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return Redirect::to('administracion/blog')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		//
 	}
 

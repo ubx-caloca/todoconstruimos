@@ -12,7 +12,7 @@ class ClasificadosController extends \BaseController {
 		$authuser = Auth::user();
 		$listaDeClasificados = Clasificado::paginate(15);
 		$listaDeCategorias = ClasificadoCategoria::all();
-		return View::make('administracion.pages.clasificados.index')->with(array('listaDeClasificados'=>$listaDeClasificados, 'listaDeCategorias'=>$listaDeCategorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return View::make('administracion.pages.clasificados.index')->with(array('listaDeClasificados'=>$listaDeClasificados, 'listaDeCategorias'=>$listaDeCategorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -26,7 +26,7 @@ class ClasificadosController extends \BaseController {
 		//
 		$authuser = Auth::user();
 		$listaCategoriasClasificados = array('NA' => 'Elige una categoria para el clasificado')+ClasificadoCategoria::lists('categoria','id');
-		return View::make('administracion.pages.clasificados.nuevo')->with(array('listaCategoriasClasificados'=>$listaCategoriasClasificados, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return View::make('administracion.pages.clasificados.nuevo')->with(array('listaCategoriasClasificados'=>$listaCategoriasClasificados, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -50,7 +50,7 @@ class ClasificadosController extends \BaseController {
 		$validator = Validator::make(Input::all(), $rules);		
 		
 		if ($validator->fails()) {
-			return Redirect::to('administracion/clasificados/create')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre))->withErrors($validator)->withInput();
+			return Redirect::to('administracion/clasificados/create')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id))->withErrors($validator)->withInput();
 		} else {
 			// store
 			$clas_imagenes = Input::file('imagenes');	
@@ -127,7 +127,7 @@ class ClasificadosController extends \BaseController {
 					$resString = $resString.' ('.$countImgErr.' imagenes no se agregaron por tener un error)'; 
 			}
 			Session::flash('message', $resString);
-			return Redirect::to('administracion/clasificados')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));	
+			return Redirect::to('administracion/clasificados')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));	
 		}
 		
 	}
@@ -160,7 +160,7 @@ class ClasificadosController extends \BaseController {
 		
 		//return  gettype ( $clasificado->fecha_publicacion ). ' '. $clasificado->fecha_publicacion;
 		$listaCategoriasClasificados = array('NA' => 'Elige una categoria para el clasificado')+ClasificadoCategoria::lists('categoria','id');
-		return View::make('administracion.pages.clasificados.editar')->with(array('listaCategoriasClasificados'=>$listaCategoriasClasificados, 'clasificado'=>$clasificado, 'imagenes'=>$imgg, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));		
+		return View::make('administracion.pages.clasificados.editar')->with(array('listaCategoriasClasificados'=>$listaCategoriasClasificados, 'clasificado'=>$clasificado, 'imagenes'=>$imgg, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
 		//
 	}
 
@@ -180,12 +180,10 @@ class ClasificadosController extends \BaseController {
 			'clasf_titulo'      => 'required',
 			'clasf_descripcion' => 'required',
 			'clasf_precio' => 'numeric',
-			'clasf_fechapub' => 'date'
 		);
 		$validator = Validator::make(Input::all(), $rules);		
-		
 		if ($validator->fails()) {
-			return Redirect::to('administracion/clasificados/'.$id.'/edit')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre))->withErrors($validator)->withInput();
+			return Redirect::to('administracion/clasificados/'.$id.'/edit')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id))->withErrors($validator)->withInput();
 		} else {
 			// store
 			$clas_imagenes = Input::file('imagenes');	
@@ -212,11 +210,12 @@ class ClasificadosController extends \BaseController {
 			$clasificado->precio = Input::get('clasf_precio');
 			$clasificado->moneda = Input::get('clasf_moneda');
 			$clasificado->habilitar = Input::get('clasf_habilitar');
-			
+			/*
 			$utc_date ='';
 			if(Input::get('clasf_fechapub') != '' ){
 				$fecPubString = Input::get('clasf_fechapub');
-				$tj_date = new DateTime($fecPubString, new DateTimeZone('America/Tijuana'));
+				$tj_date = DateTime::createFromFormat('d M Y H:i a',$fecPubString, new DateTimeZone('America/Tijuana'));
+				//$tj_date = new DateTime($fecPubString, new DateTimeZone('America/Tijuana'));
 
 				$utc_date = $tj_date;
 				$utc_date->setTimeZone(new DateTimeZone('UTC'));
@@ -224,8 +223,7 @@ class ClasificadosController extends \BaseController {
 
 			
 			$clasificado->fecha_publicacion = $utc_date;
-			$usuario_id = Session::get('usuario_id', function() { return 1; });
-			$clasificado->usuario_id = $usuario_id;
+			*/
 			$clasificado->save();
 			
 			
@@ -273,7 +271,7 @@ class ClasificadosController extends \BaseController {
 			}
 			$resString = 'Clasificado editado exitosamente!';
 			Session::flash('message', $resString);
-			return Redirect::to('administracion/clasificados')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));	
+			return Redirect::to('administracion/clasificados')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));	
 		}		
 	}
 
@@ -300,7 +298,7 @@ class ClasificadosController extends \BaseController {
 
 		// redirect
 		Session::flash('message', 'El clasificado ha sido eliminado exitosamente!');
-		return Redirect::to('administracion/clasificados')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		return Redirect::to('administracion/clasificados')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		
 	}
 

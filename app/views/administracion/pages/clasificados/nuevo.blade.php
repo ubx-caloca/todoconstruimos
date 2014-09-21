@@ -162,7 +162,7 @@
 												<center><h4>Datos generales del clasificado</h4></center>
 												<hr>
 												<div class="form-group">
-														{{ Form::label('categoria_id', 'Categoria de clasificado') }}
+														{{ Form::label('categoria_id', 'Categoría de clasificado') }}
 														{{ Form::select('categoria_id', $listaCategoriasClasificados , Input::old('categoria_id'), array( 'placeholder' => '',  'class' => 'form-control')) }}
 												</div>
 												<div class="form-group">

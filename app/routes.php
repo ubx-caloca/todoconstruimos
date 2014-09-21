@@ -29,6 +29,14 @@ Route::filter('auth.admin', function($route, $request){
 
 });
 
+Route::filter('auth.user', function($route, $request){
+    // Check login user etc
+	$authuser = Auth::user();
+	if (!Auth::check())
+		return Redirect::to('/');
+
+});
+
 
 Route::resource('/','indexController');
 Route::get('/directorio/{directorioCategoria}','DirectorioController@directorio');
@@ -47,7 +55,7 @@ Route::post('signin', array('uses' => 'SignupController@doSignin'));
 Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), function(){
 		Route::get('/', function(){
 			$authuser = Auth::user();			
-			return View::make('administracion.index')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+			return View::make('administracion.index')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		});
 
 		//CATEGORIAS
@@ -57,7 +65,7 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		//GALERIA
 		Route::get('proveedores/galeria/{nombreDeUsuario}/{idproveedor}', function($nombreDeUsuario,$idproveedor){
 			$authuser = Auth::user();	
-			return View::make('administracion.pages.proveedores.galeria')->with(array('nombreDeUsuario' => $nombreDeUsuario, 'idproveedor' => $idproveedor, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+			return View::make('administracion.pages.proveedores.galeria')->with(array('nombreDeUsuario' => $nombreDeUsuario, 'idproveedor' => $idproveedor, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		});
 
 		//PROVEEDORES
@@ -88,7 +96,27 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		Route::get('eventos/editar/{id}','eventosController@edit');
 		Route::Resource('eventos/guardarEdicion','eventosController');
 		Route::get('eventos/borrar/{id}','eventosController@destroy');
+		
+		//USUARIOS
+		Route::resource('usuarios', 'UsuariosAdminController');
+		Route::get('adminusuarioedit', 'UsuariosAdminController@editarAdmin');
 
+});
+
+// ===============================================
+// SECCION DE VISTA USUARIO =================================
+// ===============================================
+Route::group(array('prefix' => 'vistausuario', 'before' => 'auth.user'), function(){
+		Route::get('/', function(){
+			$authuser = Auth::user();			
+			return View::make('vistausuario.index')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		});
+		
+		//CLASIFICADOS
+		Route::resource('clasificados', 'ClasificadosVistaController');
+		
+		//USUARIOS
+		Route::resource('usuarios', 'UsuariosVistaController');
 });
 
 		//PAGINA DE CADA PROVEEDOR

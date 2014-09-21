@@ -5,6 +5,24 @@
                             </a>
                         </li>
 						-->
+						
+						<!-- 
+                        *****************************************************
+                        *****************************************************
+                        USUARIO 
+                        *****************************************************
+                        *****************************************************
+                        -->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-user"></i>
+                                <span>Usuario Admin</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/administracion/adminusuarioedit"><i class="fa fa-angle-double-right"></i> Editar información</a></li>
+                            </ul>
+                        </li>
                         <!-- 
                         *****************************************************
                         *****************************************************
