@@ -120,7 +120,7 @@
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs">
 		<div class="logo">
-			<a href="index.html"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
+			<a href="/"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
 		</div>
 	    <div class="slider_container">
         
