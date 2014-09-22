@@ -7,6 +7,26 @@ class ClasificadosController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+	 
+	public function solicpremium(){
+		$authuser = Auth::user();
+		$listaDeClasificados = Clasificado::where('solicitar_premium', '=', 1)->paginate(15);
+		return View::make('administracion.pages.clasificados.mostrarsolpremium')->with(array('listaDeClasificados'=>$listaDeClasificados, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
+	}
+	
+	
+	public function aceptarsolicpremium(){
+	
+		$authuser = Auth::user();
+		$clasificado = Clasificado::find(Input::get('clasfid'));
+		$clasificado->solicitar_premium = 0;
+		$clasificado->premium = 1;
+		$clasificado->save();
+		return Redirect::to('administracion/clasifsolicpremium')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));	
+	}
+	
+	
+	
 	public function index()
 	{
 		$authuser = Auth::user();

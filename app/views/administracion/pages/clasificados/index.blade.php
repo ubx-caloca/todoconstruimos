@@ -147,12 +147,20 @@
 											    <?php foreach ($listaDeClasificados as $clasificado): ?>
 											    	<div class="row">
 											    		<div class="col-md-1">
-											        		<center><?php echo "$numeroClasificado"; $numeroClasificado++;?></center>
+															<center><strong>Id</strong></center>
+											        		<center style="padding-bottom: 15px;">{{$clasificado->id}}</center>
+															<center><strong><a href=" <?php echo"/administracion/clasificados/$clasificado->id/edit"; ?> ">Editar</a></strong></center>
+															<center>
+															{{ Form::open(array('url' => '/administracion/clasificados/' . $clasificado->id, 'class' => 'pull-left')) }}
+															{{ Form::hidden('_method', 'DELETE') }}
+															<strong><a href="#" onclick="$(this).closest('form').submit()">Eliminar</a></strong>
+															{{ Form::close() }}
+															</center>
 											        	</div>
 											    		<div class="col-md-11">
 											        		<p><strong>Título:</strong> {{ $clasificado->titulo }}</p>
 											        		<p><strong>Categoria:</strong> {{ $clasificado->categoria->categoria }}</p>
-											        		<p><strong>Descripción:</strong><br> <textarea readonly rows="5" style="width:100%">{{ $clasificado->descripcion }} </textarea></p
+											        		<p><strong>Descripción:</strong><br> <textarea readonly rows="5" style="width:100%">{{ $clasificado->descripcion }} </textarea></p>
 									<?php
 											$fecPubString = $clasificado->fecha_publicacion;
 											$utc_date = new DateTime(
@@ -165,6 +173,7 @@
 									?>
 															
 															<p><strong>Fecha de publicación:</strong> {{ date_format($tj_date, 'd M Y H:i a') }}</p>
+															<p><strong>Usuario:</strong> {{ $clasificado->usuario->nombre }}</p>
 															<p><strong>Premium:</strong> {{ (($clasificado->premium>0)?'Si': 'No') }}</p>
 															<p><strong>Habilitado:</strong> {{ (($clasificado->habilitar > 0)?'Si':'No') }}</p>
 															<p><strong>Precio:</strong> {{ ''.$clasificado->precio.' '.$clasificado->moneda}}</p>
@@ -182,13 +191,7 @@
 																  @endforeach
 									                            </div>        
 															</div> 
-											        		<p><strong><a href=" <?php echo"/administracion/clasificados/$clasificado->id/edit"; ?> ">Editar</a></strong></p>
-															<p>
-																{{ Form::open(array('url' => '/administracion/clasificados/' . $clasificado->id, 'class' => 'pull-left')) }}
-														{{ Form::hidden('_method', 'DELETE') }}
-														<strong><a href="#" onclick="$(this).closest('form').submit()">Eliminar</a></strong>
-														{{ Form::close() }}
-															</p>
+		
 											        	</div>
 											        </div>
 											        <hr>

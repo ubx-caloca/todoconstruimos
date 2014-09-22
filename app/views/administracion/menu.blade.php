@@ -59,6 +59,7 @@
                                 <li><a href="/administracion/clasificadoscategorias"><i class="fa fa-angle-double-right"></i> Categorías</a></li>
                                 <li><a href="/administracion/clasificados"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                                 <li><a href="/administracion/clasificados/create"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
+								<li><a href="/administracion/clasifsolicpremium"><i class="fa fa-angle-double-right"></i> Solicitudes premium</a></li>
                             </ul>
                         </li>                        
                         <!-- 

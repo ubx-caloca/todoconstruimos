@@ -19,6 +19,7 @@ class CreateClasificadosTable extends Migration {
 			$table->text('descripcion');
 			//$table->string('imagen');
 			$table->tinyInteger('premium');
+			$table->tinyInteger('solicitar_premium');
 			$table->integer('categoria_id')->unsigned();
 			$table->integer('usuario_id')->unsigned();
 			$table->float('precio');

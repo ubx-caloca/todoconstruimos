@@ -89,6 +89,8 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		//CLASIFICADOS
 		Route::resource('clasificados', 'ClasificadosController');
 		Route::resource('clasificadoscategorias', 'ClasificadosCategoriaController');
+		Route::get('clasifsolicpremium', 'ClasificadosController@solicpremium');
+		Route::get('aceptarsolicpremium', 'ClasificadosController@aceptarsolicpremium');
 
 		//EVENTOS
 		Route::resource('eventos','eventosController');
@@ -114,6 +116,7 @@ Route::group(array('prefix' => 'vistausuario', 'before' => 'auth.user'), functio
 		
 		//CLASIFICADOS
 		Route::resource('clasificados', 'ClasificadosVistaController');
+		Route::post('clasifsolicpremium', 'ClasfSolPremiumVistaController@solicpremium');
 		
 		//USUARIOS
 		Route::resource('usuarios', 'UsuariosVistaController');
