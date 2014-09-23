@@ -163,6 +163,18 @@
                                     <hr>
                                     {{ Form::open(array('url' => 'administracion/proveedores/galeria/editar', 'method'=>'put', 'files' => true)) }}
                                     @foreach ($galeria as $foto)
+                                                <?php 
+                                                if($foto->premium==1){
+                                                    $checked='true';
+                                                    $leyenda = '<i class="fa fa-spinner fa-spin"></i> En proceso de autorización...';
+                                                }else if($foto->premium==2){
+                                                    $checked='true';
+                                                    $leyenda = '<i class="fa fa-check-circle-o"></i> Autorizado como PREMIUM.';
+                                                }else{
+                                                    $checked='';
+                                                    $leyenda='';
+                                                }
+                                                 ?>
                                                     <div class="row">
                                                         <div class="col-md-1">
                                                             <center><?php echo "$numero"; $numero++;?></center>
@@ -172,7 +184,7 @@
                                                                 <br>
                                                                 <center>Selecciona si deseas eliminar esta foto: {{ Form::checkbox('eliminar[]', $foto->id) }}</center>
                                                                 <br>
-                                                                <center>Foto premium?: {{ Form::checkbox('fotopremium[]', $foto->id) }}</center>
+                                                                <center>Foto premium?: {{ Form::checkbox('premium[]', $foto->id, $checked)}} {{$leyenda}}</center> 
                                                                 <br>
                                                                 <div class="form-group">
                                                                         {{ Form::label('descripcion', 'Descripción:') }}

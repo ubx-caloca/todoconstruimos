@@ -121,18 +121,15 @@ class Galeria_subirController extends \BaseController {
 		$idimagen = Input::get('idimagen');
 		$idproveedor = Input::get('idproveedor');
 		$eliminar = Input::get('eliminar');
+		$premium = Input::get('premium');
 		//echo sizeof($eliminar);
 		if(!empty($descripcion)){
 			$indice = 0;
 			foreach($descripcion as $desc) {
-
 					$proveedorGaleria = Proveedor_galeria::find($idimagen[$indice]);		
-
-					$proveedorGaleria->texto=$desc;						
+					$proveedorGaleria->texto=$desc;
+					$proveedorGaleria->premium=0;						
 					$proveedorGaleria->save();
-					
-
-
 					unset($proveedorGaleria);	
 					$indice++;
 			}
@@ -141,13 +138,21 @@ class Galeria_subirController extends \BaseController {
 			$indice = 0;
 			foreach($eliminar as $el) {
 				$proveedorGaleria = Proveedor_galeria::find($el);
-				//echo "{ $el ] <br>";
 				$proveedorGaleria->delete();
-						//DB::table('proveedor_galeria')->where('id', '=', $idimagen[$indice])->delete();
 				unset($proveedorGaleria);
 				$indice++;
 			}		
 		}
+		if(!empty($premium)){
+			$indice = 0;
+			foreach($premium as $pre) {
+				$proveedorGaleria = Proveedor_galeria::find($pre);
+				$proveedorGaleria->premium=1;
+				$proveedorGaleria->save();
+				unset($proveedorGaleria);
+				$indice++;
+			}		
+		}		
 		return Redirect::to("administracion/proveedores/listar")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));			
 	}
 
