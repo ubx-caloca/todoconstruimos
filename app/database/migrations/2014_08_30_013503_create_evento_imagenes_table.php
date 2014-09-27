@@ -16,7 +16,8 @@ class CreateEventoImagenesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('evento_id')->unsigned();
-			$table->string('nombre_imagen');
+			$table->text('imagen');
+			$table->text('texto');
 			$table->timestamps();
 		});
 		

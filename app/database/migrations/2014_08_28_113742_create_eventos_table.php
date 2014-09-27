@@ -15,21 +15,17 @@ class CreateEventosTable extends Migration {
 		Schema::create('eventos', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('usuario_id')->unsigned();
-			$table->string('titulo');
-			$table->string('lugar');
-			$table->string('ciudad');
-			$table->text('descripcion');
-			$table->dateTime('fecha_inicio');
-			$table->dateTime('fecha_fin');
-			//$table->string('imagen');
-			$table->tinyInteger('premium');
-			$table->tinyInteger('habilitar');
+			$table->integer('usuario')->unsigned();
+			$table->dateTime('fecha')->nullable();
+			$table->text('titulo');
+			$table->string('imagen');
+			$table->date('fecha_evento')->nullable();
+			$table->text('contenido');
 			$table->timestamps();
 		});
 		
 		Schema::table('eventos', function(Blueprint $table) {
-			$table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+			$table->foreign('usuario')->references('id')->on('usuarios')->onDelete('cascade');
 		});
 	}
 
