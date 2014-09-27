@@ -174,5 +174,35 @@ class blogController extends \BaseController {
 		//
 	}
 
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function mostrarPost($id)
+	{
+		$categorias = DB::table('proveedor_tipo')->get();
+		$blog = DB::table('blog')->orderBy('id','desc')->take(4)->get();
+		$clasificadosvip = Clasificado::where('premium', '=', 1)->where('habilitar', '=', 1)->orderBy('fecha_publicacion','DESC')->get();
+		$categoriasClasif = ClasificadoCategoria::all();
+		$anuncios = Anuncio::all();
+		$eventos = DB::table('eventos')->orderBy('fecha','desc')->get();
+		
+		$rolusuarioLogueado = '';
+		$mailusuarioLogueado = '';
+		if (Auth::check()){
+			$authuser = Auth::user();
+			$usu = Usuario::find($authuser->id);
+			$mailusuarioLogueado = $authuser->email;
+			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
+			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
+			
+		}
+
+		$post = Blog::find($id);
+		return View::make('index.blogPost')->with(array('post'=>$post, 'categorias'=>$categorias,'blog'=>$blog, 'clasificadosvip' => $clasificadosvip, 'anuncios' => $anuncios, 'categoriasClasif' => $categoriasClasif, 'eventos' => $eventos, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
+		//
+	}
 
 }

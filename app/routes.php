@@ -45,6 +45,12 @@ Route::get('/directorioClasif/{directorioCategoria}','DirectorioClasifController
 Route::get('/directorioClasif','DirectorioClasifController@categorias');
 Route::get('/clasificadoDetalle/{clasificadoId}','ClasificadosDetalleController@verclasif');
 
+// ===============================================
+// BLOG
+// ===============================================
+Route::get('/blog/{post}','blogController@mostrarPost');
+
+
 Route::get('signup', array('uses' => 'SignupController@showSignup'));
 Route::post('signup', array('uses' => 'SignupController@doSignup'));
 Route::get('signout', array('uses' => 'SignupController@doSignout'));
