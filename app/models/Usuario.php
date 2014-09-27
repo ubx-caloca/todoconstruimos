@@ -9,10 +9,35 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 	protected $table = 'usuarios';
 
 	// DEFINE RELATIONSHIPS --------------------------------------------------
+	//Each user belongs to multiple roles
 	public function usuario_roles() {
 		return $this->belongsToMany('UsuarioRol', 'usuario_tiene_rol2',  'usuario_id', 'rol_id')->withTimestamps();
 	}
 
+	//Each Usuario can have one Proveedor
+	public function proveedor() {
+		return $this->hasOne('Proveedor', 'usuario_id');
+	}
+	
+	//Each Usuario can have many Eventos
+	public function eventos() {
+		return $this->hasMany('Evento', 'usuario');
+	}
+	
+	//Each Usuario can have many Cobros
+	public function cobros() {
+		return $this->hasMany('Cobro', 'usuario_id'); // this matches the Eloquent model
+	}
+	
+	//Each Usuario can have many Blogs
+	public function blogs() {
+		return $this->hasMany('Blog', 'usuario'); // this matches the Eloquent model
+	}	
+
+	//Each Usuario can have many VideoBlogs
+	public function videoBlogs() {
+		return $this->hasMany('VideoBlog', 'usuario'); // this matches the Eloquent model
+	}	
 	
 	/**
  * Get the unique identifier for the user.
