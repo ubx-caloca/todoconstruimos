@@ -286,18 +286,19 @@ font-weight: 700;
     <!-- ************* -->
     <div class="signup directorio">
     
-   	  <div class="container">
+   	  <div class="container" style="width:100%">
             <div class="slider-left">
               <h1><img src="/index/images/Blog.png" alt="Eventos"></h1>
             </div>
    	   <div class="row text-center">
    	    
 
-   	    <div class="col-md-2 service_grid" style="padding:20px;">
-   	    		<img src="/images/banners/1.jpg" alt=""/>
+   	    <div class="col-md-2 service_grid" style="padding:20px">
+			<center>
+   	    		<img src="/images/banners/1.jpg" alt="" class="img-responsive"/>
    	    		<hr>
-   	    		<img src="/images/banners/2.jpg" alt=""/>
-
+   	    		<img src="/images/banners/2.jpg" alt="" class="img-responsive"/>
+			</center>
    		</div>
    	    
 
@@ -319,9 +320,11 @@ font-weight: 700;
    	    
 
    	    <div class="col-md-2 service_grid" style="padding:20px;">
-   	    		<img src="/images/banners/3.jpg" alt=""/>
+			<center>
+   	    		<img src="/images/banners/3.jpg" alt="" class="img-responsive"/>
    	    		<hr>
-   	    		<img src="/images/banners/4.jpg" alt=""/>
+   	    		<img src="/images/banners/4.jpg" alt="" class="img-responsive"/>
+			</center>
    		</div>
 
 
