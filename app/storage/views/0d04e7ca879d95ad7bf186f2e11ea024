@@ -210,85 +210,10 @@ font-weight: 700;
 
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs">
-		<div >
-
-		<?php if($username == '' || $roluser == ''): ?>
-		
-			<div class="wrap" style="padding-top: 5px;">
-			<ul id="headernav" style="float: right;list-style: none;padding-left: 25px;margin-top: 5px;padding-right: 10px;">
-				<li class="active"><a href="/signup" style="text-decoration: none;"><span>Registrarse </span> <span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span></a></li>	
-			</ul>
-				<?php echo Form::open(array('url' => '/signin')); ?>
-				<div id="headeruser" style="float: right;padding-top: 3px; max-height: 28px;">
-					<?php echo Form::text('login_email', '', array('placeholder' => 'email@usuario', 'id'=>'navbar_username', 'size' => '15',  'accesskey'=> 'u', 'tabindex'=>'101', 'class'=> 'loginText')); ?>
-					<?php echo Form::password('login_password', array('placeholder' => 'Contraseña', 'id'=>'navbar_password', 'size' => '15',  'accesskey'=> 'u', 'tabindex'=>'102', 'class'=> 'bginput loginText')); ?>
-					<?php echo Form::submit('Log-in', array('class' => 'button loginSummitBtn', 'tabindex'=>'104', 'accesskey'=>'s')); ?>
-
-				</div>
-				<?php echo Form::close(); ?>
-			
-		    </div>
-		
-		<?php else: ?>
-		<ul class="navlogin nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="line-height: 10px;padding-top: 10px;padding-bottom: 10px;"><?php echo $username; ?> <span class="glyphicon glyphicon-user pull-right" style="margin-top: -3px;"></span></a>
-          <ul class="dropdown-menu">
-			<?php if($roluser == 'admin'): ?>			
-            <li><a href="administracion/">Ir a vista de administrador<span class="glyphicon glyphicon-list-alt pull-right"></span></a></li>
-            <li class="divider"></li>	
-			<?php else: ?>
-			    <li><a href="vistausuario/">Ir a vista del usuario <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-				<li class="divider"></li>
-				<li><a href="vistausuario/clasificados/create">Agregar nuevo clasificado <span class="glyphicon glyphicon-edit pull-right"></span></a></li>
-				<li class="divider"></li>			
-			<?php endif; ?>
-			<!--
-            <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
-            <li class="divider"></li>
-            <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
-            <li class="divider"></li>
-			-->
-            <li><a href="/signout">Salir <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-          </ul>
-        </li>
-      </ul>
-	  <?php endif; ?>
+			<?php echo $__env->make('index.include_login', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>	
 
 
-			<?php if($errors->has()): ?>
-<div style="background: rgba(242,222, 223,255);
-margin: 5px;
-padding-left: 10px;
-padding-right: 10px;
-border: 2px #dd9d9d solid;
-background-color: #F2DEDF;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
-border-radius: 8px;
-color: #a71b2a;
-/* padding-top: 10px; */
-/* padding-bottom: 10px; */
-margin-bottom: 30px;
-width: 300px;
-font-size: 12px;
-position: absolute;
-left: 100%;
-margin-left: -480px;
-top: 35px;
-">
-<p><strong>Errores:</strong> </p>
-	<ul>		
-			<?php foreach($errors->all() as $error): ?>
-				<li>
-				<?php echo $error; ?> 
-				</li>
 
-			<?php endforeach; ?>
-	</ul>
-</div>		
-	<?php endif; ?>	  
-		</div>		
 		
 		<div class="logo">
 			<a href="index.html"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
@@ -303,19 +228,7 @@ top: 35px;
                 
                 
                        <div class="wmuSliderWrapper">
-                       
-						<?php foreach($anuncios as $anuncio): ?>					   
-                           <article style="position: absolute; width: 100%; opacity: 0;"> 
-                             <div class="banner-wrap">
-                                 <div class="slider-left">
-                                    <h2></h2>
-                                    <p class="top_desc"><?php echo $anuncio->anuncio; ?></p>
-                                    <p class="bottom_desc"><?php echo $anuncio->periodo; ?></p>
-                                 </div>
-                             </div>
-                            </article>
-						<?php endforeach; ?>
-
+                       			<?php echo $__env->make('index.include_anuncios', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                        </div>                        
 
                       </div>
@@ -343,25 +256,7 @@ top: 35px;
     
     
                  <div style="width:100%; background-color:#ffffff; border-top: 7px solid #ffffff; border-bottom: 7px solid #ffffff;">
-                            <div class="owl-carousel">
-                              <div> <img src="http://www.jamesgood.co.uk/sites/default/files/Logo-Blog_58.png" alt=""/> </div>
-                              <div> <img src="http://picsoff.com/files/funzug/imgs/informative/co_logos_mean_09.jpg" alt=""/> </div>
-                              <div> <img src="http://www.davemanuel.com/images/logo_caterpillar.gif" alt=""/> </div>
-                              <div> <img src="http://lockergnome.net/upfiles/sony-ericsson-logo.jpg" alt=""/> </div>
-                              <div> <img src="http://www.gaadi.com/blog/wp-content/uploads/2012/01/hyundai-logo_689400766.jpg" alt=""/> </div>
-                              <div> <img src="http://images.cardekho.com/images/carnews/All-Car-Logo/Honda.jpg" alt=""/> </div>
-                              <div> <img src="http://www.triadcouponing.com/wp-content/uploads/2011/03/walmart-logo.gif" alt=""/> </div>
-                              <div> <img src="http://blog.edelman.com.au/wp-content/uploads/2011/02/Heineken-logo.jpg" alt=""/> </div>
-                              <div> <img src="http://static6.businessinsider.com/image/4beaf2ee7f8b9ad075d90000-1200/your-business-name-will-affect-your-logo-design.jpg" alt=""/> </div>
-                              <div> <img src="http://cdn2.capterra-static.com/assets/customers/cocacola-logo-4x3-98b53c1de3b9b10a3cf91cb776e3e4c5.png" alt=""/> </div>
-                              <div> <img src="http://lazytechguys.com/wp-content/uploads/2011/01/sony_logo.jpg" alt=""/> </div>
-                              <div> <img src="http://www.userlogos.org/files/logos/macleod.mac/dominos.1.u.png" alt=""/> </div>
-                              <div> <img src="http://2.bp.blogspot.com/-rVweqpkeAOA/URxxk3_8QKI/AAAAAAAAANU/R0zd6ZBs9eg/s400/Logo+Puma+4.jpeg" alt=""/> </div>
-                              <div> <img src="http://4.bp.blogspot.com/_1I7KiCuAU4k/SKkpG-SBiTI/AAAAAAAABcc/rNwmp6bUpKk/s400/Sinclair_oil_dinosaurs_kidicarus222.jpg" alt=""/> </div>
-                              <div> <img src="https://m1.behance.net/rendition/modules/23318251/disp/1a7efdd39dd4a8e4680c7b4b466f1668.jpg" alt=""/> </div>
-                              <div> <img src="http://img.logoinlogo.com/120724070738-juice-time-011.jpg" alt=""/> </div>
-                              <div> <img src="http://cdn.net.outdoorhub.com/wp-content/uploads/sites/3/2012/03/REI-Logo-400x300.jpg" alt=""/> </div>
-                            </div>        
+						<?php echo $__env->make('index.include_logos', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>       
                 </div>   
     
     
@@ -372,46 +267,8 @@ top: 35px;
     
      <!-- MENU -->
 	<nav class="subMenu navbar-custom navbar-scroll-top smint" role="navigation" style="position: absolute; top: 380px;">
-	        <div class="container">
-	            <div class="navbar-header page-scroll">
-	                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-main-collapse">
-	                    <img src="/index/images/nav-icon.png" title="drop-down-menu"> 
-	                </button>
-	            </div>
-	            <div class="navbar-collapse navbar-left navbar-main-collapse collapse" style="height: 1px;">
-	                <ul class="nav navbar-nav">
-	                    <li class="active">
-	                        <a id="sTop" class="subNavBtn active" href="#">Inicio</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="blogescrito" class="subNavBtn" href="#">Blog</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="directorio" class="subNavBtn" href="#">Directorio</a>
-	                    </li>                        
-                        <li class="page-scroll">
-	                        <a id="galeria" class="subNavBtn" href="#">Galer&iacute;a</a>
-	                    </li>
-                        <li class="page-scroll">
-	                        <a id="eventos" class="subNavBtn" href="#">Eventos</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="clasificados" class="subNavBtn" href="#">Clasificados</a>
-	                    </li>
-                        <li class="page-scroll">
-	                        <a id="videoblog" class="subNavBtn" href="#">Video Blog</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="contacto" class="subNavBtn" href="#">Contacto</a>
-	                    </li>
-	                </ul>
-	            </div>
-	            <!-- /.navbar-collapse -->
-	             	<a id="sTop" class="right-msg subNavBtn msg-icon" href="#"><span> </span></a>
-	                <div class="clearfix"> </div>
-	        </div>
-	        <!-- /.container -->
-   	  </nav>
+		<?php echo $__env->make('index.include_menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+   	</nav>
       <!-- MENU -->
       
    
@@ -882,19 +739,7 @@ top: 35px;
     
     <!-- ************* -->
    	<div class="footer">
-   		<div class="container">
-   			<div class="copy">
-		       <p>&copy; 2014 <a href="/" > Todo construimos</a></p>
-		    </div>
-		    <div class="social">	
-		      <ul>	
-			   <li class="facebook"><a href="#"><span> </span></a></li>
-			   <li class="twitter"><a href="#"><span> </span></a></li>
-			   <li class="google"><a href="#"><span> </span></a></li>			
-		     </ul>
-			</div>
-			<div class="clearfix"></div>
-   		</div>
+   		<?php echo $__env->make('index.include_footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
    	</div>
     <!-- ************* -->
     

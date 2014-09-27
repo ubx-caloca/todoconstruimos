@@ -97,7 +97,7 @@ class ClasficadosSeeder extends Seeder {
 			'contenido'  => 'WaterEX es el encuentro mundial de la industria de la gestión del agua en la India. Este evento es el responsable de conectar las áreas de servicios de agua, la gestión del agua y el reciclaje, tratamiento de aguas, filtración, y otros, para detectar nuevas tendencias, conocer las posibles oportunidades y parteners trabajar con él en la India.',
 			'fecha'  => new DateTime("2014-06-17 10:00:0.0"),
 			'fecha_evento'  => date("2014-06-17"),
-			'imagen'  => 'img-evento2-seed.jpg',
+			'imagen'  => 'img-evento2-seed.png',
 			'usuario' =>$usuario1->id
 		));
 		
@@ -106,7 +106,7 @@ class ClasficadosSeeder extends Seeder {
 			'contenido'  => 'The Building & Home Improvement Expo es diseñada para proporcionar inspiración, ideas y soluciones para renovadores y decoradores que quieran mejorar su casa y estilo de vida. Los invitados pueden descubrir las últimas tendencias en diseño interior y remodelaciones.',
 			'fecha'  => new DateTime("2014-06-17 11:00:0.0"),
 			'fecha_evento'  => date("2014-06-17"),
-			'imagen'  => 'img-evento3-seed.jpg',
+			'imagen'  => 'img-evento3-seed.png',
 			'usuario' =>$usuario1->id
 		));
 		
@@ -221,7 +221,7 @@ class ClasficadosSeeder extends Seeder {
 		
 		$clasificado_imagen1 = ClasificadoImagen::create(array(
 			'clasificado_id'         => $clasificado1->id,
-			'nombre_imagen'        => 'img-clasificado1-seed.jpg',	
+			'nombre_imagen'        => 'img-clasificado1-seed.jpeg',	
 		));	
 		
 		$clasificado_imagen2 = ClasificadoImagen::create(array(
