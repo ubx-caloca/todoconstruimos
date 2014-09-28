@@ -12,7 +12,7 @@ class blogController extends \BaseController {
 		$authuser = Auth::user();
 		//$listaDePost = Proveedor::paginate(15);
 		$Posts = DB::table('blog')->orderBy('id','desc')->paginate(2);
-		return View::make('administracion.pages.blog.crear')->with(array('Posts'=>$Posts, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		return View::make('administracion.pages.blog.index')->with(array('Posts'=>$Posts, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -23,7 +23,8 @@ class blogController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		$authuser = Auth::user();
+		return View::make('administracion.pages.blog.crear')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 

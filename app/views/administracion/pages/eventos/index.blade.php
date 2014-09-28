@@ -1,9 +1,41 @@
 <!DOCTYPE html>
 <html>
     <head>
+	@include('administracion.head')
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
-            @include('administracion.head')
 
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+              <script>
+              $(function() {
+                $( "#fecha_evento" ).datepicker({ format: "yyyy-mm-dd" });
+              });
+              </script>
+
+	<style>
+	hr.style-eight {
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+hr.style-eight:after {
+    content: "§";
+    display: inline-block;
+    position: relative; 
+    top: -0.7em;  
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: #f9f9f9;
+}
+	</style>
     </head>
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
@@ -124,36 +156,33 @@
                         <!-- Left col -->
                         <section class="col-lg-7 connectedSortable">                            
 
+											   	  <div class="container">
+											   	  	<center><h1><img src="/index/images/Eventos.png" alt="Eventos"></h1></center><br>
+											   	   
+
+
+																	@foreach ($Eventos as $evento)
+																		<div class="row text-center">
+																	   	    <div class="col-md-12 service_grid">
+																	   		  <p><img src="/images/eventos/{{$evento->imagen}} " alt="{{ $evento->titulo }}" class="img-thumbnail"></p>
+																	   		  <h3 class="m_1">{{$evento->titulo}}</h3>
+																	   		  <p class="m_2" style="text-align:justify;"><center>Fecha del evento: {{ $evento->fecha_evento }}</center></p>
+																	   		  <p class="m_2" style="text-align:justify;"><center>{{ $evento->contenido }}</center></p>
+																	          <p><br><a class="btn btn-default" href="<?php echo"/administracion/eventos/editar/$evento->id"; ?>" ><span>Editar</span></a> | <a class="btn btn-default" href="<?php echo"/administracion/eventos/borrar/$evento->id"; ?>" ><span>Borrar</span></a>
+																	   		</div>
+																	   	</div>
+																		<br><hr class="style-eight"></hr><br><br>		
+																	@endforeach
+
+																	<center><?php echo $Eventos->links(); ?></center>
+
+											   	  </div>
 
 
 
 
 
-									<div class="container">
 
-											<div class="hero-unit" style="margin-top:40px">
-												{{ Form::open(array('url' => 'administracion/blog', 'files' => true)) }}
-													<h2>Nuevo post</h2>
-													<hr/>
-													<div class="form-group">
-															{{ Form::label('titulo', 'Título') }}
-															{{ Form::text('titulo','', array( 'placeholder' => '',  'class' => 'form-control')) }}
-													</div>	
-													<hr>
-													<div class="form-group">
-															{{ Form::label('imagen', 'Selecciona una imagen') }}
-															{{ Form::file('imagen[]',['multiple' => true]) }}
-													</div>					
-													<hr>
-													<textarea name="contenido" class="textarea" placeholder="Escribe el contenido" style="width: 810px; height: 200px"></textarea>
-													<hr>
-													<div class="form-group">
-														<center>{{ Form::submit('Publicar post', array('class' => 'btn btn-success')) }}</center>
-													</div>
-												{{ Form::close() }}
-											</div>
-									</div>
-									   	
 
                         </section><!-- /.Left col -->
  
@@ -209,6 +238,8 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="/administracion_files/js/AdminLTE/demo.js" type="text/javascript"></script>
+
+
 
     </body>
 </html>

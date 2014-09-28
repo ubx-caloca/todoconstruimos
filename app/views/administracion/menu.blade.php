@@ -76,7 +76,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="/administracion/blog"><i class="fa fa-angle-double-right"></i> Nuevo Post</a></li>
+                                <li><a href="/administracion/blog/create"><i class="fa fa-angle-double-right"></i> Nuevo Post</a></li>
+								<li><a href="/administracion/blog"><i class="fa fa-angle-double-right"></i> Listar Post</a></li>
                             </ul>
                         </li>
                         <!-- 
@@ -94,7 +95,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="/administracion/videoblog/create"><i class="fa fa-angle-double-right"></i> Nuevo Post</a></li>
-                                <li><a href="/administracion/videoblog"><i class="fa fa-angle-double-right"></i> Lista Posts</a></li>	
+                                <li><a href="/administracion/videoblog"><i class="fa fa-angle-double-right"></i> Listar Posts</a></li>	
 							</ul>
                         </li>
                         <!-- 
@@ -111,6 +112,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
+								<li><a href="/administracion/eventos/create"><i class="fa fa-angle-double-right"></i> Nuevo </a></li>
                                 <li><a href="/administracion/eventos"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                             </ul>
                         </li>

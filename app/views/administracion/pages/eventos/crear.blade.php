@@ -173,40 +173,6 @@
 													</div>
 											</div>
 
-
-
-											<hr>
-
-
-											   	  <div class="container">
-											   	  	<center><h1><img src="/index/images/Eventos.png" alt="Eventos"></h1></center><br>
-											   	   
-
-
-																	@foreach ($Eventos as $evento)
-																		<div class="row text-center">
-																	   	    <div class="col-md-12 service_grid">
-																	   		  <p><img src="/images/eventos/{{$evento->imagen}} " alt="{{ $evento->titulo }}" class="img-thumbnail"></p>
-																	   		  <h3 class="m_1">{{$evento->titulo}}</h3>
-																	   		  <p class="m_2" style="text-align:justify;"><center>Fecha del evento: {{ $evento->fecha_evento }}</center></p>
-																	   		  <p class="m_2" style="text-align:justify;">{{ $evento->contenido }}</p>
-																	          <p><br><a class="btn btn-default" href="<?php echo"/administracion/eventos/editar/$evento->id"; ?>" ><span>Editar</span></a> | <a class="btn btn-default" href="<?php echo"/administracion/eventos/borrar/$evento->id"; ?>" ><span>Borrar</span></a><br>___________________<br><br></p>
-																	   		</div>
-																	   	</div>
-																			
-																	@endforeach
-
-																	<center><?php echo $Eventos->links(); ?></center>
-
-											   	  </div>
-											   	  </div>
-
-
-
-
-
-
-
                         </section><!-- /.Left col -->
  
                     </div><!-- /.row (main row) -->

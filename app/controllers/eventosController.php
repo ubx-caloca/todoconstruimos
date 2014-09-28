@@ -12,7 +12,7 @@ class eventosController extends \BaseController {
 		$authuser = Auth::user();
 		//$listaDePost = Proveedor::paginate(15);
 		$Eventos = DB::table('eventos')->orderBy('id','desc')->paginate(2);
-		return View::make('administracion.pages.eventos.crear')->with(array('Eventos'=>$Eventos, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		return View::make('administracion.pages.eventos.index')->with(array('Eventos'=>$Eventos, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -23,7 +23,8 @@ class eventosController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		$authuser = Auth::user();
+		return View::make('administracion.pages.eventos.crear')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
