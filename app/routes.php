@@ -89,6 +89,9 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		Route::get('blog/editar/{id}','blogController@edit');
 		Route::Resource('blog/guardarEdicion','blogController');
 		Route::get('blog/borrar/{id}','blogController@destroy');
+		
+		//VIDEO BLOG
+		Route::resource('videoblog','VideoblogController');
 
 		Route::resource('anuncios', 'AnunciosController');		
 

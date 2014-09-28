@@ -82,6 +82,24 @@
                         <!-- 
                         *****************************************************
                         *****************************************************
+                        VIDEO BLOG 
+                        *****************************************************
+                        *****************************************************
+                        -->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-youtube-play"></i>
+                                <span>Video Blog</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/administracion/videoblog/create"><i class="fa fa-angle-double-right"></i> Nuevo Post</a></li>
+                                <li><a href="/administracion/videoblog"><i class="fa fa-angle-double-right"></i> Lista Posts</a></li>	
+							</ul>
+                        </li>
+                        <!-- 
+                        *****************************************************
+                        *****************************************************
                         EVENTOS 
                         *****************************************************
                         *****************************************************

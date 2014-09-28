@@ -10,7 +10,7 @@ class TipoProveedoresController extends BaseController {
 	public function index()
 	{
 		$authuser = Auth::user();
-		$listaTiposDeProveedores = array('NA' => 'Elige un tipo de proveedor')+TipoProveedor::lists('tipo','id');
+		$listaTiposDeProveedores = array('NA' => 'Elige un tipo de proveedor')+ProveedorTipo::lists('tipo','id');
 		return View::make('administracion.pages.proveedores.nuevo')->with(array('listaTiposDeProveedores'=>$listaTiposDeProveedores, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
 		//
 	}

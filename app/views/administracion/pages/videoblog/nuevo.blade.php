@@ -102,7 +102,7 @@
                 <section class="content-header">
                     <h1>
                         Dashboard
-                        <small>Administración del sistema</small>
+                        <small style="color: black;font-weight: 400;">Administración del sistema</small>
                     </h1>
                 </section>
 
@@ -129,22 +129,44 @@
 
 
                                 <div class="container">
-
+											
                                         <div class="hero-unit" style="margin-top:40px">
-                                            {{ Form::open(array('url' => 'administracion/videoblog/publicar', 'files' => true)) }}
+                                            {{ Form::open(array('url' => 'administracion/videoblog', 'files' => false)) }}
                                                 <h2>Video nuevo</h2>
                                                 <hr/>
+																							@if ($errors->has())
+										<div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
+
+										background-color: #F2DEDF;
+										-webkit-border-radius: 8px;
+										-moz-border-radius: 8px;
+										border-radius: 8px;
+										color: #a71b2a;
+										">
+										<p><strong>Errores:</strong> </p>
+											<ul>		
+													@foreach ($errors->all() as $error)
+														<li>
+														{{ $error }} 
+														</li>
+
+													@endforeach
+											</ul>
+										</div>		
+											@endif
+												
+												
                                                 <div class="form-group">
                                                         {{ Form::label('titulo', 'Título') }}
-                                                        {{ Form::text('titulo','', array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                        {{ Form::text('titulo',Input::old('titulo'), array( 'placeholder' => '',  'class' => 'form-control')) }}
                                                 </div>  
                                                 <hr>
                                                 <div class="form-group">
-                                                        {{ Form::label('Video', 'Video') }}
-                                                        {{ Form::text('video','', array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                        {{ Form::label('video', 'Video (ID de video Youtube)') }}
+                                                        {{ Form::text('video',Input::old('video'), array( 'placeholder' => '',  'class' => 'form-control')) }}
                                                 </div>                  
                                                 <hr>
-                                                <textarea name="contenido" class="textarea" placeholder="Escribe el contenido" style="width: 810px; height: 200px"></textarea>
+                                                <textarea name="contenido" class="textarea" placeholder="Escribe el contenido" style="width: 810px; height: 200px">{{Input::old('contenido')}}</textarea>
                                                 <hr>
                                                 <div class="form-group">
                                                     <center>{{ Form::submit('Publicar video blog', array('class' => 'btn btn-success')) }}</center>
@@ -153,53 +175,9 @@
                                         </div>
                                 </div>
 
-
-
-                                <hr>
-
-
-                                      <div class="container">
-                                        <center><h1><img src="/index/images/VideoBlog.png" alt="Eventos"></h1></center><br>
-                                       
-
-
-                                                        @foreach ($videoblog as $video)
-                                                            <div class="row text-center">
-                                                                <div class="col-md-12 service_grid">
-                                                                  <p><center><iframe width="560" height="315" src="//www.youtube.com/embed/{{$video->video}}?rel=0" frameborder="0" allowfullscreen></iframe></center></p>
-                                                                  <h3 class="m_1">{{$video->titulo}}</h3>
-                                                                  <p class="m_2" style="text-align:justify;"><center>Publicado el: {{ $video->fecha }}</center></p>
-                                                                  <p class="m_2" style="text-align:justify;">{{ $video->contenido }}</p>
-                                                                  <p><br><a class="btn btn-default" href="<?php echo"/administracion/videoblog/editar/$video->id"; ?>" ><span>Editar</span></a> | <a class="btn btn-default" href="<?php echo"/administracion/videoblog/borrar/$video->id"; ?>" ><span>Borrar</span></a><br>___________________<br><br></p>
-                                                                </div>
-                                                            </div>
-                                                                
-                                                        @endforeach
-
-                                                        <center><?php echo $videoblog->links(); ?></center>
-
-                                      </div>
-                                      </div>
-
-
-
-
-
-
-
                         </section><!-- /.Left col -->
  
                     </div><!-- /.row (main row) -->
-
-
-
-
-
-
-
-
-
-
 
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->

@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\MessageBag;
 class UsuariosAdminController extends \BaseController {
 
 
@@ -122,8 +122,8 @@ class UsuariosAdminController extends \BaseController {
 			}
 			$usuario->nombre      = Input::get('user_nombre');
 			$usuario->telefono = Input::get('user_telefono');
-			$usuario->celular= Input::get('user_telefono');
-			$usuario->nextel = Input::get('user_telefono');
+			$usuario->celular= Input::get('user_celular');
+			$usuario->nextel = Input::get('user_nextel');
 
 			$user_imagen = Input::file('user_imagen');				
 			

@@ -116,7 +116,7 @@
                 <section class="content-header">
                     <h1>
                         Dashboard
-                        <small>Administración del sistema</small>
+                        <small style="color: black;font-weight: 400;">Administración del sistema</small>
                     </h1>
                 </section>
 

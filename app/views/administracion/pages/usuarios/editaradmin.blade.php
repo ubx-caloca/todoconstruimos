@@ -121,7 +121,7 @@ transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
                 <section class="content-header">
                     <h1>
                         Dashboard
-                        <small style="color: black;font-weight: 400;">Vista del usuario</small>
+                        <small style="color: black;font-weight: 400;">Administración del sistema</small>
                     </h1>
                 </section>
 

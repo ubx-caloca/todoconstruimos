@@ -102,7 +102,7 @@
                 <section class="content-header">
                     <h1>
                         Dashboard
-                        <small>Administración del sistema</small>
+                        <small style="color: black;font-weight: 400;">Administración del sistema</small>
                     </h1>
                 </section>
 
@@ -128,55 +128,69 @@
 
 
 
-									<div class="container">
+                                <div class="container">
+											
+                                        <div class="hero-unit" style="margin-top:40px">
+										{{ Form::model($videoblog, array('route' => array('administracion.videoblog.update', $videoblog->id), 'method' => 'PUT',  'files'=> false)) }}
+                                                <h2>Editar video</h2>
+                                                <hr/>
+																							@if ($errors->has())
+										<div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
 
-											<div class="hero-unit" style="margin-top:40px">
-												{{ Form::open(array('url' => 'administracion/eventos/guardarEdicion/'.$evento->id,'method'=>'put', 'files' => true)) }}
-													<h2>Editar este evento</h2>
-													<hr/>
-													<div class="form-group">
-															{{ Form::label('titulo', 'Título') }}
-															{{ Form::text('titulo', $evento->titulo , array( 'placeholder' => '',  'class' => 'form-control')) }}
-													</div>	
-													<hr>
-													<div class="form-group">
-															{{ Form::label('fecha_evento', 'Fecha del evento') }}
-															{{ Form::text('fecha_evento',$evento->fecha_evento, array( 'placeholder' => '',  'class' => 'form-control')) }}
-													</div>	
-													<hr>				
-													<div class="form-group">
-															{{ Form::label('imagen', 'Selecciona una imagen') }}
-															{{ Form::file('imagen[]',['multiple' => true]) }}
-													</div>					
-													<hr>
-													<textarea name="contenido" class="textarea" placeholder="Escribe el contenido" style="width: 810px; height: 200px">{{ $evento->contenido }}</textarea>
-													<hr>
-													<div class="form-group">
-														<center>{{ Form::submit('Editar evento', array('class' => 'btn btn-success')) }}</center>
-													</div>
-												{{ Form::close() }}
-											</div>
-									</div>
+										background-color: #F2DEDF;
+										-webkit-border-radius: 8px;
+										-moz-border-radius: 8px;
+										border-radius: 8px;
+										color: #a71b2a;
+										">
+										<p><strong>Errores:</strong> </p>
+											<ul>		
+													@foreach ($errors->all() as $error)
+														<li>
+														{{ $error }} 
+														</li>
 
-
-
-
-
-
+													@endforeach
+											</ul>
+										</div>		
+											@endif
+												
+												
+                                                <div class="form-group">
+                                                        {{ Form::label('titulo', 'Título') }}
+														@if ($errors->has())
+															{{ Form::text('titulo',Input::old('titulo'), array( 'placeholder' => '',  'class' => 'form-control')) }}
+														@else
+															{{ Form::text('titulo',$videoblog->titulo, array( 'placeholder' => '',  'class' => 'form-control')) }}
+														@endif
+                                                </div>  
+                                                <hr>
+                                                <div class="form-group">
+                                                        {{ Form::label('video', 'Video (ID de video Youtube)') }}
+														@if ($errors->has())
+															{{ Form::text('video',Input::old('video'), array( 'placeholder' => '',  'class' => 'form-control')) }}
+														@else
+															{{ Form::text('video',$videoblog->video, array( 'placeholder' => '',  'class' => 'form-control')) }}
+														@endif
+                                                </div>                  
+                                                <hr>
+                                                <textarea name="contenido" class="textarea" placeholder="Escribe el contenido" style="width: 810px; height: 200px">
+												@if ($errors->has())
+													{{Input::old('contenido')}}
+												@else
+													{{$videoblog->contenido}}
+												@endif</textarea>
+                                                <hr>
+                                                <div class="form-group">
+                                                    <center>{{ Form::submit('Actualizar post', array('class' => 'btn btn-success')) }}</center>
+                                                </div>
+                                            {{ Form::close() }}
+                                        </div>
+                                </div>
 
                         </section><!-- /.Left col -->
  
                     </div><!-- /.row (main row) -->
-
-
-
-
-
-
-
-
-
-
 
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->

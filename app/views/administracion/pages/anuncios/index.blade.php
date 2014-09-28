@@ -102,7 +102,7 @@
                 <section class="content-header">
                     <h1>
                         Dashboard
-                        <small>Administración del sistema</small>
+                        <small style="color: black;font-weight: 400;">Administración del sistema</small>
                     </h1>
                 </section>
 
@@ -144,7 +144,15 @@
 										    <?php foreach ($listaDeAnuncios as $anuncio): ?>
 										    	<div class="row">
 										    		<div class="col-md-1">
-										        		<center><?php echo "$numeroAnuncios"; $numeroAnuncios++;?></center>
+															<center><strong>Id</strong></center>
+											        		<center style="padding-bottom: 15px;">{{$anuncio->id}}</center>
+															<center><strong><a href=" <?php echo"/administracion/anuncios/$anuncio->id/edit"; ?> ">Editar</a></strong></center>
+															<center>
+															{{ Form::open(array('url' => '/administracion/anuncios/' . $anuncio->id, 'class' => 'pull-left')) }}
+															{{ Form::hidden('_method', 'DELETE') }}
+															<strong><a href="#" onclick="$(this).closest('form').submit()">Eliminar</a></strong>
+															{{ Form::close() }}
+															</center>
 										        	</div>
 										    		<div class="col-md-11">
 										        		<p><strong>Título de anuncio:</strong> {{ $anuncio->anuncio }}</p>
@@ -161,13 +169,6 @@
 								?>						
 														
 														<p><strong>Fecha de publicación:</strong> {{ date_format($tj_date, 'd M Y H:i a') }}</p>
-										        		<p><strong><a href="/administracion/anuncios/{{$anuncio->id}}/edit">Editar</a></strong></p>
-														<p>
-															{{ Form::open(array('url' => '/administracion/anuncios/' . $anuncio->id, 'class' => 'pull-left')) }}
-													{{ Form::hidden('_method', 'DELETE') }}
-													<strong><a href="#" onclick="$(this).closest('form').submit()">Eliminar</a></strong>
-													{{ Form::close() }}
-														</p>
 										        	</div>
 										        </div>
 										        <hr>

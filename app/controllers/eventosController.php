@@ -48,7 +48,7 @@ class eventosController extends \BaseController {
 
 		$imagen_intro = Input::file('imagen');
 		foreach($imagen_intro as $file) {
-			$eventos = new Eventos;
+			$eventos = new Evento;
 		    $rules = array(
 		        'file' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
 		    );
@@ -106,7 +106,7 @@ class eventosController extends \BaseController {
 	public function edit($id)
 	{
 		$authuser = Auth::user();
-		$evento = Eventos::find($id);
+		$evento = Evento::find($id);
 		return View::make('administracion.pages.eventos.editar')->with(array('evento'=>$evento, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
 		//
 	}
@@ -121,7 +121,7 @@ class eventosController extends \BaseController {
 	public function update($id)
 	{
 		$authuser = Auth::user();
-		$eventos = Eventos::find($id);
+		$eventos = Evento::find($id);
 		//dd($eventos);
 
 		$imagen_intro = Input::file('imagen');
@@ -168,7 +168,7 @@ class eventosController extends \BaseController {
 	public function destroy($id)
 	{
 		$authuser = Auth::user();
-		$evento = Eventos::find($id);
+		$evento = Evento::find($id);
 		if($evento){
 			$evento->delete();
 		}
