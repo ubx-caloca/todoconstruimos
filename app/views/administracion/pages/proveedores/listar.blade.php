@@ -144,7 +144,9 @@
                                                 <?php foreach ($listaDeProveedores as $proveedor): ?>
                                                     <div class="row">
                                                         <div class="col-md-1">
-                                                            <center><?php echo "$numeroProveedor"; $numeroProveedor++;?></center>
+															<center><strong>Id</strong></center>
+											        		<center style="padding-bottom: 15px;">{{$proveedor->id}}</center>
+															<center><strong><a href="<?php echo"/administracion/proveedores/editar/$proveedor->id"; ?> ">Editar</a></strong></center>
                                                         </div>
                                                         <div class="col-md-11">
                                                             <?php echo "$proveedor->nombre"; ?><br>
@@ -152,10 +154,10 @@
                                                             <p><strong>Dirección:</strong> {{ $proveedor->direccion }}</p>
                                                             <p><strong>Teléfono:</strong> {{ $proveedor->telefono }}</p>
                                                             <p><strong><a href=" <?php echo"/administracion/proveedores/galeria/$proveedor->nombre_usuario/$proveedor->id"; ?> ">Agregar fotos a galería</a></p>
-                                                            <p><strong><a href=" <?php echo"/administracion/proveedores/editar/$proveedor->id"; ?> ">Editar</a></p>
                                                         </div>
+														<hr>
                                                     </div>
-                                                    <hr>
+                                                    
                                                 <?php endforeach; ?>
                                             </div>
 

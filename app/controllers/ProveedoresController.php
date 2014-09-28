@@ -172,8 +172,8 @@ class ProveedoresController extends BaseController {
 	{
 		$authuser = Auth::user();
 		$proveedores = Proveedor::find($id);
-		$proveedores_detalle = Proveedor_detalle::where('proveedores_idproveedor', '=', $id)->first();
-		$listaTiposDeProveedores = array('NA' => 'Elige un tipo de proveedor')+TipoProveedor::lists('tipo','id');
+		$proveedores_detalle = ProveedorDetalle::where('proveedores_idproveedor', '=', $id)->first();
+		$listaTiposDeProveedores = array('NA' => 'Elige un tipo de proveedor')+ProveedorTipo::lists('tipo','id');
 		return View::make('administracion.pages.proveedores.editar')->with(array('listaTiposDeProveedores'=>$listaTiposDeProveedores,'proveedores'=>$proveedores,'proveedores_detalle'=>$proveedores_detalle, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
 		//
 	}
