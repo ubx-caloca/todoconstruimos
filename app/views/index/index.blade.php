@@ -313,13 +313,25 @@ font-weight: 700;
 					   		  <p><img src="images/blog/{{$post->imagen}} " alt="{{ $post->titulo }}" class="img-thumbnail"></p>
 					   		  <h3 class="m_1"><a href="#">{{$post->titulo}}</a></h3>
 					   		  <p class="m_2" style="text-align:justify;"><?php  echo Str::limit(strip_tags($post->contenido), 400); ?></p>
-					          <p><br><a class="btn btn-default" href="#" target="_blank"><span>Seguir leyendo...</span></a><br>___________________<br><br></p>
+					          <p><br><a class="btn btn-default" href="/blog/{{$post->id}}" target="_self"><span>Seguir leyendo...</span></a></p>
 					   		</div>
 
 								
 						@endforeach
 
+
+
    	  </div>
+
+<br>
+			<div style="width:100%; background-color:#eaa600; color:#fff; padding:10px;">
+
+					<center>
+						<a class="btn btn-default" href="/blog/" target="_self"> <i class="fa fa-share"></i> Entrar al blog </a>
+					</center>
+
+			</div>
+
    	  </div>
    	</div>
     <!-- ************* -->
