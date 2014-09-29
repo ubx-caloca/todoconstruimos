@@ -55,6 +55,7 @@ Route::get('signup', array('uses' => 'SignupController@showSignup'));
 Route::post('signup', array('uses' => 'SignupController@doSignup'));
 Route::get('signout', array('uses' => 'SignupController@doSignout'));
 Route::post('signin', array('uses' => 'SignupController@doSignin'));
+Route::post('txcomentario', array('uses' => 'SignupController@enviarComent'));
 // ===============================================
 // SECCION DE ADMINISTRACION =================================
 // ===============================================

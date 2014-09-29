@@ -9,6 +9,31 @@ class SignupController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+	 
+	public function enviarComent(){
+		$rules = array(
+			'ComentarioNombre'       => 'required',
+			'ComentarioEmail'      => 'required|email',
+			'ComentarioAsunto' => 'required',
+			'ComentarioContenido' => 'required',
+		);
+		$validator = Validator::make(Input::all(), $rules);		
+		
+		if ($validator->fails()) {
+			Session::flash('modal_message_error', 'Email no fue enviado, por favor llene bien los datos');
+			return Redirect::to('/');
+				
+		} else {
+			$data = array('nombre' => Input::get('ComentarioNombre'), 'email'=>Input::get('ComentarioEmail'), 'contenido' => Input::get('ComentarioContenido'));
+			Mail::send('emails.comentario', $data, function($message){
+				$message->to('JAValenzuelaDagnino@gmail.com', 'John Smith')->subject('Comentario todoconstruimos:'.Input::get('ComentarioAsunto'))->from(Input::get('ComentarioEmail'), Input::get('ComentarioNombre'));
+			});
+			Session::flash('modal_message_error', 'Email fue enviado exitosamente');
+			return Redirect::to('/');
+			
+		}
+			
+	}
 	
 	public function showSignup()
 	{

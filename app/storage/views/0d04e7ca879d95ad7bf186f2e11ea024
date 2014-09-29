@@ -15,6 +15,7 @@
 <link href="/index/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/index/js/jquery.min.js"></script>
+<script src="/index/js/bootstrap.min.js"></script>
 <!-- Custom Theme files -->
 <link href="/index/css/style.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
@@ -203,8 +204,29 @@ font-weight: 700;
 <body>
 
 
-
-
+<?php if( Session::has('modal_message_error')): ?>
+		<script type="text/javascript">
+		    $(window).load(function(){
+        $('#myModal').modal('show');
+		});
+		</script>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" onload="loadMessage()"> 
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Mensaje de información</h4>
+              </div>
+              <div class="modal-body">
+               <?php echo Session::get('modal_message_error'); ?>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+<?php endif; ?>
 
 
 
@@ -713,11 +735,11 @@ font-weight: 700;
    				<div class="col-md-4">
    					<div class="contact_right">
    				<div class="contact-form_grid">
-				   <form method="post" action="contact-post.html">
-					 <input type="text" class="textbox" value="Nombre" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nombre';}">
-					 <input type="text" class="textbox" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
-					 <input type="text" class="textbox" value="Asunto" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Asunto';}">
-					 <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Comentario';}">Comentario</textarea>
+				   <form method="post" action="/txcomentario">
+					 <input Name="ComentarioNombre" type="text" class="textbox" value="Nombre" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nombre';}">
+					 <input Name="ComentarioEmail" type="text" class="textbox" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
+					 <input type="text" Name="ComentarioAsunto" class="textbox" value="Asunto" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Asunto';}">
+					 <textarea Name="ComentarioContenido" value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Comentario';}">Comentario</textarea>
 					 <input type="submit" value="Enviar">
 				   </form>
 			      </div>
@@ -727,10 +749,7 @@ font-weight: 700;
    		</div>
    	</div>
     <!-- ************* -->
-    
-    
-    
-    
+   
     
     
     
@@ -747,7 +766,7 @@ font-weight: 700;
     
     
     
-   	<script src="/index/js/bootstrap.min.js"></script>
+
 </body>
 </html>
 
