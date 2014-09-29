@@ -22,6 +22,49 @@
                                 <li><a href="/vistausuario/usuarios/{{$usuarioid}}/edit"><i class="fa fa-angle-double-right"></i> Editar </a></li>
                             </ul>
                         </li>
+						<!--
+                        *****************************************************
+                        *****************************************************
+                        Proveedor
+                        *****************************************************
+                        *****************************************************
+                        -->
+						<form id="provsolpremiumform" method="post" action="provsolicpremium"  style="margin-left: 15px;
+padding-top: 10px;
+padding-bottom: 10px;
+border-top: 1px solid #fff;
+border-bottom: 1px solid #dbdbdb;
+padding-right: 20px;">
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-slideshare"></i>
+                                <span>Proveedor</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+							
+                            <ul class="treeview-menu">
+							<?php
+								$usuario = Usuario::find($usuarioid);
+								$proveedor = $usuario->proveedor;
+							?>
+							  @if(is_null($proveedor))
+                                <li><a href="/vistausuario/proveedor/create"><i class="fa fa-angle-double-right"></i> Crear datos </a></li>
+							  @else
+                                <li><a href="/vistausuario/proveedor/{{$proveedor->id}}/edit"><i class="fa fa-angle-double-right"></i> Editar </a></li>
+								@if($proveedor->habilitar == 0)
+								@if($proveedor->solicitar_premium == 0)
+								
+								{{ Form::hidden('provid', $proveedor->id) }}
+								<li><a href="" onclick="document.getElementById('provsolpremiumform').submit();return false;"><i class="fa fa-angle-double-right"></i> Solicitar Premium</a></li>
+								
+								@else
+								<li><a href="#" style="color: darkgray;"><i class="fa fa-angle-double-right"></i> Premium solicitado</a></li>
+								@endif
+								@endif
+							  @endif
+                            </ul>
+                        </li>
+						</form>
                         <!-- 
                         *****************************************************
                         *****************************************************

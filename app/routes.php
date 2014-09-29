@@ -128,6 +128,10 @@ Route::group(array('prefix' => 'vistausuario', 'before' => 'auth.user'), functio
 		Route::resource('clasificados', 'ClasificadosVistaController');
 		Route::post('clasifsolicpremium', 'ClasfSolPremiumVistaController@solicpremium');
 		
+		//PROVEEDOR
+		Route::resource('proveedor', 'ProveedorVistaController');
+		Route::post('provsolicpremium', 'ProvSolPremiumVistaController@solicpremium');
+		
 		//USUARIOS
 		Route::resource('usuarios', 'UsuariosVistaController');
 });

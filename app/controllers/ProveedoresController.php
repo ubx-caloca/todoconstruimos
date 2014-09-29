@@ -53,6 +53,7 @@ class ProveedoresController extends BaseController {
 		$proveedores->otro_sns=Input::get('otro_sns');
 		$proveedores->longitud=Input::get('longitud');
 		$proveedores->latitud=Input::get('latitud');
+		$proeedores->habilitar = Input::get('habilitar');
 		$proveedores->save();
 
 		$idproveedor = DB::getPdo()->lastInsertId();
@@ -209,6 +210,7 @@ class ProveedoresController extends BaseController {
 		$proveedores->otro_sns=Input::get('otro_sns');
 		$proveedores->longitud=Input::get('longitud');
 		$proveedores->latitud=Input::get('latitud');
+		$proveedores->habilitar=Input::get('habilitar');
 		$proveedores->save();
 
 		$idproveedor = $id;

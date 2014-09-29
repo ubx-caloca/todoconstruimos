@@ -172,6 +172,10 @@
                                                     {{ Form::label('otro_sns', 'Otra red social') }}
                                                     {{ Form::text('otro_sns',$proveedores->otro_sns, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
+											<div class="form-group">
+                                                {{ Form::label('habilitar', 'Habilitado') }}
+												{{ Form::select('habilitar', array('0' => 'No','1' => 'Si'), $proveedores->habilitar, array( 'placeholder' => '',  'class' => 'form-control')) }}
+											</div>
                                             <hr>
                                             <center><h4>Coordenadas de la ubicación geográfica</h4></center>
                                             <hr>

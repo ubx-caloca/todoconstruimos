@@ -27,6 +27,7 @@ class CreateProveedoresTable extends Migration {
 		$table->string('longitud', 250)->nullable();
 		$table->string('latitud', 250)->nullable();
 		$table->boolean('habilitar');
+		$table->tinyInteger('solicitar_premium')->default(0);
 		$table->timestamps();
 		});
 		

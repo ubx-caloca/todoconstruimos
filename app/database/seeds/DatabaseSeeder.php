@@ -372,6 +372,7 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 			'longitud' => '-116.61359668',
 			'latitud'  => '31.85874213',
 			'habilitar' => 1,
+			'solicitar_premium' => 0,
 			'usuario_id'  => $usuario2->id
 		));		
 		$this->command->info('Se creo 1 proveedor');	
