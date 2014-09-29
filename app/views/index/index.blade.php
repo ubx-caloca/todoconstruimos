@@ -669,46 +669,9 @@ font-weight: 700;
 		                </div>  			  
    </div>
     <!-- ************* -->
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     <!-- ************* -->
-   	<div class="signup s3" id="signup">
-       <div class="container">
-   			<h3 class="m_3">TE INTERESA INSCRIBIRTE? <br> ENVÍANOS TU DATOS</h3>
-   			<div class="contact-form">
-			   <form method="post" action="contact-post.html">
-				 <input type="text" class="textbox" value="Nombre" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nombre';}">
-				 <input type="text" class="textbox" value="Apellidos" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Apellidos';}">
-				 <input type="text" class="textbox" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
-				 <input type="submit" value="Enviar">
-			   </form>
-			</div>
-   		</div>
-   	</div>
-    <!-- ************* -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <!-- ************* -->
-    <div class="about videoblog" id="about">
+    <div class="about videoblog" id="about" style="background-color:#e09f00;">
    		<div class="container">
    			<h3 class="m_4"><img src="/index/images/VideoBlog.png" alt="Eventos"></h3>
    			<p class="m_5">Descripción del videoblog</p>
@@ -736,7 +699,7 @@ font-weight: 700;
    	<div class="contact contacto" id="contacto">
    		<div class="container">
    			<div class="row">
-   				<div class="col-md-8 contact_left">
+   				<div class="col-md-6 contact_left">
    					<h3>QUEREMOS ESCUCHAR TUS COMENTARIOS</h3><br>
    					<ul class="contact_info">
 			  	<li><i class="pin"> </i><span>Ensenada, Baja California, México</span></li>
@@ -744,7 +707,12 @@ font-weight: 700;
 			  	<li><i class="message"> </i><span class="msg">info(arroba)todoconstruimos.com</span></li>
 			  </ul>
    				</div>
-   				<div class="col-md-4">
+
+
+
+
+
+   				<div class="col-md-6">
    					<div class="contact_right">
    				<div class="contact-form_grid">
 				   <form method="post" action="/txcomentario">

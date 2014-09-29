@@ -208,7 +208,7 @@ class blogController extends \BaseController {
 	public function mostrarBlog()
 	{
 		//$Posts = DB::table('blog')->orderBy('id','desc')->paginate(2);
-		$blog = DB::table('blog')->orderBy('fecha','desc')->paginate(2);
+		$blog = Blog::orderBy('fecha','desc')->paginate(5);
 		$anuncios = Anuncio::all();
 		
 		$rolusuarioLogueado = '';
@@ -224,5 +224,7 @@ class blogController extends \BaseController {
 		return View::make('index.blog')->with(array('blog'=>$blog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
 		//
 	}	
+
+
 
 }
