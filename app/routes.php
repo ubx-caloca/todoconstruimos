@@ -49,6 +49,7 @@ Route::get('/clasificadoDetalle/{clasificadoId}','ClasificadosDetalleController@
 // BLOG
 // ===============================================
 Route::get('/blog/{post}','blogController@mostrarPost');
+Route::get('/blog/','blogController@mostrarBlog');
 
 
 Route::get('signup', array('uses' => 'SignupController@showSignup'));

@@ -205,5 +205,24 @@ class blogController extends \BaseController {
 		return View::make('index.blogPost')->with(array('post'=>$post, 'categorias'=>$categorias,'blog'=>$blog, 'clasificadosvip' => $clasificadosvip, 'anuncios' => $anuncios, 'categoriasClasif' => $categoriasClasif, 'eventos' => $eventos, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
 		//
 	}
+	public function mostrarBlog()
+	{
+		//$Posts = DB::table('blog')->orderBy('id','desc')->paginate(2);
+		$blog = DB::table('blog')->orderBy('fecha','desc')->paginate(2);
+		$anuncios = Anuncio::all();
+		
+		$rolusuarioLogueado = '';
+		$mailusuarioLogueado = '';
+		if (Auth::check()){
+			$authuser = Auth::user();
+			$usu = Usuario::find($authuser->id);
+			$mailusuarioLogueado = $authuser->email;
+			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
+			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
+			
+		}
+		return View::make('index.blog')->with(array('blog'=>$blog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
+		//
+	}	
 
 }

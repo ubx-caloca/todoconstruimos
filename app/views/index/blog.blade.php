@@ -329,6 +329,7 @@ a:active {
 
    	    	<div class="row">
    	    		
+   	    		@foreach ($blog as $post)
    	    			<div class="col-md-12" style="background:rgba(255,255,255,0.89);padding:20px; color:#000;">
    	    			<p align="center"><img src="/images/blog/{{$post->imagen}}" alt="" class="thumbnail"/></p><br>
    	    			<h3><?php echo mb_strtoupper($post->titulo,'utf8');?></h3>
@@ -337,7 +338,14 @@ a:active {
    	    			<p align="justify"><?php echo $post->contenido;?></p>
    	    			</div>&nbsp;
    	    			<br><br>
+   	    		@endforeach
 
+   	    		<ul class="pagination">
+   	    		<center><?php echo $blog->links(); ?></center>
+   	    		</ul>
+
+
+   	    		
    	    	</div>
    	    	   	    		
    		</div>
