@@ -1,15 +1,20 @@
 <?php
 
-class ProveedorPaginaController extends \BaseController {
+class ProvSolPremiumVistaController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
+	 
+	public function solicpremium(){
+		return 'SolicPremium del ProvSolPremiumVistaController'; 
+	}
+	
+	
 	public function index()
 	{
-
 		//
 	}
 
@@ -43,19 +48,10 @@ class ProveedorPaginaController extends \BaseController {
 	 * @return Response
 	 */
 	public function show($id)
-	{ 
-
+	{
+		//
 	}
 
-	public function datosProveedor($nombre_usuario)
-	{ 
-		 //$proveedores = Proveedor::find($id);
-		//$proveedores = Proveedor::where('nombre_usuario', '=', "$nombre_usuario")->first();
-		$proveedores = DB::table('proveedores')->where('nombre_usuario', '=', "$nombre_usuario")->first();
-		$proveedores_detalle = ProveedorDetalle::where('proveedores_idproveedor', '=', $proveedores->id)->first();
-		$galeria = DB::table('proveedor_galeria')->where('proveedores_idproveedor', '=', $proveedores->id)->get();
-		return View::make('administracion.pages.proveedores.pagina.pagina')->with(array('proveedores'=>$proveedores,'proveedores_detalle'=>$proveedores_detalle,'galeria'=>$galeria));		
-	}
 
 	/**
 	 * Show the form for editing the specified resource.

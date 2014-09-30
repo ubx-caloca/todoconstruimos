@@ -455,6 +455,10 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 			'banner_img'  => 'img-banner1-seed.jpg',
 			'seccion'  => 'index-izquierda'
 		));		
+		$banner2= Banner::create(array(
+			'banner_img'  => 'img-banner2-seed.jpg',
+			'seccion'  => 'index-derecha'
+		));	
 		$this->command->info('Se creo 1 banner');	
 
 		$cobrotipo1= CobroTipo::create(array(
@@ -500,21 +504,21 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 			'usuario_id' => $usuario2->id,
 			'fechaExpiracion'  => (new DateTime())->add(new DateInterval('P30D')),
 			'estado' => 'pagado',
-			'datosAdicionales' => 'clasificado_id='.$clasificado1->id
+			'datosAdicionales' => $clasificado1->id
 		));			
 		$cobro2= Cobro::create(array(
 			'tipo_id'  => $cobrotipo2->id,
 			'usuario_id' => $usuario2->id,
 			'fechaExpiracion'  => (new DateTime())->add(new DateInterval('P30D')),
 			'estado' => 'pagado',
-			'datosAdicionales' => ''
+			'datosAdicionales' => $usuario2->id
 		));			
 		$cobro3= Cobro::create(array(
 			'tipo_id'  => $cobrotipo3->id,
 			'usuario_id' => $usuario2->id,
 			'fechaExpiracion'  => (new DateTime())->add(new DateInterval('P30D')),
 			'estado' => 'pagado',
-			'datosAdicionales' => 'proveedor_imagen_id='.$proveedorgaleria9->id
+			'datosAdicionales' => $proveedorgaleria9->id
 		));	
 		$cobro4= Cobro::create(array(
 			'tipo_id'  => $cobrotipo4->id,
@@ -524,12 +528,12 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 			'datosAdicionales' => 'imagen=img_banner_cobro4.jpg'
 		));		
 	
-		$cobro4= Cobro::create(array(
-			'tipo_id'  => $cobrotipo4->id,
+		$cobro5= Cobro::create(array(
+			'tipo_id'  => $cobrotipo5->id,
 			'usuario_id' => $usuario2->id,
 			'fechaExpiracion'  => (new DateTime())->add(new DateInterval('P30D')),
 			'estado' => 'pagado',
-			'datosAdicionales'=> 'banner_id='.$banner1->id
+			'datosAdicionales'=> $banner2->id
 		));
 		$this->command->info('Se crearon 4 cobros');
 		

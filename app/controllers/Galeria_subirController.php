@@ -44,9 +44,9 @@ class Galeria_subirController extends \BaseController {
 
 		$imagen_intro = Input::file('galeria');
 		foreach($imagen_intro as $file) {
-			$proveedores_galeria = new Proveedor_galeria;
+			$proveedores_galeria = new ProveedorGaleria;
 		    $rules = array(
-		        'file' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
+		        'file' => 'required|mimes:png,gif,jpeg|max:200000000'
 		    );
 		    $validator = \Validator::make(array('file'=> $file), $rules);
 		    if($validator->passes()){
@@ -126,7 +126,7 @@ class Galeria_subirController extends \BaseController {
 		if(!empty($descripcion)){
 			$indice = 0;
 			foreach($descripcion as $desc) {
-					$proveedorGaleria = Proveedor_galeria::find($idimagen[$indice]);		
+					$proveedorGaleria = ProveedorGaleria::find($idimagen[$indice]);		
 					$proveedorGaleria->texto=$desc;
 					$proveedorGaleria->premium=0;						
 					$proveedorGaleria->save();
@@ -137,7 +137,7 @@ class Galeria_subirController extends \BaseController {
 		if(!empty($eliminar)){
 			$indice = 0;
 			foreach($eliminar as $el) {
-				$proveedorGaleria = Proveedor_galeria::find($el);
+				$proveedorGaleria = ProveedorGaleria::find($el);
 				$proveedorGaleria->delete();
 				unset($proveedorGaleria);
 				$indice++;
@@ -146,7 +146,7 @@ class Galeria_subirController extends \BaseController {
 		if(!empty($premium)){
 			$indice = 0;
 			foreach($premium as $pre) {
-				$proveedorGaleria = Proveedor_galeria::find($pre);
+				$proveedorGaleria = ProveedorGaleria::find($pre);
 				$proveedorGaleria->premium=1;
 				$proveedorGaleria->save();
 				unset($proveedorGaleria);

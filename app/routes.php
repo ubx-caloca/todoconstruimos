@@ -132,6 +132,7 @@ Route::group(array('prefix' => 'vistausuario', 'before' => 'auth.user'), functio
 		//PROVEEDOR
 		Route::resource('proveedor', 'ProveedorVistaController');
 		Route::post('provsolicpremium', 'ProvSolPremiumVistaController@solicpremium');
+		Route::resource('proveedorgaleria', 'ProveedorGaleriaVistaController');
 		
 		//USUARIOS
 		Route::resource('usuarios', 'UsuariosVistaController');

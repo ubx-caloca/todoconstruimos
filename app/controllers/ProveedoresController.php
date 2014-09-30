@@ -37,8 +37,7 @@ class ProveedoresController extends BaseController {
 		$authuser = Auth::user();
 
 		$proveedores = new Proveedor;
-		$proveedores_detalle = new Proveedor_detalle;
-		$proveedores_pago = new Proveedor_pago;
+		$proveedores_detalle = new ProveedorDetalle;
 
 		$nombreDeUsuario = Input::get('nombre_usuario');
 
@@ -73,7 +72,7 @@ class ProveedoresController extends BaseController {
 		$imagen_intro = Input::file('imagen_intro');
 		foreach($imagen_intro as $file) {
 		    $rules = array(
-		        'file' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:20000'
+		        'file' => 'required|mimes:png,gif,jpeg|max:20000'
 		    );
 		    $validator = \Validator::make(array('file'=> $file), $rules);
 		    if($validator->passes()){
@@ -95,7 +94,7 @@ class ProveedoresController extends BaseController {
 		$imagen_intro = Input::file('imagen_descripcion');
 		foreach($imagen_intro as $file) {
 		    $rules = array(
-		        'file' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:20000'
+		        'file' => 'required|mimes:png,gif,jpeg|max:20000'
 		    );
 		    $validator = \Validator::make(array('file'=> $file), $rules);
 		    if($validator->passes()){
@@ -117,7 +116,7 @@ class ProveedoresController extends BaseController {
 		$imagen_intro = Input::file('imagen_vision');
 		foreach($imagen_intro as $file) {
 		    $rules = array(
-		        'file' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:20000'
+		        'file' => 'required|mimes:png,gif,jpeg|max:20000'
 		    );
 		    $validator = \Validator::make(array('file'=> $file), $rules);
 		    if($validator->passes()){
@@ -135,14 +134,6 @@ class ProveedoresController extends BaseController {
 		}				
 		$proveedores_detalle->imagen_vision=$filename;
 		$proveedores_detalle->save();
-
-
-		
-		$proveedores_pago->id=0;
-		$proveedores_pago->proveedores_idproveedor = $idproveedor;
-		$proveedores_pago->proveedores_proveedor_tipo_idproveedor_tipo = Input::get('proveedor_tipo_idproveedor_tipo');
-		$proveedores_pago->fecha = DB::raw('NOW()');
-		$proveedores_pago->save();
 
 		return Redirect::to("administracion/proveedores/galeria/$nombreDeUsuario/$idproveedor")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
 		//return Redirect::route("/administracion/proveedores/galeria/{$nombreDeUsuario}/{$idproveedor}");
@@ -195,7 +186,7 @@ class ProveedoresController extends BaseController {
 
 		$formulario = Input::all();
 		$proveedores = Proveedor::find($id);
-		$proveedores_detalle = Proveedor_detalle::where('proveedores_idproveedor', '=', $id)->first();
+		$proveedores_detalle = ProveedorDetalle::where('proveedores_idproveedor', '=', $id)->first();
 
 		$nombreDeUsuario = Input::get('nombre_usuario');
 
@@ -232,7 +223,7 @@ class ProveedoresController extends BaseController {
 			$imagen_intro = Input::file('imagen_intro');
 			foreach($imagen_intro as $file) {
 			    $rules = array(
-			        'file' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:20000'
+			        'file' => 'required|mimes:png,gif,jpeg|max:20000'
 			    );
 			    $validator = \Validator::make(array('file'=> $file), $rules);
 			    if($validator->passes()){

@@ -19,7 +19,7 @@ class CreateCobrosTable extends Migration {
 		$table->integer('usuario_id')->unsigned();
 		$table->date('fechaExpiracion')->nullable();
 		$table->string('estado', 40)->nullable();
-		$table->string('datosAdicionales', 250)->nullable();
+		$table->integer('datosAdicionales')->unsigned();
 		$table->timestamps();
 		});
 		

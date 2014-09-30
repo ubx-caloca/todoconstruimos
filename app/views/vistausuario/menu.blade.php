@@ -13,7 +13,7 @@
                         *****************************************************
                         -->
                         <li class="treeview">
-                            <a href="#">
+                            <a href="#" style="padding-left: 17px;">
                                 <i class="fa fa-user"></i>
                                 <span>Usuario</span>
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -29,12 +29,6 @@
                         *****************************************************
                         *****************************************************
                         -->
-						<form id="provsolpremiumform" method="post" action="provsolicpremium"  style="margin-left: 15px;
-padding-top: 10px;
-padding-bottom: 10px;
-border-top: 1px solid #fff;
-border-bottom: 1px solid #dbdbdb;
-padding-right: 20px;">
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-slideshare"></i>
@@ -46,17 +40,27 @@ padding-right: 20px;">
 							<?php
 								$usuario = Usuario::find($usuarioid);
 								$proveedor = $usuario->proveedor;
+								$galeria = $proveedor->galeria;
+								$detalle = $proveedor->detalle;
 							?>
 							  @if(is_null($proveedor))
                                 <li><a href="/vistausuario/proveedor/create"><i class="fa fa-angle-double-right"></i> Crear datos </a></li>
 							  @else
                                 <li><a href="/vistausuario/proveedor/{{$proveedor->id}}/edit"><i class="fa fa-angle-double-right"></i> Editar </a></li>
+								
+								@if(is_null($proveedor->galeria))
+									<li><a href="/vistausuario/proveedorgaleria/create"><i class="fa fa-angle-double-right"></i> Crear galeria</a></li>
+								@else
+									<li><a href="/vistausuario/proveedorgaleria/{{$proveedor->id}}/edit"><i class="fa fa-angle-double-right"></i> Editar galeria</a></li>								
+								@endif
+								
 								@if($proveedor->habilitar == 0)
 								@if($proveedor->solicitar_premium == 0)
-								
+								<form id="provsolpremiumform" method="post" action="/vistausuario/provsolicpremium"  style="margin-left: 15px;padding-top: 10px;padding-bottom: 10px;padding-right: 20px;">								
 								{{ Form::hidden('provid', $proveedor->id) }}
-								<li><a href="" onclick="document.getElementById('provsolpremiumform').submit();return false;"><i class="fa fa-angle-double-right"></i> Solicitar Premium</a></li>
-								
+
+								<li><a href="" onclick="document.getElementById('provsolpremiumform').submit();return false;"><i class="fa fa-angle-double-right" style="padding-right: 10px;"></i> Solicitar Premium</a></li>
+								</form>
 								@else
 								<li><a href="#" style="color: darkgray;"><i class="fa fa-angle-double-right"></i> Premium solicitado</a></li>
 								@endif
@@ -64,7 +68,6 @@ padding-right: 20px;">
 							  @endif
                             </ul>
                         </li>
-						</form>
                         <!-- 
                         *****************************************************
                         *****************************************************
