@@ -40,8 +40,12 @@
 							<?php
 								$usuario = Usuario::find($usuarioid);
 								$proveedor = $usuario->proveedor;
-								$galeria = $proveedor->galeria;
-								$detalle = $proveedor->detalle;
+								$galeria =null;
+								$detalle =null;
+								if(!is_null($proveedor)){
+									$galeria = $proveedor->galeria;
+									$detalle = $proveedor->detalle;
+								}
 							?>
 							  @if(is_null($proveedor))
                                 <li><a href="/vistausuario/proveedor/create"><i class="fa fa-angle-double-right"></i> Crear datos </a></li>
@@ -49,9 +53,9 @@
                                 <li><a href="/vistausuario/proveedor/{{$proveedor->id}}/edit"><i class="fa fa-angle-double-right"></i> Editar </a></li>
 								
 								@if(is_null($proveedor->galeria))
-									<li><a href="/vistausuario/proveedorgaleria/create"><i class="fa fa-angle-double-right"></i> Crear galeria</a></li>
+									<li><a href="/vistausuario/proveedorgaleria"><i class="fa fa-angle-double-right"></i> Crear galeria</a></li>
 								@else
-									<li><a href="/vistausuario/proveedorgaleria/{{$proveedor->id}}/edit"><i class="fa fa-angle-double-right"></i> Editar galeria</a></li>								
+									<li><a href="/vistausuario/proveedorgaleria"><i class="fa fa-angle-double-right"></i> Editar galeria</a></li>								
 								@endif
 								
 								@if($proveedor->habilitar == 0)

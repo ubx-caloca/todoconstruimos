@@ -51,17 +51,18 @@ class Galeria_subirController extends \BaseController {
 		    $validator = \Validator::make(array('file'=> $file), $rules);
 		    if($validator->passes()){
 
-		        $id = Str::random(14);
+				$id = Str::random(4);
+				$date_now = new DateTime();
 
 		        $destinationPath    = 'images/proveedores/'.$nombreDeUsuario.'/galeria';
-		        $filename           = $file->getClientOriginalName();
+		        $filename           = $date_now->format('YmdHis').$id;
 		        $mime_type          = $file->getMimeType();
 		        $extension          = $file->getClientOriginalExtension();
-		        $upload_success     = $file->move($destinationPath, $filename);
+		        $upload_success     = $file->move($destinationPath, $filename.'.'.$extension);
 
 				$proveedores_galeria->id=0;
 				$proveedores_galeria->proveedores_idproveedor=$idproveedor;		        
-				$proveedores_galeria->imagen=$filename;
+				$proveedores_galeria->imagen=$filename.'.'.$extension;
 				$proveedores_galeria->texto="";
 				$proveedores_galeria->save();
 				unset($proveedores_galeria);
@@ -138,6 +139,8 @@ class Galeria_subirController extends \BaseController {
 			$indice = 0;
 			foreach($eliminar as $el) {
 				$proveedorGaleria = ProveedorGaleria::find($el);
+				$proveedor = $el->proveedor;
+				File::delete('images/proveedores/'.$proveedor->nombre_usuario.'/galeria/'.$el->imagen);
 				$proveedorGaleria->delete();
 				unset($proveedorGaleria);
 				$indice++;

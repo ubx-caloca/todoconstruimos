@@ -5,7 +5,7 @@
             @include('vistausuario.head')
 
     </head>
-    <body class="skin-black">
+    <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="/" class="logo">
@@ -132,8 +132,29 @@
                                     <div class="panel panel-default">
 
                                       <div class="panel-heading">
-                                        <h3 class="panel-title">AGREGAR GALERÍA DE FOTOS AL PROVEEDOR ({{ $nombreDeUsuario }} - {{ $idproveedor }})</h3>
+                                        <h3 class="panel-title">AGREGAR GALERÍA DE FOTOS AL PROVEEDOR ({{ $proveedor->nombre_usuario }} - {{ $proveedor->id }})</h3>
                                       </div>
+									  
+									  	@if ($errors->has())
+										<div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
+
+										background-color: #F2DEDF;
+										-webkit-border-radius: 8px;
+										-moz-border-radius: 8px;
+										border-radius: 8px;
+										color: #a71b2a;
+										">
+										<p><strong>Errores:</strong> </p>
+											<ul>		
+													@foreach ($errors->all() as $error)
+														<li>
+														{{ $error }} 
+														</li>
+
+													@endforeach
+											</ul>
+										</div>		
+										@endif
 
                                       <div class="panel-body">
                                         {{ Form::open(array('url' => 'vistausuario/proveedorgaleria', 'files' => true)) }}
@@ -142,8 +163,8 @@
                                             <div class="form-group">
                                                     {{ Form::label('galeria', 'Selecciona las imagenes a subir') }}
                                                     {{ Form::file('galeria[]',['multiple' => true]) }}
-                                                    {{ Form::hidden('idproveedor', $idproveedor) }}
-                                                    {{ Form::hidden('nombreDeUsuario', $nombreDeUsuario) }}
+                                                    {{ Form::hidden('idproveedor', $proveedor->id) }}
+                                                    {{ Form::hidden('nombreDeUsuario', $proveedor->nombre_usuario) }}
                                             </div>
                                             <hr>
                                             <div class="form-group">
@@ -154,19 +175,19 @@
                                       </div>
 
                                     <?php
-                                            $galeria = DB::table('proveedor_galeria')->where('proveedores_idproveedor', '=', $idproveedor)->get();
+                                            $galeria = $proveedor->galeria;
                                              $numero=1;
 
                                     ?>
                                     <hr>
                                         <CENTER><h2> GALERÍA DE IMAGENES </h2></CENTER>
                                     <hr>
-                                    {{ Form::open(array('url' => 'administracion/proveedores/galeria/editar', 'method'=>'put', 'files' => true)) }}
+                                    {{ Form::open(array('url' => 'vistausuario/proveedorgaleria/'.$proveedor->id, 'method'=>'put', 'files' => true)) }}
                                     @foreach ($galeria as $foto)
                                                 <?php 
                                                 if($foto->premium==1){
                                                     $checked='true';
-                                                    $leyenda = '<i class="fa fa-spinner fa-spin"></i> En proceso de autorización...';
+                                                    $leyenda = '<i class="fa fa-spinner fa-spin"></i> En proceso de autorización PREMIUM...';
                                                 }else if($foto->premium==2){
                                                     $checked='true';
                                                     $leyenda = '<i class="fa fa-check-circle-o"></i> Autorizado como PREMIUM.';
@@ -180,11 +201,15 @@
                                                             <center><?php echo "$numero"; $numero++;?></center>
                                                         </div>
                                                         <div class="col-md-10">
-                                                            <center><?php echo "<img src=\"/images/proveedores/$nombreDeUsuario/galeria/".$foto->imagen." \" alt=\"foto\" class=\"img-thumbnail\">";?></center>
+                                                            <center><?php echo "<img src=\"/images/proveedores/$proveedor->nombre_usuario/galeria/".$foto->imagen." \" alt=\"foto\" class=\"img-thumbnail\">";?></center>
                                                                 <br>
                                                                 <center>Selecciona si deseas eliminar esta foto: {{ Form::checkbox('eliminar[]', $foto->id) }}</center>
                                                                 <br>
-                                                                <center>Foto premium?: {{ Form::checkbox('premium[]', $foto->id, $checked)}} {{$leyenda}}</center> 
+                                                                <center>
+																@if ($foto->premium==0)
+																Solicitar foto premium?: {{ Form::checkbox('premium[]', $foto->id, $checked)}}
+																@endif
+																{{$leyenda}}</center> 
                                                                 <br>
                                                                 <div class="form-group">
                                                                         {{ Form::label('descripcion', 'Descripción:') }}

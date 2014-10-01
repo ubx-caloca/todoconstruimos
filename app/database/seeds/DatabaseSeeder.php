@@ -43,7 +43,10 @@ class ClasficadosSeeder extends Seeder {
 		DB::table('cobro_tipo')->delete();
 		DB::table('cobros')->delete();
 		DB::table('cobros_historial')->delete();
-		
+		DB::table('cobros_pendientes')->delete();
+		DB::table('bienesraices_categorias')->delete();
+		DB::table('bienesraices')->delete();
+		DB::table('bienesraices_imagenes')->delete();
 
 		// seed our usuario_rol table -----------------------
 		$usario_rol1 = UsuarioRol::create(array(
@@ -452,10 +455,12 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 		$this->command->info('Se asociaron 10 imagenes a proveedor1');	
 		
 		$banner1= Banner::create(array(
+			'usuario_id'   => $usuario2->id,
 			'banner_img'  => 'img-banner1-seed.jpg',
 			'seccion'  => 'index-izquierda'
 		));		
 		$banner2= Banner::create(array(
+			'usuario_id'   => $usuario2->id,
 			'banner_img'  => 'img-banner2-seed.jpg',
 			'seccion'  => 'index-derecha'
 		));	
