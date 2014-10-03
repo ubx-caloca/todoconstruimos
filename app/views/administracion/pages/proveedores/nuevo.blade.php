@@ -145,6 +145,10 @@
                                                 {{ Form::select('proveedor_tipo_idproveedor_tipo', $listaTiposDeProveedores , Input::old('proveedor_tipo_idproveedor_tipo'), array( 'placeholder' => '',  'class' => 'form-control')) }}
                                         </div>
                                         <div class="form-group">
+                                                {{ Form::label('usuario_id', 'Usuario del sistema') }}
+                                                {{ Form::select('usuario_id', $listaUsuarios , Input::old('usuario_id'), array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                        </div>
+                                        <div class="form-group">
                                                 {{ Form::label('nombre_usuario', 'Nombre de usuario') }}
                                                 {{ Form::text('nombre_usuario','', array( 'placeholder' => '',  'class' => 'form-control')) }}
                                         </div>
@@ -211,15 +215,15 @@
                                         <hr>
                                         <div class="form-group">
                                                 {{ Form::label('imagen_intro', 'Imagen de la sección de Introducción') }}
-                                                {{ Form::file('imagen_intro[]',['multiple' => true]) }}
+                                                {{ Form::file('imagen_intro',[]) }}
                                         </div>
                                         <div class="form-group">
                                                 {{ Form::label('imagen_descripcion', 'Imagen de la sección de Descripción') }}
-                                                {{ Form::file('imagen_descripcion[]',['multiple' => true]) }}
+                                                {{ Form::file('imagen_descripcion',[]) }}
                                         </div>
                                         <div class="form-group">
                                                 {{ Form::label('imagen_vision', 'Imagen de la sección de Visión') }}
-                                                {{ Form::file('imagen_vision[]',['multiple' => true]) }}
+                                                {{ Form::file('imagen_vision',[]) }}
                                         </div>
                                         <hr>
                                         <div class="form-group">

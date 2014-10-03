@@ -2,10 +2,10 @@
 <html>
     <head>
 
-            @include('administracion.head')
+            @include('vistausuario.head')
 
     </head>
-    <body class="skin-black">
+    <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="/" class="logo">
@@ -30,7 +30,7 @@
 
 
 
-                    @include('administracion.topbar')
+                    @include('vistausuario.topbar')
 
 
 
@@ -47,7 +47,7 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                            @include('administracion.userpanel')
+                            @include('vistausuario.userpanel')
                     </div>
 
 
@@ -64,7 +64,7 @@
 
 
 
-                            @include('administracion.menu')
+                            @include('vistausuario.menu')
 
 
 
@@ -102,7 +102,7 @@
                 <section class="content-header">
                     <h1>
                         Dashboard
-                        <small style="color: black;font-weight: 400;">Administración del sistema</small>
+                        <small style="color: black;font-weight: 400;">Vista del usuario</small>
                     </h1>
                 </section>
 
@@ -134,96 +134,111 @@
                                       <div class="panel-heading">
                                         <h3 class="panel-title">EDITAR PROVEEDOR</h3>
                                       </div>
+											@if ($errors->has())
+										<div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
 
+										background-color: #F2DEDF;
+										-webkit-border-radius: 8px;
+										-moz-border-radius: 8px;
+										border-radius: 8px;
+										color: #a71b2a;
+										">
+										<p><strong>Errores:</strong> </p>
+											<ul>		
+													@foreach ($errors->all() as $error)
+														<li>
+														{{ $error }} 
+														</li>
+
+													@endforeach
+											</ul>
+										</div>		
+											@endif
                                       <div class="panel-body">
-                                        {{ Form::open(array('url' => 'administracion/proveedores/guardarproveedor/'.$proveedores->id,'method'=>'put', 'files' => true)) }}
+                                        {{ Form::open(array('url' => 'vistausuario/proveedor/'.$proveedor->id,'method'=>'put', 'files' => true)) }}
                                             <hr>
                                             <center><h4>Datos generales del proveedor</h4></center>
                                             <hr>
                                             <div class="form-group">
                                                     {{ Form::label('proveedor_tipo_idproveedor_tipo', 'Tipo de proveedor') }}
-                                                    {{ Form::select('proveedor_tipo_idproveedor_tipo', $listaTiposDeProveedores , $proveedores->proveedor_tipo_idproveedor_tipo, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::select('proveedor_tipo_idproveedor_tipo', $listaTiposDeProveedores , $proveedor->proveedor_tipo_idproveedor_tipo, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('nombre_usuario', 'Nombre de usuario') }}
-                                                    {{ Form::text('nombre_usuario',$proveedores->nombre_usuario, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('nombre_usuario',$proveedor->nombre_usuario, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('nombre', 'Nombre') }}
-                                                    {{ Form::text('nombre',$proveedores->nombre, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('nombre',$proveedor->nombre, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('direccion', 'Dirección') }}
-                                                    {{ Form::text('direccion',$proveedores->direccion, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('direccion',$proveedor->direccion, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('telefono', 'Telefono') }}
-                                                    {{ Form::text('telefono',$proveedores->telefono, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('telefono',$proveedor->telefono, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('facebook', 'Página de Facebook') }}
-                                                    {{ Form::text('facebook',$proveedores->facebook, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('facebook',$proveedor->facebook, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('twitter', 'Página de Twitter') }}
-                                                    {{ Form::text('twitter',$proveedores->twitter, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('twitter',$proveedor->twitter, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('otro_sns', 'Otra red social') }}
-                                                    {{ Form::text('otro_sns',$proveedores->otro_sns, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('otro_sns',$proveedor->otro_sns, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
-											<div class="form-group">
-                                                {{ Form::label('habilitar', 'Habilitado') }}
-												{{ Form::select('habilitar', array('0' => 'No','1' => 'Si'), $proveedores->habilitar, array( 'placeholder' => '',  'class' => 'form-control')) }}
-											</div>
                                             <hr>
                                             <center><h4>Coordenadas de la ubicación geográfica</h4></center>
                                             <hr>
                                             <div class="form-group">
                                                     {{ Form::label('longitud', 'Longitud') }}
-                                                    {{ Form::text('longitud',$proveedores->longitud, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('longitud',$proveedor->longitud, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('latitud', 'Latitud') }}
-                                                    {{ Form::text('latitud',$proveedores->latitud, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('latitud',$proveedor->latitud, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <hr>
                                             <center><h4>Detalles del proveedor</h4></center>
                                             <hr>
                                             <div class="form-group">
                                                     {{ Form::label('introduccion', 'Introducción') }}
-                                                    {{ Form::text('introduccion',$proveedores_detalle->introduccion, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('introduccion',$proveedordetalle->introduccion, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('descripcion', 'Descripción') }}
-                                                    {{ Form::text('descripcion',$proveedores_detalle->descripcion, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('descripcion',$proveedordetalle->descripcion, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('vision', 'Visión') }}
-                                                    {{ Form::text('vision',$proveedores_detalle->vision, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('vision',$proveedordetalle->vision, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('productos', 'Productos') }}
-                                                    {{ Form::text('productos',$proveedores_detalle->productos, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::text('productos',$proveedordetalle->productos, array( 'placeholder' => '',  'class' => 'form-control')) }}
                                             </div>
                                             <hr>
                                             <center><h4>Imagenes de fondo</h4></center>
                                             <hr>
                                             <div class="form-group">
                                                     {{ Form::label('imagen_intro', 'Imagen de la sección de Introducción') }}
-                                                    {{ Form::file('imagen_intro[]',['multiple' => true]) }}
+                                                    {{ Form::file('imagen_intro',[]) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('imagen_descripcion', 'Imagen de la sección de Descripción') }}
-                                                    {{ Form::file('imagen_descripcion[]',['multiple' => true]) }}
+                                                    {{ Form::file('imagen_descripcion',[]) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('imagen_vision', 'Imagen de la sección de Visión') }}
-                                                    {{ Form::file('imagen_vision[]',['multiple' => true]) }}
+                                                    {{ Form::file('imagen_vision',[]) }}
                                             </div>
                                             <hr>
                                             <div class="form-group">
-                                                    <center>{{ Form::submit('Agregar proveedor', array('class' => 'btn btn-success')) }}</center>
+                                                    <center>{{ Form::submit('Modificar proveedor', array('class' => 'btn btn-success')) }}</center>
                                             </div>
                                             
                                         {{ Form::close() }}

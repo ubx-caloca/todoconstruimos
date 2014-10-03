@@ -52,13 +52,13 @@ class ProveedoresController extends BaseController {
 		$proveedores->otro_sns=Input::get('otro_sns');
 		$proveedores->longitud=Input::get('longitud');
 		$proveedores->latitud=Input::get('latitud');
-		$proeedores->habilitar = Input::get('habilitar');
+		$proveedores->habilitar = Input::get('habilitar');
+		$proveedores->solicitar_premium= 0;
+		$proveedores->usuario_id = Input::get('usuario_id');
 		$proveedores->save();
 
-		$idproveedor = DB::getPdo()->lastInsertId();
-
 		$proveedores_detalle->id=0;
-		$proveedores_detalle->proveedores_idproveedor=$idproveedor;
+		$proveedores_detalle->proveedores_idproveedor=$proveedores->id;
 		$proveedores_detalle->proveedores_proveedor_tipo_idproveedor_tipo=Input::get('proveedor_tipo_idproveedor_tipo');
 		$proveedores_detalle->introduccion=Input::get('introduccion');
 		$proveedores_detalle->descripcion=Input::get('descripcion');
@@ -70,75 +70,71 @@ class ProveedoresController extends BaseController {
 		}
 
 		$imagen_intro = Input::file('imagen_intro');
-		foreach($imagen_intro as $file) {
-		    $rules = array(
-		        'file' => 'required|mimes:png,gif,jpeg|max:20000'
-		    );
-		    $validator = \Validator::make(array('file'=> $file), $rules);
-		    if($validator->passes()){
+		$file = $imagen_intro;
+		$rules = array(
+		    'file' => 'required|mimes:png,gif,jpeg|max:20000'
+		);
+		$validator = \Validator::make(array('file'=> $file), $rules);
+		if($validator->passes()){
 
-		        $id = Str::random(14);
+			$id = Str::random(4);
+			$date_now = new DateTime();
 
-		        $destinationPath    = 'images/proveedores/'.$nombreDeUsuario;
-		        $filename           = $file->getClientOriginalName();
-		        $mime_type          = $file->getMimeType();
-		        $extension          = $file->getClientOriginalExtension();
-		        $upload_success     = $file->move($destinationPath, $filename);
-		    } else {
-		        //return Redirect::back()->with('error', 'I only accept images.');
-		    }
+		    $destinationPath    = 'images/proveedores/'.$nombreDeUsuario;
+		    $filename           = $date_now->format('YmdHis').$id;
+		    $mime_type          = $file->getMimeType();
+		    $extension          = $file->getClientOriginalExtension();
+		    $upload_success     = $file->move($destinationPath, $filename.'.'.$extension);
+			$proveedores_detalle->imagen_intro=$filename.'.'.$extension;
+		} else {
+		    $proveedores_detalle->imagen_intro = '';
 		}
-		$proveedores_detalle->imagen_intro=$filename;
+
+		$imagen_descripcion = Input::file('imagen_descripcion');
+		$file = $imagen_descripcion;
+		$rules = array(
+		    'file' => 'required|mimes:png,gif,jpeg|max:20000'
+		);
+		$validator = \Validator::make(array('file'=> $file), $rules);
+		if($validator->passes()){
+
+		    $id = Str::random(4);
+			$date_now = new DateTime();
+
+		    $destinationPath    = 'images/proveedores/'.$nombreDeUsuario;
+		    $filename           = $date_now->format('YmdHis').$id;
+		    $mime_type          = $file->getMimeType();
+		    $extension          = $file->getClientOriginalExtension();
+		    $upload_success     = $file->move($destinationPath, $filename.'.'.$extension);
+			$proveedores_detalle->imagen_descripcion=$filename.'.'.$extension;
+		} else {
+		    $proveedores_detalle->imagen_descripcion='';
+		}
 
 
-		$imagen_intro = Input::file('imagen_descripcion');
-		foreach($imagen_intro as $file) {
-		    $rules = array(
-		        'file' => 'required|mimes:png,gif,jpeg|max:20000'
-		    );
-		    $validator = \Validator::make(array('file'=> $file), $rules);
-		    if($validator->passes()){
+		$imagen_vision = Input::file('imagen_vision');
+		$rules = array(
+		    'file' => 'required|mimes:png,gif,jpeg|max:20000'
+		);
+		$validator = \Validator::make(array('file'=> $file), $rules);
+		if($validator->passes()){
 
-		        $id = Str::random(14);
+		    $id = Str::random(4);
+			$date_now = new DateTime();
 
-		        $destinationPath    = 'images/proveedores/'.$nombreDeUsuario;
-		        $filename           = $file->getClientOriginalName();
-		        $mime_type          = $file->getMimeType();
-		        $extension          = $file->getClientOriginalExtension();
-		        $upload_success     = $file->move($destinationPath, $filename);
-		    } else {
-		        //return Redirect::back()->with('error', 'I only accept images.');
-		    }
-		}		
-		$proveedores_detalle->imagen_descripcion=$filename;
+		    $destinationPath    = 'images/proveedores/'.$nombreDeUsuario;
+		    $filename           = $date_now->format('YmdHis').$id;
+		    $mime_type          = $file->getMimeType();
+		    $extension          = $file->getClientOriginalExtension();
+		    $upload_success     = $file->move($destinationPath, $filename.'.'.$extension);
+			$proveedores_detalle->imagen_vision=$filename.'.'.$extension;
+		} else {
+		    $proveedores_detalle->imagen_vision='';
+		}			
 
-
-		$imagen_intro = Input::file('imagen_vision');
-		foreach($imagen_intro as $file) {
-		    $rules = array(
-		        'file' => 'required|mimes:png,gif,jpeg|max:20000'
-		    );
-		    $validator = \Validator::make(array('file'=> $file), $rules);
-		    if($validator->passes()){
-
-		        $id = Str::random(14);
-
-		        $destinationPath    = 'images/proveedores/'.$nombreDeUsuario;
-		        $filename           = $file->getClientOriginalName();
-		        $mime_type          = $file->getMimeType();
-		        $extension          = $file->getClientOriginalExtension();
-		        $upload_success     = $file->move($destinationPath, $filename);
-		    } else {
-		        //return Redirect::back()->with('error', 'I only accept images.');
-		    }
-		}				
-		$proveedores_detalle->imagen_vision=$filename;
 		$proveedores_detalle->save();
 
 		return Redirect::to("administracion/proveedores/galeria/$nombreDeUsuario/$idproveedor")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
-		//return Redirect::route("/administracion/proveedores/galeria/{$nombreDeUsuario}/{$idproveedor}");
-		//return Redirect::route('administracion/proveedores/galeria/', array('nombreDeUsuario' => $nombreDeUsuario, 'idproveedor'=>$idproveedor));
-		//
 	}
 
 

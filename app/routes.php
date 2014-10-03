@@ -136,6 +136,9 @@ Route::group(array('prefix' => 'vistausuario', 'before' => 'auth.user'), functio
 		
 		//USUARIOS
 		Route::resource('usuarios', 'UsuariosVistaController');
+		
+		//PAGOS PENDIENTES
+		Route::resource('usuarios', 'PagosPendVistaController');
 });
 
 		//PAGINA DE CADA PROVEEDOR
