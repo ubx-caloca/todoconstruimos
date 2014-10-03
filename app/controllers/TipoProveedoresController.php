@@ -11,7 +11,14 @@ class TipoProveedoresController extends BaseController {
 	{
 		$authuser = Auth::user();
 		$listaTiposDeProveedores = array('NA' => 'Elige un tipo de proveedor')+ProveedorTipo::lists('tipo','id');
-		return View::make('administracion.pages.proveedores.nuevo')->with(array('listaTiposDeProveedores'=>$listaTiposDeProveedores, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre));
+		$rolnormal = UsuarioRol::where('rol', '=', 'usuario normal')->firstOrFail();
+		$usuariosnormales = $rolnormal->usuarios;
+		$listaUsuarios= array();
+		foreach($usuariosnormales as $usuarion){
+			$listaUsuarios[$usuarion->id] = $usuarion->id.': '.$usuarion->email;
+		}
+		
+		return View::make('administracion.pages.proveedores.nuevo')->with(array('listaTiposDeProveedores'=>$listaTiposDeProveedores, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'listaUsuarios'=>$listaUsuarios));
 		//
 	}
 

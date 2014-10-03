@@ -191,10 +191,6 @@
                                                 {{ Form::label('otro_sns', 'Otra red social') }}
                                                 {{ Form::text('otro_sns',Input::old('otro_sns'), array( 'placeholder' => '',  'class' => 'form-control')) }}
                                         </div>
-										<div class="form-group">
-                                                {{ Form::label('habilitar', 'Habilitado') }}
-												{{ Form::select('habilitar', array('0' => 'No','1' => 'Si'), Input::old('habilitar'), array( 'placeholder' => '',  'class' => 'form-control')) }}
-                                        </div>
                                         <hr>
                                         <center><h4>Coordenadas de la ubicación geográfica</h4></center>
                                         <hr>
@@ -230,15 +226,15 @@
                                         <hr>
                                         <div class="form-group">
                                                 {{ Form::label('imagen_intro', 'Imagen de la sección de Introducción') }}
-                                                {{ Form::file('imagen_intro[]',['multiple' => true]) }}
+                                                {{ Form::file('imagen_intro',[]) }}
                                         </div>
                                         <div class="form-group">
                                                 {{ Form::label('imagen_descripcion', 'Imagen de la sección de Descripción') }}
-                                                {{ Form::file('imagen_descripcion[]',['multiple' => true]) }}
+                                                {{ Form::file('imagen_descripcion',[]) }}
                                         </div>
                                         <div class="form-group">
                                                 {{ Form::label('imagen_vision', 'Imagen de la sección de Visión') }}
-                                                {{ Form::file('imagen_vision[]',['multiple' => true]) }}
+                                                {{ Form::file('imagen_vision',[]) }}
                                         </div>
                                         <hr>
                                         <div class="form-group">

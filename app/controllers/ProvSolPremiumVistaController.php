@@ -9,7 +9,12 @@ class ProvSolPremiumVistaController extends \BaseController {
 	 */
 	 
 	public function solicpremium(){
-		return 'SolicPremium del ProvSolPremiumVistaController'; 
+		$authuser = Auth::user();
+		$proveedor = $authuser->proveedor;
+		$proveedor->solicitar_premium = 1;
+		$proveedor->save();
+		//Generar row en cobros_pendientes
+		return Redirect::to("vistausuario/")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));			
 	}
 	
 	

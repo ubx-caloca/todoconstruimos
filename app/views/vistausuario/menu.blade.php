@@ -89,12 +89,28 @@
                                 <li><a href="/vistausuario/clasificados"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                                 <li><a href="/vistausuario/clasificados/create"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
                             </ul>
-                        </li>                        
+                        </li>  
+                         <!-- 
+                        *****************************************************
+                        *****************************************************
+                        Pagos pendientes 
+                        *****************************************************
+                        *****************************************************
+                        -->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-cc-mastercard"></i>
+                                <span>Pagos pendientes</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/vistausuario/pagospendientes"><i class="fa fa-angle-double-right"></i> Listar</a></li>
+                            </ul>
+                        </li>  						
 						<div style="margin-left: 15px;padding-top: 10px;padding-bottom: 10px;border-top: 1px solid #fff;border-bottom: 1px solid #dbdbdb;">
                         <a href="/signout" >
                                 <i class="fa fa-power-off""></i>
                                 <span style="margin-left: 7px;">Cerrar sesión</span>
                                
                         </a>
-						</div> 
- 						
+						</div>                       					
