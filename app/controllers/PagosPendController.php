@@ -10,6 +10,19 @@ class PagosPendController extends \BaseController {
 	public function index()
 	{
 		//
+		$authuser = Auth::user();
+
+		//Super query
+		$cobrosPorConfirmar = CobroPendiente::whereNull('referenciaPago')->orWhere('referenciaPago', '')->orderBy('fecha', 'desc')->get();
+		$cobrosPorConfirmados = CobroPendiente::whereNotNull('referenciaPago')->orWhere('referenciaPago', '!>', '')->orderBy('fecha', 'desc')->get();
+		$cobrospordenados = $cobrosPorConfirmados->merge($cobrosPorConfirmar);
+		$totalItems = count($cobrosPorConfirmar)+ count($cobrosPorConfirmados);
+		
+		
+		$paginated = Paginator::make($cobrospordenados->toArray(), $totalItems, 10);
+		//return CobroPendiente::paginate(10);
+
+		return View::make('administracion.pages.pagospendientes.index')->with(array('listaPagosPendientes'=>$paginated, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 

@@ -113,6 +113,11 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		//USUARIOS
 		Route::resource('usuarios', 'UsuariosAdminController');
 		Route::get('adminusuarioedit', 'UsuariosAdminController@editarAdmin');
+		
+		
+		//PAGOS PENDIENTES
+		Route::resource('pagospendientes', 'PagosPendController');
+		Route::get('pagospendaceptarcobro/{id}', 'PagosPendDatosController@aceptarcobro');
 
 });
 

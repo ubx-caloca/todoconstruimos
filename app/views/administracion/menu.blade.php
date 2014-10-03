@@ -133,7 +133,25 @@
                                 <li><a href="/administracion/anuncios/create"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
                                 <li><a href="/administracion/anuncios"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                             </ul>
-                        </li>    
+                        </li>
+                         <!-- 
+                        *****************************************************
+                        *****************************************************
+                        ANUNCIOS 
+                        *****************************************************
+                        *****************************************************
+                        -->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-cc-mastercard"></i>
+                                <span>Cobros pendientes</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/administracion/pagospendientes"><i class="fa fa-angle-double-right"></i> Listar</a></li>
+								<li><a href="/administracion/anuncios/create"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
+                            </ul>
+                        </li> 						
 						<div style="margin-left: 15px;padding-top: 10px;">
                         <a href="/signout" >
                                 <i class="fa fa-power-off""></i>
@@ -141,4 +159,4 @@
                                
                         </a>
 						</div> 
- 						
+   					
