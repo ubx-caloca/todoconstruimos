@@ -1,6 +1,6 @@
 <?php
 
-class CobroHistorial extends Eloquent {
+class CobroPendiente extends Eloquent {
 
 	// LINK THIS MODEL TO OUR DATABASE TABLE ---------------------------------
 	protected $table = 'cobros_pendientes';

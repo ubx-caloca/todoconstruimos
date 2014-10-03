@@ -10,6 +10,17 @@ class PagosPendVistaController extends \BaseController {
 	public function index()
 	{
 		//
+		$authuser = Auth::user();
+
+		//Super query
+		$cobrospusuario = CobroPendiente::whereIn('cobro_id', function($query) use ($authuser){
+			$query->select('id')
+			->from(with(new Cobro)->getTable())
+			->where('usuario_id', $authuser->id);
+		})->paginate(15);
+
+		return View::make('vistausuario.pages.pagospendientes.index')->with(array('listaPagosPendientes'=>$cobrospusuario, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		
 	}
 
 
@@ -21,6 +32,7 @@ class PagosPendVistaController extends \BaseController {
 	public function create()
 	{
 		//
+		return 'Mostrar create de pagos pendientes vista';
 	}
 
 
@@ -32,6 +44,7 @@ class PagosPendVistaController extends \BaseController {
 	public function store()
 	{
 		//
+		return 'Mostrar store de pagos pendientes vista';
 	}
 
 
@@ -56,6 +69,7 @@ class PagosPendVistaController extends \BaseController {
 	public function edit($id)
 	{
 		//
+		return 'Mostrar edit('.$id.') de pagos pendientes vista';
 	}
 
 
@@ -68,6 +82,7 @@ class PagosPendVistaController extends \BaseController {
 	public function update($id)
 	{
 		//
+		return 'Mostrar update('.$id.') de pagos pendientes vista';
 	}
 
 
@@ -81,6 +96,5 @@ class PagosPendVistaController extends \BaseController {
 	{
 		//
 	}
-
-
+	
 }
