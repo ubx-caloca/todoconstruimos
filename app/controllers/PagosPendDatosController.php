@@ -57,6 +57,7 @@ class PagosPendDatosController extends \BaseController {
 			$clas = Clasificado::find($cobro->datosAdicionales);
 			$clas->solicitar_premium=0;
 			$clas->premium=1;
+			$clas->save();
 		}	
 		if($cobrot->tipo == 'imagen_proveedor'){
 			//TODO: regresar campo 'premium' de 1/2 a 0
