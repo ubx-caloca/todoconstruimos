@@ -19,6 +19,7 @@ class CreateCobrosHistorialTable extends Migration {
 		$table->datetime('fechaPago')->nullable();
 		$table->string('metodoPago', 250)->nullable();
 		$table->text('referenciaPago')->nullable();	
+		$table->text('cobro_concepto')->nullable();	
 		$table->timestamps();
 		});
 		

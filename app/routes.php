@@ -117,7 +117,7 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		
 		//PAGOS PENDIENTES
 		Route::resource('pagospendientes', 'PagosPendController');
-		Route::get('pagospendaceptarcobro/{id}', 'PagosPendDatosController@aceptarcobro');
+		Route::post('pagospendaceptarcobro', 'PagosPendDatosController@aceptarcobro');
 
 });
 

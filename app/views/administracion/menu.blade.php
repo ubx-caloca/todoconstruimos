@@ -149,7 +149,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="/administracion/pagospendientes"><i class="fa fa-angle-double-right"></i> Listar</a></li>
-								<li><a href="/administracion/anuncios/create"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
+								<li><a href="/administracion/pagospendientes/create"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
                             </ul>
                         </li> 						
 						<div style="margin-left: 15px;padding-top: 10px;">

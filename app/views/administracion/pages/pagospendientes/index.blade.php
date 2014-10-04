@@ -112,7 +112,27 @@ margin-right: -10px;
 	position:relative;
 	top:1px;
 }
+.eliminarform{
+margin-left: -8px;
+margin-top: 20px;
+}
 
+hr.style-eight {
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+hr.style-eight:after {
+    content: "§";
+    display: inline-block;
+    position: relative; 
+    top: -0.7em;  
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: #f9f9f9;
+}
 
 </style>
     </head>
@@ -261,20 +281,23 @@ margin-right: -10px;
 															<center><strong>Id</strong></center>
 											        		<center style="padding-bottom: 15px;">{{$pagop->id}}</center>
 
-@if($pagop->referenciaPago != null && $pagop->referenciaPago=='')															
- <center style="margin-top: 40px;"><form method="get" action="pagospendaceptarcobro/{{$pagop->id}}">
+@if($pagop->referenciaPago != null && $pagop->referenciaPago!='')															
+ <center style="margin-top: 20px;"><form method="post" action="pagospendaceptarcobro">
+    {{ Form::hidden('pagodpid', $pagop->id) }}
     <button class="solpremimbutton" type="submit">Confirmar cobro</button>
 </form> </center>
 @else
- <center style="margin-top: 40px;"><form method="get" action="#">
+ <center style="margin-top: 20px;"><form method="get" action="#">
     <button class="solpremimenviadabutton" type="submit" disabled>Cobro por confirmar</button>
 </form> </center>
 @endif	
 															<center>
-															{{ Form::open(array('url' => '/administracion/pagospendientes/' . $pagop->id, 'class' => 'pull-left')) }}
+															<div>
+															{{ Form::open(array('url' => '/administracion/pagospendientes/' . $pagop->id, 'class' => 'eliminarform')) }}
 															{{ Form::hidden('_method', 'DELETE') }}
 															<strong><a href="#" onclick="$(this).closest('form').submit()">Eliminar</a></strong>
 															{{ Form::close() }}
+															</div>
 															</center>			
 											        	</div>
 																							<?php
@@ -290,8 +313,8 @@ margin-right: -10px;
 											    		<div class="col-md-11">
 											        		<p><strong>Tipo:</strong> {{$pagop->cobro->tipo->tipo }}</p>
 															<p><strong>Objeto de pago:</strong> Id: {{ $pagop->cobro->datosAdicionales }}</p>
-															<p><strong>Metodo de cobro:</strong> {{ (($pagop->metodoPago==null|| $pagop->metodoPago==null)? '(Por confirmar por usuario)': $pagop->metodoPago)}}</p>
-															<p><strong>Refencia de cobro:</strong> {{ (($pagop->referenciaPago==null|| $pagop->referenciaPago==null)? '(Por confirmar por usuario)': $pagop->referenciaPago) }}</p>
+															<p style="color: darkorange;"><strong>Metodo de cobro:</strong> {{ (($pagop->metodoPago==null|| $pagop->metodoPago==null)? '(Por confirmar por usuario)': $pagop->metodoPago)}}</p>
+															<p style="color: darkorange;"><strong>Referencia de cobro:</strong> {{ (($pagop->referenciaPago==null|| $pagop->referenciaPago==null)? '(Por confirmar por usuario)': $pagop->referenciaPago) }}</p>
 															<p><strong>Pendiente desde:</strong> {{ date_format($tj_date, 'd M Y H:i a')  }}</p>
 															<br>
 															<p><strong>Extensión de vigencia:</strong> {{ $pagop->cobro->tipo->diasVigencia }} días</p>
@@ -299,11 +322,11 @@ margin-right: -10px;
 															<p><strong>Concepto:</strong> {{ $pagop->cobro_concepto }}</p>
 														</div>
 											        </div>
-											        <hr>
+													<br><hr class="style-eight"><br>
 											    <?php endforeach; ?>
 											</div>
-
-											<center><?php echo $listaPagosPendientes->links(); ?></center>
+											
+											<center><?php echo '';//$listaPagosPendientes->links(); ?></center>
 									  </div>
 									</div>
 									</div>	

@@ -13,16 +13,16 @@ class PagosPendController extends \BaseController {
 		$authuser = Auth::user();
 
 		//Super query
-		$cobrosPorConfirmar = CobroPendiente::whereNull('referenciaPago')->orWhere('referenciaPago', '')->orderBy('fecha', 'desc')->get();
-		$cobrosPorConfirmados = CobroPendiente::whereNotNull('referenciaPago')->orWhere('referenciaPago', '!>', '')->orderBy('fecha', 'desc')->get();
-		$cobrospordenados = $cobrosPorConfirmados->merge($cobrosPorConfirmar);
-		$totalItems = count($cobrosPorConfirmar)+ count($cobrosPorConfirmados);
-		
-		
-		$paginated = Paginator::make($cobrospordenados->toArray(), $totalItems, 10);
-		//return CobroPendiente::paginate(10);
+		$cobrosPorConfirmar = CobroPendiente::whereNull('referenciaPago')->orWhere('referenciaPago', '')->orderBy('fecha', 'desc');
+		//$cobrosConfirmados = CobroPendiente::whereNotNull('referenciaPago')->Where('referenciaPago', '!=', '')->orderBy('fecha', 'desc')->get();
+		//$cobrospordenados = $cobrosPorConfirmados->merge($cobrosPorConfirmar);
+		//return $cobrospordenados->paginate(10);
+		//$cobrospordenados = $cobrosPorConfirmados->merge($cobrosPorConfirmar);	
 
-		return View::make('administracion.pages.pagospendientes.index')->with(array('listaPagosPendientes'=>$paginated, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		$cobrospordenados = CobroPendiente::whereNotNull('referenciaPago')->orWhere('referenciaPago', '!=', '')->orderBy('fecha', 'desc')->unionAll($cobrosPorConfirmar->getQuery())->get();
+		
+		
+		return View::make('administracion.pages.pagospendientes.index')->with(array('listaPagosPendientes'=>$cobrospordenados, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));	
 	}
 
 
@@ -34,6 +34,7 @@ class PagosPendController extends \BaseController {
 	public function create()
 	{
 		//
+		return  'Mostrar el create del PagosPendController';
 	}
 
 
@@ -93,6 +94,42 @@ class PagosPendController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+		$authuser = Auth::user();
+		$cobrop = CobroPendiente::find($id);
+		$cobrot = $cobrop->cobro->tipo;
+		$cobro = $cobrop->cobro;
+		
+		//Dependiendo de cobro_tipo, regregar estado de objeto de cobro a antes de solicitar premium
+		if($cobrot->tipo == 'ser_proveedor'){
+			
+			//regresar campo 'solicitar_premium' de 1 a 0
+			$prov = Usuario::find($cobro->datosAdicionales)->proveedor;
+			$prov->solicitar_premium = 0;
+			$prov->save();
+					
+		}
+		if($cobrot->tipo == 'clasificado_premium'){
+			//regresar campo 'solicitar_premium' de 1 a 0
+			$clas = Clasificado::find($cobro->datosAdicionales);
+			$clas->solicitar_premium=0;		
+		}	
+		if($cobrot->tipo == 'imagen_proveedor'){
+			//regresar campo 'premium' de 1/2 a 0
+		}
+		//TODO: falta los cobrot=== de banners
+		if($cobrot->tipo == 'banner_index-izq' || $cobrot->tipo == 'banner_index-der' || $cobrot->tipo == 'banner_index-arr' ){
+			//hacer algo
+		}
+		
+		$cobrop->delete();
+		
+		//Si cobro todavia no se activa (es decir cobro->fechaExpiracion es NULL y cobro->estado =='pendiente')
+		//=> borrar registro de cobro
+		if($cobro->fechaExpiracion == null && ($cobro->estado==null||$cobro->estado==''|| $cobro->estado=='pendiente'))
+			$cobro->delete();
+		
+		
+		return Redirect::to('/administracion/pagospendientes');
 	}
 
 
