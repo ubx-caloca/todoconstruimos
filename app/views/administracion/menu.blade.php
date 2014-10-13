@@ -40,6 +40,7 @@
                                 <li><a href="/administracion/proveedores/categorias"><i class="fa fa-angle-double-right"></i> Categorías</a></li>
                                 <li><a href="/administracion/proveedores/listar"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                                 <li><a href="/administracion/proveedores/nuevo"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
+                                <li><a href="/administracion/proveedores/galeriapremium"><i class="fa fa-angle-double-right"></i> Galería premium</a></li>
                             </ul>
                         </li>
                         <!-- 
@@ -82,6 +83,24 @@
 								<li><a href="/administracion/blog"><i class="fa fa-angle-double-right"></i> Listar Post</a></li>
                             </ul>
                         </li>
+                        <!-- 
+                        *****************************************************
+                        *****************************************************
+                        BANNERS 
+                        *****************************************************
+                        *****************************************************
+                        -->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-image"></i>
+                                <span>Banners</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/administracion/banners/create"><i class="fa fa-angle-double-right"></i> Nuevo Banner</a></li>
+                                <li><a href="/administracion/banners"><i class="fa fa-angle-double-right"></i> Listar Banners</a></li>
+                            </ul>
+                        </li>                        
                         <!-- 
                         *****************************************************
                         *****************************************************

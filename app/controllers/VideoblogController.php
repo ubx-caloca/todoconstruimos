@@ -173,5 +173,24 @@ class VideoblogController extends \BaseController {
 		return Redirect::to('administracion/videoblog')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
+	public function mostrarVideoblog()
+	{
+		//$Posts = DB::table('blog')->orderBy('id','desc')->paginate(2);
+		$videoblog = VideoBlog::orderBy('fecha','desc')->paginate(5);
+		$anuncios = Anuncio::all();
+		
+		$rolusuarioLogueado = '';
+		$mailusuarioLogueado = '';
+		if (Auth::check()){
+			$authuser = Auth::user();
+			$usu = Usuario::find($authuser->id);
+			$mailusuarioLogueado = $authuser->email;
+			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
+			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
+			
+		}
+		return View::make('index.videoblog')->with(array('videoblog'=>$videoblog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
+		//
+	}	
 
 }

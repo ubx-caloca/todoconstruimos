@@ -129,7 +129,7 @@ class Galeria_subirController extends \BaseController {
 			foreach($descripcion as $desc) {
 					$proveedorGaleria = ProveedorGaleria::find($idimagen[$indice]);		
 					$proveedorGaleria->texto=$desc;
-					$proveedorGaleria->premium=0;						
+					//$proveedorGaleria->premium=0;						
 					$proveedorGaleria->save();
 					unset($proveedorGaleria);	
 					$indice++;
@@ -139,8 +139,8 @@ class Galeria_subirController extends \BaseController {
 			$indice = 0;
 			foreach($eliminar as $el) {
 				$proveedorGaleria = ProveedorGaleria::find($el);
-				$proveedor = $el->proveedor;
-				File::delete('images/proveedores/'.$proveedor->nombre_usuario.'/galeria/'.$el->imagen);
+				//$proveedor = $el->proveedor;
+				//File::delete('images/proveedores/'.$proveedor->nombre_usuario.'/galeria/'.$el->imagen);
 				$proveedorGaleria->delete();
 				unset($proveedorGaleria);
 				$indice++;
@@ -150,8 +150,11 @@ class Galeria_subirController extends \BaseController {
 			$indice = 0;
 			foreach($premium as $pre) {
 				$proveedorGaleria = ProveedorGaleria::find($pre);
-				$proveedorGaleria->premium=1;
-				$proveedorGaleria->save();
+				//echo "<br><br>--->$proveedorGaleria->premium";
+				if($proveedorGaleria->premium==0){
+					$proveedorGaleria->premium=1;
+					$proveedorGaleria->save();
+				}
 				unset($proveedorGaleria);
 				$indice++;
 			}		
@@ -169,6 +172,36 @@ class Galeria_subirController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function listarGaleriaPremium()
+	{
+		//$clasificadosvip = Clasificado::where('premium', '=', 1)->where('habilitar', '=', 1)->orderBy('fecha_publicacion','DESC')->get();
+		$proveedores_galeria = ProveedorGaleria::where('premium', '=', 1)->get();
+		$authuser = Auth::user();	
+		return View::make('administracion.pages.proveedores.listarGaleriaPremium')->with(array('proveedores_galeria' => $proveedores_galeria,'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		//
+	}
+
+	public function autorizarGaleriaPremium()
+	{
+		//
+		$authuser = Auth::user();
+//		$proveedorGaleria = Proveedor_galeria::find($id);
+		//dd($blog);
+		$premium = Input::get('premium');
+		//echo sizeof($eliminar);
+		if(!empty($premium)){
+			$indice = 0;
+			foreach($premium as $pre) {
+				$proveedorGaleria = ProveedorGaleria::find($pre);
+				$proveedorGaleria->premium=2;
+				$proveedorGaleria->save();
+				unset($proveedorGaleria);
+				$indice++;
+			}		
+		}		
+		return Redirect::to("administracion/")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));			
 	}
 
 

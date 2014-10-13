@@ -15,6 +15,8 @@ class indexController extends \BaseController {
 		$categoriasClasif = ClasificadoCategoria::all();
 		$anuncios = Anuncio::all();
 		$eventos = DB::table('eventos')->orderBy('fecha','desc')->get();
+		$videoblog = DB::table('videoBlog')->orderBy('id','desc')->take(4)->get();
+		$galeriapremium = ProveedorGaleria::where('premium', '=', 2)->orderBy('created_at','ASC')->get();
 		//$proveedores = DB::table('proveedores')->where('nombre_usuario', '=', "$nombre_usuario")->first();
 		//$proveedores_detalle = Proveedor_detalle::where('proveedores_idproveedor', '=', $proveedores->id)->first();
 		//$galeria = DB::table('proveedor_galeria')->where('proveedores_idproveedor', '=', $proveedores->id)->get();
@@ -38,7 +40,7 @@ class indexController extends \BaseController {
 		//}
 		
 		//return View::make('index.index')->with(array('proveedores'=>$proveedores,'proveedores_detalle'=>$proveedores_detalle,'galeria'=>$galeria));
-		return View::make('index.index')->with(array('categorias'=>$categorias,'blog'=>$blog, 'clasificadosvip' => $clasificadosvip, 'anuncios' => $anuncios, 'categoriasClasif' => $categoriasClasif, 'eventos' => $eventos, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
+		return View::make('index.index')->with(array('galeriapremium'=>$galeriapremium,'videoblog'=>$videoblog,'categorias'=>$categorias,'blog'=>$blog, 'clasificadosvip' => $clasificadosvip, 'anuncios' => $anuncios, 'categoriasClasif' => $categoriasClasif, 'eventos' => $eventos, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
 		//
 	}
 

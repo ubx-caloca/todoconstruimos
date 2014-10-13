@@ -387,173 +387,36 @@ font-weight: 700;
               <center><h1><img src="/index/images/Galeria.png" alt="Eventos"></h1></center>
               <br>
             </div>       
-	  <div class="portfolio_box">
-		<div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/1.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				    <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
-		</div>
-        <div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/2.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				   <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
-		</div>
-        <div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/3.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				   <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
-		</div>
-        <div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/4.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				   <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
+		  <div class="portfolio_box" style="background-color:#282828;">
+
+
+		  	@foreach ($galeriapremium as $foto)
+		  		<?php 
+		  			$nombreDeUsuario  = $foto->proveedor->nombre_usuario;
+		  			$nombre  = $foto->proveedor->nombre;
+		  		?>
+				<div class="col_1_of_4 span_1_of_4">
+			 	   <a href="/proveedores/{{$nombreDeUsuario}}#work" class="b-link-stripe b-animate-go  thickbox">
+					<?php echo "<img src=\"/images/proveedores/$nombreDeUsuario/galeria/$foto->imagen\" class=\"img-responsive\" alt=\"\"/>"; ?>
+					    <div class="b-wrapper">
+						    <h2 class="b-animate b-from-left    b-delay03 ">
+							 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
+							 <span><?php echo strtoupper($nombre); ?></span>
+							 <button >Ver galería</button>
+							</h2>
+						</div>
+					</a>
+				</div>		  	
+		  	@endforeach
+
+
+
+
+			<div class="clearfix"> </div>
 		</div>
 
-		<div class="clearfix"> </div>
 	</div>
-	<div class="portfolio_box">
-		<div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/5.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				   <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
-		</div>
-        <div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/6.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				   <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
-		</div>
-        <div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/7.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				   <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
-		</div>
-        <div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/8.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				   <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
-	<div class="portfolio_box">
-		<div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/9.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				   <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
-		</div>
-        <div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/10.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				   <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
-		</div>
-        <div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/11.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				   <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
-		</div>
-        <div class="col_1_of_4 span_1_of_4">
-	 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-			<img src="/index/images/galeria/12.png" class="img-responsive" alt=""/>
-			    <div class="b-wrapper">
-				   <h2 class="b-animate b-from-left    b-delay03 ">
-					 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-					 <span>CONSTRUCTORA 1</span>
-					 <button>Ver galería</button>
-					 <label> <i class="heart"> </i></label>
-					</h2>
-				</div>
-			</a>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
-   </div>
+   
 
    <!-- GALERIA -->
    
@@ -674,17 +537,28 @@ font-weight: 700;
     <div class="about videoblog" id="about" style="background-color:#e09f00;">
    		<div class="container">
    			<h3 class="m_4"><img src="/index/images/VideoBlog.png" alt="Eventos"></h3>
-   			<p class="m_5">Descripción del videoblog</p>
-   			<div class="row text-center">
-                                                            <div class="row">
-                                                                  <div class="col-lg-6">
-                                                                  		<iframe width="100%" height="300" src="//www.youtube.com/embed/0b7zw-YjGqE?rel=0" frameborder="0" allowfullscreen></iframe>
-                                                                  </div>
-                                                                  <div class="col-lg-6">
-                                                                  		<iframe width="100%" height="300" src="//www.youtube.com/embed/-cjMEnkeEhM?rel=0" frameborder="0" allowfullscreen></iframe>
-                                                                  </div>                                                                  
-                                                             </div> 
+   			<div class="row">
+
+							@foreach ($videoblog as $video)
+                                <div class="col-lg-6">
+	                                <iframe width="100%" height="300" src="//www.youtube.com/embed/{{$video->video}}?rel=0" frameborder="0" allowfullscreen></iframe>
+	                                <h4>{{$video->titulo}}</h4>
+	                                <p align="center">Publicado el: {{$video->fecha}}</p>
+	                                <p align="justify">{{$video->contenido}}</p>
+                                </div>
+							@endforeach
+
+
    			</div>
+
+		<br>
+		<br>
+		<hr>
+					<center>
+						<a class="btn btn-default" href="/videoblog/" target="_self"> <i class="fa fa-share"></i> Ver más videos </a>
+					</center>
+
+   			
    		</div>
    	</div>
     <!-- ************* -->

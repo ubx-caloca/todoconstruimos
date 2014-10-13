@@ -51,6 +51,11 @@ Route::get('/clasificadoDetalle/{clasificadoId}','ClasificadosDetalleController@
 Route::get('/blog/{post}','blogController@mostrarPost');
 Route::get('/blog/','blogController@mostrarBlog');
 
+// ===============================================
+// VIDEOBLOG
+// ===============================================
+Route::get('/videoblog/','videoblogController@mostrarVideoblog');
+
 
 Route::get('signup', array('uses' => 'SignupController@showSignup'));
 Route::post('signup', array('uses' => 'SignupController@doSignup'));
@@ -84,6 +89,8 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		Route::resource('proveedores/galeria/editar','Galeria_subirController');
 
 		Route::resource('proveedores/listar','ProveedoresController');
+		Route::resource('proveedores/galeriapremium','Galeria_subirController@listarGaleriaPremium');
+		Route::resource('proveedores/galeriapremiumautorizar','Galeria_subirController@autorizarGaleriaPremium');
 
 		//BLOG
 		Route::resource('blog','blogController');
@@ -100,8 +107,8 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		//CLASIFICADOS
 		Route::resource('clasificados', 'ClasificadosController');
 		Route::resource('clasificadoscategorias', 'ClasificadosCategoriaController');
-		Route::get('clasifsolicpremium', 'ClasificadosController@solicpremium');
-		Route::get('aceptarsolicpremium', 'ClasificadosController@aceptarsolicpremium');
+		Route::get('clasifsolicpremium', 'ClasificadosController@solicpremium'); //SOLICITUDES PARA CLASIFICADOS PREMIUM
+		Route::get('aceptarsolicpremium', 'ClasificadosController@aceptarsolicpremium'); // APRUEBA LOS PRIMIUM
 
 		//EVENTOS
 		Route::resource('eventos','eventosController');
@@ -109,6 +116,13 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		Route::get('eventos/editar/{id}','eventosController@edit');
 		Route::Resource('eventos/guardarEdicion','eventosController');
 		Route::get('eventos/borrar/{id}','eventosController@destroy');
+
+		//BANNERS
+		Route::resource('banners','bannersController');
+		Route::resource('banners/publicar','bannersController');
+		Route::get('banners/editar/{id}','bannersController@edit');
+		Route::Resource('banners/guardarEdicion','bannersController');
+		Route::get('banners/borrar/{id}','bannersController@destroy');		
 		
 		//USUARIOS
 		Route::resource('usuarios', 'UsuariosAdminController');
@@ -116,8 +130,13 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		
 		
 		//PAGOS PENDIENTES
+//<<<<<<< Updated upstream
 		Route::resource('pagospendientes', 'PagosPendController');
 		Route::post('pagospendaceptarcobro', 'PagosPendDatosController@aceptarcobro');
+//=======
+		Route::resource('pagospendientes', 'PagosPendController'); //Vista de pagos pendientes
+		Route::get('pagospendaceptarcobro/{id}', 'PagosPendDatosController@aceptarcobro'); // Click para confirmar pago
+//>>>>>>> Stashed changes
 
 });
 
@@ -145,10 +164,10 @@ Route::group(array('prefix' => 'vistausuario', 'before' => 'auth.user'), functio
 		
 		//PAGOS PENDIENTES
 		Route::resource('pagospendientes', 'PagosPendVistaController');
-		Route::get('pagospendmeterdatos/{id}', 'PagosPendDatosVistaController@meterdatos');
-		Route::post('pagospendguardarmeterdatos', 'PagosPendDatosVistaController@guardarmeterdatos');
-		Route::get('pagospendmodifdatos/{id}', 'PagosPendDatosVistaController@modifdatos');
-		Route::post('pagospendguardarmodifdatos', 'PagosPendDatosVistaController@guardarmodifdatos');
+		Route::get('pagospendmeterdatos/{id}', 'PagosPendDatosVistaController@meterdatos'); //vista
+		Route::post('pagospendguardarmeterdatos', 'PagosPendDatosVistaController@guardarmeterdatos');// guarda y valida de vista (arriba)
+		Route::get('pagospendmodifdatos/{id}', 'PagosPendDatosVistaController@modifdatos');// vista modificar
+		Route::post('pagospendguardarmodifdatos', 'PagosPendDatosVistaController@guardarmodifdatos'); // modificar metodo de pago
 });
 
 		//PAGINA DE CADA PROVEEDOR
