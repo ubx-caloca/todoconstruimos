@@ -28,7 +28,7 @@ class ClasfSolPremiumVistaController extends \BaseController {
 		$cobrop = new CobroPendiente;
 		$cobrop->cobro_id = $cobro->id;
 		$cobrop->fecha = $date_now;
-		$cobrop->cobro_concepto = 'TODCONS'.$cobro->id . 'CLASF'.$cobro->id.$date_now->format('YmdHi').$id; // Concepto = clave_empresa+ clave_cobro+ clave_tipo_cobro + clave_objeto_de_cobro + fecha+4_digitos_random (Por favor mejorar!!)
+		$cobrop->cobro_concepto = 'TODCONS'.$cobro->id . 'CLASF'.$clasificado->id.$date_now->format('YmdHi').$id; // Concepto = clave_empresa+ clave_cobro+ clave_tipo_cobro + clave_objeto_de_cobro + fecha+4_digitos_random (Por favor mejorar!!)
 		$cobrop->save();		
 		
 		return Redirect::to('vistausuario/clasificados')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));	

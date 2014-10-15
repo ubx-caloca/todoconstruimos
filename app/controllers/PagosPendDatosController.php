@@ -60,11 +60,16 @@ class PagosPendDatosController extends \BaseController {
 			$clas->save();
 		}	
 		if($cobrot->tipo == 'imagen_proveedor'){
-			//TODO: regresar campo 'premium' de 1/2 a 0
+			//TODO: poner campo 'premium' 1 a 2
+			$provimg = ProveedorGaleria::find($cobro->datosAdicionales);
+			$provimg->premium=2;
+			$provimg->save();			
+			
 		}
-		//TODO: falta los cobrot=== de banners
+		//TODO: falta los cobros=== de banners
 		if($cobrot->tipo == 'banner_index-izq' || $cobrot->tipo == 'banner_index-der' || $cobrot->tipo == 'banner_index-arr' ){
 			//TODO:hacer algo
+			
 		}
 		
 		return Redirect::to('/administracion/pagospendientes');

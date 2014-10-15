@@ -127,7 +127,7 @@ class ProveedorGaleriaVistaController extends \BaseController {
 			foreach($descripcion as $desc) {
 					$proveedorGaleria = ProveedorGaleria::find($idimagen[$indice]);		
 					$proveedorGaleria->texto=$desc;
-					$proveedorGaleria->premium=0;						
+					//$proveedorGaleria->premium=0;						
 					$proveedorGaleria->save();
 					unset($proveedorGaleria);	
 					$indice++;
@@ -152,6 +152,27 @@ class ProveedorGaleriaVistaController extends \BaseController {
 			foreach($premium as $pre) {
 				$proveedorGaleria = ProveedorGaleria::find($pre);
 				$proveedorGaleria->premium=1;
+				
+				//Crear un pago pendiente
+				//Generar row en cobros y cobros_pendientes
+				$cobrotipoSerProveedor= CobroTipo::where('tipo', 'imagen_proveedor')->first();
+				$cobro = new Cobro;
+				$cobro->tipo_id = $cobrotipoSerProveedor->id;
+				$cobro->usuario_id= $authuser->id;
+				$cobro->estado= 'pendiente';
+				$cobro->datosAdicionales = $proveedorGaleria->id;
+				$cobro->save();
+		
+				$id = Str::random(4);
+				$date_now = new DateTime();
+				$cobrop = new CobroPendiente;
+				$cobrop->cobro_id = $cobro->id;
+				$cobrop->fecha = $date_now;
+				$cobrop->cobro_concepto = 'TODCONS'.$cobro->id . 'PROVIMG'.$proveedorGaleria->id.$date_now->format('YmdHi').$id; // Concepto = clave_empresa+ clave_cobro+ clave_tipo_cobro + clave_objeto_de_cobro + fecha+4_digitos_random (Por favor mejorar!!)
+				$cobrop->save();		
+								
+				
+				
 				$proveedorGaleria->save();
 				unset($proveedorGaleria);
 				$indice++;

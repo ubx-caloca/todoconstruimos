@@ -190,7 +190,7 @@
                                                     $leyenda = '<i class="fa fa-spinner fa-spin"></i> En proceso de autorización PREMIUM...';
                                                 }else if($foto->premium==2){
                                                     $checked='true';
-                                                    $leyenda = '<i class="fa fa-check-circle-o"></i> Autorizado como PREMIUM.';
+                                                    $leyenda = '<img src="/images/premium2.png" height="20" width="20" style="margin-top: -5px;"> Autorizado como PREMIUM.';
                                                 }else{
                                                     $checked='';
                                                     $leyenda='';

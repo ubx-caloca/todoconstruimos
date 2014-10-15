@@ -255,11 +255,12 @@ border-color: chocolate;
 											    <?php foreach ($listaDeClasificadosUsuario as $clasificado): ?>
 											    	<div class="row">
 											    		<div class="col-md-1">
+															{{ (($clasificado->premium>0)?'<img src="/images/premium2.png" height="40" width="40" style="margin-top: -20px;margin-left: -45px;float: left;">': '') }}
 															<center><strong>Id</strong></center>
 											        		<center style="padding-bottom: 15px;">{{$clasificado->id}}</center>
 															<center><strong><a href=" <?php echo"/administracion/clasificados/$clasificado->id/edit"; ?> ">Editar</a></strong></center>
 															<center>
-															{{ Form::open(array('url' => '/administracion/clasificados/' . $clasificado->id, 'class' => 'pull-left')) }}
+															{{ Form::open(array('url' => '/administracion/clasificados/' . $clasificado->id, 'class' => '')) }}
 															{{ Form::hidden('_method', 'DELETE') }}
 															<strong><a href="#" onclick="$(this).closest('form').submit()">Eliminar</a></strong>
 															{{ Form::close() }}
