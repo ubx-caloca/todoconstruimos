@@ -3,7 +3,12 @@
     <head>
 
             @include('vistausuario.head')
-
+			<style>
+			.NonEditableLabel{
+				font-weight: initial;
+				background-color: #eee;
+			}
+			</style>
     </head>
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
@@ -165,7 +170,7 @@
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('nombre_usuario', 'Nombre de usuario') }}
-                                                    {{ Form::text('nombre_usuario',$proveedor->nombre_usuario, array( 'placeholder' => '',  'class' => 'form-control')) }}
+                                                    {{ Form::label('nombre_usuario',$proveedor->nombre_usuario, array( 'placeholder' => '',  'class' => 'form-control NonEditableLabel')) }}
                                             </div>
                                             <div class="form-group">
                                                     {{ Form::label('nombre', 'Nombre') }}

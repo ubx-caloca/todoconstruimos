@@ -168,6 +168,8 @@ Route::group(array('prefix' => 'vistausuario', 'before' => 'auth.user'), functio
 		Route::post('pagospendguardarmeterdatos', 'PagosPendDatosVistaController@guardarmeterdatos');// guarda y valida de vista (arriba)
 		Route::get('pagospendmodifdatos/{id}', 'PagosPendDatosVistaController@modifdatos');// vista modificar
 		Route::post('pagospendguardarmodifdatos', 'PagosPendDatosVistaController@guardarmodifdatos'); // modificar metodo de pago
+		
+		Route::resource('banners','BannersVistaController');
 });
 
 		//PAGINA DE CADA PROVEEDOR

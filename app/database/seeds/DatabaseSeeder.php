@@ -485,24 +485,66 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 			'diasVigencia' => 30
 		));	
 		$cobrotipo4= CobroTipo::create(array(
-			'tipo'  => 'banner_index-izq',
-			'descripcion'  => 'Cobro por poner un banner en parte de la izquerda de los banner de la página index',
+			'tipo'  => 'BANNER-BLOG-IZQUIERDA',
+			'descripcion'  => 'Cobro por poner un banner en parte de la izquerda de la página del blog',
 			'precio' => 100.0,
 			'diasVigencia' => 30
 		));	
 		$cobrotipo5= CobroTipo::create(array(
-			'tipo'  => 'banner_index-der',
-			'descripcion'  => 'Cobro por poner un banner en parte de la derecha de los banner de la página index',
+			'tipo'  => 'BANNER-BLOG-DERECHA',
+			'descripcion'  => 'Cobro por poner un banner en parte de la derecha de la página del blog',
 			'precio' => 100.0,
 			'diasVigencia' => 30
 		));	
 		$cobrotipo6= CobroTipo::create(array(
-			'tipo'  => 'banner_index-arr',
-			'descripcion'  => 'Cobro por poner un banner en parte de la arriba de los banner de la página index',
+			'tipo'  => 'BANNER-DIRECTORIO-IZQUIERDA',
+			'descripcion'  => 'Cobro por poner un banner en parte de la izquierda de la página del directorio',
 			'precio' => 200.0,
 			'diasVigencia' => 30
-		));			
-		$this->command->info('Se crearon 6 tipos de cobro');
+		));		
+		$cobrotipo7= CobroTipo::create(array(
+			'tipo'  => 'BANNER-DIRECTORIO-DERECHA',
+			'descripcion'  => 'Cobro por poner un banner en parte de la derecha de la página del directorio',
+			'precio' => 200.0,
+			'diasVigencia' => 30
+		));		
+		$cobrotipo8= CobroTipo::create(array(
+			'tipo'  => 'BANNER-EVENTOS-IZQUIERDA',
+			'descripcion'  => 'Cobro por poner un banner en parte de la izquierda de la página del eventos',
+			'precio' => 200.0,
+			'diasVigencia' => 30
+		));	
+		$cobrotipo9= CobroTipo::create(array(
+			'tipo'  => 'BANNER-EVENTOS-DERECHA',
+			'descripcion'  => 'Cobro por poner un banner en parte de la derecha de la página del eventos',
+			'precio' => 200.0,
+			'diasVigencia' => 30
+		));	
+		$cobrotipo10= CobroTipo::create(array(
+			'tipo'  => 'BANNER-CLASIFICADOS-IZQUIERDA',
+			'descripcion'  => 'Cobro por poner un banner en parte de la izquierda de la página del clasificados',
+			'precio' => 200.0,
+			'diasVigencia' => 30
+		));	
+		$cobrotipo11= CobroTipo::create(array(
+			'tipo'  => 'BANNER-CLASIFICADOS-DERECHA',
+			'descripcion'  => 'Cobro por poner un banner en parte de la derecha de la página del clasificados',
+			'precio' => 200.0,
+			'diasVigencia' => 30
+		));	
+		$cobrotipo12= CobroTipo::create(array(
+			'tipo'  => 'BANNER-VIDEOBLOG-IZQUIERDA',
+			'descripcion'  => 'Cobro por poner un banner en parte de la izquierda de la página del videoblog',
+			'precio' => 200.0,
+			'diasVigencia' => 30
+		));	
+		$cobrotipo13= CobroTipo::create(array(
+			'tipo'  => 'BANNER-VIDEOBLOG-DERECHA',
+			'descripcion'  => 'Cobro por poner un banner en parte de la derecha de la página del videoblog',
+			'precio' => 200.0,
+			'diasVigencia' => 30
+		));	
+		$this->command->info('Se crearon 13 tipos de cobro');
 		
 		$cobro1= Cobro::create(array(
 			'tipo_id'  => $cobrotipo1->id,

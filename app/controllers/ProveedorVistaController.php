@@ -209,7 +209,7 @@ class ProveedorVistaController extends \BaseController {
 		$authuser = Auth::user();
 		$rules = array(
 			'proveedor_tipo'       => 'not_in:NA',
-			'nombre_usuario'      => 'required',
+			//'nombre_usuario'      => 'required',
 			'nombre' => 'required',
 			//'direccion' => 'required',
 			//'telefono' => 'required',
@@ -229,6 +229,7 @@ class ProveedorVistaController extends \BaseController {
 		$validator = Validator::make(Input::all(), $rules);		
 		
 		if ($validator->fails()) {
+			$listaTiposDeProveedores = array('NA' => 'Elige un tipo de proveedor')+ProveedorTipo::lists('tipo','id');
 			return View::make('vistausuario.pages.proveedores.editar')->with(array('listaTiposDeProveedores'=>$listaTiposDeProveedores, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id, 'proveedor'=>$proveedor, 'proveedordetalle'=>$proveedordetalle))->withErrors($validator)->withInput();
 		} else {
 		

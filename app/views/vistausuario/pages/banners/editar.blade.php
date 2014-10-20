@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-	@include('administracion.head')
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		@include('vistausuario.head')
 
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -14,13 +15,11 @@
 
               <script>
               $(function() {
-                $( "#fecha_evento" ).datepicker({ format: "yyyy-mm-dd" });
+                $( "#fecha_evento" ).datepicker({ dateFormat: "yy-mm-dd" });
               });
               </script>
-
-
     </head>
-    <body class="skin-black">
+    <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="/" class="logo">
@@ -45,7 +44,7 @@
 
 
 
-                    @include('administracion.topbar')
+                    @include('vistausuario.topbar')
 
 
 
@@ -62,7 +61,7 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                            @include('administracion.userpanel')
+                            @include('vistausuario.userpanel')
                     </div>
 
 
@@ -79,7 +78,7 @@
 
 
 
-                            @include('administracion.menu')
+                            @include('vistausuario.menu')
 
 
 
@@ -117,7 +116,7 @@
                 <section class="content-header">
                     <h1>
                         Dashboard
-                        <small style="color: black;font-weight: 400;">Administración del sistema</small>
+                        <small style="color: black;font-weight: 400;">Vista del usuario</small>
                     </h1>
                 </section>
 
@@ -143,52 +142,55 @@
 
 
 
-											<div class="container">
+								<div class="container">
 
-													<div class="hero-unit" style="margin-top:40px">
-														{{ Form::open(array('url' => 'administracion/banners/publicar', 'files' => true)) }}
-															<h2>Agregar nuevo banner</h2>
-											@if ($errors->has())
-										<div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
+										<div class="hero-unit" style="margin-top:40px">
+											{{ Form::model($banner, array('route' => array('vistausuario.banners.update', $banner->id), 'method' => 'PUT',  'files'=> true)) }}
+                                                            <h2>Modificar banner</h2>
+										@if ($errors->has())
+									<div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
 
-										background-color: #F2DEDF;
-										-webkit-border-radius: 8px;
-										-moz-border-radius: 8px;
-										border-radius: 8px;
-										color: #a71b2a;
-										">
-										<p><strong>Errores:</strong> </p>
-											<ul>		
-													@foreach ($errors->all() as $error)
-														<li>
-														{{ $error }} 
-														</li>
+									background-color: #F2DEDF;
+									-webkit-border-radius: 8px;
+									-moz-border-radius: 8px;
+									border-radius: 8px;
+									color: #a71b2a;
+									">
+									<p><strong>Errores:</strong> </p>
+										<ul>		
+												@foreach ($errors->all() as $error)
+													<li>
+													{{ $error }} 
+													</li>
+												@endforeach
+										</ul>
+									</div>		
+										@endif															
+                                                            <hr/>
+                                                            <div class="form-group">
+																	<p><b>Sección del banner:</b> {{$banner->seccion}}</p>
+                                                            </div>  
+                                                            <hr>
+                                                            <div class="form-group">
+                                                                    {{ Form::label('imagen', 'Selecciona la ímagen del banner') }}
+                                                                    {{ Form::file('imagen',[]) }}
+                                                            </div>           
+                                                            <br>
+                                                                <center><h3>Banner actual</h3></center>
+                                                            <br>
+                                                            <p align="center"><img src="/images/banners/{{$banner->banner_img}} " alt="{{ $banner->banner_img }}" class="img-thumbnail"></p>                                                                   
+                                                            <div class="form-group">
+                                                                <center>{{ Form::submit('Actualizar banner', array('class' => 'btn btn-success')) }}</center>
+                                                            </div>
+											{{ Form::close() }}
+										</div>
+								</div>
 
-													@endforeach
-											</ul>
-										</div>		
-											@endif	
-															<hr/>
-															<div class="form-group">
-																{{ Form::label('usuario_id', 'Usuario del sistema') }}
-																{{ Form::select('usuario_id', $listaUsuarios , Input::old('usuario_id'), array( 'placeholder' => '',  'class' => 'form-control')) }}
-															</div>
-															<hr/>
-															<div class="form-group">
-																	{{ Form::label('seccion', 'Elige la sección y ubicación del banner: ') }}
-																	{{ Form::select('seccion', array('BLOG-IZQUIERDA' => 'BLOG - IZQUIERDA', 'BLOG-DERECHA' => 'BLOG - DERECHA','DIRECTORIO-IZQUIERDA' => 'DIRECTORIO - IZQUIERDA', 'DIRECTORIO-DERECHA' => 'DIRECTORIO - DERECHA','EVENTOS-IZQUIERDA' => 'EVENTOS - IZQUIERDA', 'EVENTOS-DERECHA' => 'EVENTOS - DERECHA','CLASIFICADOS-IZQUIERDA' => 'CLASIFICADOS - IZQUIERDA', 'CLASIFICADOS-DERECHA' => 'CLASIFICADOS - DERECHA','VIDEOBLOG-IZQUIERDA' => 'VIDEOBLOG - IZQUIERDA', 'VIDEOBLOG-DERECHA' => 'VIDEOBLOG - DERECHA'),Input::old('seccion'),array('class' => 'form-control')) }}
-															</div>	
-															<hr>
-															<div class="form-group">
-																	{{ Form::label('imagen', 'Selecciona el banner a agregar') }}
-																	{{ Form::file('imagen',[]) }}
-															</div>					
-															<div class="form-group">
-																<center>{{ Form::submit('Agregar banner', array('class' => 'btn btn-success')) }}</center>
-															</div>
-														{{ Form::close() }}
-													</div>
-											</div>
+
+
+
+
+
 
                         </section><!-- /.Left col -->
  
@@ -244,8 +246,6 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="/administracion_files/js/AdminLTE/demo.js" type="text/javascript"></script>
-
-
 
     </body>
 </html>

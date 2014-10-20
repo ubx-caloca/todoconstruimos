@@ -60,15 +60,20 @@ class PagosPendDatosController extends \BaseController {
 			$clas->save();
 		}	
 		if($cobrot->tipo == 'imagen_proveedor'){
-			//TODO: poner campo 'premium' 1 a 2
+			//poner campo 'premium' 1 a 2
 			$provimg = ProveedorGaleria::find($cobro->datosAdicionales);
 			$provimg->premium=2;
 			$provimg->save();			
 			
 		}
-		//TODO: falta los cobros=== de banners
-		if($cobrot->tipo == 'banner_index-izq' || $cobrot->tipo == 'banner_index-der' || $cobrot->tipo == 'banner_index-arr' ){
-			//TODO:hacer algo
+		
+		$cobrotipoprefix = substr ( $cobrot->tipo , 0, 7 );
+		if($cobrotipoprefix == 'BANNER-'){
+			//poner solicitar_habilitar a 0 y habilitar a 1
+			$banner = Banner::find($cobro->datosAdicionales);
+			$banner->solicitar_habilitar=0;
+			$banner->habilitar=1;
+			$banner->save();				
 			
 		}
 		

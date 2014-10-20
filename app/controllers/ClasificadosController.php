@@ -312,8 +312,9 @@ class ClasificadosController extends \BaseController {
 		foreach($imagenes as $imagen){
 			File::delete('images/clasificados/'.$imagen->nombre_imagen);
 			//$del = $del.$imagen->nombre_imagen. ', ';
-			//$imagen->delete();
+			$imagen->delete();
 		}
+		//TODO: Deshabilitar cobro relacionado si existe
 		$clasificado->delete();
 
 		// redirect

@@ -184,11 +184,11 @@ class ProveedoresController extends BaseController {
 		$proveedores = Proveedor::find($id);
 		$proveedores_detalle = ProveedorDetalle::where('proveedores_idproveedor', '=', $id)->first();
 
-		$nombreDeUsuario = Input::get('nombre_usuario');
 
 		//$proveedores->id=0;
 		$proveedores->proveedor_tipo_idproveedor_tipo=Input::get('proveedor_tipo_idproveedor_tipo');
-		$proveedores->nombre_usuario=Input::get('nombre_usuario');
+		//$proveedores->nombre_usuario=Input::get('nombre_usuario');
+		$nombreDeUsuario = $proveedores->nombre_usuario;
 		$proveedores->nombre=Input::get('nombre');
 		$proveedores->direccion=Input::get('direccion');
 		$proveedores->telefono=Input::get('telefono');

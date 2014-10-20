@@ -149,7 +149,7 @@
                                                 {{ Form::select('usuario_id', $listaUsuarios , Input::old('usuario_id'), array( 'placeholder' => '',  'class' => 'form-control')) }}
                                         </div>
                                         <div class="form-group">
-                                                {{ Form::label('nombre_usuario', 'Nombre de usuario') }}
+                                                {{ Form::label('nombre_usuario', 'Nombre de usuario (ATENCIÓN: Este campo no podrá cambiarse después)') }}
                                                 {{ Form::text('nombre_usuario','', array( 'placeholder' => '',  'class' => 'form-control')) }}
                                         </div>
                                         <div class="form-group">

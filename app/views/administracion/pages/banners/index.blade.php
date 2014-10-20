@@ -157,15 +157,15 @@ hr.style-eight:after {
                         <section class="col-lg-7 connectedSortable">                            
 
 											   	  <div class="container">
-											   	  	<center><h1>B A N N E R S</h1></center><br>
-											   	   
-
+											   	  	<center><h1>B A N N E R S</h1></center><br>											   	   
 
 																	@foreach ($Banners as $banner)
 																		<div class="row text-center">
 																	   	    <div class="col-md-12 service_grid">
 																	   		  <p><img src="/images/banners/{{$banner->banner_img}} " alt="{{ $banner->banner_img }}" class="img-thumbnail"></p>
-                                                                              <p><b>SECCIÓN: {{$banner->seccion}}</b></p>
+                                                                              <p><b>SECCIÓN:</b> {{$banner->seccion}}</p>
+																			  <p><b>USUARIO:</b> {{$banner->usuario->email}}</p>
+																			  <p><b>Habilitado:</b> {{($banner->habilitar==0?($banner->solicitar_habilitar==0?'No':'Por habilitar'):'Si')}}</p>																		  
 																	          <p><br><a class="btn btn-default" href="<?php echo"/administracion/banners/editar/$banner->id"; ?>" ><span>Editar</span></a> | <a class="btn btn-default" href="<?php echo"/administracion/banners/borrar/$banner->id"; ?>" ><span>Borrar</span></a>
 																	   		</div>
 																	   	</div>

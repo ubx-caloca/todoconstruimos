@@ -281,8 +281,21 @@ class ClasificadosVistaController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
-		return 'Soy ClasificadosVistaController.destroy('.$id.')';
+		$authuser = Auth::user();
+		$clasificado = Clasificado::find($id);
+		//return $clasificado;
+		$imagenes = $clasificado->imagenes;
+		$del = '';
+		foreach($imagenes as $imagen){
+			File::delete('images/clasificados/'.$imagen->nombre_imagen);
+			//$del = $del.$imagen->nombre_imagen. ', ';
+			$imagen->delete();
+		}
+		$clasificado->delete();
+
+		// redirect
+		Session::flash('message', 'El clasificado ha sido eliminado exitosamente!');
+		return Redirect::to('administracion/clasificados')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 
 	}
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-	@include('administracion.head')
+	@include('vistausuario.head')
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
 
@@ -18,9 +18,26 @@
               });
               </script>
 
-
+	<style>
+	hr.style-eight {
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+hr.style-eight:after {
+    content: "§";
+    display: inline-block;
+    position: relative; 
+    top: -0.7em;  
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: #f9f9f9;
+}
+	</style>
     </head>
-    <body class="skin-black">
+    <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="/" class="logo">
@@ -45,7 +62,7 @@
 
 
 
-                    @include('administracion.topbar')
+                    @include('vistausuario.topbar')
 
 
 
@@ -62,7 +79,7 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                            @include('administracion.userpanel')
+                            @include('vistausuario.userpanel')
                     </div>
 
 
@@ -79,7 +96,7 @@
 
 
 
-                            @include('administracion.menu')
+                            @include('vistausuario.menu')
 
 
 
@@ -117,7 +134,7 @@
                 <section class="content-header">
                     <h1>
                         Dashboard
-                        <small style="color: black;font-weight: 400;">Administración del sistema</small>
+                        <small style="color: black;font-weight: 400;">Vista del usuario</small>
                     </h1>
                 </section>
 
@@ -139,56 +156,38 @@
                         <!-- Left col -->
                         <section class="col-lg-7 connectedSortable">                            
 
+											   	  <div class="container">
+											   	  	<center><h1>B A N N E R S</h1></center><br>
+											   	   
+
+
+																	@foreach ($Banners as $banner)
+																		<div class="row text-center">
+																	   	    <div class="col-md-12 service_grid">
+																	   		  <p><img src="/images/banners/{{$banner->banner_img}} " alt="{{ $banner->banner_img }}" class="img-thumbnail"></p>
+                                                                              <p><b>Sección:</b> {{$banner->seccion}}</p>
+																			  <p><b>Habilitado:</b> {{($banner->habilitar==0?($banner->solicitar_habilitar==0?'No':'Por habilitar'):'Si')}}</p>
+																			  {{ Form::open(array('url' => '/vistausuario/banners/' . $banner->id, 'class' => '')) }}
+																			  {{ Form::hidden('_method', 'DELETE') }}
+																	          <p><a class="btn btn-default" href="<?php echo"/vistausuario/banners/$banner->id/edit"; ?>" ><span>Editar</span></a> 		
+																				@if ($banner->solicitar_habilitar == 0)
+																					 | <strong><a href="#" class="btn btn-default" onclick="$(this).closest('form').submit()">Borrar</a></strong>
+																				@endif
+																			  {{ Form::close() }}
+																	   		</div>
+																	   	</div>
+																		<br><hr class="style-eight"></hr><br><br>		
+																	@endforeach
+
+																	<center><?php echo $Banners->links(); ?></center>
+
+											   	  </div>
 
 
 
 
-											<div class="container">
 
-													<div class="hero-unit" style="margin-top:40px">
-														{{ Form::open(array('url' => 'administracion/banners/publicar', 'files' => true)) }}
-															<h2>Agregar nuevo banner</h2>
-											@if ($errors->has())
-										<div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
 
-										background-color: #F2DEDF;
-										-webkit-border-radius: 8px;
-										-moz-border-radius: 8px;
-										border-radius: 8px;
-										color: #a71b2a;
-										">
-										<p><strong>Errores:</strong> </p>
-											<ul>		
-													@foreach ($errors->all() as $error)
-														<li>
-														{{ $error }} 
-														</li>
-
-													@endforeach
-											</ul>
-										</div>		
-											@endif	
-															<hr/>
-															<div class="form-group">
-																{{ Form::label('usuario_id', 'Usuario del sistema') }}
-																{{ Form::select('usuario_id', $listaUsuarios , Input::old('usuario_id'), array( 'placeholder' => '',  'class' => 'form-control')) }}
-															</div>
-															<hr/>
-															<div class="form-group">
-																	{{ Form::label('seccion', 'Elige la sección y ubicación del banner: ') }}
-																	{{ Form::select('seccion', array('BLOG-IZQUIERDA' => 'BLOG - IZQUIERDA', 'BLOG-DERECHA' => 'BLOG - DERECHA','DIRECTORIO-IZQUIERDA' => 'DIRECTORIO - IZQUIERDA', 'DIRECTORIO-DERECHA' => 'DIRECTORIO - DERECHA','EVENTOS-IZQUIERDA' => 'EVENTOS - IZQUIERDA', 'EVENTOS-DERECHA' => 'EVENTOS - DERECHA','CLASIFICADOS-IZQUIERDA' => 'CLASIFICADOS - IZQUIERDA', 'CLASIFICADOS-DERECHA' => 'CLASIFICADOS - DERECHA','VIDEOBLOG-IZQUIERDA' => 'VIDEOBLOG - IZQUIERDA', 'VIDEOBLOG-DERECHA' => 'VIDEOBLOG - DERECHA'),Input::old('seccion'),array('class' => 'form-control')) }}
-															</div>	
-															<hr>
-															<div class="form-group">
-																	{{ Form::label('imagen', 'Selecciona el banner a agregar') }}
-																	{{ Form::file('imagen',[]) }}
-															</div>					
-															<div class="form-group">
-																<center>{{ Form::submit('Agregar banner', array('class' => 'btn btn-success')) }}</center>
-															</div>
-														{{ Form::close() }}
-													</div>
-											</div>
 
                         </section><!-- /.Left col -->
  

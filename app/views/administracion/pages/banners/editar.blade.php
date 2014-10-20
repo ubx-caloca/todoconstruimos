@@ -147,22 +147,45 @@
 										<div class="hero-unit" style="margin-top:40px">
 											{{ Form::open(array('url' => 'administracion/banners/guardarEdicion/'.$banner->id,'method'=>'put', 'files' => true)) }}
                                                             <h2>Modificar banner</h2>
+										@if ($errors->has())
+									<div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
+
+									background-color: #F2DEDF;
+									-webkit-border-radius: 8px;
+									-moz-border-radius: 8px;
+									border-radius: 8px;
+									color: #a71b2a;
+									">
+									<p><strong>Errores:</strong> </p>
+										<ul>		
+												@foreach ($errors->all() as $error)
+													<li>
+													{{ $error }} 
+													</li>
+												@endforeach
+										</ul>
+									</div>		
+										@endif	
                                                             <hr/>
                                                             <div class="form-group">
                                                                     {{ Form::label('seccion', 'Elige la sección y ubicación del banner: ') }}
+																	@if($errors->has())
+																	{{ Form::select('seccion', array('BLOG-IZQUIERDA' => 'BLOG - IZQUIERDA', 'BLOG-DERECHA' => 'BLOG - DERECHA','DIRECTORIO-IZQUIERDA' => 'DIRECTORIO - IZQUIERDA', 'DIRECTORIO-DERECHA' => 'DIRECTORIO - DERECHA','EVENTOS-IZQUIERDA' => 'EVENTOS - IZQUIERDA', 'EVETNOS-DERECHA' => 'EVENTOS - DERECHA','CLASIFICADOS-IZQUIERDA' => 'CLASIFICADOS - IZQUIERDA', 'CLASIFICADOS-DERECHA' => 'CLASIFICADOS - DERECHA','VIDEOBLOG-IZQUIERDA' => 'VIDEOBLOG - IZQUIERDA', 'VIDEOBLOG-DERECHA' => 'VIDEOBLOG - DERECHA'),Input::old('seccion'),array('class' => 'form-control')) }}
+																	@else
                                                                     {{ Form::select('seccion', array('BLOG-IZQUIERDA' => 'BLOG - IZQUIERDA', 'BLOG-DERECHA' => 'BLOG - DERECHA','DIRECTORIO-IZQUIERDA' => 'DIRECTORIO - IZQUIERDA', 'DIRECTORIO-DERECHA' => 'DIRECTORIO - DERECHA','EVENTOS-IZQUIERDA' => 'EVENTOS - IZQUIERDA', 'EVETNOS-DERECHA' => 'EVENTOS - DERECHA','CLASIFICADOS-IZQUIERDA' => 'CLASIFICADOS - IZQUIERDA', 'CLASIFICADOS-DERECHA' => 'CLASIFICADOS - DERECHA','VIDEOBLOG-IZQUIERDA' => 'VIDEOBLOG - IZQUIERDA', 'VIDEOBLOG-DERECHA' => 'VIDEOBLOG - DERECHA'),$banner->seccion,array('class' => 'form-control')) }}
+																	@endif
                                                             </div>  
                                                             <hr>
                                                             <div class="form-group">
-                                                                    {{ Form::label('imagen', 'Selecciona el banner a agregar') }}
-                                                                    {{ Form::file('imagen[]',['multiple' => true]) }}
+                                                                    {{ Form::label('imagen', 'Selecciona la imagen del banner') }}
+                                                                    {{ Form::file('imagen',[]) }}
                                                             </div>           
                                                             <br>
                                                                 <center><h3>Banner actual</h3></center>
                                                             <br>
                                                             <p align="center"><img src="/images/banners/{{$banner->banner_img}} " alt="{{ $banner->banner_img }}" class="img-thumbnail"></p>                                                                   
                                                             <div class="form-group">
-                                                                <center>{{ Form::submit('Agregar banner', array('class' => 'btn btn-success')) }}</center>
+                                                                <center>{{ Form::submit('Actualizar banner', array('class' => 'btn btn-success')) }}</center>
                                                             </div>
 											{{ Form::close() }}
 										</div>

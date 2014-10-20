@@ -1,6 +1,6 @@
 <?php
 
-class bannersController extends \BaseController {
+class BannersVistaController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -11,8 +11,8 @@ class bannersController extends \BaseController {
 	{
 		$authuser = Auth::user();
 		//$listaDePost = Proveedor::paginate(15);
-		$Banners = Banner::orderBy('seccion','asc')->paginate(10);
-		return View::make('administracion.pages.banners.index')->with(array('Banners'=>$Banners, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		$Banners = Banner::where('usuario_id', $authuser->id)->orderBy('seccion','asc')->paginate(10);
+		return View::make('vistausuario.pages.banners.index')->with(array('Banners'=>$Banners, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -24,15 +24,7 @@ class bannersController extends \BaseController {
 	public function create()
 	{
 		$authuser = Auth::user();
-		$rolnormal = UsuarioRol::where('rol', '=', 'usuario normal')->firstOrFail();
-		$usuariosnormales = $rolnormal->usuarios;
-		$listaUsuarios= array();
-		foreach($usuariosnormales as $usuarion){
-			$listaUsuarios[$usuarion->id] = $usuarion->id.': '.$usuarion->email;
-		}
-		
-		
-		return View::make('administracion.pages.banners.crear')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id, 'listaUsuarios'=>$listaUsuarios));
+		return View::make('vistausuario.pages.banners.crear')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -43,19 +35,19 @@ class bannersController extends \BaseController {
 	 */
 	public function store()
 	{
+		//
 		$authuser = Auth::user();
 		if(!File::exists('images/banners/')) {
 		    $result = File::makeDirectory('images/banners/', 0777);
 		}
 		$rules = array(
 			'seccion'      => 'required',
-			'usuario_id'   => 'required',
 			'imagen' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
 		);
 		$validator = Validator::make(Input::all(), $rules);		
 		
 		if ($validator->fails()) {
-			return Redirect::to('administracion/banners/create')
+			return Redirect::to('vistausuario/banners/create')
 				->withErrors($validator)->withInput();
 		} else {	
 			$file = Input::file('imagen');
@@ -69,18 +61,22 @@ class bannersController extends \BaseController {
 		    $upload_success     = $file->move($destinationPath, $filename.'.'.$extension);
 				
 			$banner = new Banner;
-			$banner->usuario_id=Input::get('usuario_id');
+			$banner->usuario_id=$authuser->id;
 			$banner->banner_img=$filename.'.'.$extension;
 			$banner->solicitar_habilitar = 1;
 			$banner->habilitar = 0;
 			$banner->seccion=Input::get('seccion');
 			$banner->save();
-
-			
+				
+				//TODO: Crear pago pendiente
+		//Generar row en cobros y cobros_pendientes
+		//'BLOG-IZQUIERDA' => 'BLOG - IZQUIERDA', 'BLOG-DERECHA' => 'BLOG - DERECHA','DIRECTORIO-IZQUIERDA' => 'DIRECTORIO - IZQUIERDA', 'DIRECTORIO-DERECHA' => 'DIRECTORIO - DERECHA','EVENTOS-IZQUIERDA' => 'EVENTOS - IZQUIERDA', 'EVENTOS-DERECHA' => 'EVENTOS - DERECHA','CLASIFICADOS-IZQUIERDA' => 'CLASIFICADOS - IZQUIERDA', 'CLASIFICADOS-DERECHA' => 'CLASIFICADOS - DERECHA','VIDEOBLOG-IZQUIERDA' => 'VIDEOBLOG - IZQUIERDA', 'VIDEOBLOG-DERECHA' => 'VIDEOBLOG - DERECHA'
+		
+		
 			$cobrotipoBanner= CobroTipo::where('tipo', 'BANNER-'.Input::get('seccion'))->first();
 			$cobro = new Cobro;
 			$cobro->tipo_id = $cobrotipoBanner->id;
-			$cobro->usuario_id= Input::get('usuario_id');
+			$cobro->usuario_id= $authuser->id;
 			$cobro->estado= 'pendiente';
 			$cobro->datosAdicionales = $banner->id; 
 			$cobro->save();
@@ -93,8 +89,8 @@ class bannersController extends \BaseController {
 			$cobrop->cobro_concepto = 'TODCONS'.$cobro->id . 'BANN'.$banner->id.$date_now->format('YmdHi').$id; // Concepto = clave_empresa+ clave_cobro+ clave_tipo_cobro + clave_objeto_de_cobro + fecha+4_digitos_random (Por favor mejorar!!)
 			$cobrop->save();						
 				
-			return Redirect::to("administracion/banners")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
-		}
+				return Redirect::to("vistausuario/banners")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		}			
 	}
 
 
@@ -107,6 +103,7 @@ class bannersController extends \BaseController {
 	public function show($id)
 	{
 		//
+		return 'BannersVistaController show('.$id.')';
 	}
 
 
@@ -120,7 +117,7 @@ class bannersController extends \BaseController {
 	{
 		$authuser = Auth::user();
 		$banner = Banner::find($id);
-		return View::make('administracion.pages.banners.editar')->with(array('banner'=>$banner, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
+		return View::make('vistausuario.pages.banners.editar')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id, 'banner'=>$banner));
 	}
 
 
@@ -142,7 +139,7 @@ class bannersController extends \BaseController {
 		$validator = Validator::make(Input::all(), $rules);		
 		
 		if ($validator->fails()) {
-			return Redirect::to('administracion/banners/editar/'.$id)
+			return Redirect::to('vistausuario/banners/'.$id.'/edit')
 				->withErrors($validator)->withInput();
 		} else {	
 			$banner = Banner::find($id);			
@@ -162,9 +159,8 @@ class bannersController extends \BaseController {
 			$banner->banner_img=$filename.'.'.$extension;
 			$banner->save();
 
-				return Redirect::to("administracion/banners")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+				return Redirect::to("vistausuario/banners")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		}			
-
 	}
 
 
@@ -176,9 +172,10 @@ class bannersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+		//
 		$authuser = Auth::user();
 		$banner =Banner::find($id);
-
+		//return $clasificado;
 		$img = $banner->imagen;
 		File::delete('images/banners/'.$img);
 		//TODO: Borrar cobro asociado
@@ -187,8 +184,7 @@ class bannersController extends \BaseController {
 
 		// redirect
 		Session::flash('message', 'El banner ha sido eliminado exitosamente!');
-		return Redirect::to('administracion/banners')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
-		//
+		return Redirect::to('vistausuario/banners')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
 	}
 
 

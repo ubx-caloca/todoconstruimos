@@ -89,7 +89,25 @@
                                 <li><a href="/vistausuario/clasificados"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                                 <li><a href="/vistausuario/clasificados/create"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
                             </ul>
-                        </li>  
+                        </li> 
+                        <!-- 
+                        *****************************************************
+                        *****************************************************
+                        BANNERS 
+                        *****************************************************
+                        *****************************************************
+                        -->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-image"></i>
+                                <span>Banners</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/vistausuario/banners"><i class="fa fa-angle-double-right"></i>Listar</a></li>
+                                <li><a href="/vistausuario/banners/create"><i class="fa fa-angle-double-right"></i>Nuevo</a></li>
+                            </ul>
+                        </li>						
                          <!-- 
                         *****************************************************
                         *****************************************************

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-	@include('administracion.head')
+	@include('vistausuario.head')
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
 
@@ -20,7 +20,7 @@
 
 
     </head>
-    <body class="skin-black">
+    <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="/" class="logo">
@@ -45,7 +45,7 @@
 
 
 
-                    @include('administracion.topbar')
+                    @include('vistausuario.topbar')
 
 
 
@@ -62,7 +62,7 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                            @include('administracion.userpanel')
+                            @include('vistausuario.userpanel')
                     </div>
 
 
@@ -79,7 +79,7 @@
 
 
 
-                            @include('administracion.menu')
+                            @include('vistausuario.menu')
 
 
 
@@ -117,7 +117,7 @@
                 <section class="content-header">
                     <h1>
                         Dashboard
-                        <small style="color: black;font-weight: 400;">Administración del sistema</small>
+                        <small style="color: black;font-weight: 400;">Vista del usuario</small>
                     </h1>
                 </section>
 
@@ -146,8 +146,8 @@
 											<div class="container">
 
 													<div class="hero-unit" style="margin-top:40px">
-														{{ Form::open(array('url' => 'administracion/banners/publicar', 'files' => true)) }}
-															<h2>Agregar nuevo banner</h2>
+														{{ Form::open(array('url' => 'vistausuario/banners', 'files' => true)) }}
+															<h2>Crear nuevo banner</h2>
 											@if ($errors->has())
 										<div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
 
@@ -167,12 +167,7 @@
 													@endforeach
 											</ul>
 										</div>		
-											@endif	
-															<hr/>
-															<div class="form-group">
-																{{ Form::label('usuario_id', 'Usuario del sistema') }}
-																{{ Form::select('usuario_id', $listaUsuarios , Input::old('usuario_id'), array( 'placeholder' => '',  'class' => 'form-control')) }}
-															</div>
+											@endif															
 															<hr/>
 															<div class="form-group">
 																	{{ Form::label('seccion', 'Elige la sección y ubicación del banner: ') }}
@@ -184,7 +179,7 @@
 																	{{ Form::file('imagen',[]) }}
 															</div>					
 															<div class="form-group">
-																<center>{{ Form::submit('Agregar banner', array('class' => 'btn btn-success')) }}</center>
+																<center>{{ Form::submit('Crear banner', array('class' => 'btn btn-success')) }}</center>
 															</div>
 														{{ Form::close() }}
 													</div>
