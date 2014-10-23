@@ -176,7 +176,26 @@
                          <!-- 
                         *****************************************************
                         *****************************************************
-                        ANUNCIOS 
+                        COBROS 
+                        *****************************************************
+                        *****************************************************
+                        -->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-repeat"></i>
+                                <span>Cobros</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+								<li><a href="/administracion/cobrostipo"><i class="fa fa-angle-double-right"></i>Tipo de cobros</a></li>
+                                <li><a href="/administracion/cobros"><i class="fa fa-angle-double-right"></i>Listar</a></li>
+								<li><a href="/administracion/cobros/create"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
+                            </ul>
+                        </li> 
+                         <!-- 
+                        *****************************************************
+                        *****************************************************
+                        COBROS PENDIENTES
                         *****************************************************
                         *****************************************************
                         -->

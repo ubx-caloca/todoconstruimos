@@ -129,16 +129,13 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		Route::get('adminusuarioedit', 'UsuariosAdminController@editarAdmin');
 		Route::resource('usuarios', 'UsuariosNormalesController');
 		
-		
+		//COBROS
+		Route::resource('cobros', 'CobrosController');
+		Route::resource('cobrostipo', 'CobrosTipoController');
 		
 		//PAGOS PENDIENTES
-//<<<<<<< Updated upstream
 		Route::resource('pagospendientes', 'PagosPendController');
 		Route::post('pagospendaceptarcobro', 'PagosPendDatosController@aceptarcobro');
-//=======
-		Route::resource('pagospendientes', 'PagosPendController'); //Vista de pagos pendientes
-		Route::get('pagospendaceptarcobro/{id}', 'PagosPendDatosController@aceptarcobro'); // Click para confirmar pago
-//>>>>>>> Stashed changes
 
 });
 
