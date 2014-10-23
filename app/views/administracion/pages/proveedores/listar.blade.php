@@ -154,7 +154,7 @@
                                                             <p><strong>Dirección:</strong> {{ $proveedor->direccion }}</p>
                                                             <p><strong>Teléfono:</strong> {{ $proveedor->telefono }}</p>
 															<p><strong>Habilitado:</strong> {{ (($proveedor->habilitar==0)?'No':'Si') }}</p>
-                                                            <p><strong><a href=" <?php echo"/administracion/proveedores/galeria/$proveedor->nombre_usuario/$proveedor->id"; ?> ">Agregar fotos a galería</a></p>
+                                                            <p><strong><a href=" <?php echo"/administracion/proveedores/galeria/$proveedor->nombre_usuario/$proveedor->id"; ?> ">Agregar fotos a galería</a></strong></p>
                                                         </div>
 														<hr>
                                                     </div>

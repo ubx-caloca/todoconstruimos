@@ -125,8 +125,10 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		Route::get('banners/borrar/{id}','bannersController@destroy');		
 		
 		//USUARIOS
-		Route::resource('usuarios', 'UsuariosAdminController');
+		Route::resource('usuarioadmin', 'UsuariosAdminController');
 		Route::get('adminusuarioedit', 'UsuariosAdminController@editarAdmin');
+		Route::resource('usuarios', 'UsuariosNormalesController');
+		
 		
 		
 		//PAGOS PENDIENTES

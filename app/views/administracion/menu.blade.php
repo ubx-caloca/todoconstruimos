@@ -9,7 +9,7 @@
 						<!-- 
                         *****************************************************
                         *****************************************************
-                        USUARIO 
+                        USUARIO  ADMIN
                         *****************************************************
                         *****************************************************
                         -->
@@ -21,6 +21,24 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="/administracion/adminusuarioedit"><i class="fa fa-angle-double-right"></i> Editar información</a></li>
+                            </ul>
+                        </li>
+						<!-- 
+                        *****************************************************
+                        *****************************************************
+                        USUARIOS
+                        *****************************************************
+                        *****************************************************
+                        -->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-users"></i>
+                                <span>Usuarios</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/administracion/usuarios"><i class="fa fa-angle-double-right"></i>Listar</a></li>
+								<li><a href="/administracion/usuarios/create"><i class="fa fa-angle-double-right"></i>Crear</a></li>
                             </ul>
                         </li>
                         <!-- 
@@ -79,8 +97,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
+								<li><a href="/administracion/blog"><i class="fa fa-angle-double-right"></i> Listar Posts</a></li>
                                 <li><a href="/administracion/blog/create"><i class="fa fa-angle-double-right"></i> Nuevo Post</a></li>
-								<li><a href="/administracion/blog"><i class="fa fa-angle-double-right"></i> Listar Post</a></li>
                             </ul>
                         </li>
                         <!-- 
@@ -97,8 +115,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="/administracion/banners/create"><i class="fa fa-angle-double-right"></i> Nuevo Banner</a></li>
-                                <li><a href="/administracion/banners"><i class="fa fa-angle-double-right"></i> Listar Banners</a></li>
+		                        <li><a href="/administracion/banners"><i class="fa fa-angle-double-right"></i>Listar</a></li>
+                                <li><a href="/administracion/banners/create"><i class="fa fa-angle-double-right"></i>Nuevo</a></li>
                             </ul>
                         </li>                        
                         <!-- 
@@ -115,8 +133,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
+							    <li><a href="/administracion/videoblog"><i class="fa fa-angle-double-right"></i> Listar Posts</a></li>	
                                 <li><a href="/administracion/videoblog/create"><i class="fa fa-angle-double-right"></i> Nuevo Post</a></li>
-                                <li><a href="/administracion/videoblog"><i class="fa fa-angle-double-right"></i> Listar Posts</a></li>	
 							</ul>
                         </li>
                         <!-- 
@@ -133,8 +151,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
+							    <li><a href="/administracion/eventos"><i class="fa fa-angle-double-right"></i> Listar</a></li>
 								<li><a href="/administracion/eventos/create"><i class="fa fa-angle-double-right"></i> Nuevo </a></li>
-                                <li><a href="/administracion/eventos"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                             </ul>
                         </li>
                         <!-- 
@@ -151,8 +169,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
+							    <li><a href="/administracion/anuncios"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                                 <li><a href="/administracion/anuncios/create"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
-                                <li><a href="/administracion/anuncios"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                             </ul>
                         </li>
                          <!-- 

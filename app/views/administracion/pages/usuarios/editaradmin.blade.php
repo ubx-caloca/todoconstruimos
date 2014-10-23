@@ -173,7 +173,7 @@ transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 									</div>		
 										@endif
 									  <div class="panel-body">
-									 {{ Form::model($usuario, array('route' => array('administracion.usuarios.update', $usuario->id), 'method' => 'PUT',  'files'=> true)) }}
+									 {{ Form::model($usuario, array('route' => array('administracion.usuarioadmin.update', $usuario->id), 'method' => 'PUT',  'files'=> true)) }}
 											<hr>
 											<center><h4>Datos de la cuenta del usuario</h4></center>
 											<hr>

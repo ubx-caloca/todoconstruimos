@@ -23,9 +23,9 @@ class CreateCobrosHistorialTable extends Migration {
 		$table->timestamps();
 		});
 		
-		Schema::table('cobros_historial', function(Blueprint $table) {
-			$table->foreign('cobro_id')->references('id')->on('cobros')->onDelete('cascade');
-		});
+		//Schema::table('cobros_historial', function(Blueprint $table) {
+		//	$table->foreign('cobro_id')->references('id')->on('cobros')->onDelete('cascade');
+		//});
 	}
 
 	/**

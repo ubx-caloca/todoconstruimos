@@ -39,6 +39,15 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasMany('VideoBlog', 'usuario'); // this matches the Eloquent model
 	}	
 	
+	//Each Usuario can have many Clasificados
+	public function clasificados() {
+		return $this->hasMany('Clasificado', 'usuario_id'); // this matches the Eloquent model
+	}
+	
+	//Each Usuario can have many Banners
+	public function banners() {
+		return $this->hasMany('Banner', 'usuario_id'); // this matches the Eloquent model
+	}	
 	/**
  * Get the unique identifier for the user.
  *

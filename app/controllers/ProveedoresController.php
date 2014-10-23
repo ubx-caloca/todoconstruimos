@@ -56,6 +56,8 @@ class ProveedoresController extends BaseController {
 		$proveedores->solicitar_premium= 0;
 		$proveedores->usuario_id = Input::get('usuario_id');
 		$proveedores->save();
+		
+		$idproveedor = $proveedores->id;
 
 		$proveedores_detalle->id=0;
 		$proveedores_detalle->proveedores_idproveedor=$proveedores->id;
@@ -113,6 +115,7 @@ class ProveedoresController extends BaseController {
 
 
 		$imagen_vision = Input::file('imagen_vision');
+		$file = $imagen_vision;
 		$rules = array(
 		    'file' => 'required|mimes:png,gif,jpeg|max:20000'
 		);
@@ -310,6 +313,7 @@ class ProveedoresController extends BaseController {
 	public function destroy($id)
 	{
 		//
+		return 'ProveedoresController destroy('.$id.')';
 	}
 
 

@@ -96,7 +96,9 @@ class SignupController extends \BaseController {
 			$usuario->imagen = $filename.'.'.$extension;
 			$usuario->save();
 			
-			$usuario->usuario_roles()->attach(2);
+			$rolnormal = UsuarioRol::where('rol','usuario normal')->first();
+			
+			$usuario->usuario_roles()->attach($rolnormal->id);
 			
 	
 			$resString = 'Usuario creado exitosamente!';

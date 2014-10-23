@@ -159,7 +159,7 @@ class UsuariosVistaController extends \BaseController {
 			Auth::logout();
 			Auth::login($usuario, true);
 			
-			return Redirect::to('administracion/');	
+			return Redirect::to('vistausuario/');	
 		}		
 	}
 
