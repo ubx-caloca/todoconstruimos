@@ -147,6 +147,14 @@
 															<center><strong>Id</strong></center>
 											        		<center style="padding-bottom: 15px;">{{$proveedor->id}}</center>
 															<center><strong><a href="<?php echo"/administracion/proveedores/editar/$proveedor->id"; ?> ">Editar</a></strong></center>
+															<div>
+															{{ Form::open(array('url' => '/administracion/proveedores/' . $proveedor->id, 'class' => '')) }}
+															{{ Form::hidden('_method', 'DELETE') }}
+															<center>
+															<strong><a href="#" onclick="$(this).closest('form').submit()">Eliminar</a></strong>
+															{{ Form::close() }}
+															</center>
+															</div>
                                                         </div>
                                                         <div class="col-md-11">
                                                             <?php echo "$proveedor->nombre"; ?><br>

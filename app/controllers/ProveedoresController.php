@@ -298,7 +298,7 @@ class ProveedoresController extends BaseController {
 		//$proveedores_pago->fecha = DB::raw('NOW()');
 		//$proveedores_pago->save();
 
-		return Redirect::to("administracion")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		return Redirect::to("administracion/proveedores/listar")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 
 		//
 	}
@@ -314,6 +314,12 @@ class ProveedoresController extends BaseController {
 	{
 		//
 		return 'ProveedoresController destroy('.$id.')';
+		//borrar imagenes del proveedor
+		$prov = Proveedor::find($id);
+		$success = File::deleteDirectory('images/proveedores/'.$prov->nombre_usuario); //Borrar todas las imagenes adentro y el folder
+		$prov->delete();
+		return Redirect::to("administracion/proveedores/listar")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		
 	}
 
 

@@ -57,7 +57,9 @@ class CobrosTipoController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return 'CobrosTipoController.edit('.$id.')';
+		$authuser = Auth::user();
+		$cobrot = CobroTipo::find($id);
+		return View::make('administracion.pages.cobrotipos.editar')->with(array('cobrot'=>$cobrot, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -69,7 +71,24 @@ class CobrosTipoController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		return 'CobrosTipoController.update('.$id.')';
+		$authuser = Auth::user();
+		$cobrot = CobroTipo::find($id);
+		$rules = array(
+			'precio'       => 'required|numeric',
+			'diasVigencia'      => 'required|integer',
+		);
+		$validator = Validator::make(Input::all(), $rules);		
+		
+		if ($validator->fails()) {
+			return Redirect::to('administracion/cobrostipo/'.$id.'/edit')
+				->withErrors($validator)->withInput();
+		} else {
+			$cobrot->precio = Input::get('precio');
+			$cobrot->diasVigencia = Input::get('diasVigencia');
+			$cobrot->save();
+			
+			return Redirect::to('administracion/cobrostipo');	
+		}
 	}
 
 

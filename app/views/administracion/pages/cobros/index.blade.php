@@ -282,7 +282,7 @@ hr.style-eight:after {
 											        		<center style="padding-bottom: 15px;">{{$cobro->id}}</center>
 															<div>
 															<center>
-															<strong><a href=" <?php echo"/administracion/cobros/$cobro->id/edit"; ?> ">Editar</a>
+															<strong><a href=" <?php echo"/administracion/cobros/$cobro->id/edit"; ?> ">Editar</a></strong>
 															</center>
 															</div>
 															<div>
@@ -293,7 +293,7 @@ hr.style-eight:after {
 															{{ Form::close() }}
 															</center>
 															</div>
-															</center>			
+																		
 											        	</div>
 																							<?php
 											$tj_date = null;
@@ -307,12 +307,14 @@ hr.style-eight:after {
 											$tj_date = $utc_date;
 											$tj_date->setTimeZone(new DateTimeZone('America/Tijuana'));
 											}
+											
+											$myDateTime = DateTime::createFromFormat('Y-m-d', $cobro->fechaExpiracion);
 									?>
 											    		<div class="col-md-11">
 											        		<p><strong>Tipo:</strong> {{$cobro->tipo->tipo }}</p>
 															<p><strong>Objeto de pago:</strong> Id: {{ $cobro->datosAdicionales }}</p>
 															<p><strong>Usuario asociado:</strong> {{ $cobro->usuario->email. ' (Id:'.$cobro->usuario->id.')'}}</p>
-															<p><strong>Fecha de expiración de servicio:</strong> {{ (is_null ($tj_date))? '(Sin definir)': date_format($tj_date, 'd M Y H:i a')  }}</p>
+															<p><strong>Fecha de expiración de servicio:</strong> {{ (is_null ($tj_date))? '(Sin definir)': $myDateTime->format('d-M-Y')  }}</p>
 															<p><strong>Estado de cobro:</strong> {{ $cobro->estado }}</p>
 														</div>
 											        </div>

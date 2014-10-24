@@ -4,136 +4,24 @@
 
             @include('administracion.head')
 <style>
-.formbutton{
-margin-left: -12px;
-white-space: normal;
-padding-top: 4px;
-padding-right: 8px;
-padding-bottom: 4px;
-padding-left: 8px;
-font-weight: 600;
-background-color: darkorange;
-border-color: chocolate;
-border-width: 2px;
-color: chocolate;
-}
-.btn.btn-success {
-background-color: gold;
-border-color: chocolate;
-}
+.formControlPassword{
 
-.btn.btn-success:hover{
-    background-color: orange;
+display: block;
+width: 100%;
+height: 34px;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+color: #555;
+background-color: #fff;
+background-image: none;
+border: 1px solid #ccc;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-
-.solpremimbutton {
--moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
--webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
-box-shadow: inset 0px 1px 0px 0px #fce2c1;
-background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
-background: -moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
-background-color: #ffc477;
--webkit-border-top-left-radius: 20px;
--moz-border-radius-topleft: 20px;
-border-top-left-radius: 10px;
--webkit-border-top-right-radius: 20px;
--moz-border-radius-topright: 20px;
-border-top-right-radius: 10px;
--webkit-border-bottom-right-radius: 20px;
--moz-border-radius-bottomright: 20px;
-border-bottom-right-radius: 10px;
--webkit-border-bottom-left-radius: 20px;
--moz-border-radius-bottomleft: 20px;
-border-bottom-left-radius: 10px;
-text-indent: 0;
-border: 1px solid #eeb44f;
-display: inline-block;
-color: #ffffff;
-font-weight: bold;
-font-style: normal;
-/* height: 65px; */
-text-decoration: none;
-text-align: center;
-text-shadow: 1px 1px 0px #cc9f52;
-margin-left: -20px;
-margin-right: -10px;
-}
-
-.solpremimbutton:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
-	background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
-	background-color:#fb9e25;
-}.solpremimbutton:active {
-	position:relative;
-	top:1px;
-}
-
-.solpremimenviadabutton {
--moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
--webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-box-shadow: inset 0px 1px 0px 0px #ffffff;
-background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9) );
-background: -moz-linear-gradient( center top, #f9f9f9 5%, #e9e9e9 100% );
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9');
-background-color: #f9f9f9;
--webkit-border-top-left-radius: 20px;
--moz-border-radius-topleft: 20px;
-border-top-left-radius: 10px;
--webkit-border-top-right-radius: 20px;
--moz-border-radius-topright: 20px;
-border-top-right-radius: 10px;
--webkit-border-bottom-right-radius: 20px;
--moz-border-radius-bottomright: 20px;
-border-bottom-right-radius: 10px;
--webkit-border-bottom-left-radius: 20px;
--moz-border-radius-bottomleft: 20px;
-border-bottom-left-radius: 10px;
-text-indent: 0;
-border: 1px solid #dcdcdc;
-display: inline-block;
-color: #666666;
-font-weight: bold;
-font-style: normal;
-height: 65px;
-text-decoration: none;
-text-align: center;
-text-shadow: 1px 1px 0px #ffffff;
-margin-left: -20px;
-margin-right: -10px;
-}
-.solpremimenviadabutton:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
-	background:-moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
-	background-color:#e9e9e9;
-}.solpremimenviadabutton:active {
-	position:relative;
-	top:1px;
-}
-.eliminarform{
-margin-left: -8px;
-margin-top: 20px;
-}
-
-hr.style-eight {
-    padding: 0;
-    border: none;
-    border-top: medium double #333;
-    color: #333;
-    text-align: center;
-}
-hr.style-eight:after {
-    content: "§";
-    display: inline-block;
-    position: relative; 
-    top: -0.7em;  
-    font-size: 1.5em;
-    padding: 0 0.25em;
-    background: #f9f9f9;
-}
-
 </style>
     </head>
     <body class="skin-black">
@@ -259,45 +147,57 @@ hr.style-eight:after {
 
 
 
-									<?php
-										$numeroClasificado = 1;
-										setlocale(LC_ALL,"es_ES");
-										$dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
-										$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-									?>
-
 									<div class="container">
 									<div class="panel panel-default">
 
 									  <div class="panel-heading">
-									    <h3 class="panel-title">LISTA DE TIPOS DE COBRO EN SISTEMA (SERVICIOS DE PAGA)</h3>
+									    <h3 class="panel-title">EDITAR TIPO DE COBRO (SERVICIO)</h3>
 									  </div>
+										@if ($errors->has())
+									<div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
 
+									background-color: #F2DEDF;
+									-webkit-border-radius: 8px;
+									-moz-border-radius: 8px;
+									border-radius: 8px;
+									color: #a71b2a;
+									">
+									<p><strong>Errores:</strong> </p>
+										<ul>		
+												@foreach ($errors->all() as $error)
+													<li>
+													{{ $error }} 
+													</li>
+												@endforeach
+										</ul>
+									</div>		
+										@endif
 									  <div class="panel-body">
-											<div class="container" style="width:auto">
-											    <?php foreach ($listaCobrotipos as $cobrot): ?>
-											    	<div class="row">
-											    		<div class="col-md-1">
-															<center><strong>Id</strong></center>
-											        		<center style="padding-bottom: 15px;">{{$cobrot->id}}</center>
-															<div>
-															<center>
-															<strong><a href=" <?php echo"/administracion/cobrostipo/$cobrot->id/edit"; ?> ">Editar</a></strong>
-															</center>
-															</div>
-											        	</div>
-											    		<div class="col-md-11">
-											        		<p><strong>Clave de tipo:</strong> {{$cobrot->tipo }}</p>
-															<p><strong>Descripción:</strong> {{ $cobrot->descripcion }}</p>
-															<p><strong>Precio de servicio:</strong> {{ $cobrot->precio. ' pesos'}}</p>
-															<p><strong>Duración de servicio:</strong> {{ $cobrot->diasVigencia. ' días' }}</p>
-														</div>
-											        </div>
-													<br><hr class="style-eight"><br>
-											    <?php endforeach; ?>
+									 {{ Form::model($cobrot, array('route' => array('administracion.cobrostipo.update', $cobrot->id), 'method' => 'PUT')) }}
+											<hr>
+											<center><h4><b>Tipo de cobro: </b> {{$cobrot->tipo}}</h4></center>
+											<hr>
+											<div class="form-group">
+													{{ Form::label('precio', 'Precio por servicio (en pesos)') }}
+													@if ($errors->has())
+														{{ Form::text('precio',  Input::old('precio'), array( 'placeholder' => '',  'class' => 'form-control')) }}
+													@else
+														{{ Form::text('precio', $cobrot->precio, array( 'placeholder' => '',  'class' => 'form-control')) }}
+													@endif
+											</div>
+											<div class="form-group">
+													{{ Form::label('diasVigencia', 'Duración de servicio') }}
+													@if ($errors->has())
+														{{ Form::text('diasVigencia', Input::old('diasVigencia'), array( 'placeholder' => '',  'class' => 'form-control')) }}
+													@else
+														{{ Form::text('diasVigencia', $cobrot->diasVigencia, array( 'placeholder' => '',  'class' => 'form-control')) }}
+													@endif
+											<hr>
+											<div class="form-group">
+													<center>{{ Form::submit('Actualizar tipo de cobro', array('class' => 'btn btn-success')) }}</center>
 											</div>
 											
-											<center><?php echo $listaCobrotipos->links(); ?></center>
+									  	{{ Form::close() }}
 									  </div>
 									</div>
 									</div>	

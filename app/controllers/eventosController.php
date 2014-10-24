@@ -171,6 +171,11 @@ class eventosController extends \BaseController {
 		$authuser = Auth::user();
 		$evento = Evento::find($id);
 		if($evento){
+			$evntimgs = $evento->imagenes;
+			foreach($evntimgs as $evntimg){
+				File::delete('images/eventos/'.$evento->imagen);
+			}
+			File::delete('images/eventos/'.$evento->imagen);
 			$evento->delete();
 		}
 		return Redirect::to('administracion/eventos')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));

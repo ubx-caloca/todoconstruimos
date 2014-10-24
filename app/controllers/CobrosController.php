@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\MessageBag;
 class CobrosController extends \BaseController {
 
 	/**
@@ -59,8 +59,9 @@ class CobrosController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
-		return 'CobrosController.edit('.$id.')';
+		$authuser = Auth::user();
+		$cobro = Cobro::find($id);
+		return View::make('administracion.pages.cobros.editar')->with(array('cobro'=>$cobro, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
 
@@ -72,8 +73,52 @@ class CobrosController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
-		return 'CobrosController.update('.$id.')';
+		$authuser = Auth::user();
+		$cobro = Cobro::find($id);
+		$rules = array(
+			'estado'      => 'required',
+		);
+		$validator = Validator::make(Input::all(), $rules);		
+		
+		if ($validator->fails()) {
+			return Redirect::to('administracion/cobros/'.$id.'/edit')
+				->withErrors($validator)->withInput();
+		} else {
+			$fechaExpiracion  = Input::get('fechaExpiracion');
+			//Si la fechaExpiracion es cadena vacia o '(Por definir)' poner el campo de db en nulo
+			if($fechaExpiracion == '' || $fechaExpiracion == '(Sin definir)'){
+				$cobro->fechaExpiracion = null;
+			}
+			else{
+				//Verificar que sea un date valido
+				$rules = array(
+						'fechaExpiracion' => 'date_format:d-M-Y'
+				);
+				$validator = \Validator::make(array('fechaExpiracion'=> $fechaExpiracion), $rules);
+				if($validator->passes()){
+					//Transform from current datetime zone to utc
+					$utc_date ='';
+					$fecPubString =$fechaExpiracion;
+					$tj_date = DateTime::createFromFormat('d-M-Y',$fecPubString, new DateTimeZone('America/Tijuana'));
+					$utc_date = $tj_date;
+					$utc_date->setTimeZone(new DateTimeZone('UTC'));
+					
+					$myDateTime = DateTime::createFromFormat('d-M-Y', $cobro->fechaExpiracion);
+					return 'myDateTime:'.$myDateTime. ' , fechaExp:'.$cobro->fechaExpiracion;
+					$cobro->fechaExpiracion = $myDateTime;						
+						
+				} else {
+					$errors = new MessageBag(['fechaExpiracion' => ['Wrong date format']]); 
+					return Redirect::to('administracion/cobros/'.$id.'/edit')->withErrors($validator->messages())->withInput();	
+				}
+				
+			}
+		
+			$cobro->estado = Input::get('estado');
+			$cobro->save();
+			
+			return Redirect::to('administracion/cobros');	
+		}
 	}
 
 

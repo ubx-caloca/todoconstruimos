@@ -147,21 +147,28 @@
 
 													<div class="hero-unit" style="margin-top:40px">
 														<?php echo Form::open(array('url' => 'administracion/eventos/publicar', 'files' => true)); ?>
+
 															<h2>Nuevo evento</h2>
 															<hr/>
 															<div class="form-group">
 																	<?php echo Form::label('titulo', 'Título'); ?>
+
 																	<?php echo Form::text('titulo','', array( 'placeholder' => '',  'class' => 'form-control')); ?>
+
 															</div>	
 															<hr>
 															<div class="form-group">
 																	<?php echo Form::label('fecha_evento', 'Fecha del evento'); ?>
+
 																	<?php echo Form::text('fecha_evento','', array( 'placeholder' => '',  'class' => 'form-control')); ?>
+
 															</div>	
 															<hr>
 															<div class="form-group">
 																	<?php echo Form::label('imagen', 'Selecciona una imagen'); ?>
+
 																	<?php echo Form::file('imagen[]',['multiple' => true]); ?>
+
 															</div>					
 															<hr>
 															<textarea name="contenido" class="textarea" placeholder="Escribe el contenido" style="width: 810px; height: 200px"></textarea>
@@ -170,6 +177,7 @@
 																<center><?php echo Form::submit('Publicar evento', array('class' => 'btn btn-success')); ?></center>
 															</div>
 														<?php echo Form::close(); ?>
+
 													</div>
 											</div>
 

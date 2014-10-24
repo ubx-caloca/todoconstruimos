@@ -169,6 +169,7 @@ class blogController extends \BaseController {
 		$authuser = Auth::user();
 		$post = Blog::find($id);
 		if($post){
+			File::delete('images/blog/'.$post->imagen);
 			$post->delete();
 		}
 		return Redirect::to('administracion/blog')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
