@@ -13,6 +13,7 @@
 <!--<link href="/index/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <script src="/index/js/bootstrap.min.js"></script>-->
 <link href="/index/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="/index/css/clasificados.css" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/index/js/jquery.min.js"></script>
 <script src="/index/js/bootstrap.min.js"></script>
@@ -23,8 +24,13 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 </script>
 
+<!-- content to be placed inside <body>…</body> -->
+<link href='http://fonts.googleapis.com/css?family=Cutive' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
 <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="/index/js/owl.carousel.2.0.0-beta.2.4/owl.carousel.js"></script>
 <link rel="stylesheet" type="text/css" href="/index/js/owl.carousel.2.0.0-beta.2.4/assets/owl.carousel.css">
 <script src="/index/js/easing.js"></script>
@@ -193,6 +199,12 @@ padding-top: 3px;
 padding-bottom: 3px; 
 font-weight: 700;
 }
+
+
+.class1 A:link {text-decoration: none;color: #191919;}
+.class1 A:visited {text-decoration: none;color: #191919;}
+.class1 A:active {text-decoration: none;color: #191919;}
+.class1 A:hover {text-decoration: underline;color: #191919;}
 </style>
 </head>
 
@@ -288,9 +300,9 @@ font-weight: 700;
     
     
      <!-- MENU -->
-	<nav class="subMenu navbar-custom navbar-scroll-top smint" role="navigation" style="position: absolute; top: 380px;">
+	<div class="subMenu navbar-custom navbar-scroll-top smint" role="navigation" style="position: absolute; top: 380px;">
 		@include('index.include_menu')
-   	</nav>
+   	</div>
       <!-- MENU -->
       
    
@@ -313,7 +325,7 @@ font-weight: 700;
 					   		  <p><img src="images/blog/{{$post->imagen}} " alt="{{ $post->titulo }}" class="img-thumbnail"></p>
 					   		  <h3 class="m_1"><a href="#">{{$post->titulo}}</a></h3>
 					   		  <p class="m_2" style="text-align:justify;"><?php  echo Str::limit(strip_tags($post->contenido), 400); ?></p>
-					          <p><br><a class="btn btn-default" href="/blog/{{$post->id}}" target="_self"><span>Seguir leyendo...</span></a></p>
+					   		  <span class="class1"><p align="right"><br><a href="/blog/{{$post->id}}" target="_self"><span><i class="fa fa-plus-circle"></i> Leer más...</span></a></p></span>
 					   		</div>
 
 								
@@ -353,24 +365,16 @@ font-weight: 700;
    	   <div class="row text-center">
    	    <div class="col-md-12 service_grid" style="padding:20px;">
    		  		{{-- */$i=0;/* --}}
+					<nav>
+						<ul>   		  		
 				@foreach ($categorias as $categoria)
-					@if ($i==0)
-						<div class="row">
-					@endif
 					
-					<div class="col-md-3" align="left"  style="padding:20px; color:#FFF;"><a href="directorio/{{ $categoria->tipo }}"><i class="fa {{ $categoria->icono }}"></i> {{ $categoria->tipo }}</a></div>
-			
+					<li><a href="directorio/{{ $categoria->tipo }}"><i class="fa {{ $categoria->icono }}" style="color:#FFB500;"></i> {{ $categoria->tipo }}</a></li>
 					
-					{{-- */$i++;/* --}}
-
-					@if ($i==4)
-						</div>
-						{{-- */$i=0;/* --}}
-					@endif						
 				@endforeach
-				<br>
-				<br>
-				<br>
+						</ul>
+					</nav>
+
    		</div>
    	  </div>
    	  </div>    
@@ -455,6 +459,7 @@ font-weight: 700;
 									@endforeach
 		                            </div>        
 		            </div> 
+
 	
    		</div>
    	  </div>
