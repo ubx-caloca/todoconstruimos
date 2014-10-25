@@ -19,7 +19,7 @@ class ProvSolPremiumVistaController extends \BaseController {
 		$cobro->tipo_id = $cobrotipoSerProveedor->id;
 		$cobro->usuario_id= $authuser->id;
 		$cobro->estado= 'pendiente';
-		$cobro->datosAdicionales = $authuser->id; //Al entrar a este metodo estoy seguro que el usuario tiene un registro de proveedor asociado
+		$cobro->datosAdicionales = $proveedor->id;
 		$cobro->save();
 		
 		$id = Str::random(4);
@@ -27,7 +27,7 @@ class ProvSolPremiumVistaController extends \BaseController {
 		$cobrop = new CobroPendiente;
 		$cobrop->cobro_id = $cobro->id;
 		$cobrop->fecha = $date_now;
-		$cobrop->cobro_concepto = 'TODCONS'.$cobro->id . 'PROV'.$authuser->id.$date_now->format('YmdHi').$id; // Concepto = clave_empresa+ clave_cobro+ clave_tipo_cobro + clave_objeto_de_cobro + fecha+4_digitos_random (Por favor mejorar!!)
+		$cobrop->cobro_concepto = 'TODCONS'.$cobro->id . 'PROV'.$proveedor->id.$date_now->format('YmdHi').$id; // Concepto = clave_empresa+ clave_cobro+ clave_tipo_cobro + clave_objeto_de_cobro + fecha+4_digitos_random (Por favor mejorar!!)
 		$cobrop->save();
 		
 		

@@ -457,14 +457,14 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 		$banner1= Banner::create(array(
 			'usuario_id'   => $usuario2->id,
 			'banner_img'  => 'img-banner1-seed.jpg',
-			'seccion'  => 'index-izquierda'
+			'seccion'  => 'BLOG-IZQUIERDA'
 		));		
 		$banner2= Banner::create(array(
 			'usuario_id'   => $usuario2->id,
 			'banner_img'  => 'img-banner2-seed.jpg',
-			'seccion'  => 'index-derecha'
+			'seccion'  => 'BLOG-DERECHA'
 		));	
-		$this->command->info('Se creo 1 banner');	
+		$this->command->info('Se creo 2 banners');	
 
 		$cobrotipo1= CobroTipo::create(array(
 			'tipo'  => 'clasificado_premium',
@@ -572,7 +572,7 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 			'usuario_id' => $usuario2->id,
 			'fechaExpiracion'  => (new DateTime())->add(new DateInterval('P30D')),
 			'estado' => 'pagado',
-			'datosAdicionales' => 'imagen=img_banner_cobro4.jpg'
+			'datosAdicionales' => $banner1->id
 		));		
 	
 		$cobro5= Cobro::create(array(
@@ -588,31 +588,46 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 			'cobro_id'  => $cobro1->id,
 			'fechaPago'  => new DateTime(),
 			'metodoPago' => 'Pago en Oxxo',
-			'referenciaPago'  => 'OXXO64UUE63883UN97882J8' 
+			'referenciaPago'  => 'OXXO64UUE63883UN97882J8',
+			'cobro_tipo'     => $cobrotipo1->tipo,
+			'usuario_email'  => $usuario2->email,
+			'cobro_datosAdicionales'  => $clasificado1->id
 		));		
 		$cobrohitorial2= CobroHistorial::create(array(
 			'cobro_id'  => $cobro2->id,
 			'fechaPago'  => (new DateTime())->sub(new DateInterval('P30D')),
 			'metodoPago' => 'Cheque',
-			'referenciaPago'  => '75H59F9FHF6F7HDD9D9D9D' 
+			'referenciaPago'  => '75H59F9FHF6F7HDD9D9D9D',
+			'cobro_tipo'     => $cobrotipo2->tipo,
+			'usuario_email'  => $usuario2->email, 
+			'cobro_datosAdicionales'  => $usuario2->id
 		));		
 		$cobrohitorial3= CobroHistorial::create(array(
 			'cobro_id'  => $cobro2->id,
 			'fechaPago'  => new DateTime(),
 			'metodoPago' => 'Deposito Bancomer',
-			'referenciaPago'  => '77484HFGD6GBEEEERR' 
+			'referenciaPago'  => '77484HFGD6GBEEEERR',
+			'cobro_tipo'     => $cobrotipo2->tipo,
+			'usuario_email'  => $usuario2->email, 
+			'cobro_datosAdicionales'  => $usuario2->id
 		));		
 		$cobrohitorial4= CobroHistorial::create(array(
 			'cobro_id'  => $cobro3->id,
 			'fechaPago'  => new DateTime(),
 			'metodoPago' => 'Pago SevenEleven',
-			'referenciaPago'  => 'U5JJJJJ443KK3K3E' 
+			'referenciaPago'  => 'U5JJJJJ443KK3K3E',
+			'cobro_tipo'     => $cobrotipo3->tipo,
+			'usuario_email'  => $usuario2->email, 
+			'cobro_datosAdicionales'  => $proveedorgaleria9->id
 		));	
 		$cobrohitorial5= CobroHistorial::create(array(
 			'cobro_id'  => $cobro4->id,
 			'fechaPago'  => new DateTime(),
 			'metodoPago' => 'Pago efectivo',
-			'referenciaPago'  => 'Me pagó el jueves 21 de noviembre en mi trabajo' 
+			'referenciaPago'  => 'Me pagó el jueves 21 de noviembre en mi trabajo',
+			'cobro_tipo'     => $cobrotipo4->tipo,	
+			'usuario_email'  => $usuario2->email, 	
+			'cobro_datosAdicionales'  => $banner1->id			
 		));	
 		$this->command->info('Se crearon 5 cobro historial');
 

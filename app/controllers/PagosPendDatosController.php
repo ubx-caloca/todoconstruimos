@@ -9,6 +9,7 @@ class PagosPendDatosController extends \BaseController {
 		$cobrop = CobroPendiente::find($cobropid);
 		$cobrot = $cobrop->cobro->tipo;
 		$cobro = $cobrop->cobro;
+		$usuario = $cobrop->cobro->usuario;
 		$date_now = new DateTime();
 		
 
@@ -19,6 +20,9 @@ class PagosPendDatosController extends \BaseController {
 		$cobroH->metodoPago = $cobrop->metodoPago;
 		$cobroH->referenciaPago = $cobrop->referenciaPago;
 		$cobroH->cobro_concepto = $cobrop->cobro_concepto;
+		$cobroH->cobro_tipo = $cobrot->tipo;
+		$cobroH->usuario_email = $usuario->email;
+		$cobroH->cobro_datosAdicionales = $cobro->datosAdicionales;
 		$cobroH->save();
 		
 		//Actualizar Cobro
@@ -46,7 +50,7 @@ class PagosPendDatosController extends \BaseController {
 		//Aqui ya depende del tipo de cobro
 		if($cobrot->tipo == 'ser_proveedor'){		
 			//regresar campo 'solicitar_premium' de 1 a 0 y poner habilitar a 1
-			$prov = Usuario::find($cobro->datosAdicionales)->proveedor;
+			$prov = Proveedor::find($cobro->datosAdicionales);
 			$prov->solicitar_premium = 0;
 			$prov->habilitar = 1;
 			$prov->save();
