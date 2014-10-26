@@ -4,9 +4,9 @@
 		    </div>
 		    <div class="social">	
 		      <ul>	
-			   <li class="facebook"><a href="#"><span> </span></a></li>
-			   <li class="twitter"><a href="#"><span> </span></a></li>
-			   <li class="google"><a href="#"><span> </span></a></li>			
+			   <li class="facebook"><a href="http://www.facebook.com/todoconstruimos" target="_blank"><span> </span></a></li>
+			   <li class="twitter"><a href="#" target="_blank"><span> </span></a></li>
+			   <li class="google"><a href="#" target="_blank"><span> </span></a></li>			
 		     </ul>
 			</div>
 			<div class="clearfix"></div>

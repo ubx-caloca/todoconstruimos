@@ -28,7 +28,6 @@ nav ul {
 
 nav li a {
 	background: #444;
-	border: 1px solid #444;
 	color: #fff;
 	display: block;
 	float: left;
@@ -118,7 +117,6 @@ only screen and (max-device-width : 1220px){
 only screen and (max-device-width : 930px){
 	nav li a {
 		width: 25%;
-		border-bottom: 1px solid #444;
 		font: 400 11px/1.4 'Ubuntu', Helvetica, Verdana, Arial, sans-serif;
 	}
 	
@@ -145,7 +143,7 @@ only screen and (max-device-width : 580px){
 	}
 	
 	nav li:nth-child(5) a, nav li:nth-child(6) a {
-		border-bottom: 1px solid #444;
+
 	}
 }
 

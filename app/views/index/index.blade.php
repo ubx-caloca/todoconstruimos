@@ -68,7 +68,7 @@
 				});	
 				$('.owl-carousel-clasificados').owlCarousel({
 					loop:true,
-					margin:10,
+					margin:40,
 					responsiveClass:true,
 					responsive:{
 						0:{
@@ -364,12 +364,11 @@ font-weight: 700;
             </div>
    	   <div class="row text-center">
    	    <div class="col-md-12 service_grid" style="padding:20px;">
-   		  		{{-- */$i=0;/* --}}
 					<nav>
 						<ul>   		  		
 				@foreach ($categorias as $categoria)
 					
-					<li><a href="directorio/{{ $categoria->tipo }}"><i class="fa {{ $categoria->icono }}" style="color:#FFB500;"></i> {{ $categoria->tipo }}</a></li>
+					<li><a href="directorio/{{ $categoria->tipo }}" style="font-size:13px;"><i class="fa {{ $categoria->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ $categoria->tipo }}</a></li>
 					
 				@endforeach
 						</ul>
@@ -387,7 +386,7 @@ font-weight: 700;
      
       <!-- GALERIA -->
       <div class="portfolio galeria" id="portfolio">
-            <div class="slider-left" style="background-color:#282828;">
+            <div class="slider-left" style="background-color:#282828;"><br><br><br>
               <center><h1><img src="/index/images/Galeria.png" alt="Eventos"></h1></center>
               <br>
             </div>       
@@ -480,35 +479,23 @@ font-weight: 700;
 		   	  	<h2 class="service_head" style="margin-bottom:0em"><img src="/index/images/Clasificados.png" alt="Eventos"></h2>
 		        
 		 		<div class="row text-center">
-		   	    <div class="col-md-12 service_grid" style="padding:20px;">
-		   		  		{{-- */$i=0;/* --}}
-						@foreach ($categoriasClasif as $categoriaC)
-							@if ($i==0)
-								<div class="row">
-							@endif
-							
-							<div class="col-md-3" align="left"  style="padding:20px; color:#FFF;"><a href="directorioClasif/{{ $categoriaC->id }}"><i class="fa {{ $categoriaC->icono }}"></i> {{ mb_strtoupper($categoriaC->categoria, 'utf-8') }}</a></div>
-					
-							
-							{{-- */$i++;/* --}}
+		   	    <div class="col-md-12 service_grid" style="padding:10px;">
 
-							@if ($i==4)
-								</div>
-								{{-- */$i=0;/* --}}
-							@endif						
+		   	    	<div style="width:100%; margin:0 auto; background-color:#eaa600;">
+						<nav>
+							<ul>   		  			   		  		
+						@foreach ($categoriasClasif as $categoriaC)
+
+							
+							<li><a href="directorioClasif/{{ $categoriaC->id }}"style="font-size:13px;"><i class="fa {{ $categoriaC->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ mb_strtoupper($categoriaC->categoria, 'utf-8') }}</a></li>
+
+				
 						@endforeach
-						
-						@if ($i==0)
-							<div class="row" style="background:rgba(0,0,0,0.3);">
-						@endif
-						<div class="col-md-6" align="left"  style="padding:20px; color:#FFF;"><a href="../directorioClasif/all" class="fa fa-bars"></i> {{ mb_strtoupper('Todos', 'utf-8')}}</a></div>
-						@if ($i==4)
-							</div>
-							{{-- */$i=0;/* --}}
-						@endif
-						<br>
-						<br>
-						<br>
+							</ul>
+						</nav>							
+
+					</div>	
+
 		   		</div>
 		   	  </div>       
 		        
@@ -516,25 +503,22 @@ font-weight: 700;
 
 
 
-		   	  </div>  
-					<div style="width:100%; background-color:#ffb600;margin-bottom: 20px;">
-		                            <div class="owl-carousel-clasificados">
-									@foreach ($clasificadosvip as $clasf)
+		   	  </div>
 
-                              <div>
-                                    <div class="row text-center">
-                                        <div class="col-md-12 service_grid">
-											  <a href="../clasificadoDetalle/{{$clasf->id}}">
-                                              <p><img src="{{(($clasf->imagenes->isEmpty())?'/images/No_image_available.png': '/images/clasificados/'.$clasf->imagenes[0]->nombre_imagen)}}" alt="" class="img-thumbnail" style="width: 350px;height: 250px;"></p>
-                                              <h3 class="m_1">{{$clasf->titulo}}</h3></a>
-                                              <p class="m_2" style="text-align:justify;">{{Str::limit($clasf->descripcion,400)}}</p>
-											  
-                                        </div>                              
-                                    </div>                          
-    						  </div>
+					<div style="width:90%; margin:0 auto;">
+		                <div class="owl-carousel-clasificados">
+							@foreach ($clasificadosvip as $clasf)
+	                            <div align="center">
+									<span class="class1"><a href="../clasificadoDetalle/{{$clasf->id}}">
+		                                <p><img src="{{(($clasf->imagenes->isEmpty())?'/images/No_image_available.png': '/images/clasificados/'.$clasf->imagenes[0]->nombre_imagen)}}" alt="" class="img-thumbnail" style="width: 350px;height: 250px;"></p>
+								   		<h3 class="m_1">{{$clasf->titulo}}</h3>
+	                                </a>
+	                                </span>
+	                                <p class="m_2" style="text-align:justify; color:#000;">{{Str::limit($clasf->descripcion,400)}}</p>
+	    						</div>
 							@endforeach
-		                            </div>        
-		                </div>  			  
+		                </div>        
+		            </div>  			  
    </div>
     <!-- ************* -->
     
@@ -547,9 +531,9 @@ font-weight: 700;
 							@foreach ($videoblog as $video)
                                 <div class="col-lg-6">
 	                                <iframe width="100%" height="300" src="//www.youtube.com/embed/{{$video->video}}?rel=0" frameborder="0" allowfullscreen></iframe>
-	                                <h4>{{$video->titulo}}</h4>
-	                                <p align="center">Publicado el: {{$video->fecha}}</p>
-	                                <p align="justify">{{$video->contenido}}</p>
+	                                <center><h3 class="m_1">{{$video->titulo}}</h3></center>
+	                                <p class="m_2" align="right">Publicado el: {{$video->fecha}}</p><br>
+	                                <p class="m_2"  align="justify">{{$video->contenido}}</p>
                                 </div>
 							@endforeach
 
@@ -582,8 +566,8 @@ font-weight: 700;
    					<h3>QUEREMOS ESCUCHAR TUS COMENTARIOS</h3><br>
    					<ul class="contact_info">
 			  	<li><i class="pin"> </i><span>Ensenada, Baja California, México</span></li>
-			  	<li><i class="mobile"> </i><span>Tel: 01-800-345-765<br></span></li>
-			  	<li><i class="message"> </i><span class="msg">info(arroba)todoconstruimos.com</span></li>
+			  	<li><i class="mobile"> </i><span>Tel: (646) 194 83 44<br></span></li>
+			  	<li><i class="message"> </i><span class="msg">valenzueladagnino@todoconstruimos.com</span></li>
 			  </ul>
    				</div>
 
