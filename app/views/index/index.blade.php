@@ -438,7 +438,7 @@ font-weight: 700;
             <div class="slider-left">
               <h1><img src="/index/images/Eventos.png" alt="Eventos"></h1><br>
             </div>
-   	   <div class="row text-center">
+   	   <div class="row">
    	    <div class="col-md-12 service_grid" style="background-color:#FFF; padding:20px;">
 
 					<div style="width:100%; padding:10px">
@@ -446,12 +446,12 @@ font-weight: 700;
 									@foreach ($eventos as $evento)
 
 		                              <div>
-		                                    <div class="row text-center">
+		                                    <div class="row">
 		                                        <div class="col-md-12" style="background-color:#ffffff;">
-		                                              <center><p><img src="images/eventos/{{$evento->imagen}} " alt="{{ $evento->titulo }}" class="img-thumbnail"></p></center>
+		                                              <p><img src="images/eventos/{{$evento->imagen}} " alt="{{ $evento->titulo }}" class="img-thumbnail"></p>
 		                                               <h3 class="m_1"><a href="#">{{$evento->titulo}}</a></h3>
 		                                               <p class="m_2" style="text-align:center;">Fecha: {{Str::limit($evento->fecha,400)}}</p>
-		                                              <p class="m_2" style="text-align:justify;">{{Str::limit($evento->contenido,400)}}</p>
+		                                              <p class="m_2" style="text-align:justify;">{{$evento->contenido}}</p>
 		                                        </div>                              
 		                                    </div>                          
 		    						  </div>
@@ -468,8 +468,8 @@ font-weight: 700;
     <!-- ************* -->
    
    
-   
-   
+
+
    
    
    
