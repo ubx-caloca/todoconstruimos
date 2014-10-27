@@ -508,6 +508,7 @@ font-weight: 700;
 
 				
 						@endforeach
+							<li><a href="directorioClasif/all"style="font-size:13px;"><i class="fa fa-bars" style="color:#FFB500; font-size:13px;"></i> {{ mb_strtoupper('Todos', 'utf-8')}}</a></li>
 							</ul>
 						</nav>							
 

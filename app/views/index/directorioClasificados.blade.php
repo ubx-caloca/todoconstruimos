@@ -13,6 +13,7 @@
 <!--<link href="/index/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <script src="/index/js/bootstrap.min.js"></script>-->
 <link href="/index/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="/index/css/clasificados.css" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/index/js/jquery.min.js"></script>
 <!-- Custom Theme files -->
@@ -105,7 +106,7 @@
 			margin-bottom: 3px;
 		  }
 #clasfListItem:hover {
-  background: #9BD1B9;
+  background: #eaa600;
   cursor: pointer;
 }
 
@@ -115,11 +116,12 @@ border-radius: 7px;
 margin-bottom: 3px;
 }
 #clasfListItem2:hover {
-  background: #9BD1B9;
+  background: cornsilk;
   cursor: pointer;
 }
 .mainclasdir{
 	border-top: 0px solid #ffb500;
+	padding: 2em 0;
 |
 
   </style>
@@ -171,9 +173,8 @@ margin-bottom: 3px;
     
 	</div> 
     <!-- ENCABEZADO --> 
-    
-     <!-- MENU -->
-	<nav class="subMenu navbar-custom navbar-scroll-top smint" role="navigation" style="position: absolute; top: 380px;height: 82px;">
+    <!-- MENU -->
+	<div class="subMenu navbar-custom navbar-scroll-top smint" role="navigation" style="position: absolute; top: 380px;">
 	        <div class="container">
 	            <div class="navbar-header page-scroll">
 	                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-main-collapse">
@@ -182,29 +183,29 @@ margin-bottom: 3px;
 	            </div>
 	            <div class="navbar-collapse navbar-left navbar-main-collapse collapse" style="height: 1px;">
 	                <ul class="nav navbar-nav">
-	                    <li>
-	                        <a class="subNavBtn" href="/">Inicio</a>
+	                    <li class="page-scroll">
+	                        <a id="sTop" class="subNavBtn" href="/">Inicio</a>
 	                    </li>
 	                    <li class="page-scroll">
-	                        <a id="blogescrito" class="subNavBtn" href="#">Blog</a>
+	                        <a id="blogescrito" class="subNavBtn" href="">Blog</a>
 	                    </li>
-	                    <li class="page-scroll active">
-	                        <a id="directorio" class="subNavBtn" href="#">Directorio</a>
+	                    <li class="page-scroll">
+	                        <a id="directorio" class="subNavBtn" href="">Directorio</a>
 	                    </li>                        
                         <li class="page-scroll">
-	                        <a id="galeria" class="subNavBtn" href="#">Galer&iacute;a</a>
+	                        <a id="galeria" class="subNavBtn" href="">Galer&iacute;a</a>
 	                    </li>
                         <li class="page-scroll">
-	                        <a id="eventos" class="subNavBtn" href="#">Eventos</a>
+	                        <a id="eventos" class="subNavBtn" href="">Eventos</a>
 	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="clasificados" class="subNavBtn  active" href="#">Clasificados</a>
+	                    <li class="active">
+	                        <a id="clasificados" class="subNavBtn  active" href="">Clasificados</a>
 	                    </li>
                         <li class="page-scroll">
-	                        <a id="videoblog" class="subNavBtn" href="#">Video Blog</a>
+	                        <a id="videoblog" class="subNavBtn" href="">Video Blog</a>
 	                    </li>
 	                    <li class="page-scroll">
-	                        <a id="contacto" class="subNavBtn" href="#">Contacto</a>
+	                        <a id="contacto" class="subNavBtn" href="">Contacto</a>
 	                    </li>
 	                </ul>
 	            </div>
@@ -212,8 +213,8 @@ margin-bottom: 3px;
 	             	<a id="sTop" class="right-msg subNavBtn msg-icon" href="#"><span> </span></a>
 	                <div class="clearfix"> </div>
 	        </div>
-	        <!-- /.container --><br>
-   	  </nav>
+	        <!-- /.container -->
+   	  </div>
       <!-- MENU -->
          
    
@@ -229,42 +230,32 @@ margin-bottom: 3px;
               <h1><img src="/index/images/Clasificados.png" alt="Eventos"></h1>
             </div>
    	   <div class="row text-center">
-   	    <div class="col-md-12 service_grid" style="padding:20px;">
+   	    <div class="col-md-12 service_grid" >
 
- 		  		{{-- */$i=0;/* --}}
-				@foreach ($categoriasClasif as $categoriaC)
-					@if ($i==0)
-						<div class="row" style="background:rgba(0,0,0,0.3);">
-					@endif
-					
-					<div class="col-md-6" align="left"  style="padding:20px; color:#FFF;"><a href="../directorioClasif/{{ $categoriaC->id }}"><i class="fa {{ $categoriaC->icono }}"></i> {{ mb_strtoupper($categoriaC->categoria, 'utf-8')}}</a></div>
-			
-					
-					{{-- */$i++;/* --}}
+		   	    	<div style="width:100%; margin:0 auto; background-color:#eaa600;">
+						<nav style="margin: 30px auto;">
+							<ul>   		  			   		  		
+						@foreach ($categoriasClasif as $categoriaC)
 
-					@if ($i==4)
-						</div>
-						{{-- */$i=0;/* --}}
-					@endif						
-				@endforeach
+							
+							<li><a href="./{{ $categoriaC->id }}"style="font-size:13px;"><i class="fa {{ $categoriaC->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ mb_strtoupper($categoriaC->categoria, 'utf-8') }}</a></li>
+
 				
-				@if ($i==0)
-					<div class="row" style="background:rgba(0,0,0,0.3);">
-				@endif
-				<div class="col-md-6" align="left"  style="padding:20px; color:#FFF;"><a href="../directorioClasif/all" class="fa fa-bars"></i> {{ mb_strtoupper('Todos', 'utf-8')}}</a></div>
-				@if ($i==4)
-					</div>
-					{{-- */$i=0;/* --}}
-				@endif
+						@endforeach
+							<li><a href="../directorioClasif/all"style="font-size:13px;"><i class="fa fa-bars" style="color:#FFB500; font-size:13px;"></i> {{ mb_strtoupper('Todos', 'utf-8')}}</a></li>
+							</ul>
+						</nav>							
+
+					</div>	
+	  </div> 
+	  </div>
+	  </div>
 				
-				<br>
-   		  		
-
-
+				<h2 style="padding:20px; color:#FFF;">{{strtoupper($directorioCat)}}</h2>
+				<div class="container">
 				<?php
 				  	 $i=0;
-   	    			echo'</div><br><h2 style="padding:20px; color:#FFF;">'.strtoupper($directorioCat).'</h2>';
-					echo '<div class="container">'; //<ul style="list-style-type: none; width: 100%;">';
+					 //<ul style="list-style-type: none; width: 100%;">';
    	    			foreach($listaClasificadosPremium as $cat){	
 						$lasfImgs = $cat->imagenes;
 						
@@ -274,10 +265,12 @@ margin-bottom: 3px;
 						$tj_date = $utc_date;
 						$tj_date->setTimeZone(new DateTimeZone('America/Tijuana'));
 						
-						echo ''.(($cat->premium==1)?'<img src="../images/premium2.png" alt="Premium" style="width: 30px;height: 30px; float: left; position: absolute; left: 0; margin-top: -13px; margin-left: 7px;"> ':' ');
-					    echo '<a href="../clasificadoDetalle/'.$cat->id.'"><div class="row" id="clasfListItem" style="padding: 10px; overflow: auto;">
-								<div class="col-md-1"> 
-								<img src="'.(($lasfImgs->isEmpty())?'../images/No_image_available.png': '../images/clasificados/'.$lasfImgs[0]->nombre_imagen).'" style="width:100px; height: 100px; margin: 0 0 0 -12px;">
+						
+					    echo '<a href="../clasificadoDetalle/'.$cat->id.'">';
+						echo '<div class="row" id="clasfListItem" style="padding: 10px; overflow: inherit;">';						
+						echo '<div class="col-md-1">';
+												echo ''.(($cat->premium==1)?'<img src="../images/premium2.png" class="pull-left" alt="Premium" style="width: 35px;height: 35px;position: absolute;left: 0;margin-top: -20px;margin-left: -23px;"> ':' ');						
+						echo '<img src="'.(($lasfImgs->isEmpty())?'../images/No_image_available.png': '../images/clasificados/'.$lasfImgs[0]->nombre_imagen).'" style="width:100px; height: 100px; margin: 0 0 0 -12px;">
 								</div>
 								<div class="col-md-11"  style="padding-left: 20px;">
 								<h3 style="text-align: -webkit-left;color:black">'.mb_strtoupper($cat->titulo, 'utf-8').'</h3>
