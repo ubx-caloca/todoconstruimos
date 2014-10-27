@@ -20,9 +20,7 @@
 <!-- Custom Theme files -->
 <link href="/index/css/style.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-</script>
+
 
 <!-- content to be placed inside <body>…</body> -->
 <link href='http://fonts.googleapis.com/css?family=Cutive' rel='stylesheet' type='text/css'>
@@ -36,7 +34,19 @@
 <script src="/index/js/easing.js"></script>
 	<script type="text/javascript" 	src="/index/js/jquery.smint.js"></script>
 		<script type="text/javascript">
+
+
 			$(document).ready( function() {
+				  if(window.location.hash) {
+				      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+				      window.location.hash = hash;
+
+				      alert (hash);
+				      // hash found
+				  } else {
+				      //$(window).scrollTop(0);
+				      //stickyTop = 0;
+				  }					
 			    $('.subMenu').smint({
 			    	'scrollSpeed' : 1000,
 			    });
@@ -123,7 +133,9 @@
 							touchDrag:true,
 							nav:true,
 							dots:true			
-				});				
+				});	
+
+		  								
 				
 			});
 			
@@ -133,6 +145,7 @@
 			
 			
 		</script>
+
 		<style>
 .navlogin {
     left:100%;
@@ -206,6 +219,8 @@ font-weight: 700;
 .class1 A:active {text-decoration: none;color: #191919;}
 .class1 A:hover {text-decoration: underline;color: #191919;}
 </style>
+
+
 </head>
 
 
@@ -313,6 +328,7 @@ font-weight: 700;
   
   
      <!-- ************* -->
+   <a name="blogescrito"></a>
    <div class="blogescrito" id="blogescrito">
    	  <div class="container">
    	  	<center><h1><img src="/index/images/Blog.png" alt="Eventos"></h1></center><br>
@@ -354,6 +370,7 @@ font-weight: 700;
 
 
     <!-- ************* -->
+    <a name="directorio"></a>
     <div class="signup directorio">
     
     
@@ -604,10 +621,7 @@ font-weight: 700;
    		@include('index.include_footer')
    	</div>
     <!-- ************* -->
-    
-    
-    
-    
+
     
 
 </body>

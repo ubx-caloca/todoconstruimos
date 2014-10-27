@@ -220,6 +220,12 @@ a:active {
 
 }
 </style>
+
+<link href="http://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+
+
 </head>
 
 
@@ -306,34 +312,36 @@ a:active {
   
   
     <!-- ************* -->
-    <div class="" style="background-color:#2d2d2d;">
+    <div style="background-color:#2d2d2d;">
     
    	  <div style="width:100%;">
             <div class="slider-left;" style="width:100%; background-color:#FFB500; padding:10px;">
               <h1 align="center"><img src="/index/images/Blog.png" alt="Eventos"></h1>
             </div>
    	   
-   	   <div class="row text-center">
+   	   <div class="row">
    	    
 
    	    <div class="col-md-2 service_grid" style="padding:20px">
 			<center>
-   	    		<img src="/images/banners/1.jpg" alt="" class="img-responsive"/>
-   	    		<hr>
-   	    		<img src="/images/banners/2.jpg" alt="" class="img-responsive"/>
+				@foreach ($bannersizquierda as $banner)
+	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
+	   	    		<hr>
+   	    		@endforeach
+   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
 			</center>
    		</div>
    	    
 
-   	    <div class="col-md-8" style="padding:20px;">
+   	    <div class="col-md-8" style="padding:20px; text-align:jusify; font: 400 14px/1.6 'Open Sans', Verdana, Helvetica, sans-serif;">
 
    	    	<div class="row">
    	    		
    	    		@foreach ($blog as $post)
-   	    			<div class="col-md-12" style="background:rgba(255,255,255,0.89);padding:20px; color:#000;">
+   	    			<div class="col-md-12" style="background:rgba(255,255,255,0.97);padding:20px; color:#000;">
    	    			<p align="center"><img src="/images/blog/{{$post->imagen}}" alt="" class="thumbnail"/></p><br>
-   	    			<h3><?php echo mb_strtoupper($post->titulo,'utf8');?></h3>
-   	    			<p>Publicado el <?php echo mb_strtoupper($post->fecha,'utf-8');?></p>
+   	    			<p align="center" style="font: 400 30px/1.3 'Bree Serif', Georgia, serif;"><?php echo mb_strtoupper($post->titulo,'utf8');?></p>
+   	    			<p align="center" class="m_1">Publicado el <?php echo mb_strtoupper($post->fecha,'utf-8');?></p>
    	    			<hr>
    	    			<p align="justify"><?php echo $post->contenido;?></p>
    	    			</div>&nbsp;
@@ -353,9 +361,11 @@ a:active {
 
    	    <div class="col-md-2 service_grid" style="padding:20px;">
 			<center>
-   	    		<img src="/images/banners/3.jpg" alt="" class="img-responsive"/>
-   	    		<hr>
-   	    		<img src="/images/banners/4.jpg" alt="" class="img-responsive"/>
+				@foreach ($bannersderecha as $banner)
+	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
+	   	    		<hr>
+   	    		@endforeach
+   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
 			</center>
    		</div>
 
@@ -389,4 +399,3 @@ a:active {
    	<script src="/index/js/bootstrap.min.js"></script>
 </body>
 </html>
-

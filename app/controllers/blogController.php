@@ -209,6 +209,8 @@ class blogController extends \BaseController {
 	public function mostrarBlog()
 	{
 		//$Posts = DB::table('blog')->orderBy('id','desc')->paginate(2);
+		$bannersizquierda = DB::table('banners')->where('seccion', '=', 'BLOG-IZQUIERDA')->orderBy('id','asc')->get();
+		$bannersderecha = DB::table('banners')->where('seccion', '=', 'BLOG-DERECHA')->orderBy('id','asc')->get();
 		$blog = Blog::orderBy('fecha','desc')->paginate(5);
 		$anuncios = Anuncio::all();
 		
@@ -222,7 +224,7 @@ class blogController extends \BaseController {
 			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
 			
 		}
-		return View::make('index.blog')->with(array('blog'=>$blog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
+		return View::make('index.blog')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'blog'=>$blog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
 		//
 	}	
 

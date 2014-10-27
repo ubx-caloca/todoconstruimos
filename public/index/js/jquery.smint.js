@@ -135,5 +135,9 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 		});
 	}
 
+  $(document).ready(function() {
+      $(window).scrollTop(0);
+      stickyTop = 0;
+  });
 
 })();

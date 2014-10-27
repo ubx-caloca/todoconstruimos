@@ -10,25 +10,25 @@
 	                        <a id="sTop" class="subNavBtn active" href="#">Inicio</a>
 	                    </li>
 	                    <li class="page-scroll">
-	                        <a id="blogescrito" class="subNavBtn" href="#">Blog</a>
+	                        <a id="blogescrito" class="subNavBtn" href="/#blogescrito">Blog</a>
 	                    </li>
 	                    <li class="page-scroll">
-	                        <a id="directorio" class="subNavBtn" href="#">Directorio</a>
+	                        <a id="directorio" class="subNavBtn" href="/#directorio">Directorio</a>
 	                    </li>                        
                         <li class="page-scroll">
-	                        <a id="galeria" class="subNavBtn" href="#">Galer&iacute;a</a>
+	                        <a id="galeria" class="subNavBtn" href="/#galeria">Galer&iacute;a</a>
 	                    </li>
                         <li class="page-scroll">
-	                        <a id="eventos" class="subNavBtn" href="#">Eventos</a>
+	                        <a id="eventos" class="subNavBtn" href="/#eventos">Eventos</a>
 	                    </li>
 	                    <li class="page-scroll">
-	                        <a id="clasificados" class="subNavBtn" href="#">Clasificados</a>
+	                        <a id="clasificados" class="subNavBtn" href="/#clasificados">Clasificados</a>
 	                    </li>
                         <li class="page-scroll">
-	                        <a id="videoblog" class="subNavBtn" href="#">Video Blog</a>
+	                        <a id="videoblog" class="subNavBtn" href="/#videoblog">Video Blog</a>
 	                    </li>
 	                    <li class="page-scroll">
-	                        <a id="contacto" class="subNavBtn" href="#">Contacto</a>
+	                        <a id="contacto" class="subNavBtn" href="/#contacto">Contacto</a>
 	                    </li>
 	                </ul>
 	            </div>
