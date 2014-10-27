@@ -253,7 +253,14 @@ p:hover {
 	font-size: large;
 }
 .formbutton{
-	font-size: large;
+	font-size: larger;
+	background-color: #e09f00;
+	border-color: #e09f00;
+	font-weight: 600;
+}
+.formbutton:hover{
+	background-color: #fcb200;
+	border-color: #fcb200;	
 }
 
 .formControlPassword{
@@ -274,6 +281,10 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+
+.fileuploadbutton{
+margin-top: 5px;
+}
 		</style>
 </head>
 
@@ -291,14 +302,14 @@ transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 
 
 	<!-- ENCABEZADO -->
-	<div class="header sTop hidden-xs">
+	<div class="header sTop hidden-xs" style="height: 220px;">
 
 		<div class="logo">
 			<a href="/"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
 		</div>    
         
 	</div> 
-     <div class="blogescrito" style="padding: 2em 0;" >
+     <div class="blogescrito" style="padding: 1em 0;" >
 <div class="container">
 <div class="panel panel-default" style="background-color: initial;border-width: 0px;">
 
@@ -308,7 +319,8 @@ transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 
 
 
-  <div class="panel-body" style="background-color: currentcolor;padding-top:3em;padding-left:4em;padding-right:4em;">
+  <div class="panel-body" style="background: url(./index/images/contact.png);padding-top:3em;padding-left:4em;padding-right:4em;border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;">
   
 	@if ($errors->has())
 <div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
@@ -377,7 +389,7 @@ color: #a71b2a;padding-top: 10px;padding-bottom: 10px;margin-bottom: 30px;
 		</div>
 		<div class="form-group">
 				{{ Form::label('user_imagen', 'Imagen', array('class'=> 'formlabel')) }}
-				{{ Form::file('user_imagen',['class'=>'formlabel'])}}
+				{{ Form::file('user_imagen',['class'=>'formlabel fileuploadbutton'])}}
 		</div>
 		<hr>
 		<div class="form-group">
