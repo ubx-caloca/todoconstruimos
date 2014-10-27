@@ -78,30 +78,30 @@ background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f
 background: -moz-linear-gradient( center top, #f9f9f9 5%, #e9e9e9 100% );
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9');
 background-color: #f9f9f9;
--webkit-border-top-left-radius: 20px;
+/* -webkit-border-top-left-radius: 20px; */
 -moz-border-radius-topleft: 20px;
-border-top-left-radius: 10px;
--webkit-border-top-right-radius: 20px;
+border-top-left-radius: 5px;
+/* -webkit-border-top-right-radius: 20px; */
 -moz-border-radius-topright: 20px;
-border-top-right-radius: 10px;
--webkit-border-bottom-right-radius: 20px;
+border-top-right-radius: 5px;
+/* -webkit-border-bottom-right-radius: 20px; */
 -moz-border-radius-bottomright: 20px;
-border-bottom-right-radius: 10px;
--webkit-border-bottom-left-radius: 20px;
+border-bottom-right-radius: 5px;
+/* -webkit-border-bottom-left-radius: 20px; */
 -moz-border-radius-bottomleft: 20px;
-border-bottom-left-radius: 10px;
+border-bottom-left-radius: 5px;
 text-indent: 0;
 border: 1px solid #dcdcdc;
 display: inline-block;
 color: #666666;
 font-weight: bold;
 font-style: normal;
-height: 65px;
+/* height: 65px; */
 text-decoration: none;
 text-align: center;
 text-shadow: 1px 1px 0px #ffffff;
-margin-left: -20px;
-margin-right: -10px;
+margin-top: 10px;
+margin-left: 10px;;
 }
 .solpremimenviadabutton:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
@@ -270,34 +270,61 @@ hr.style-eight:after {
 									<div class="panel panel-default">
 
 									  <div class="panel-heading">
-									    <h3 class="panel-title">LISTA DE TIPOS DE COBRO EN SISTEMA (SERVICIOS DE PAGA)</h3>
+									    <h3 class="panel-title">HISTORIAL DE PAGOS REALIZADOS (ORDENADOS X FECHA DE PAGO)</h3>
+										 <form method="post" action="elimtodoscobrosh">
+											<button class="solpremimenviadabutton" type="submit">Eliminar todos</button>
+										</form>
 									  </div>
 
 									  <div class="panel-body">
 											<div class="container" style="width:auto">
-											    <?php foreach ($listaCobrotipos as $cobrot): ?>
+											    <?php foreach ($listaCobrosH as $cobroH): ?>
 											    	<div class="row">
 											    		<div class="col-md-1">
 															<center><strong>Id</strong></center>
-											        		<center style="padding-bottom: 15px;">{{$cobrot->id}}</center>
+											        		<center style="padding-bottom: 15px;">{{$cobroH->id}}</center>
 															<div>
+															{{ Form::open(array('url' => '/administracion/cobroshistorial/' . $cobroH->id, 'class' => '')) }}
+															{{ Form::hidden('_method', 'DELETE') }}
 															<center>
-															<strong><a href=" <?php echo"/administracion/cobrostipo/$cobrot->id/edit"; ?> ">Editar</a></strong>
+															<strong><a href="#" onclick="$(this).closest('form').submit()">Eliminar</a></strong>
+															{{ Form::close() }}
 															</center>
 															</div>
+																		
 											        	</div>
+																							<?php
+											$tj_date = null;
+											if(! is_null ( $cobroH->fechaPago)){
+											$fecPubString = $cobroH->fechaPago;
+											$utc_date = new DateTime(
+									                $fecPubString, 
+									                new DateTimeZone('UTC')
+											);
+
+											$tj_date = $utc_date;
+											$tj_date->setTimeZone(new DateTimeZone('America/Tijuana'));
+											}
+											
+											$myDateTime = DateTime::createFromFormat('Y-m-d H:i:s', $cobroH->fechaPago);
+									?>
 											    		<div class="col-md-11">
-											        		<p><strong>Clave de tipo:</strong> {{$cobrot->tipo }}</p>
-															<p><strong>Descripción:</strong> {{ $cobrot->descripcion }}</p>
-															<p><strong>Precio de servicio:</strong> {{ $cobrot->precio. ' pesos'}}</p>
-															<p><strong>Duración de servicio:</strong> {{ $cobrot->diasVigencia. ' días' }}</p>
+															<p><strong>Fecha de pago:</strong> {{ (is_null ($tj_date))? '(Sin definir)': $myDateTime->format('d-M-Y H:i:s')  }}</p>
+															<p><strong>Concepto del pago:</strong> {{$cobroH->cobro_concepto }}</p>
+															<p><strong>Método de pago:</strong> {{ $cobroH->metodoPago }}</p>
+															<p><strong>Datos de referencia del pago:</strong> {{ $cobroH->referenciaPago }}</p>
+															<p><strong>Usuario asociado:</strong> {{$cobroH->usuario_email }}</p>
+															<hr>															
+															<p><strong>Tipo de cobro(servicio):</strong> {{$cobroH->cobro_tipo }}</p>
+															<p><strong>Objeto de cobro:</strong> {{$cobroH->cobro_datosAdicionales }}</p>
+															<p><strong>Id del cobro asociado:</strong> {{$cobroH->cobro_id }}</p>
 														</div>
 											        </div>
 													<br><hr class="style-eight"><br>
 											    <?php endforeach; ?>
 											</div>
 											
-											<center><?php echo $listaCobrotipos->links(); ?></center>
+											<center><?php echo $listaCobrosH->links(); ?></center>
 									  </div>
 									</div>
 									</div>	

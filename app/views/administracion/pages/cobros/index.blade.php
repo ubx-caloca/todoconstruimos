@@ -131,7 +131,7 @@ hr.style-eight:after {
     top: -0.7em;  
     font-size: 1.5em;
     padding: 0 0.25em;
-    background: #f9f9f9;
+    background: #ffffff;
 }
 
 </style>

@@ -132,6 +132,8 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 		//COBROS
 		Route::resource('cobros', 'CobrosController');
 		Route::resource('cobrostipo', 'CobrosTipoController');
+		Route::resource('cobroshistorial', 'CobrosHistorialController');
+		Route::post('elimtodoscobrosh', 'CobrosHistorialController@eliminarTodos');
 		
 		//PAGOS PENDIENTES
 		Route::resource('pagospendientes', 'PagosPendController');

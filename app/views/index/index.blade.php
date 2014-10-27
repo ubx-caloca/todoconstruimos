@@ -447,9 +447,9 @@ font-weight: 700;
 
 		                              <div>
 		                                    <div class="row">
-		                                        <div class="col-md-12" style="background-color:#ffffff;">
+		                                        <div class="col-md-12" style="background-color:#ffffff;text-align:left;">
 		                                              <p><img src="images/eventos/{{$evento->imagen}} " alt="{{ $evento->titulo }}" class="img-thumbnail"></p>
-		                                               <h3 class="m_1"><a href="#">{{$evento->titulo}}</a></h3>
+		                                               <h3 class="m_1" style="text-align:center;"><a href="#">{{$evento->titulo}}</a></h3>
 		                                               <p class="m_2" style="text-align:center;">Fecha: {{Str::limit($evento->fecha,400)}}</p>
 		                                              <p class="m_2" style="text-align:justify;">{{$evento->contenido}}</p>
 		                                        </div>                              

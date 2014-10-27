@@ -27,8 +27,8 @@
             <li class="divider"></li>	
 			@else
 			    <li><a href="vistausuario/">Ir a vista del usuario <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-				<li class="divider"></li>
-				<li><a href="vistausuario/clasificados/create">Agregar nuevo clasificado <span class="glyphicon glyphicon-edit pull-right"></span></a></li>
+				<!--<<li class="divider"></li>
+				<li><a href="vistausuario/clasificados/create">Agregar nuevo clasificado <span class="glyphicon glyphicon-edit pull-right"></span></a></li> -->
 				<li class="divider"></li>			
 			@endif
 			<!--

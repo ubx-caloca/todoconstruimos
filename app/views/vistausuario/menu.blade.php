@@ -117,7 +117,7 @@
                         -->
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-cc-mastercard"></i>
+                                <i class="fa fa-credit-card"></i>
                                 <span>Pagos pendientes</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
