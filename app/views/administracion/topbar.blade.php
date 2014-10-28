@@ -78,6 +78,7 @@
                         </li>
                         -->
 						<!-- Notifications: style can be found in dropdown.less -->
+						<!-- Ocultamos al final
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-warning"></i>
@@ -86,7 +87,7 @@
                             <ul class="dropdown-menu">
                                 <li class="header">Tienes 3 notificaciones</li>
                                 <li>
-                                    <!-- inner menu: contains the actual data -->
+                                   
                                     <ul class="menu">
                                         <li>
                                             <a href="#">
@@ -108,6 +109,7 @@
                                 <li class="footer"><a href="#">Ver todas</a></li>
                             </ul>
                         </li>
+						-->
                         <!-- Tasks: style can be found in dropdown.less -->
 						<!--
                         <li class="dropdown tasks-menu">
