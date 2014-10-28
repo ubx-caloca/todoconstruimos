@@ -176,7 +176,7 @@
 															<hr/>
 															<div class="form-group">
 																	{{ Form::label('seccion', 'Elige la sección y ubicación del banner: ') }}
-																	{{ Form::select('seccion', array('BLOG-IZQUIERDA' => 'BLOG - IZQUIERDA', 'BLOG-DERECHA' => 'BLOG - DERECHA','DIRECTORIO-IZQUIERDA' => 'DIRECTORIO - IZQUIERDA', 'DIRECTORIO-DERECHA' => 'DIRECTORIO - DERECHA','EVENTOS-IZQUIERDA' => 'EVENTOS - IZQUIERDA', 'EVENTOS-DERECHA' => 'EVENTOS - DERECHA','CLASIFICADOS-IZQUIERDA' => 'CLASIFICADOS - IZQUIERDA', 'CLASIFICADOS-DERECHA' => 'CLASIFICADOS - DERECHA','VIDEOBLOG-IZQUIERDA' => 'VIDEOBLOG - IZQUIERDA', 'VIDEOBLOG-DERECHA' => 'VIDEOBLOG - DERECHA'),Input::old('seccion'),array('class' => 'form-control')) }}
+																	{{ Form::select('seccion', array('INDEX-ARRIBA'=> 'INDEX - ARRIBA','BLOG-IZQUIERDA' => 'BLOG - IZQUIERDA', 'BLOG-DERECHA' => 'BLOG - DERECHA','DIRECTORIO-IZQUIERDA' => 'DIRECTORIO - IZQUIERDA', 'DIRECTORIO-DERECHA' => 'DIRECTORIO - DERECHA','EVENTOS-IZQUIERDA' => 'EVENTOS - IZQUIERDA', 'EVENTOS-DERECHA' => 'EVENTOS - DERECHA','CLASIFICADOS-IZQUIERDA' => 'CLASIFICADOS - IZQUIERDA', 'CLASIFICADOS-DERECHA' => 'CLASIFICADOS - DERECHA','VIDEOBLOG-IZQUIERDA' => 'VIDEOBLOG - IZQUIERDA', 'VIDEOBLOG-DERECHA' => 'VIDEOBLOG - DERECHA'),Input::old('seccion'),array('class' => 'form-control')) }}
 															</div>	
 															<hr>
 															<div class="form-group">

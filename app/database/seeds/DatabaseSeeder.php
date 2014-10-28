@@ -544,6 +544,12 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 			'precio' => 200.0,
 			'diasVigencia' => 30
 		));	
+		$cobrotipo14= CobroTipo::create(array(
+			'tipo'  => 'BANNER-INDEX-ARRIBA',
+			'descripcion'  => 'Cobro porponer un banner en parte de arriba de página index',
+			'precio' => 300.0,
+			'diasVigencia' => 30
+		));	
 		$this->command->info('Se crearon 13 tipos de cobro');
 		
 		$cobro1= Cobro::create(array(
