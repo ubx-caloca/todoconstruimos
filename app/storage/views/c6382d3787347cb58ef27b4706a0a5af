@@ -102,7 +102,7 @@
                 <section class="content-header">
                     <h1>
                         Dashboard
-                        <small>Administración del sistema</small>
+                        <small style="color: black;font-weight: 400;">Administración del sistema</small>
                     </h1>
                 </section>
 
@@ -159,16 +159,23 @@
 										
 									  <div class="panel-body">
 									  	<?php echo Form::open(array('url' => 'administracion/clasificadoscategorias')); ?>
+
 											<div class="form-group">
 											<div class="form-group">
 													<?php echo Form::label('categoria', 'Categoría'); ?>
+
 													<?php echo Form::text('categoria',Input::old('categoria'), array( 'placeholder' => '',  'class' => 'form-control')); ?>
+
 													<br>
 													<?php echo Form::label('descripcion', 'Descripción'); ?>
+
 													<?php echo Form::text('descripcion', Input::old('descripcion'), array( 'placeholder' => '',  'class' => 'form-control')); ?>
+
 													<br>
 													<?php echo Form::label('icono', 'Icono'); ?>
+
 													<?php echo Form::text('icono', Input::old('icono'), array( 'placeholder' => '',  'class' => 'form-control')); ?>
+
 													<p>Puedes elegir el icono en esta página <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank"> http://fortawesome.github.io/Font-Awesome/ </a> </p>
 											</div>
 											</div>
@@ -177,6 +184,7 @@
 											</div>
 											
 									  	<?php echo Form::close(); ?>
+
 
 									<?php $numero=1; ?>
 									<br>
@@ -195,15 +203,19 @@
 														<?php endif; ?>
 											    		<div class="col-md-6">
 											    			<?php echo $categoria->categoria; ?>
+
 											        	</div>
 														<div class="col-md-1">
 															<strong><a href="<?php echo URL::to('administracion/clasificadoscategorias/' . $categoria->id . '/edit'); ?>">Editar</a></strong>
 											        	</div>
 														<div class="col-md-1">
 															<?php echo Form::open(array('url' => '/administracion/clasificadoscategorias/' . $categoria->id)); ?>
+
 														<?php echo Form::hidden('_method', 'DELETE'); ?>
+
 														<strong><a href="#" onclick="$(this).closest('form').submit()">Eliminar</a></strong>
 														<?php echo Form::close(); ?>
+
 														
 											        	</div>
 											        </div>
