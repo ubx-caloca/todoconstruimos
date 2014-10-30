@@ -21,7 +21,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 </script>
-
+<link rel="stylesheet" href="/index/css/clasificados.css" />
 <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="/index/js/owl.carousel.2.0.0-beta.2.4/owl.carousel.js"></script>
@@ -30,9 +30,10 @@
 	<script type="text/javascript" 	src="/index/js/jquery.smint.js"></script>
 		<script type="text/javascript">
 			$(document).ready( function() {
-			    $('.subMenu').smint({
-			    	'scrollSpeed' : 1000,
-			    });
+
+
+
+
 
 				$('.owl-carousel').owlCarousel({
 					loop:true,
@@ -87,7 +88,40 @@
 							touchDrag:true,
 							nav:true,
 							dots:true			
-				});				
+				});
+				$('.owl-carousel-eventos').owlCarousel({
+					loop:true,
+					margin:30,
+					responsiveClass:true,
+					responsive:{
+						0:{
+							items:1,
+							nav:false
+						},
+						600:{
+							items:2,
+							nav:false
+						},
+						1000:{
+							items:2,
+							nav:false,
+							loop:true,
+							
+						}
+					},
+							loop:true,
+							autoplay:true,
+						    autoplayTimeout:4000,
+						    autoplayHoverPause:true,
+							mouseDrag:true,
+							touchDrag:true,
+							nav:true,
+							dots:true			
+				});		
+
+			    $('.subMenu').smint({
+			    	'scrollSpeed' : 1000,
+			    });						
 				
 			});
 			
@@ -96,7 +130,102 @@
 			
 			
 			
-		</script>	
+		</script>
+		<style>
+.navlogin {
+    left:100%;
+    margin-left:-305px;
+    top:5px;
+    position:absolute;
+	font-family: Lato, sans-serif;
+	font-size: 16px;
+	
+	
+}
+.navlogin>li>a:hover, .navlogin>li>a:focus, .navlogin .open>a, .navlogin .open>a:hover, .navlogin .open>a:focus {
+    background:#fff;
+}
+.dropdown {
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius:4px;
+    width:300px;    
+}
+.dropdown-menu>li>a {
+    color:#000000;
+}
+.dropdown ul.dropdown-menu {
+    border-radius:4px;
+    box-shadow:none;
+    margin-top:20px;
+    width:300px;
+}
+.dropdown ul.dropdown-menu:before {
+    content: "";
+    border-bottom: 10px solid #fff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    z-index: 10;
+}
+.dropdown ul.dropdown-menu:after {
+    content: "";
+    border-bottom: 12px solid #ccc;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    position: absolute;
+    top: -12px;
+    right: 14px;
+    z-index: 9;
+}
+
+.loginText {
+	border-radius: 3px;
+}
+.loginSummitBtn{
+border-radius: 3px;
+-webkit-appearance: button;
+color: #414042; 
+background-color: #FCB200; 
+background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.05)); 
+border: lavender; 
+padding-left: 10px; 
+padding-right: 10px; 
+padding-top: 3px; 
+padding-bottom: 3px; 
+font-weight: 700;
+
+
+/* unvisited link */
+a:link {
+    color: #FF0000;
+}
+
+/* visited link */
+a:visited {
+    color: #00FF00;
+}
+
+/* mouse over link */
+a:hover {
+    color: #FF00FF;
+}
+
+/* selected link */
+a:active {
+    color: #0000FF;
+}
+
+}
+</style>
+
+<link href="http://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+
+
 </head>
 
 
@@ -114,8 +243,13 @@
 
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs">
+			@include('index.include_login')	
+
+
+
+		
 		<div class="logo">
-			<a href="/"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
+			<a href="index.html"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
 		</div>
 	    <div class="slider_container">
         
@@ -127,34 +261,8 @@
                 
                 
                        <div class="wmuSliderWrapper">
-                           <article style="position: absolute; width: 100%; opacity: 0;"> 
-                             <div class="banner-wrap">
-                                 <div class="slider-left">
-                                    <h2></h2>
-                                    <p class="top_desc">Expo Construcción y Vivienda Aguascalientes</p>
-                                    <p class="bottom_desc">Del sábado 23 al domingo 24 agosto 2014</p>
-                                 </div>
-                             </div>
-                            </article>
-                           <article style="position: absolute; width: 100%; opacity: 0;"> 
-                             <div class="banner-wrap">
-                                 <div class="slider-left">
-                                    <h2></h2>
-                                    <p class="top_desc">Expo Nacional Ferretera Guadalajara 2014</p>
-                                    <p class="bottom_desc">Del martes 26 al sábado 30 agosto 2014</p>
-                                 </div>
-                             </div>
-                            </article>
-                            <article style="position: absolute; width: 100%; opacity: 0;"> 
-                             <div class="banner-wrap">
-                                 <div class="slider-left">
-                                    <h2></h2>
-                                    <p class="top_desc">Expo Tu Casa Monterrey</p>
-                                    <p class="bottom_desc">Del viernes 21 al domingo 23 marzo 2014</p>
-                                 </div>
-                             </div>
-                            </article>
-                        </div>                        
+                       			@include('index.include_anuncios')
+                       </div>                        
 
                       </div>
                       <script src="/index/js/jquery.wmuSlider.js"></script> 
@@ -181,25 +289,7 @@
     
     
                  <div style="width:100%; background-color:#ffffff; border-top: 7px solid #ffffff; border-bottom: 7px solid #ffffff;">
-                            <div class="owl-carousel">
-                              <div> <img src="http://www.jamesgood.co.uk/sites/default/files/Logo-Blog_58.png" alt=""/> </div>
-                              <div> <img src="http://picsoff.com/files/funzug/imgs/informative/co_logos_mean_09.jpg" alt=""/> </div>
-                              <div> <img src="http://www.davemanuel.com/images/logo_caterpillar.gif" alt=""/> </div>
-                              <div> <img src="http://lockergnome.net/upfiles/sony-ericsson-logo.jpg" alt=""/> </div>
-                              <div> <img src="http://www.gaadi.com/blog/wp-content/uploads/2012/01/hyundai-logo_689400766.jpg" alt=""/> </div>
-                              <div> <img src="http://images.cardekho.com/images/carnews/All-Car-Logo/Honda.jpg" alt=""/> </div>
-                              <div> <img src="http://www.triadcouponing.com/wp-content/uploads/2011/03/walmart-logo.gif" alt=""/> </div>
-                              <div> <img src="http://blog.edelman.com.au/wp-content/uploads/2011/02/Heineken-logo.jpg" alt=""/> </div>
-                              <div> <img src="http://static6.businessinsider.com/image/4beaf2ee7f8b9ad075d90000-1200/your-business-name-will-affect-your-logo-design.jpg" alt=""/> </div>
-                              <div> <img src="http://cdn2.capterra-static.com/assets/customers/cocacola-logo-4x3-98b53c1de3b9b10a3cf91cb776e3e4c5.png" alt=""/> </div>
-                              <div> <img src="http://lazytechguys.com/wp-content/uploads/2011/01/sony_logo.jpg" alt=""/> </div>
-                              <div> <img src="http://www.userlogos.org/files/logos/macleod.mac/dominos.1.u.png" alt=""/> </div>
-                              <div> <img src="http://2.bp.blogspot.com/-rVweqpkeAOA/URxxk3_8QKI/AAAAAAAAANU/R0zd6ZBs9eg/s400/Logo+Puma+4.jpeg" alt=""/> </div>
-                              <div> <img src="http://4.bp.blogspot.com/_1I7KiCuAU4k/SKkpG-SBiTI/AAAAAAAABcc/rNwmp6bUpKk/s400/Sinclair_oil_dinosaurs_kidicarus222.jpg" alt=""/> </div>
-                              <div> <img src="https://m1.behance.net/rendition/modules/23318251/disp/1a7efdd39dd4a8e4680c7b4b466f1668.jpg" alt=""/> </div>
-                              <div> <img src="http://img.logoinlogo.com/120724070738-juice-time-011.jpg" alt=""/> </div>
-                              <div> <img src="http://cdn.net.outdoorhub.com/wp-content/uploads/sites/3/2012/03/REI-Logo-400x300.jpg" alt=""/> </div>
-                            </div>        
+						@include('index.include_logos')       
                 </div>   
     
     
@@ -209,83 +299,55 @@
     
     
      <!-- MENU -->
-	<nav class="subMenu navbar-custom navbar-scroll-top smint" role="navigation" style="position: absolute; top: 380px;">
-	        <div class="container">
-	            <div class="navbar-header page-scroll">
-	                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-main-collapse">
-	                    <img src="/index/images/nav-icon.png" title="drop-down-menu"> 
-	                </button>
-	            </div>
-	            <div class="navbar-collapse navbar-left navbar-main-collapse collapse" style="height: 1px;">
-	                <ul class="nav navbar-nav">
-	                    <li>
-	                        <a class="subNavBtn" href="/">Inicio</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="blogescrito" class="subNavBtn" href="#">Blog</a>
-	                    </li>
-	                    <li class="page-scroll active">
-	                        <a id="directorio" class="subNavBtn active" href="#">Directorio</a>
-	                    </li>                        
-                        <li class="page-scroll">
-	                        <a id="galeria" class="subNavBtn" href="#">Galer&iacute;a</a>
-	                    </li>
-                        <li class="page-scroll">
-	                        <a id="eventos" class="subNavBtn" href="#">Eventos</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="clasificados" class="subNavBtn" href="#">Clasificados</a>
-	                    </li>
-                        <li class="page-scroll">
-	                        <a id="videoblog" class="subNavBtn" href="#">Video Blog</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="contacto" class="subNavBtn" href="#">Contacto</a>
-	                    </li>
-	                </ul>
-	            </div>
-	            <!-- /.navbar-collapse -->
-	             	<a id="sTop" class="right-msg subNavBtn msg-icon" href="#"><span> </span></a>
-	                <div class="clearfix"> </div>
-	        </div>
-	        <!-- /.container --><br>
-   	  </nav>
+	<div class="subMenu navbar-custom navbar-scroll-top smint" role="navigation" style="position: absolute; top: 380px;">
+		@include('index.include_menusubseccion')
+   	</div>
       <!-- MENU -->
-         
+      
    
-
-
-
-
+   
+   
+  
+  
+  
+  
     <!-- ************* -->
-    <div class="signup directorio">
+    <div style="background-color:#2d2d2d;">
     
-   	  <div class="container">
-            <div class="slider-left">
-              <h1><img src="/index/images/Directorio.png" alt="Eventos"></h1>
+   	  <div style="width:100%;">
+            <div class="slider-left;" style="width:100%; background-color:#FFB500; padding:10px;">
+              <h1 align="center"><img src="/index/images/Blog.png" alt="Eventos"></h1>
             </div>
-   	   <div class="row text-center">
-   	    <div class="col-md-12 service_grid" style="padding:20px;">
+   	   
+   	   <div class="row">
+   	    
 
+   	    <div class="col-md-2 service_grid" style="padding:20px">
+			<center>
+				@foreach ($bannersizquierda as $banner)
+	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
+	   	    		<hr>
+   	    		@endforeach
+   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
+			</center>
+   		</div>
+   	    
 
-   		  		
+   	    <div class="col-md-8" style="padding:20px; text-align:jusify; font: 400 14px/1.6 'Open Sans', Verdana, Helvetica, sans-serif;">
+
+   	    	<div class="row">
+   	    		
+					<nav>
+						<ul>   		  		
+				@foreach ($categorias as $categoria)
+					
+					<li><a href="directorio/{{ $categoria->tipo }}" style="font-size:13px;"><i class="fa {{ $categoria->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ $categoria->tipo }}</a></li>
+					
+				@endforeach
+						</ul>
+					</nav>
    	    		<?php
    	    			$i=0;
-   	    			foreach($categorias as $categoria){
-   	    				if($i==0){
-   	    					echo'<div class="row" style="background:rgba(0,0,0,0.3);">';
-   	    				}
-   	    				echo'<div class="col-md-6" align="left"  style="padding:20px; color:#FFF;"><a href="/directorio/'.$categoria->tipo.'"><h4><i class="fa '.$categoria->icono.'"></i> '.$categoria->tipo.'</h4> </a> <br">'; 
-	   	    			echo'</div>';
-	   	    			$i++;
-	   	    			if($i==2){
-	   	    				echo'</div>';
-	   	    				$i=0;
-	   	    			}
-   	    			}
-
-   	    			$i=0;
-   	    			echo'</div><br><h2 style="padding:20px; color:#FFF;">'.$directorioCategoria.'</h2>';
    	    			foreach($listaCategoria as $cat){
    	    				echo'<div class="row" align="left" style="background:rgba(0,0,0,0.3);padding:20px; color:#FFF;">';
 		   	    				//$lista = array_keys($pro, "CONSTRUCTORA");
@@ -325,14 +387,34 @@
    	    		?>
 
 
+   	    		
+   	    	</div>
+   	    	   	    		
    		</div>
+   	    
+
+   	    <div class="col-md-2 service_grid" style="padding:20px;">
+			<center>
+				@foreach ($bannersderecha as $banner)
+	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
+	   	    		<hr>
+   	    		@endforeach
+   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
+			</center>
+   		</div>
+
+
    	  </div>
    	  </div>    
 
    	</div>
     <!-- ************* -->
-
-
+    
+    
+    
+    
+    
+    
     
     
     
@@ -340,19 +422,7 @@
     
     <!-- ************* -->
    	<div class="footer">
-   		<div class="container">
-   			<div class="copy">
-		       <p>&copy; 2014 <a href="/" > Todo construimos</a></p>
-		    </div>
-		    <div class="social">	
-		      <ul>	
-			   <li class="facebook"><a href="#"><span> </span></a></li>
-			   <li class="twitter"><a href="#"><span> </span></a></li>
-			   <li class="google"><a href="#"><span> </span></a></li>			
-		     </ul>
-			</div>
-			<div class="clearfix"></div>
-   		</div>
+   		@include('index.include_footer')
    	</div>
     <!-- ************* -->
     
@@ -363,4 +433,3 @@
    	<script src="/index/js/bootstrap.min.js"></script>
 </body>
 </html>
-

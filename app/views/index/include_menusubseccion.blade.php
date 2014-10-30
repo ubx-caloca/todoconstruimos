@@ -6,8 +6,8 @@
 	            </div>
 	            <div class="navbar-collapse navbar-left navbar-main-collapse collapse" style="height: 1px;">
 	                <ul class="nav navbar-nav">
-	                    <li class="active">
-	                        <a id="sTop" class="subNavBtn active" href="#">Inicio</a>
+	                    <li class="page-scroll">
+	                        <a id="inicio" class="subNavBtn" href="/">Inicio</a>
 	                    </li>
 	                    <li class="page-scroll">
 	                        <a id="blogescrito" class="subNavBtn" href="/#blogescrito">Blog</a>
@@ -28,7 +28,7 @@
 	                        <a id="videoblog" class="subNavBtn" href="/#videoblog">Video Blog</a>
 	                    </li>
 	                    <li class="page-scroll">
-	                        <a id="contacto" class="subNavBtn" href="/#contacto">Contacto</a>
+	                        <a id="contacto" class="subNavBtn" href="/">Contacto</a>
 	                    </li>
 	                </ul>
 	            </div>

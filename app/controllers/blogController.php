@@ -184,6 +184,8 @@ class blogController extends \BaseController {
 	 */
 	public function mostrarPost($id)
 	{
+		$bannersizquierda = DB::table('banners')->whereRaw("seccion='BLOG-IZQUIERDA' and habilitar=1")->orderBy('id','asc')->get();
+		$bannersderecha = DB::table('banners')->whereRaw("seccion='BLOG-DERECHA' and habilitar=1")->orderBy('id','asc')->get();
 		$categorias = DB::table('proveedor_tipo')->get();
 		$blog = DB::table('blog')->orderBy('id','desc')->take(4)->get();
 		$clasificadosvip = Clasificado::where('premium', '=', 1)->where('habilitar', '=', 1)->orderBy('fecha_publicacion','DESC')->get();
@@ -203,14 +205,15 @@ class blogController extends \BaseController {
 		}
 
 		$post = Blog::find($id);
-		return View::make('index.blogPost')->with(array('post'=>$post, 'categorias'=>$categorias,'blog'=>$blog, 'clasificadosvip' => $clasificadosvip, 'anuncios' => $anuncios, 'categoriasClasif' => $categoriasClasif, 'eventos' => $eventos, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
+		return View::make('index.blogPost')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'post'=>$post, 'categorias'=>$categorias,'blog'=>$blog, 'clasificadosvip' => $clasificadosvip, 'anuncios' => $anuncios, 'categoriasClasif' => $categoriasClasif, 'eventos' => $eventos, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
 		//
 	}
 	public function mostrarBlog()
 	{
 		//$Posts = DB::table('blog')->orderBy('id','desc')->paginate(2);
-		$bannersizquierda = DB::table('banners')->where('seccion', '=', 'BLOG-IZQUIERDA')->orderBy('id','asc')->get();
-		$bannersderecha = DB::table('banners')->where('seccion', '=', 'BLOG-DERECHA')->orderBy('id','asc')->get();
+		//$bannersizquierda = DB::table('banners')->where('seccion', '=', 'BLOG-IZQUIERDA','AND')->where('habilitar', '=', '1')->orderBy('id','asc')->get();
+		$bannersizquierda = DB::table('banners')->whereRaw("seccion='BLOG-IZQUIERDA' and habilitar=1")->orderBy('id','asc')->get();
+		$bannersderecha = DB::table('banners')->whereRaw("seccion='BLOG-DERECHA' and habilitar=1")->orderBy('id','asc')->get();
 		$blog = Blog::orderBy('fecha','desc')->paginate(5);
 		$anuncios = Anuncio::all();
 		
