@@ -10,7 +10,10 @@ class ClasificadosDetalleController extends \BaseController {
 		
 		$clasf = Clasificado::find($idclasificado);
 		
-		return View::make('index.clasificadoDetalle')->with(array('anuncios'=>$anuncios, 'categoriasClasif' => $categoriasClasif, 'clasificado'=> $clasf));
+		$bannersizquierda = Banner::where('seccion', '=', 'CLASIFICADOS-IZQUIERDA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
+		$bannersderecha = Banner::where('seccion', '=', 'CLASIFICADOS-DERECHA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
+		
+		return View::make('index.clasificadoDetalle')->with(array('anuncios'=>$anuncios, 'categoriasClasif' => $categoriasClasif, 'clasificado'=> $clasf, 'bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha));
 		//
 	}
 

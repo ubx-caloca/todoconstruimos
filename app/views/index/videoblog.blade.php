@@ -30,14 +30,14 @@
 	<script type="text/javascript" 	src="/index/js/jquery.smint.js"></script>
 		<script type="text/javascript">
 			$(document).ready( function() {
-
-
-
+				 $('.subMenu').smint({
+			    	'scrollSpeed' : 1000,
+			    });
 
 
 				$('.owl-carousel').owlCarousel({
 					loop:true,
-					margin:10,
+
 					responsiveClass:true,
 					responsive:{
 						0:{
@@ -45,11 +45,11 @@
 							nav:false
 						},
 						600:{
-							items:3,
+							items:2,
 							nav:false
 						},
 						1000:{
-							items:6,
+							items:4,
 							nav:false,
 							loop:true,
 							
@@ -58,7 +58,7 @@
 							loop:true,
 							autoplay:true,
 						    autoplayTimeout:2500,
-						    autoplayHoverPause:true					
+						    autoplayHoverPause:true							
 				});	
 				$('.owl-carousel-clasificados').owlCarousel({
 					loop:true,
@@ -131,7 +131,7 @@
 			
 			
 		</script>
-		<style>
+		<style type="text/css">
 .navlogin {
     left:100%;
     margin-left:-305px;
@@ -196,7 +196,7 @@ padding-right: 10px;
 padding-top: 3px; 
 padding-bottom: 3px; 
 font-weight: 700;
-
+}
 
 /* unvisited link */
 a:link {
@@ -205,7 +205,7 @@ a:link {
 
 /* visited link */
 a:visited {
-    color: #00FF00;
+    color: #FFFFFF;
 }
 
 /* mouse over link */
@@ -238,12 +238,8 @@ a:active {
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs">
 			@include('index.include_login')	
-
-
-
-		
 		<div class="logo">
-			<a href="index.html"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
+			<a href="/"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
 		</div>
 	    <div class="slider_container">
         
@@ -258,7 +254,7 @@ a:active {
                        			@include('index.include_anuncios')
                        </div>                        
 
-                      </div>
+                </div>
                       <script src="/index/js/jquery.wmuSlider.js"></script> 
                          <script>
                            $('.example1').wmuSlider({
@@ -268,7 +264,7 @@ a:active {
 						   
 						   });         
                          </script> 	           	     
-                 </div>        
+        </div>        
         
 
        
@@ -278,13 +274,9 @@ a:active {
 	</div> 
     <!-- ENCABEZADO -->
     
-    
-    
-    
-    
-                 <div style="width:100%; background-color:#ffffff; border-top: 7px solid #ffffff; border-bottom: 7px solid #ffffff;">
-						@include('index.include_logos')       
-                </div>   
+    <div style="width:100%; background-color:#ffffff; border-bottom: 5px solid #ffffff;margin-top: -5px;border-top: 5px solid #ffffff">
+		@include('index.include_logos')       
+    </div>   
     
     
     
@@ -318,9 +310,11 @@ a:active {
 
    	    <div class="col-md-2 service_grid" style="padding:20px">
 			<center>
-   	    		<img src="/images/banners/1.jpg" alt="" class="img-responsive"/>
-   	    		<hr>
-   	    		<img src="/images/banners/2.jpg" alt="" class="img-responsive"/>
+				@foreach ($bannersizquierda as $banner)
+	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
+	   	    		<hr>
+   	    		@endforeach
+   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
 			</center>
    		</div>
    	    
@@ -353,9 +347,11 @@ a:active {
 
    	    <div class="col-md-2 service_grid" style="padding:20px;">
 			<center>
-   	    		<img src="/images/banners/3.jpg" alt="" class="img-responsive"/>
-   	    		<hr>
-   	    		<img src="/images/banners/4.jpg" alt="" class="img-responsive"/>
+				@foreach ($bannersderecha as $banner)
+	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
+	   	    		<hr>
+   	    		@endforeach
+   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
 			</center>
    		</div>
 

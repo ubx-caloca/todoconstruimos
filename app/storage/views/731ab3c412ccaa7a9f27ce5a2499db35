@@ -116,7 +116,27 @@
 .mainclasdir{
 	border-top: 0px solid #ffb500;
 	padding: 2em 0;
-|
+}
+
+.wmuSliderPrev, .wmuSliderNext {
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	text-indent: -9999px;
+	background: url(../index/images/img-sprite-darker.png)no-repeat;
+	top:5%;
+	z-index: 2;
+	cursor: pointer;
+}
+.wmuSliderPrev {
+background-position: -13px -8px;
+left: 0px;
+}
+.wmuSliderNext {
+background-position: -83px -8px;
+right: 0px;
+}
+
 </style>
 
 
@@ -158,45 +178,7 @@
 
      <!-- MENU -->
 	<div class="subMenu navbar-custom navbar-scroll-top smint" role="navigation" style="position: absolute; top: 380px;">
-	        <div class="container">
-	            <div class="navbar-header page-scroll">
-	                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-main-collapse">
-	                    <img src="/index/images/nav-icon.png" title="drop-down-menu"> 
-	                </button>
-	            </div>
-	            <div class="navbar-collapse navbar-left navbar-main-collapse collapse" style="height: 1px;">
-	                <ul class="nav navbar-nav">
-	                    <li class="page-scroll">
-	                        <a id="sTop" class="subNavBtn" href="/">Inicio</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="blogescrito" class="subNavBtn" href="">Blog</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="directorio" class="subNavBtn" href="">Directorio</a>
-	                    </li>                        
-                        <li class="page-scroll">
-	                        <a id="galeria" class="subNavBtn" href="">Galer&iacute;a</a>
-	                    </li>
-                        <li class="page-scroll">
-	                        <a id="eventos" class="subNavBtn" href="">Eventos</a>
-	                    </li>
-	                    <li class="active">
-	                        <a id="clasificados" class="subNavBtn  active" href="">Clasificados</a>
-	                    </li>
-                        <li class="page-scroll">
-	                        <a id="videoblog" class="subNavBtn" href="">Video Blog</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="contacto" class="subNavBtn" href="">Contacto</a>
-	                    </li>
-	                </ul>
-	            </div>
-	            <!-- /.navbar-collapse -->
-	             	<a id="sTop" class="right-msg subNavBtn msg-icon" href="#"><span> </span></a>
-	                <div class="clearfix"> </div>
-	        </div>
-	        <!-- /.container -->
+		<?php echo $__env->make('index.include_menusubseccion', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
    	  </div>
       <!-- MENU -->
 
@@ -232,7 +214,25 @@
 		</div>
 		</div> 
 
-		<div class="container" style="background:#ffb500; padding-top: 2em;padding-bottom: 2em;border-radius: 10px;">
+	
+   	   <div class="row text-center">
+   	    <div class="col-md-2 service_grid" style="padding:20px">
+			<center>
+				<?php foreach($bannersizquierda as $banner): ?>
+	   	    		<img src="/images/banners/<?php echo $banner->banner_img; ?>" alt="" class="img-responsive"/>
+	   	    		<hr>
+   	    		<?php endforeach; ?>
+   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
+			</center>
+   		</div>
+   	    
+
+   	    <div class="col-md-8" style="padding:0px;">			
+		
+		<div  style="background:#ffb500; padding-top: 2em;padding-bottom: 2em;border-radius: 10px;">
+		
+		
+		
 				<?php
 				
 				
@@ -246,33 +246,25 @@
 						$fecPubString, new DateTimeZone('UTC'));
 						$tj_date = $utc_date;
 						$tj_date->setTimeZone(new DateTimeZone('America/Tijuana'));
-						
-						echo '<div class="row" style="padding-left: 2em;padding-right: 2em;"><div class="col-md-12">
-						<h3 style="text-align: center;">';
-						//echo ''.(($clasificado->premium==1)?'<img src="../images/premium.png" style="width: 25px; height: 25px; position: relative;margin-bottom: 10px;"> ':' ');
-						echo ''.mb_strtoupper($clasificado->titulo, 'utf-8').'</h3>
-								</div></div>';
-								
-/*
-						echo '<br>';
-						echo '<div class="row"><div class="col-md-12">';
-						echo '<div class="owl-carousel-clasificados">';
-							foreach ($clasfImgs as $img){
+				?>
+		<div class="row" style="padding-left: 2em;padding-right: 2em;">
+			<div class="col-md-12">
+				<h3 style="text-align: center;">
+				<?php echo mb_strtoupper($clasificado->titulo, 'utf-8'); ?></h3>
+			</div>
+		</div>
+		<div class="row" style="padding-left: 2em;padding-right: 2em;">						
+			<div class="col-md-6">				
 
-                              echo '<div>
-                                    <img src="/images/clasificados/'.$img->nombre_imagen.'" alt="" class="img-thumbnail" style="width: 200px;height: 200px;"></div>';
-							}					
-						echo '</div>'; 
-						echo '</div></div><br><br>';
-							*/	
-							?>
-	<br>
-	<div class="slider_container" style="width: 600px;">
+	<div class="slider_container" style="padding-left: 15px;padding-right: 15px;">
 	<div id="clasfSlider" class="wmuSlider example2 ">
-	<div class="wmuSliderWrapper" style="margin-left: 75px;">
+	<div class="wmuSliderWrapper" >
 							<?php foreach($clasificado->imagenes as $img): ?>
 							<article style="position: absolute; width: 100%; opacity: 0;"> 
-                                    <img src="/images/clasificados/<?php echo $img->nombre_imagen; ?>" alt="" class="img-thumbnail" style="width: 450px;height: 250px;"></article>
+							<center>
+                                    <img src="/images/clasificados/<?php echo $img->nombre_imagen; ?>" alt="" class="img-responsive">
+									</center>
+							</article>
 									
 							<?php endforeach; ?>				
      </div>                        
@@ -287,58 +279,75 @@
 						   });         
                          </script> 
 	</div>	
-<br><br>	
-							
-				<?php			
-						echo '<div class="row" style="padding-left: 2em;padding-right: 2em;"><div class="col-md-2">
-							 <p style="text-align: -webkit-left;font-weight: 700" >Fecha de publicación:</p>
-								</div>
-							<div class="col-md-10">
-							 <p style="text-align: -webkit-left;" > '.date_format($tj_date, "d M Y H:i a").'</p>
-								</div>';
-						echo '</div><br>';
-
-						echo '<div class="row" style="padding-left: 2em;padding-right: 2em;"><div class="col-md-2">
-							 <p style="text-align: -webkit-left;font-weight: 700" >Precio:</p>
-								</div>
-							<div class="col-md-10">
-							 <p style="text-align: -webkit-left;" > '.$clasificado->precio.' '.$clasificado->moneda.'</p>
-								</div>';
-						echo '</div><br>';						
 	
+	</div>
+	<div class="col-md-6">	
+		<div class="row" style="padding-left: 0em;padding-right: 0em;">
+			<div class="col-md-4">
+				<p style="text-align: -webkit-left;font-weight: 700" >Categoría:</p>
+			</div>
+			<div class="col-md-8">
+				<p style="text-align: -webkit-left;" ><?php echo $clasificado->categoria->categoria; ?></p>
+			</div>
+		</div>
+		<br>
+		<div class="row" style="padding-left: 0em;padding-right: 0em;">
+			<div class="col-md-4">
+				<p style="text-align: -webkit-left;font-weight: 700" >Creado por:</p>
+			</div>
+			<div class="col-md-8">
+				<p style="text-align: -webkit-left;" ><?php echo $clasificado->usuario->nombre; ?></p>
+			</div>
+		</div>
+		<br>	
+		<div class="row" style="padding-left: 0em;padding-right: 0em;">
+			<div class="col-md-4">
+				<p style="text-align: -webkit-left;font-weight: 700" >Fecha de publicación:</p>
+			</div>
+			<div class="col-md-8">
+				<p style="text-align: -webkit-left;" > <?php echo date_format($tj_date, "d M Y H:i a"); ?></p>
+			</div>
+		</div>
+		<br>	
+		<div class="row" style="padding-left: 0em;padding-right: 0em;">
+			<div class="col-md-4">
+				<p style="text-align: -webkit-left;font-weight: 700" >Precio:</p>
+			</div>
+			<div class="col-md-8">
+				<p style="text-align: -webkit-left;" > <?php echo $clasificado->precio.' '.$clasificado->moneda; ?></p>
+			</div>
+		</div>
+		
+	</div>
+	</div>
+	<div class="row" style="padding-left: 2em;padding-right: 2em;">						
+		<div class="col-md-12">
+	
+		<br>
+		<div class="row" style="padding-left: 2em;padding-right: 2em;">
+			<div class="col-md-12">
+				<p style="text-align: -webkit-left;" > <?php echo $clasificado->descripcion; ?></p>
+			</div>
+		</div>
+	
+		</div>
+	</div>
 
-						echo '<div class="row" style="padding-left: 2em;padding-right: 2em;"><div class="col-md-2">
-							 <p style="text-align: -webkit-left;font-weight: 700" >Descripción:</p>
-								</div>
-							<div class="col-md-10">
-							 <p style="text-align: -webkit-left;" > '.$clasificado->descripcion.'</p>
-								</div>';
-						echo '</div><br>';		
-						
-						echo '<div class="row" style="padding-left: 2em;padding-right: 2em;"><div class="col-md-2">
-							 <p style="text-align: -webkit-left;font-weight: 700" >Categoría:</p>
-								</div>
-							<div class="col-md-10">
-							 <p style="text-align: -webkit-left;" > '.$clasificado->categoria->categoria.'</p>
-								</div>';
-						echo '</div><br>';	
-								
-						echo '<div class="row" style="padding-left: 2em;padding-right: 2em;"><div class="col-md-2">
-							 <p style="text-align: -webkit-left;font-weight: 700" >Creado por:</p>
-								</div>
-							<div class="col-md-10">
-							 <p style="text-align: -webkit-left;" > '.$clasificado->usuario->nombre.'</p>
-								</div>';
-						echo '</div><br>';									
-								
-					echo '</div> ';	
-				
-				?>
+	</div>		
+	
+	
+	</div>
+   	<div class="col-md-2 service_grid" style="padding:20px;">
+			<center>
+				<?php foreach($bannersderecha as $banner): ?>
+	   	    		<img src="/images/banners/<?php echo $banner->banner_img; ?>" alt="" class="img-responsive"/>
+	   	    		<hr>
+   	    		<?php endforeach; ?>
+   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
+			</center>
+     </div>	
+	</div>
 
-
-   		</div>
-   	  </div>
-   	  </div>    
 
    	</div>
     <!-- ************* -->
@@ -351,19 +360,7 @@
     
     <!-- ************* -->
    	<div class="footer">
-   		<div class="container">
-   			<div class="copy">
-		       <p>&copy; 2014 <a href="/"> Todo construimos</a></p>
-		    </div>
-		    <div class="social">	
-		      <ul>	
-			   <li class="facebook"><a href="#"><span> </span></a></li>
-			   <li class="twitter"><a href="#"><span> </span></a></li>
-			   <li class="google"><a href="#"><span> </span></a></li>			
-		     </ul>
-			</div>
-			<div class="clearfix"></div>
-   		</div>
+   		<?php echo $__env->make('index.include_footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
    	</div>
     <!-- ************* -->
     

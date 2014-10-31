@@ -38,6 +38,7 @@ class directorioController extends \BaseController {
 
 		$bannersizquierda = DB::table('banners')->whereRaw("seccion='DIRECTORIO-IZQUIERDA' and habilitar=1")->orderBy('id','asc')->get();
 		$bannersderecha = DB::table('banners')->whereRaw("seccion='DIRECTORIO-DERECHA' and habilitar=1")->orderBy('id','asc')->get();		
+		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
 		$categorias = DB::table('proveedor_tipo')->get();
 		$listaProveedores = DB::select('select * from proveedor_tipo,proveedores,proveedor_detalle where proveedor_tipo.id=proveedores.proveedor_tipo_idproveedor_tipo and proveedores.id=proveedor_detalle.proveedores_idproveedor');
 		$listaCategoria = DB::select("select * from proveedor_tipo,proveedores,proveedor_detalle where proveedor_tipo.id=proveedores.proveedor_tipo_idproveedor_tipo and proveedores.id=proveedor_detalle.proveedores_idproveedor and proveedor_tipo.tipo='$directorioCategoria'");
@@ -45,7 +46,7 @@ class directorioController extends \BaseController {
 		//$proveedores_detalle = Proveedor_detalle::where('proveedores_idproveedor', '=', $proveedores->id)->first();
 		//$galeria = DB::table('proveedor_galeria')->where('proveedores_idproveedor', '=', $proveedores->id)->get();
 		//return View::make('index.index')->with(array('proveedores'=>$proveedores,'proveedores_detalle'=>$proveedores_detalle,'galeria'=>$galeria));
-		return View::make('index.directorio')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'categorias'=>$categorias,'listaProveedores'=>$listaProveedores,'directorioCategoria'=>$directorioCategoria,'listaCategoria'=>$listaCategoria, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'anuncios' => $anuncios));
+		return View::make('index.directorio')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'categorias'=>$categorias,'listaProveedores'=>$listaProveedores,'directorioCategoria'=>$directorioCategoria,'listaCategoria'=>$listaCategoria, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'anuncios' => $anuncios, 'bannersindexarriba'=>$bannersindexarriba));
 		//
 	}
 

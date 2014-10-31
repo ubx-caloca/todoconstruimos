@@ -18,7 +18,22 @@ class DirectorioClasifController extends \BaseController {
 		$listaClasificadosNormales = Clasificado::where('categoria_id', '=', $directorioCategoria)->where('premium', '=', 0)->where('habilitar', '=', 1)->orderBy('fecha_publicacion','DESC')->get();
 		}
 		
-		return View::make('index.directorioClasificados')->with(array('anuncios'=>$anuncios, 'categoriasClasif' => $categoriasClasif, 'listaClasificadosPremium'=> $listaClasificadosPremium, 'directorioCat' => (($directorioCategoria=='all')? 'Todos los clasificados':$categoria->categoria ), 'listaClasificadosNormales'=> $listaClasificadosNormales));
+		$bannersizquierda = Banner::where('seccion', '=', 'CLASIFICADOS-IZQUIERDA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
+		$bannersderecha = Banner::where('seccion', '=', 'CLASIFICADOS-DERECHA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
+		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
+		
+		$rolusuarioLogueado = '';
+		$mailusuarioLogueado = '';
+		if (Auth::check()){
+			$authuser = Auth::user();
+			$usu = Usuario::find($authuser->id);
+			$mailusuarioLogueado = $authuser->email;
+			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
+			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
+			
+		}
+		
+		return View::make('index.directorioClasificados')->with(array('anuncios'=>$anuncios, 'categoriasClasif' => $categoriasClasif, 'listaClasificadosPremium'=> $listaClasificadosPremium, 'directorioCat' => (($directorioCategoria=='all')? 'Todos los clasificados':$categoria->categoria ), 'listaClasificadosNormales'=> $listaClasificadosNormales, 'bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha, 'bannersindexarriba'=>$bannersindexarriba, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
 		//
 	}
 	public function categorias()

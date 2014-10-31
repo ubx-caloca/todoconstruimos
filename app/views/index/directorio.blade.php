@@ -37,7 +37,6 @@
 
 				$('.owl-carousel').owlCarousel({
 					loop:true,
-					margin:10,
 					responsiveClass:true,
 					responsive:{
 						0:{
@@ -45,11 +44,11 @@
 							nav:false
 						},
 						600:{
-							items:3,
+							items:2,
 							nav:false
 						},
 						1000:{
-							items:6,
+							items:4,
 							nav:false,
 							loop:true,
 							
@@ -249,7 +248,7 @@ a:active {
 
 		
 		<div class="logo">
-			<a href="index.html"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
+			<a href="../"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
 		</div>
 	    <div class="slider_container">
         
@@ -288,7 +287,7 @@ a:active {
     
     
     
-                 <div style="width:100%; background-color:#ffffff; border-top: 7px solid #ffffff; border-bottom: 7px solid #ffffff;">
+                 <div style="width:100%; background-color:#ffffff; border-bottom: 5px solid #ffffff;margin-top: -5px;border-top: 5px solid #ffffff">
 						@include('index.include_logos')       
                 </div>   
     
@@ -316,7 +315,7 @@ a:active {
     
    	  <div style="width:100%;">
             <div class="slider-left;" style="width:100%; background-color:#FFB500; padding:10px;">
-              <h1 align="center"><img src="/index/images/Blog.png" alt="Eventos"></h1>
+              <h1 align="center"><img src="/index/images/Directorio_dark.png" alt="Directorio"></h1>
             </div>
    	   
    	   <div class="row">
@@ -341,7 +340,7 @@ a:active {
 						<ul>   		  		
 				@foreach ($categorias as $categoria)
 					
-					<li><a href="directorio/{{ $categoria->tipo }}" style="font-size:13px;"><i class="fa {{ $categoria->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ $categoria->tipo }}</a></li>
+					<li><a href="/directorio/{{ $categoria->tipo }}" style="font-size:13px;"><i class="fa {{ $categoria->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ $categoria->tipo }}</a></li>
 					
 				@endforeach
 						</ul>

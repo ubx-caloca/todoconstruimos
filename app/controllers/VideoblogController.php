@@ -179,6 +179,7 @@ class VideoblogController extends \BaseController {
 		$videoblog = VideoBlog::orderBy('fecha','desc')->paginate(5);
 		$anuncios = Anuncio::all();
 		
+		
 		$rolusuarioLogueado = '';
 		$mailusuarioLogueado = '';
 		if (Auth::check()){
@@ -189,7 +190,10 @@ class VideoblogController extends \BaseController {
 			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
 			
 		}
-		return View::make('index.videoblog')->with(array('videoblog'=>$videoblog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
+		$bannersizquierda = DB::table('banners')->whereRaw("seccion='VIDEOBLOG-IZQUIERDA' and habilitar=1")->orderBy('id','asc')->get();
+		$bannersderecha = DB::table('banners')->whereRaw("seccion='VIDEOBLOG-DERECHA' and habilitar=1")->orderBy('id','asc')->get();
+		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
+		return View::make('index.videoblog')->with(array('videoblog'=>$videoblog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha, 'bannersindexarriba'=>$bannersindexarriba));
 		//
 	}	
 

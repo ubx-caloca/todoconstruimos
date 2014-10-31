@@ -37,7 +37,7 @@
 
 				$('.owl-carousel').owlCarousel({
 					loop:true,
-					margin:10,
+
 					responsiveClass:true,
 					responsive:{
 						0:{
@@ -45,11 +45,11 @@
 							nav:false
 						},
 						600:{
-							items:3,
+							items:2,
 							nav:false
 						},
 						1000:{
-							items:6,
+							items:4,
 							nav:false,
 							loop:true,
 							
@@ -58,7 +58,7 @@
 							loop:true,
 							autoplay:true,
 						    autoplayTimeout:2500,
-						    autoplayHoverPause:true					
+						    autoplayHoverPause:true				
 				});	
 				$('.owl-carousel-clasificados').owlCarousel({
 					loop:true,
@@ -288,7 +288,7 @@ a:active {
     
     
     
-                 <div style="width:100%; background-color:#ffffff; border-top: 7px solid #ffffff; border-bottom: 7px solid #ffffff;">
+                 <div style="width:100%; background-color:#ffffff; border-bottom: 5px solid #ffffff;margin-top: -5px;border-top: 5px solid #ffffff">
 						@include('index.include_logos')       
                 </div>   
     

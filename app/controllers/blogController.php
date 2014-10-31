@@ -214,6 +214,8 @@ class blogController extends \BaseController {
 		//$bannersizquierda = DB::table('banners')->where('seccion', '=', 'BLOG-IZQUIERDA','AND')->where('habilitar', '=', '1')->orderBy('id','asc')->get();
 		$bannersizquierda = DB::table('banners')->whereRaw("seccion='BLOG-IZQUIERDA' and habilitar=1")->orderBy('id','asc')->get();
 		$bannersderecha = DB::table('banners')->whereRaw("seccion='BLOG-DERECHA' and habilitar=1")->orderBy('id','asc')->get();
+		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
+		
 		$blog = Blog::orderBy('fecha','desc')->paginate(5);
 		$anuncios = Anuncio::all();
 		
@@ -227,7 +229,7 @@ class blogController extends \BaseController {
 			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
 			
 		}
-		return View::make('index.blog')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'blog'=>$blog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
+		return View::make('index.blog')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'blog'=>$blog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersindexarriba'=>$bannersindexarriba));
 		//
 	}	
 

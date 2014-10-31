@@ -1,6 +1,6 @@
    		<div class="container">
    			<div class="copy">
-		       <p>&copy; 2014dddd <a href="/" > Todo construimos</a></p>
+		       <p>&copy; 2014 <a href="/" > Todo construimos</a></p>
 		    </div>
 		    <div class="social">	
 		      <ul>	

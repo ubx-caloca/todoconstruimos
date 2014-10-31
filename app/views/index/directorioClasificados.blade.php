@@ -27,6 +27,7 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="/index/js/owl.carousel.2.0.0-beta.2.4/owl.carousel.js"></script>
 <link rel="stylesheet" type="text/css" href="/index/js/owl.carousel.2.0.0-beta.2.4/assets/owl.carousel.css">
+<link rel="stylesheet" href="/index/js/owl.carousel.2.0.0-beta.2.4/assets/owl.theme.css">
 <script src="/index/js/easing.js"></script>
 	<script type="text/javascript" 	src="/index/js/jquery.smint.js"></script>
 		<script type="text/javascript">
@@ -37,7 +38,7 @@
 
 				$('.owl-carousel').owlCarousel({
 					loop:true,
-					margin:10,
+
 					responsiveClass:true,
 					responsive:{
 						0:{
@@ -45,11 +46,11 @@
 							nav:false
 						},
 						600:{
-							items:3,
+							items:2,
 							nav:false
 						},
 						1000:{
-							items:6,
+							items:4,
 							nav:false,
 							loop:true,
 							
@@ -88,7 +89,10 @@
 							touchDrag:true,
 							nav:true,
 							dots:true			
-				});				
+				});		
+				$('.subMenu').smint({
+			    	'scrollSpeed' : 1000,
+			    });					
 				
 			});
 			
@@ -122,7 +126,94 @@ margin-bottom: 3px;
 .mainclasdir{
 	border-top: 0px solid #ffb500;
 	padding: 2em 0;
-|
+}
+
+.navlogin {
+    left:100%;
+    margin-left:-305px;
+    top:5px;
+    position:absolute;
+	font-family: Lato, sans-serif;
+	font-size: 16px;
+	
+	
+}
+.navlogin>li>a:hover, .navlogin>li>a:focus, .navlogin .open>a, .navlogin .open>a:hover, .navlogin .open>a:focus {
+    background:#fff;
+}
+.dropdown {
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius:4px;
+    width:300px;    
+}
+.dropdown-menu>li>a {
+    color:#000000;
+}
+.dropdown ul.dropdown-menu {
+    border-radius:4px;
+    box-shadow:none;
+    margin-top:20px;
+    width:300px;
+}
+.dropdown ul.dropdown-menu:before {
+    content: "";
+    border-bottom: 10px solid #fff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    z-index: 10;
+}
+.dropdown ul.dropdown-menu:after {
+    content: "";
+    border-bottom: 12px solid #ccc;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    position: absolute;
+    top: -12px;
+    right: 14px;
+    z-index: 9;
+}
+
+.loginText {
+	border-radius: 3px;
+}
+.loginSummitBtn{
+border-radius: 3px;
+-webkit-appearance: button;
+color: #414042; 
+background-color: #FCB200; 
+background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.05)); 
+border: lavender; 
+padding-left: 10px; 
+padding-right: 10px; 
+padding-top: 3px; 
+padding-bottom: 3px; 
+font-weight: 700;
+}
+/* unvisited link */
+a:link {
+    color: #FF0000;
+}
+
+/* visited link */
+a:visited {
+    color: #FFFFFF;
+}
+
+/* mouse over link */
+a:hover {
+    color: #FF00FF;
+}
+
+/* selected link */
+a:active {
+    color: #0000FF;
+}
+
+
 
   </style>
 </head>
@@ -142,6 +233,7 @@ margin-bottom: 3px;
 
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs">
+			@include('index.include_login')	
 		<div class="logo">
 			<a href="/"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
 		</div>
@@ -154,7 +246,7 @@ margin-bottom: 3px;
 							@include('index.include_anuncios')
                         </div>                        
 
-                      </div>
+                </div>
                       <script src="/index/js/jquery.wmuSlider.js"></script> 
                          <script>
                            $('.example1').wmuSlider({
@@ -164,7 +256,7 @@ margin-bottom: 3px;
 						   
 						   });         
                          </script> 	           	     
-                 </div>        
+         </div>        
         
 
        
@@ -173,47 +265,13 @@ margin-bottom: 3px;
     
 	</div> 
     <!-- ENCABEZADO --> 
+	<div style="width:100%; background-color:#ffffff; border-bottom: 5px solid #ffffff;margin-top: -5px;border-top: 5px solid #ffffff">
+		@include('index.include_logos')       
+    </div> 
+	
     <!-- MENU -->
 	<div class="subMenu navbar-custom navbar-scroll-top smint" role="navigation" style="position: absolute; top: 380px;">
-	        <div class="container">
-	            <div class="navbar-header page-scroll">
-	                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-main-collapse">
-	                    <img src="/index/images/nav-icon.png" title="drop-down-menu"> 
-	                </button>
-	            </div>
-	            <div class="navbar-collapse navbar-left navbar-main-collapse collapse" style="height: 1px;">
-	                <ul class="nav navbar-nav">
-	                    <li class="page-scroll">
-	                        <a id="sTop" class="subNavBtn" href="/">Inicio</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="blogescrito" class="subNavBtn" href="">Blog</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="directorio" class="subNavBtn" href="">Directorio</a>
-	                    </li>                        
-                        <li class="page-scroll">
-	                        <a id="galeria" class="subNavBtn" href="">Galer&iacute;a</a>
-	                    </li>
-                        <li class="page-scroll">
-	                        <a id="eventos" class="subNavBtn" href="">Eventos</a>
-	                    </li>
-	                    <li class="active">
-	                        <a id="clasificados" class="subNavBtn  active" href="">Clasificados</a>
-	                    </li>
-                        <li class="page-scroll">
-	                        <a id="videoblog" class="subNavBtn" href="">Video Blog</a>
-	                    </li>
-	                    <li class="page-scroll">
-	                        <a id="contacto" class="subNavBtn" href="">Contacto</a>
-	                    </li>
-	                </ul>
-	            </div>
-	            <!-- /.navbar-collapse -->
-	             	<a id="sTop" class="right-msg subNavBtn msg-icon" href="#"><span> </span></a>
-	                <div class="clearfix"> </div>
-	        </div>
-	        <!-- /.container -->
+		@include('index.include_menusubseccion')
    	  </div>
       <!-- MENU -->
          
@@ -250,68 +308,101 @@ margin-bottom: 3px;
 	  </div> 
 	  </div>
 	  </div>
-				
+
+  	   <div class="row text-center">
+   	    
+
+   	    <div class="col-md-2 service_grid" style="padding:20px">
+			<center>
+				@foreach ($bannersizquierda as $banner)
+	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
+	   	    		<hr>
+   	    		@endforeach
+   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
+			</center>
+   		</div>
+
+		<div class="col-md-8" style="padding:20px;">
+	  
 				<h2 style="padding:20px; color:#FFF;">{{strtoupper($directorioCat)}}</h2>
-				<div class="container">
 				<?php
 				  	 $i=0;
-					 //<ul style="list-style-type: none; width: 100%;">';
-   	    			foreach($listaClasificadosPremium as $cat){	
-						$lasfImgs = $cat->imagenes;
-						
-						$fecPubString = $cat->fecha_publicacion;
-						$utc_date = new DateTime(
-						$fecPubString, new DateTimeZone('UTC'));
-						$tj_date = $utc_date;
-						$tj_date->setTimeZone(new DateTimeZone('America/Tijuana'));
-						
-						
-					    echo '<a href="../clasificadoDetalle/'.$cat->id.'">';
-						echo '<div class="row" id="clasfListItem" style="padding: 10px; overflow: inherit;">';						
-						echo '<div class="col-md-1">';
-												echo ''.(($cat->premium==1)?'<img src="../images/premium2.png" class="pull-left" alt="Premium" style="width: 35px;height: 35px;position: absolute;left: 0;margin-top: -20px;margin-left: -23px;"> ':' ');						
-						echo '<img src="'.(($lasfImgs->isEmpty())?'../images/No_image_available.png': '../images/clasificados/'.$lasfImgs[0]->nombre_imagen).'" style="width:100px; height: 100px; margin: 0 0 0 -12px;">
-								</div>
-								<div class="col-md-11"  style="padding-left: 20px;">
-								<h3 style="text-align: -webkit-left;color:black">'.mb_strtoupper($cat->titulo, 'utf-8').'</h3>
-								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: mediumblue;" > Publicado el '.date_format($tj_date, "d M Y H:i a").' por '.$cat->usuario->nombre .'</p>
-								<p style="text-align: -webkit-left;color:black;" >'.Str::limit($cat->descripcion, 1000).'</p><br>
-								<p style="text-align: -webkit-left;color:black;" > Precio: '.$cat->precio.' '.$cat->moneda.'</p>
-								</div>
-							 </div></a>';
-						$i++;
-   	    			} 	
-   	    			foreach($listaClasificadosNormales as $cat){	
-						$lasfImgs = $cat->imagenes;
-						
-						$fecPubString = $cat->fecha_publicacion;
-						$utc_date = new DateTime(
-						$fecPubString, new DateTimeZone('UTC'));
-						$tj_date = $utc_date;
-						$tj_date->setTimeZone(new DateTimeZone('America/Tijuana'));
-						
-						
-					    echo '<a href="../clasificadoDetalle/'.$cat->id.'"><div class="row" id="clasfListItem2" style="padding: 10px; overflow: auto;">
-								<div class="col-md-1">
-								<img src="'.(($lasfImgs->isEmpty())?'../images/No_image_available.png': '../images/clasificados/'.$lasfImgs[0]->nombre_imagen).'" style="width:100px; height: 100px; margin: 0 0 0 -12px;">
-								</div>
-								<div class="col-md-11"  style="padding-left: 20px;">
-								<h3 style="text-align: -webkit-left;color:black">'.(($cat->premium==1)?'<img src="../images/premium.png" style="width:20px; height: 20px; float: left;"> ':' ').strtoupper($cat->titulo).'</h3>
-								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: mediumblue;" > Publicado el '.date_format($tj_date, "d M Y H:i a").' por '.$cat->usuario->nombre .'</p>
-								<p style="text-align: -webkit-left;color:black;" >'.Str::limit($cat->descripcion, 1000).'</p><br>
-								<p style="text-align: -webkit-left;color:black;" > Precio: '.$cat->precio.' '.$cat->moneda.'</p>
-								</div>
-							 </div></a>';
-						$i++;
-   	    			} 					
-					echo '</div> ';//'</ul></div>';			
-				
 				?>
+   	    			@foreach($listaClasificadosPremium as $cat)	
+					<?php
+						$lasfImgs = $cat->imagenes;
+						
+						$fecPubString = $cat->fecha_publicacion;
+						$utc_date = new DateTime(
+						$fecPubString, new DateTimeZone('UTC'));
+						$tj_date = $utc_date;
+						$tj_date->setTimeZone(new DateTimeZone('America/Tijuana'));
+					?>
+						
+					    <a href="../clasificadoDetalle/{{$cat->id}}">
+						<div class="row" id="clasfListItem" style="padding: 10px; overflow: inherit;">					
+							<div class="col-md-2" style="padding-right: 0px;">
+								{{(($cat->premium==1)?'<img src="../images/premium2.png" class="pull-left" alt="Premium" style="width: 35px;height: 35px;position: absolute;left: 0;margin-top: -20px;margin-left: -23px;"> ':' ')}}						
+								<img src="{{(($lasfImgs->isEmpty())?'../images/No_image_available.png': '../images/clasificados/'.$lasfImgs[0]->nombre_imagen)}}" class="img-responsive" style="margin: 0 0 0 -12px;">
+							</div>
+							<div class="col-md-10" >
+								<h3 style="text-align: -webkit-left;color:black">{{mb_strtoupper($cat->titulo, 'utf-8')}}</h3>
+								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: mediumblue;" > Publicado el {{date_format($tj_date, "d M Y H:i a")}} por {{$cat->usuario->nombre }}</p>
+								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: black;" > Precio: {{$cat->precio.' '.$cat->moneda}}</p>
+								<p style="text-align: -webkit-left;color:black;" >{{Str::limit($cat->descripcion, 1000)}}</p>
+								
+							</div>
+						</div>
+						</a>
+						
+						<?php
+						$i++;
+						?>
+   	    			@endforeach	
+					
+   	    			@foreach($listaClasificadosNormales as $cat)
+					<?php
+						$lasfImgs = $cat->imagenes;
+						
+						$fecPubString = $cat->fecha_publicacion;
+						$utc_date = new DateTime(
+						$fecPubString, new DateTimeZone('UTC'));
+						$tj_date = $utc_date;
+						$tj_date->setTimeZone(new DateTimeZone('America/Tijuana'));
+					?>
+						
+					    <a href="../clasificadoDetalle/{{$cat->id}}">
+						<div class="row" id="clasfListItem2" style="padding: 10px; overflow: auto;">
+							<div class="col-md-2" style="padding-right: 0px;">
+								<img src="{{(($lasfImgs->isEmpty())?'../images/No_image_available.png': '../images/clasificados/'.$lasfImgs[0]->nombre_imagen)}}" class="img-responsive" style="margin: 0 0 0 -12px;">
+							</div>
+							<div class="col-md-10">
+								<h3 style="text-align: -webkit-left;color:black">{{mb_strtoupper($cat->titulo,'utf-8')}}</h3>
+								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: mediumblue;" > Publicado el {{date_format($tj_date, "d M Y H:i a")}} por {{$cat->usuario->nombre}}</p>
+								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: black;" > Precio: {{$cat->precio.' '.$cat->moneda}}</p>
+								<p style="text-align: -webkit-left;color:black;" >{{Str::limit($cat->descripcion, 1000)}}</p>
+							</div>
+						</div>
+						</a>
+						<?php
+						$i++;
+						?>
+   	    			@endforeach							
 
-
+   
+	  
+	  
+	  </div>
+	     <div class="col-md-2 service_grid" style="padding:20px;">
+			<center>
+				@foreach ($bannersderecha as $banner)
+	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
+	   	    		<hr>
+   	    		@endforeach
+   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
+			</center>
    		</div>
-   	  </div>
-   	  </div>    
+	  </div>
 
    	</div>
     <!-- ************* -->
@@ -324,19 +415,7 @@ margin-bottom: 3px;
     
     <!-- ************* -->
    	<div class="footer">
-   		<div class="container">
-   			<div class="copy">
-		       <p>&copy; 2014 <a href="/" > Todo construimos</a></p>
-		    </div>
-		    <div class="social">	
-		      <ul>	
-			   <li class="facebook"><a href="#"><span> </span></a></li>
-			   <li class="twitter"><a href="#"><span> </span></a></li>
-			   <li class="google"><a href="#"><span> </span></a></li>			
-		     </ul>
-			</div>
-			<div class="clearfix"></div>
-   		</div>
+   		@include('index.include_footer')
    	</div>
     <!-- ************* -->
     
