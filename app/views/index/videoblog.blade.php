@@ -56,69 +56,7 @@
 							autoplay:true,
 						    autoplayTimeout:2500,
 						    autoplayHoverPause:true							
-				});	
-				$('.owl-carousel-clasificados').owlCarousel({
-					loop:true,
-					margin:10,
-					responsiveClass:true,
-					responsive:{
-						0:{
-							items:1,
-							nav:false
-						},
-						600:{
-							items:2,
-							nav:false
-						},
-						1000:{
-							items:3,
-							nav:false,
-							loop:true,
-							
-						}
-					},
-							loop:true,
-							autoplay:true,
-						    autoplayTimeout:2000,
-						    autoplayHoverPause:true,
-							mouseDrag:true,
-							touchDrag:true,
-							nav:true,
-							dots:true			
-				});
-				$('.owl-carousel-eventos').owlCarousel({
-					loop:true,
-					margin:30,
-					responsiveClass:true,
-					responsive:{
-						0:{
-							items:1,
-							nav:false
-						},
-						600:{
-							items:2,
-							nav:false
-						},
-						1000:{
-							items:2,
-							nav:false,
-							loop:true,
-							
-						}
-					},
-							loop:true,
-							autoplay:true,
-						    autoplayTimeout:4000,
-						    autoplayHoverPause:true,
-							mouseDrag:true,
-							touchDrag:true,
-							nav:true,
-							dots:true			
-				});		
-
-			    $('.subMenu').smint({
-			    	'scrollSpeed' : 1000,
-			    });						
+				});							
 				
 			});
 			
