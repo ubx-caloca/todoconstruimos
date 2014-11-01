@@ -295,14 +295,8 @@ a:active {
 
 	
    	   <div class="row text-center">
-   	    <div class="col-md-2 service_grid" style="padding:20px">
-			<center>
-				<?php foreach($bannersizquierda as $banner): ?>
-	   	    		<img src="/images/banners/<?php echo $banner->banner_img; ?>" alt="" class="img-responsive"/>
-	   	    		<hr>
-   	    		<?php endforeach; ?>
-   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
-			</center>
+   	    <div class="col-md-2 service_grid">
+			<?php echo $__env->make('index.include_bannerizq', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
    		</div>
    	    
 
@@ -416,14 +410,8 @@ a:active {
 	
 	
 	</div>
-   	<div class="col-md-2 service_grid" style="padding:20px;">
-			<center>
-				<?php foreach($bannersderecha as $banner): ?>
-	   	    		<img src="/images/banners/<?php echo $banner->banner_img; ?>" alt="" class="img-responsive"/>
-	   	    		<hr>
-   	    		<?php endforeach; ?>
-   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
-			</center>
+   	<div class="col-md-2 service_grid">
+   		<?php echo $__env->make('index.include_bannerder', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
      </div>	
 	</div>
 

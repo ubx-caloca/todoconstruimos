@@ -249,7 +249,7 @@ a:active {
 
 		
 		<div class="logo">
-			<a href="index.html"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
+			<a href="/"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
 		</div>
 	    <div class="slider_container">
         
@@ -323,13 +323,7 @@ a:active {
    	    
 
    	    <div class="col-md-2 service_grid" style="padding:20px">
-			<center>
-				@foreach ($bannersizquierda as $banner)
-	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
-	   	    		<hr>
-   	    		@endforeach
-   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
-			</center>
+   		@include('index.include_bannerizq')
    		</div>
    	    
 
@@ -360,13 +354,7 @@ a:active {
    	    
 
    	    <div class="col-md-2 service_grid" style="padding:20px;">
-			<center>
-				@foreach ($bannersderecha as $banner)
-	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
-	   	    		<hr>
-   	    		@endforeach
-   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
-			</center>
+			@include('index.include_bannerder')
    		</div>
 
 

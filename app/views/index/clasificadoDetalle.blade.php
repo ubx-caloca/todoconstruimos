@@ -295,14 +295,8 @@ a:active {
 
 	
    	   <div class="row text-center">
-   	    <div class="col-md-2 service_grid" style="padding:20px">
-			<center>
-				@foreach ($bannersizquierda as $banner)
-	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
-	   	    		<hr>
-   	    		@endforeach
-   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
-			</center>
+   	    <div class="col-md-2 service_grid">
+			@include('index.include_bannerizq')
    		</div>
    	    
 
@@ -416,14 +410,8 @@ a:active {
 	
 	
 	</div>
-   	<div class="col-md-2 service_grid" style="padding:20px;">
-			<center>
-				@foreach ($bannersderecha as $banner)
-	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
-	   	    		<hr>
-   	    		@endforeach
-   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
-			</center>
+   	<div class="col-md-2 service_grid">
+   		@include('index.include_bannerder')
      </div>	
 	</div>
 

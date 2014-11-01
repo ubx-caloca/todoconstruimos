@@ -195,16 +195,16 @@ padding-right: 10px;
 padding-top: 3px; 
 padding-bottom: 3px; 
 font-weight: 700;
-
+}
 
 /* unvisited link */
 a:link {
-    color: #FF0000;
+    color: #FFFFFF;
 }
 
 /* visited link */
 a:visited {
-    color: #00FF00;
+    color: #FFFFFF;
 }
 
 /* mouse over link */
@@ -214,10 +214,9 @@ a:hover {
 
 /* selected link */
 a:active {
-    color: #0000FF;
+    color: #FFFFFF;
 }
 
-}
 </style>
 
 <link href="http://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
@@ -322,13 +321,7 @@ a:active {
    	    
 
    	    <div class="col-md-2 service_grid" style="padding:20px">
-			<center>
-				@foreach ($bannersizquierda as $banner)
-	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
-	   	    		<hr>
-   	    		@endforeach
-   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
-			</center>
+			@include('index.include_bannerizq')
    		</div>
    	    
 
@@ -336,7 +329,7 @@ a:active {
 
    	    	<div class="row">
    	    		
-					<nav>
+					<nav style="margin: 20px auto;">
 						<ul>   		  		
 				@foreach ($categorias as $categoria)
 					
@@ -347,44 +340,26 @@ a:active {
 					</nav>
    	    		<?php
    	    			$i=0;
-   	    			foreach($listaCategoria as $cat){
-   	    				echo'<div class="row" align="left" style="background:rgba(0,0,0,0.3);padding:20px; color:#FFF;">';
-		   	    				//$lista = array_keys($pro, "CONSTRUCTORA");
-		   	    					echo "
-		   	    						<div class='row'>
-		   	    							<div class='col-md-12'>$cat->nombre</div>
-		   	    						</div>
-		   	    						<div class='row'>
-		   	    							<div class='col-md-12'>$cat->productos<br><br></div>
-		   	    						</div>
-		   	    						<div class='row'>
-		   	    							<div class='col-md-12'>$cat->direccion <br> Tel: $cat->telefono</div>
-		   	    						</div>
-		   	    						<div class='row'>
-		   	    							<div class='col-md-12'><br>Visitar página: <a href='/proveedores/$cat->nombre_usuario'> $cat->nombre_usuario </a></div>
-		   	    						</div>
-		   	    					";
+					?>
+					@foreach($listaCategoria as $cat)
+   	    				<div class="row" align="left" style="background:rgba(0,0,0,0.3);padding:20px; color:#FFF;border-radius: 10px;margin-bottom: 5px;">   	    					
+		   	    			<div class='row'>
+		   	    				<div class='col-md-12'>{{$cat->nombre}}</div>
+		   	    			</div>
+		   	    			<div class='row'>
+		   	    				<div class='col-md-12'>{{$cat->productos}}<br><br></div>
+		   	    			</div>
+		   	    			<div class='row'>
+		   	    				<div class='col-md-12'>{{$cat->direccion}} <br> Tel: {{$cat->telefono}}</div>
+		   	    			</div>
+		   	    			<div class='row'>
+		   	    				<div class='col-md-12'><br>Visitar página: <a href='/proveedores/{{$cat->nombre_usuario}}'> {{$cat->nombre_usuario}} </a></div>
+		   	    			</div>
+		   	    		<?php
 	   	    				$i++;
-	   	    			echo'</div>';
-   	    			}   	    			
-
-					
-
-					//foreach($lista as $l){
-   	    			//	echo "PROVEEDOR-> $l <br>";
-   	    			//}
-   	    			//$lista = array_keys($listaProveedores, "CONSTRUCTORA");
-   	    			//echo "=====================";
-   	    			//print_r($lista);
-   	    			//echo "=====================";
-
-   	    			//print_r($listaProveedores);
-   	    			//foreach($listaProveedores as $proveedor){
-   	    				//$lista = array_keys($pro, "CONSTRUCTORA");
-   	    			//	echo "PROVEEDOR-> $proveedor->nombre_usuario <br>";
-   	    			//}
-   	    		?>
-
+						?>
+	   	    			</div>
+   	    			@endforeach 	    			
 
    	    		
    	    	</div>
@@ -393,13 +368,7 @@ a:active {
    	    
 
    	    <div class="col-md-2 service_grid" style="padding:20px;">
-			<center>
-				@foreach ($bannersderecha as $banner)
-	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
-	   	    		<hr>
-   	    		@endforeach
-   	    		<img src="/images/banners/anunciate.png" alt="" class="img-responsive"/>
-			</center>
+			@include('index.include_bannerder')
    		</div>
 
 
