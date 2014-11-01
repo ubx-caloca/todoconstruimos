@@ -30,9 +30,6 @@
 	<script type="text/javascript" 	src="/index/js/jquery.smint.js"></script>
 		<script type="text/javascript">
 			$(document).ready( function() {
-				 $('.subMenu').smint({
-			    	'scrollSpeed' : 1000,
-			    });
 
 
 				$('.owl-carousel').owlCarousel({
