@@ -48,13 +48,13 @@ Route::get('/clasificadoDetalle/{clasificadoId}','ClasificadosDetalleController@
 // ===============================================
 // BLOG
 // ===============================================
-Route::get('/blog/{post}','blogController@mostrarPost');
+//Route::get('/blog/{post}','blogController@mostrarPost');
 Route::get('/blog/','blogController@mostrarBlog');
 
 // ===============================================
 // VIDEOBLOG
 // ===============================================
-Route::get('/videoblog/','videoblogController@mostrarVideoblog');
+Route::get('/videoblog/','VideoblogController@mostrarVideoblog');
 
 // ===============================================
 // EVENTOS
