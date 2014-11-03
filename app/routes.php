@@ -46,12 +46,6 @@ Route::get('/directorioClasif','DirectorioClasifController@categorias');
 Route::get('/clasificadoDetalle/{clasificadoId}','ClasificadosDetalleController@verclasif');
 
 // ===============================================
-// BLOG
-// ===============================================
-//Route::get('/blog/{post}','blogController@mostrarPost');
-Route::get('/blog/','blogController@mostrarBlog');
-
-// ===============================================
 // VIDEOBLOG
 // ===============================================
 Route::get('/videoblog/','VideoblogController@mostrarVideoblog');
@@ -184,3 +178,9 @@ Route::group(array('prefix' => 'vistausuario', 'before' => 'auth.user'), functio
 		// });
 
 Route::get('/proveedores/{nombreDeUsuario}','ProveedorPaginaController@datosProveedor');
+
+// ===============================================
+// BLOG
+// ===============================================
+Route::get('/blog/{post}','blogController@mostrarPost');
+Route::get('/blog/','blogController@mostrarBlog');
