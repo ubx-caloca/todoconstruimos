@@ -20,6 +20,7 @@ class CreateBannersTable extends Migration {
 		$table->text('seccion')->nullable();
 		$table->tinyInteger('habilitar');
 		$table->tinyInteger('solicitar_habilitar');
+		$table->tinyInteger('no_primer_cobro')->default(0);
 		$table->timestamps();
 		});
 		

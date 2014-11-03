@@ -265,18 +265,26 @@ border-color: chocolate;
 															<strong><a href="#" onclick="$(this).closest('form').submit()">Eliminar</a></strong>
 															{{ Form::close() }}
 															</center>
-@if($clasificado->solicitar_premium ==0  && $clasificado->premium==0)															
+@if($clasificado->no_primer_cobro ==0)															
+	@if($clasificado->solicitar_premium ==0  && $clasificado->premium==0)															
  <center style="margin-top: 40px;"><form method="post" action="clasifsolicpremium">
     <button class="solpremimbutton" type="submit">Solicitar premium</button>
 	{{ Form::hidden('clasfid', $clasificado->id) }}
 </form> </center>	
-@endif
-@if($clasificado->solicitar_premium ==1)
+	@endif
+	@if($clasificado->solicitar_premium ==1)
  <center style="margin-top: 40px;"><form method="get" action="#">
     <button class="solpremimenviadabutton" type="submit" disabled>Solicitud premium enviada</button>
 </form> </center>
+	@endif
 @endif
-									
+@if($clasificado->no_primer_cobro ==1)	
+	@if($clasificado->premium==0)
+ <center style="margin-top: 40px;"><form method="get" action="#">
+    <button class="solpremimenviadabutton" type="submit" disabled>Pague premium</button>
+</form> </center>
+	@endif
+@endif									
 											        	</div>
 											    		<div class="col-md-11">
 											        		<p><strong>Título:</strong> {{ $clasificado->titulo }}</p>

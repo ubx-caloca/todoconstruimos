@@ -19,7 +19,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="/vistausuario/usuarios/{{$usuarioid}}/edit"><i class="fa fa-angle-double-right"></i> Editar </a></li>
+                                <li><a href="/vistausuario/usuarios/{{$usuarioid}}/edit"><i class="fa fa-angle-double-right"></i>Editar</a></li>
                             </ul>
                         </li>
 						<!--
@@ -48,27 +48,37 @@
 								}
 							?>
 							  @if(is_null($proveedor))
-                                <li><a href="/vistausuario/proveedor/create"><i class="fa fa-angle-double-right"></i> Crear datos </a></li>
+                                <li><a href="/vistausuario/proveedor/create"><i class="fa fa-angle-double-right"></i>Crear datos</a></li>
 							  @else
-                                <li><a href="/vistausuario/proveedor/{{$proveedor->id}}/edit"><i class="fa fa-angle-double-right"></i> Editar </a></li>
+                                <li><a href="/vistausuario/proveedor/{{$proveedor->id}}/edit"><i class="fa fa-angle-double-right"></i>Editar</a></li>
 								
 								@if(is_null($proveedor->galeria))
-									<li><a href="/vistausuario/proveedorgaleria"><i class="fa fa-angle-double-right"></i> Crear galeria</a></li>
+									<li><a href="/vistausuario/proveedorgaleria"><i class="fa fa-angle-double-right"></i>Crear galeria</a></li>
 								@else
-									<li><a href="/vistausuario/proveedorgaleria"><i class="fa fa-angle-double-right"></i> Editar galeria</a></li>								
+									<li><a href="/vistausuario/proveedorgaleria"><i class="fa fa-angle-double-right"></i>Editar galeria</a></li>								
 								@endif
 								
-								@if($proveedor->habilitar == 0)
-								@if($proveedor->solicitar_premium == 0)
+								@if($proveedor->no_primer_cobro ==0)
+								
+									@if($proveedor->habilitar == 0)
+										@if($proveedor->solicitar_premium == 0)
 								<form id="provsolpremiumform" method="post" action="/vistausuario/provsolicpremium"  style="margin-left: 15px;padding-top: 10px;padding-bottom: 10px;padding-right: 20px;">								
 								{{ Form::hidden('provid', $proveedor->id) }}
 
-								<li><a href="" onclick="document.getElementById('provsolpremiumform').submit();return false;"><i class="fa fa-angle-double-right" style="padding-right: 10px;"></i> Solicitar Premium</a></li>
+								<li><a href="" onclick="document.getElementById('provsolpremiumform').submit();return false;"><i class="fa fa-angle-double-right" style="padding-right: 10px;"></i>Solicitar Premium</a></li>
 								</form>
-								@else
-								<li><a href="#" style="color: darkgray;"><i class="fa fa-angle-double-right"></i> Premium solicitado</a></li>
+										@else
+								<li><a href="#" style="color: darkgray;"><i class="fa fa-angle-double-right"></i>Premium solicitado</a></li>
+										@endif
+									@endif
 								@endif
+								@if($proveedor->no_primer_cobro ==1)
+									@if($proveedor->habilitar == 0)
+										<li><a href="#" style="color: darkgray;"><i class="fa fa-angle-double-right"></i>Pague Premium</a></li>
+									@endif
 								@endif
+								
+								
 							  @endif
                             </ul>
                         </li>
@@ -86,8 +96,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="/vistausuario/clasificados"><i class="fa fa-angle-double-right"></i> Listar</a></li>
-                                <li><a href="/vistausuario/clasificados/create"><i class="fa fa-angle-double-right"></i> Nuevo</a></li>
+                                <li><a href="/vistausuario/clasificados"><i class="fa fa-angle-double-right"></i>Listar</a></li>
+                                <li><a href="/vistausuario/clasificados/create"><i class="fa fa-angle-double-right"></i>Nuevo</a></li>
                             </ul>
                         </li> 
                         <!-- 
@@ -122,7 +132,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="/vistausuario/pagospendientes"><i class="fa fa-angle-double-right"></i> Listar</a></li>
+                                <li><a href="/vistausuario/pagospendientes"><i class="fa fa-angle-double-right"></i>Listar</a></li>
                             </ul>
                         </li>  						
 						<div style="margin-left: 15px;padding-top: 10px;padding-bottom: 10px;border-top: 1px solid #fff;border-bottom: 1px solid #dbdbdb;">

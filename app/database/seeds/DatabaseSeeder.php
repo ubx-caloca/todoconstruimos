@@ -174,7 +174,8 @@ class ClasficadosSeeder extends Seeder {
 			'fecha_publicacion'  =>  new DateTime("2014-08-29 09:29:0.0"),
 			'habilitar'     => 1,
 			'usuario_id'    => $usuario2->id,
-			'categoria_id' =>  $clasificado_categoria1->id
+			'categoria_id' =>  $clasificado_categoria1->id,
+			'no_primer_cobro' => 1
 			
 			
 		));		
@@ -189,7 +190,8 @@ class ClasficadosSeeder extends Seeder {
 			'fecha_publicacion'  =>  new DateTime("2014-08-30 07:07:0.0"),
 			'habilitar'     => 1,
 			'usuario_id'    => $usuario1->id,
-			'categoria_id' =>  $clasificado_categoria2->id			
+			'categoria_id' =>  $clasificado_categoria2->id,
+			'no_primer_cobro' => 1			
 		));	
 		
 		$clasificado3 = Clasificado::create(array(
@@ -203,7 +205,8 @@ class ClasficadosSeeder extends Seeder {
 			'fecha_publicacion'  =>  new DateTime("2014-08-30 19:15:0.0"),
 			'habilitar'     => 1,
 			'usuario_id'    => $usuario1->id,
-			'categoria_id' =>  $clasificado_categoria3->id
+			'categoria_id' =>  $clasificado_categoria3->id,
+			'no_primer_cobro' => 1
 		));	
 		
 		$clasificado4 = Clasificado::create(array(
@@ -217,7 +220,8 @@ class ClasficadosSeeder extends Seeder {
 			'fecha_publicacion'  =>  new DateTime("2014-08-29 17:22:0.0"),
 			'habilitar'     => 1,
 			'usuario_id'    => $usuario1->id,
-			'categoria_id' =>  $clasificado_categoria1->id
+			'categoria_id' =>  $clasificado_categoria1->id,
+			'no_primer_cobro' => 0
 		));	
 		
 		$this->command->info('Se crearon los clasificados');
@@ -376,7 +380,8 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 			'latitud'  => '31.85874213',
 			'habilitar' => 1,
 			'solicitar_premium' => 0,
-			'usuario_id'  => $usuario2->id
+			'usuario_id'  => $usuario2->id,
+			'no_primer_cobro' => 1
 		));		
 		$this->command->info('Se creo 1 proveedor');	
 		$proveedordetalle1= ProveedorDetalle::create(array(
@@ -396,73 +401,89 @@ A su vez, el mandatario de Coahuila, Rubén Moreira Valdés alabó la figura pre
 			'proveedores_idproveedor'  => $proveedor1->id,
 			'imagen'  => 'img-proveedor1-Gal1-seed.png',
 			'texto' => 'Chocolate caliente',
-			'premium' => 0
+			'premium' => 0,
+			'no_primer_cobro' => 0
 		));		
 		$proveedorgaleria2= ProveedorGaleria::create(array(
 			'proveedores_idproveedor'  => $proveedor1->id,
 			'imagen'  => 'img-proveedor1-Gal2-seed.jpg',
 			'texto' => 'Brownie con nieve de vainilla',
-			'premium' => 0
+			'premium' => 0,
+			'no_primer_cobro' => 0
 		));	
 		$proveedorgaleria3= ProveedorGaleria::create(array(
 			'proveedores_idproveedor'  => $proveedor1->id,
 			'imagen'  => 'img-proveedor1-Gal3-seed.png',
 			'texto' => 'Agua de fresa',
-			'premium' => 0
+			'premium' => 0,
+			'no_primer_cobro' => 0
 		));			
 		$proveedorgaleria4= ProveedorGaleria::create(array(
 			'proveedores_idproveedor'  => $proveedor1->id,
 			'imagen'  => 'img-proveedor1-Gal4-seed.png',
 			'texto' => 'Panini de pollo',
 			'premium' => 0
+			'no_primer_cobro' => 0
 		));
 		$proveedorgaleria5= ProveedorGaleria::create(array(
 			'proveedores_idproveedor'  => $proveedor1->id,
 			'imagen'  => 'img-proveedor1-Gal5-seed.jpg',
 			'texto' => 'Linguini con espárragos y almeja baby',
-			'premium' => 0
+			'premium' => 0,
+			'no_primer_cobro' => 0
 		));
 		$proveedorgaleria6= ProveedorGaleria::create(array(
 			'proveedores_idproveedor'  => $proveedor1->id,
 			'imagen'  => 'img-proveedor1-Gal6-seed.png',
 			'texto' => 'Pizza Mediterranea',
-			'premium' => 0
+			'premium' => 0,
+			'no_primer_cobro' => 0
 		));		
 		$proveedorgaleria7= ProveedorGaleria::create(array(
 			'proveedores_idproveedor'  => $proveedor1->id,
 			'imagen'  => 'img-proveedor1-Gal7-seed.jpg',
 			'texto' => 'Crema de almeja en pan',
-			'premium' => 0
+			'premium' => 0,
+			'no_primer_cobro' => 0
 		));			
 		$proveedorgaleria8= ProveedorGaleria::create(array(
 			'proveedores_idproveedor'  => $proveedor1->id,
 			'imagen'  => 'img-proveedor1-Gal8-seed.png',
 			'texto' => 'Gorditas de guisado',
-			'premium' => 0
+			'premium' => 0,
+			'no_primer_cobro' => 0
 		));				
 		$proveedorgaleria9= ProveedorGaleria::create(array(
 			'proveedores_idproveedor'  => $proveedor1->id,
 			'imagen'  => 'img-proveedor1-Gal9-seed.png',
 			'texto' => 'Hot cakes con fruta y tocino',
-			'premium' => 1
+			'premium' => 1,
+			'no_primer_cobro' => 1
 		));
 		$proveedorgaleria10= ProveedorGaleria::create(array(
 			'proveedores_idproveedor'  => $proveedor1->id,
 			'imagen'  => 'img-proveedor1-Gal10-seed.png',
 			'texto' => 'Hamburguesa con papas fritas.',
-			'premium' => 1
+			'premium' => 1,
+			'no_primer_cobro' => 1
 		));
 		$this->command->info('Se asociaron 10 imagenes a proveedor1');	
 		
 		$banner1= Banner::create(array(
 			'usuario_id'   => $usuario2->id,
 			'banner_img'  => 'img-banner1-seed.jpg',
-			'seccion'  => 'BLOG-IZQUIERDA'
+			'seccion'  => 'BLOG-IZQUIERDA',
+			'solicitar_habilitar' => 0,
+			'habilitar' => 1,
+			'no_primer_cobro' => 1
 		));		
 		$banner2= Banner::create(array(
 			'usuario_id'   => $usuario2->id,
 			'banner_img'  => 'img-banner2-seed.jpg',
-			'seccion'  => 'BLOG-DERECHA'
+			'seccion'  => 'BLOG-DERECHA',
+			'solicitar_habilitar' => 0,
+			'habilitar' => 1,
+			'no_primer_cobro' => 1
 		));	
 		$this->command->info('Se creo 2 banners');	
 

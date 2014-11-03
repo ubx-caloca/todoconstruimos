@@ -26,6 +26,7 @@ class CreateClasificadosTable extends Migration {
 			$table->string('moneda');
 			$table->dateTime('fecha_publicacion');
 			$table->tinyInteger('habilitar');
+			$table->tinyInteger('no_primer_cobro')->default(0);
 			$table->timestamps();	
 			
 		});

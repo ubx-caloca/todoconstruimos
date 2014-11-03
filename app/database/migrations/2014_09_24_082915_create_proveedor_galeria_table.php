@@ -19,6 +19,7 @@ class CreateProveedorGaleriaTable extends Migration {
 		$table->text('imagen')->nullable();
 		$table->text('texto')->nullable();
 		$table->boolean('premium')->default(0);
+		$table->tinyInteger('no_primer_cobro')->default(0);
 		$table->timestamps();
 		});
 		

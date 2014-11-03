@@ -185,6 +185,8 @@
                                     {{ Form::open(array('url' => 'vistausuario/proveedorgaleria/'.$proveedor->id, 'method'=>'put', 'files' => true)) }}
                                     @foreach ($galeria as $foto)
                                                 <?php 
+												if($foto->no_primer_cobro ==0){
+												
                                                 if($foto->premium==1){
                                                     $checked='true';
                                                     $leyenda = '<i class="fa fa-spinner fa-spin"></i> En proceso de autorización PREMIUM...';
@@ -195,6 +197,16 @@
                                                     $checked='';
                                                     $leyenda='';
                                                 }
+												}
+												if($foto->no_primer_cobro ==1){
+													if($foto->premium==1 ||$foto->premium==0){	
+														$leyenda = '<i class="fa fa-spinner fa-spin"></i> Pague para volver a ser PREMIUM...';
+													}
+													if($foto->premium==2){
+														$checked='true';
+														$leyenda = '<img src="/images/premium2.png" height="20" width="20" style="margin-top: -5px;"> Autorizado como PREMIUM.';
+													}
+												}
                                                  ?>
                                                     <div class="row">
                                                         <div class="col-md-1">

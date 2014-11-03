@@ -53,6 +53,7 @@ class PagosPendDatosController extends \BaseController {
 			$prov = Proveedor::find($cobro->datosAdicionales);
 			$prov->solicitar_premium = 0;
 			$prov->habilitar = 1;
+			$prov->no_primer_cobro = 1;
 			$prov->save();
 					
 		}
@@ -61,12 +62,14 @@ class PagosPendDatosController extends \BaseController {
 			$clas = Clasificado::find($cobro->datosAdicionales);
 			$clas->solicitar_premium=0;
 			$clas->premium=1;
+			$clas->no_primer_cobro=1;
 			$clas->save();
 		}	
 		if($cobrot->tipo == 'imagen_proveedor'){
 			//poner campo 'premium' 1 a 2
 			$provimg = ProveedorGaleria::find($cobro->datosAdicionales);
 			$provimg->premium=2;
+			$provimg->no_primer_cobro = 1;
 			$provimg->save();			
 			
 		}
@@ -77,6 +80,7 @@ class PagosPendDatosController extends \BaseController {
 			$banner = Banner::find($cobro->datosAdicionales);
 			$banner->solicitar_habilitar=0;
 			$banner->habilitar=1;
+			$banner->no_primer_cobro=1;
 			$banner->save();				
 			
 		}

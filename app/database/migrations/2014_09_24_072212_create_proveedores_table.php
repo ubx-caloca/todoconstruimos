@@ -26,8 +26,9 @@ class CreateProveedoresTable extends Migration {
 		$table->string('otro_sns', 250)->nullable();
 		$table->string('longitud', 250)->nullable();
 		$table->string('latitud', 250)->nullable();
-		$table->boolean('habilitar');
+		$table->tinyInteger('habilitar')->default(0);
 		$table->tinyInteger('solicitar_premium')->default(0);
+		$table->tinyInteger('no_primer_cobro')->default(0);
 		$table->timestamps();
 		});
 		
