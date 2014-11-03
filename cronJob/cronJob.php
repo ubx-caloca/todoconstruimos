@@ -19,7 +19,7 @@ if($db->connect_errno > 0){
 	
 
 //SELECT
-$SQL1 = "SELECT * FROM cobros AS C WHERE fechaExpiracion IS NOT  NULL AND DATEDIFF(fechaExpiracion, CURDATE()) < 1 AND NOT EXISTS (SELECT * FROM cobros_pendientes AS P WHERE cobro_id=C.id)";
+$SQL1 = "SELECT * FROM cobros AS C WHERE fechaExpiracion IS NOT  NULL AND DATEDIFF(fechaExpiracion, CURDATE()) < 0 AND NOT EXISTS (SELECT * FROM cobros_pendientes AS P WHERE cobro_id=C.id)";
 $rs1=$db->query($SQL1);
 while($rowCobros = $rs1->fetch_assoc()){
 
