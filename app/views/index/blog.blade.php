@@ -288,7 +288,7 @@ a:active {
     
     
     
-                 <div style="width:100%; background-color:#ffffff; border-bottom: 5px solid #ffffff;margin-top: -5px;border-top: 5px solid #ffffff">
+                 <div style="width:100%; background-color:#ffffff; border-bottom: 5px solid #ffffff;border-top: 5px solid #ffffff">
 						@include('index.include_logos')       
                 </div>   
     

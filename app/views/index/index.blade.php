@@ -478,7 +478,15 @@ font-weight: 700;
 
 	
    		</div>
+		
    	  </div>
+			<div style="width:100%; color:#fff; padding:10px;">
+
+					<center>
+						<a class="btn btn-default" href="/eventos/" target="_self"> <i class="fa fa-share"></i> Ver eventos </a>
+					</center>
+
+			</div>
    	  </div>    
 
    	</div>

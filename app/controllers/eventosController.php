@@ -181,6 +181,32 @@ class eventosController extends \BaseController {
 		return Redirect::to('administracion/eventos')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		//
 	}
+	
+	
+	public function mostrarEventos()
+	{
+		//$Posts = DB::table('blog')->orderBy('id','desc')->paginate(2);
+		//$bannersizquierda = DB::table('banners')->where('seccion', '=', 'BLOG-IZQUIERDA','AND')->where('habilitar', '=', '1')->orderBy('id','asc')->get();
+		$bannersizquierda = Banner::where('seccion', '=', 'EVENTOS-IZQUIERDA')->where('habilitar','=', '1')->orderBy('id','asc')->get();
+		$bannersderecha =  Banner::where('seccion', '=', 'EVENTOS-DERECHA')->where('habilitar','=', '1')->orderBy('id','asc')->get();
+		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
+		
+		$eventos = Evento::orderBy('fecha','desc')->paginate(5);
+		$anuncios = Anuncio::all();
+		
+		$rolusuarioLogueado = '';
+		$mailusuarioLogueado = '';
+		if (Auth::check()){
+			$authuser = Auth::user();
+			$usu = Usuario::find($authuser->id);
+			$mailusuarioLogueado = $authuser->email;
+			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
+			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
+			
+		}
+		return View::make('index.eventos')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'eventos'=>$eventos, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersindexarriba'=>$bannersindexarriba));
+		//
+	}
 
 
 }

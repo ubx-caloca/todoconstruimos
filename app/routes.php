@@ -56,6 +56,11 @@ Route::get('/blog/','blogController@mostrarBlog');
 // ===============================================
 Route::get('/videoblog/','videoblogController@mostrarVideoblog');
 
+// ===============================================
+// EVENTOS
+// ===============================================
+Route::get('/eventos/','eventosController@mostrarEventos');
+
 
 Route::get('signup', array('uses' => 'SignupController@showSignup'));
 Route::post('signup', array('uses' => 'SignupController@doSignup'));
