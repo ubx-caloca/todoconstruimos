@@ -9,7 +9,7 @@ class Proveedor_tipo_Controller extends \BaseController {
 	 */
 	public function index()
 	{
-		$categorias = DB::table('proveedor_tipo')->get();
+		$categorias = ProveedorTipo::all();
 		$authuser = Auth::user();
 		return View::make('administracion.pages.proveedores.categorias')->with(array('categorias'=>$categorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		//
@@ -34,7 +34,7 @@ class Proveedor_tipo_Controller extends \BaseController {
 	 */
 	public function store()
 	{
-		$proveedores_tipo = new Proveedor_tipo;
+		$proveedores_tipo = new ProveedorTipo;
 		$proveedores_tipo->id=0;
 		$proveedores_tipo->tipo=Input::get('tipo');
 		$proveedores_tipo->icono=Input::get('icono');

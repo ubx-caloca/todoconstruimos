@@ -4,7 +4,7 @@
 		
 			<div class="wrap" style="padding-top: 5px;">
 			<ul id="headernav" style="float: right;list-style: none;padding-left: 25px;margin-top: 5px;padding-right: 10px;">
-				<li class="active"><a href="/signup" style="text-decoration: none;"><span>Registrarse </span> <span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span></a></li>	
+				<li class="active"><a href="/signup" class="signuplink" style="text-decoration: none;"><span>Registrarse </span> <span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span></a></li>	
 			</ul>
 				{{ Form::open(array('url' => '/signin')) }}
 				<div id="headeruser" style="float: right;padding 3px; max-height: 28px;">
@@ -20,7 +20,7 @@
 		@else
 		<ul class="navlogin nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="line-height: 10px;padding-top: 10px;padding-bottom: 10px;">{{$username}} <span class="glyphicon glyphicon-user pull-right" style="margin-top: -3px;"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="line-height: 10px;padding-top: 10px;padding-bottom: 10px; background-color: #FAFFBD">{{$username}} <span class="glyphicon glyphicon-user pull-right" style="margin-top: -3px;"></span></a>
           <ul class="dropdown-menu">
 			@if($roluser == 'admin')			
             <li><a href="administracion/">Ir a vista de administrador<span class="glyphicon glyphicon-list-alt pull-right"></span></a></li>

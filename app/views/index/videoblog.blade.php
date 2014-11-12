@@ -135,7 +135,7 @@ font-weight: 700;
 
 /* unvisited link */
 a:link {
-    color: #FF0000;
+    color: #FFFFFF;
 }
 
 /* visited link */
@@ -145,7 +145,7 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-    color: #FF00FF;
+    color: #FCB200;
 }
 
 /* selected link */
