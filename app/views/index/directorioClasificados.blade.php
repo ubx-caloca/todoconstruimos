@@ -190,7 +190,7 @@ font-weight: 700;
 }
 /* unvisited link */
 a:link {
-    color: #FF0000;
+    color: #FFFFFF;
 }
 
 /* visited link */

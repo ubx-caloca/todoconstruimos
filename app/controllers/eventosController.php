@@ -196,15 +196,17 @@ class eventosController extends \BaseController {
 		
 		$rolusuarioLogueado = '';
 		$mailusuarioLogueado = '';
+		$nombreusuarioLogueado = '';
 		if (Auth::check()){
 			$authuser = Auth::user();
 			$usu = Usuario::find($authuser->id);
 			$mailusuarioLogueado = $authuser->email;
+			$nombreusuarioLogueado = $authuser->nombre;
 			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
 			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
 			
 		}
-		return View::make('index.eventos')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'eventos'=>$eventos, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersindexarriba'=>$bannersindexarriba));
+		return View::make('index.eventos')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'eventos'=>$eventos, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'nameuser'=> $nombreusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersindexarriba'=>$bannersindexarriba));
 		//
 	}
 

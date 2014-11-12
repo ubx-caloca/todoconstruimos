@@ -24,16 +24,18 @@ class DirectorioClasifController extends \BaseController {
 		
 		$rolusuarioLogueado = '';
 		$mailusuarioLogueado = '';
+		$nombreusuarioLogueado = '';
 		if (Auth::check()){
 			$authuser = Auth::user();
 			$usu = Usuario::find($authuser->id);
 			$mailusuarioLogueado = $authuser->email;
+			$nombreusuarioLogueado = $authuser->nombre;
 			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
 			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
 			
 		}
 		
-		return View::make('index.directorioClasificados')->with(array('anuncios'=>$anuncios, 'categoriasClasif' => $categoriasClasif, 'listaClasificadosPremium'=> $listaClasificadosPremium, 'directorioCat' => (($directorioCategoria=='all')? 'Todos los clasificados':$categoria->categoria ), 'listaClasificadosNormales'=> $listaClasificadosNormales, 'bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha, 'bannersindexarriba'=>$bannersindexarriba, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
+		return View::make('index.directorioClasificados')->with(array('anuncios'=>$anuncios, 'categoriasClasif' => $categoriasClasif, 'listaClasificadosPremium'=> $listaClasificadosPremium, 'directorioCat' => (($directorioCategoria=='all')? 'Todos los clasificados':$categoria->categoria ), 'listaClasificadosNormales'=> $listaClasificadosNormales, 'bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha, 'bannersindexarriba'=>$bannersindexarriba, 'username'=> $mailusuarioLogueado, 'nameuser'=> $nombreusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
 		//
 	}
 	public function categorias()

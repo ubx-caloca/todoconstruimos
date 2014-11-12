@@ -27,10 +27,12 @@ class indexController extends \BaseController {
 		
 		$rolusuarioLogueado = '';
 		$mailusuarioLogueado = '';
+		$nombreusuarioLogueado = '';
 		if (Auth::check()){
 			$authuser = Auth::user();
 			$usu = Usuario::find($authuser->id);
 			$mailusuarioLogueado = $authuser->email;
+			$nombreusuarioLogueado = $authuser->nombre;
 			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
 			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
 			
@@ -42,7 +44,7 @@ class indexController extends \BaseController {
 		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
 		
 		//return View::make('index.index')->with(array('proveedores'=>$proveedores,'proveedores_detalle'=>$proveedores_detalle,'galeria'=>$galeria));
-		return View::make('index.index')->with(array('galeriapremium'=>$galeriapremium,'videoblog'=>$videoblog,'categorias'=>$categorias,'blog'=>$blog, 'clasificadosvip' => $clasificadosvip, 'anuncios' => $anuncios, 'categoriasClasif' => $categoriasClasif, 'eventos' => $eventos, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersindexarriba'=>$bannersindexarriba));
+		return View::make('index.index')->with(array('galeriapremium'=>$galeriapremium,'videoblog'=>$videoblog,'categorias'=>$categorias,'blog'=>$blog, 'clasificadosvip' => $clasificadosvip, 'anuncios' => $anuncios, 'categoriasClasif' => $categoriasClasif, 'eventos' => $eventos, 'username'=> $mailusuarioLogueado, 'nameuser'=> $nombreusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersindexarriba'=>$bannersindexarriba));
 		//
 	}
 

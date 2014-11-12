@@ -26,10 +26,12 @@ class directorioController extends \BaseController {
 
 		$rolusuarioLogueado = '';
 		$mailusuarioLogueado = '';
+		$nombreusuarioLogueado = '';
 		if (Auth::check()){
 			$authuser = Auth::user();
 			$usu = Usuario::find($authuser->id);
 			$mailusuarioLogueado = $authuser->email;
+			$nombreusuarioLogueado =  $authuser->nombre;
 			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
 			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
 			
@@ -46,7 +48,7 @@ class directorioController extends \BaseController {
 		//$proveedores_detalle = Proveedor_detalle::where('proveedores_idproveedor', '=', $proveedores->id)->first();
 		//$galeria = DB::table('proveedor_galeria')->where('proveedores_idproveedor', '=', $proveedores->id)->get();
 		//return View::make('index.index')->with(array('proveedores'=>$proveedores,'proveedores_detalle'=>$proveedores_detalle,'galeria'=>$galeria));
-		return View::make('index.directorio')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'categorias'=>$categorias,'listaProveedores'=>$listaProveedores,'directorioCategoria'=>$directorioCategoria,'listaCategoria'=>$listaCategoria, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'anuncios' => $anuncios, 'bannersindexarriba'=>$bannersindexarriba));
+		return View::make('index.directorio')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'categorias'=>$categorias,'listaProveedores'=>$listaProveedores,'directorioCategoria'=>$directorioCategoria,'listaCategoria'=>$listaCategoria, 'username'=> $mailusuarioLogueado, 'nameuser'=> $nombreusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'anuncios' => $anuncios, 'bannersindexarriba'=>$bannersindexarriba));
 		//
 	}
 

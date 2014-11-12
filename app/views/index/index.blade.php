@@ -219,6 +219,24 @@ font-weight: 700;
 .class1 A:active {text-decoration: none;color: #191919;}
 .class1 A:hover {text-decoration: underline;color: #191919;}
 A.signuplink:hover {color: #FCB200;}
+
+A.coolbutton{color: #FCB200;}
+
+.socialtop{
+	float: left;
+	margin-top: 5px;
+	margin-left: 10px;
+	position: absolute;
+}
+
+.socialtop ul li:first-child, ol li:first-child {
+margin-top: 0px;
+margin-left: 0;
+}
+.socialtop li {
+background: none;
+display: inline-block;
+}
 </style>
 
 
@@ -260,6 +278,13 @@ A.signuplink:hover {color: #FCB200;}
 
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs">
+			<div class="socialtop">	
+		      <ul>	
+			   <li class="facebook"><a href="http://www.facebook.com/todoconstruimos" target="_blank"><span> </span></a></li>
+			   <li class="twitter"><a href="#" target="_blank"><span> </span></a></li>
+			   <li class="google"><a href="#" target="_blank"><span> </span></a></li>			
+		     </ul>
+			</div>
 			@include('index.include_login')	
 
 

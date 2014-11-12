@@ -195,17 +195,19 @@ class blogController extends \BaseController {
 		
 		$rolusuarioLogueado = '';
 		$mailusuarioLogueado = '';
+		$nombreusuarioLogueado = '';
 		if (Auth::check()){
 			$authuser = Auth::user();
 			$usu = Usuario::find($authuser->id);
 			$mailusuarioLogueado = $authuser->email;
+			$nombreusuarioLogueado = $authuser->nombre;
 			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
 			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
 			
 		}
 
 		$post = Blog::find($id);
-		return View::make('index.blogPost')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'post'=>$post, 'categorias'=>$categorias,'blog'=>$blog, 'clasificadosvip' => $clasificadosvip, 'anuncios' => $anuncios, 'categoriasClasif' => $categoriasClasif, 'eventos' => $eventos, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
+		return View::make('index.blogPost')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'post'=>$post, 'categorias'=>$categorias,'blog'=>$blog, 'clasificadosvip' => $clasificadosvip, 'anuncios' => $anuncios, 'categoriasClasif' => $categoriasClasif, 'eventos' => $eventos, 'username'=> $mailusuarioLogueado, 'nameuser'=> $nombreusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
 		//
 	}
 	public function mostrarBlog()
@@ -221,15 +223,17 @@ class blogController extends \BaseController {
 		
 		$rolusuarioLogueado = '';
 		$mailusuarioLogueado = '';
+		$nombreusuarioLogueado = '';
 		if (Auth::check()){
 			$authuser = Auth::user();
 			$usu = Usuario::find($authuser->id);
 			$mailusuarioLogueado = $authuser->email;
+			$nombreusuarioLogueado = $authuser->nombre;
 			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
 			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
 			
 		}
-		return View::make('index.blog')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'blog'=>$blog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersindexarriba'=>$bannersindexarriba));
+		return View::make('index.blog')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'blog'=>$blog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'nameuser'=> $nombreusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersindexarriba'=>$bannersindexarriba));
 		//
 	}	
 

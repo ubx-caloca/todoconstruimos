@@ -182,10 +182,12 @@ class VideoblogController extends \BaseController {
 		
 		$rolusuarioLogueado = '';
 		$mailusuarioLogueado = '';
+		$nombreusuarioLogueado = '';
 		if (Auth::check()){
 			$authuser = Auth::user();
 			$usu = Usuario::find($authuser->id);
 			$mailusuarioLogueado = $authuser->email;
+			$nombreusuarioLogueado = $authuser->nombre;
 			$rolusuarioLogueado= DB::table('usuario_tiene_rol2')->where('usuario_id', '=', $authuser->id)->first();
 			$rolusuarioLogueado = UsuarioRol::find($rolusuarioLogueado->rol_id)->rol;
 			
@@ -193,7 +195,7 @@ class VideoblogController extends \BaseController {
 		$bannersizquierda = DB::table('banners')->whereRaw("seccion='VIDEOBLOG-IZQUIERDA' and habilitar=1")->orderBy('id','asc')->get();
 		$bannersderecha = DB::table('banners')->whereRaw("seccion='VIDEOBLOG-DERECHA' and habilitar=1")->orderBy('id','asc')->get();
 		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
-		return View::make('index.videoblog')->with(array('videoblog'=>$videoblog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha, 'bannersindexarriba'=>$bannersindexarriba));
+		return View::make('index.videoblog')->with(array('videoblog'=>$videoblog, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'nameuser'=> $nombreusuarioLogueado, 'bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha, 'bannersindexarriba'=>$bannersindexarriba));
 		//
 	}	
 
