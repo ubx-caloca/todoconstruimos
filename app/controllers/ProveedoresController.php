@@ -312,8 +312,7 @@ class ProveedoresController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
-		return 'ProveedoresController destroy('.$id.')';
+		$authuser = Auth::user();
 		//borrar imagenes del proveedor
 		$prov = Proveedor::find($id);
 		$success = File::deleteDirectory('images/proveedores/'.$prov->nombre_usuario); //Borrar todas las imagenes adentro y el folder

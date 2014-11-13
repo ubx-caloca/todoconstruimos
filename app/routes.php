@@ -70,9 +70,11 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 			return View::make('administracion.index')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		});
 
-		//CATEGORIAS
+		//CATEGORIAS PROVEEDORES
 		Route::resource('proveedores/categorias','Proveedor_tipo_Controller');
 		Route::resource('proveedores/categorias/agregar','Proveedor_tipo_Controller');
+		Route::get('proveedores/editarcategoria/{id}','Proveedor_tipo_Controller@edit');
+		//Route::post('proveedores/updatecategoria/{id}','Proveedor_tipo_Controller@update');
 
 		//GALERIA
 		Route::get('proveedores/galeria/{nombreDeUsuario}/{idproveedor}', function($nombreDeUsuario,$idproveedor){
@@ -82,6 +84,7 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 
 		//PROVEEDORES
 		Route::get('proveedores/editar/{id}', 'ProveedoresController@edit');	
+		Route::post('proveedores/borrar/{id}', 'ProveedoresController@destroy');	
 		Route::resource('proveedores/nuevo','TipoProveedoresController');
 		Route::resource('proveedores/guardarproveedor','ProveedoresController');
 		Route::resource('proveedores/galeria','Galeria_subirController');

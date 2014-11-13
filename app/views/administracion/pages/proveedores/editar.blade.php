@@ -229,7 +229,7 @@
                                             </div>
                                             <hr>
                                             <div class="form-group">
-                                                    <center>{{ Form::submit('Agregar proveedor', array('class' => 'btn btn-success')) }}</center>
+                                                    <center>{{ Form::submit('Actualizar proveedor', array('class' => 'btn btn-success')) }}</center>
                                             </div>
                                             
                                         {{ Form::close() }}

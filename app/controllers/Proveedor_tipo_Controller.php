@@ -68,6 +68,10 @@ class Proveedor_tipo_Controller extends \BaseController {
 	public function edit($id)
 	{
 		//
+		$categorias = ProveedorTipo::all();
+		$authuser = Auth::user();
+		$provT = ProveedorTipo::find($id);
+		return View::make('administracion.pages.proveedores.categoriaedit')->with(array('listaCategorias'=>$categorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id, 'provT'=>$provT));
 	}
 
 
@@ -79,7 +83,7 @@ class Proveedor_tipo_Controller extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		return 'called Proveedor_tipo update('.$id.') method';
 	}
 
 
@@ -91,7 +95,7 @@ class Proveedor_tipo_Controller extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		return 'called Proveedor_tipo destroy('.$id.') method';
 	}
 
 

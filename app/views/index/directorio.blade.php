@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale = 1.0, user-scalable=0">
 <title>Todo Construimos</title>
+<link rel="shortcut icon" href="{{ asset('images/favicon2.ico') }}">
 <link href="/index/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!--<link href="/index/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <script src="/index/js/bootstrap.min.js"></script>-->

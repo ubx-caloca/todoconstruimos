@@ -172,9 +172,19 @@
                                                         <div class="col-md-1">
                                                             <center><?php echo "<i style='font-size:50px;' class=\"fa ".$categoria->icono." \"></i>"; ?></center>
                                                         </div>
-                                                        <div class="col-md-10">
+                                                        <div class="col-md-6">
                                                             <p>{{ $categoria->tipo }}</p>
                                                         </div>
+														<div class="col-md-1">
+															<strong><a href="{{ URL::to('administracion/proveedores/editarcategoria/' . $categoria->id) }}">Editar</a></strong>
+											        	</div>
+														<div class="col-md-1">
+															{{ Form::open(array('url' => '/administracion/proveedores/borrarcategoria/' . $categoria->id)) }}
+														{{ Form::hidden('_method', 'POST') }}
+														<strong><a href="#" onclick="$(this).closest('form').submit()">Eliminar</a></strong>
+														{{ Form::close() }}
+														
+											        	</div>
                                                     </div>
                                                     <hr>
                                     @endforeach
