@@ -48,7 +48,7 @@ class blogController extends \BaseController {
 		$rules = array(
 			'titulo'      => 'required',
 			'contenido'   => 'required',
-			'imagen' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
+			'imagen' => 'required|mimes:png,gif,jpeg|max:200000000'
 		);
 		$validator = Validator::make(Input::all(), $rules);		
 		
@@ -122,7 +122,7 @@ class blogController extends \BaseController {
 		$rules = array(
 			'titulo'      => 'required',
 			'contenido'   => 'required',
-			'imagen' => 'mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
+			'imagen' => 'mimes:png,gif,jpeg|max:200000000'
 		);
 		$validator = Validator::make(Input::all(), $rules);		
 		

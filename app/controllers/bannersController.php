@@ -50,7 +50,7 @@ class bannersController extends \BaseController {
 		$rules = array(
 			'seccion'      => 'required',
 			'usuario_id'   => 'required',
-			'imagen' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
+			'imagen' => 'required|mimes:png,gif,jpeg|max:200000000'
 		);
 		$validator = Validator::make(Input::all(), $rules);		
 		
@@ -73,6 +73,7 @@ class bannersController extends \BaseController {
 			$banner->banner_img=$filename.'.'.$extension;
 			$banner->solicitar_habilitar = 1;
 			$banner->habilitar = 0;
+			$banner->link = Input::get('link');
 			$banner->seccion=Input::get('seccion');
 			$banner->save();
 
@@ -137,7 +138,8 @@ class bannersController extends \BaseController {
 		    $result = File::makeDirectory('images/banners/', 0777);
 		}
 		$rules = array(
-			'imagen' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
+			'seccion'      => 'required',
+			'imagen' => 'mimes:png,gif,jpeg|max:200000000'
 		);
 		$validator = Validator::make(Input::all(), $rules);		
 		
@@ -145,7 +147,9 @@ class bannersController extends \BaseController {
 			return Redirect::to('administracion/banners/editar/'.$id)
 				->withErrors($validator)->withInput();
 		} else {	
-			$banner = Banner::find($id);			
+			$banner = Banner::find($id);
+			if(Input::hasFile('imagen')){
+						
 			File::delete('images/banners/'.$banner->banner_img);
 			
 			$file = Input::file('imagen');
@@ -160,6 +164,9 @@ class bannersController extends \BaseController {
 				
 			
 			$banner->banner_img=$filename.'.'.$extension;
+			}
+			$banner->link = Input::get('link');
+			$banner->seccion = Input::get('seccion');
 			$banner->save();
 
 				return Redirect::to("administracion/banners")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));

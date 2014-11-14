@@ -11,7 +11,7 @@ class eventosController extends \BaseController {
 	{
 		$authuser = Auth::user();
 		//$listaDePost = Proveedor::paginate(15);
-		$Eventos = DB::table('eventos')->orderBy('id','desc')->paginate(2);
+		$Eventos = Evento::orderBy('id','desc')->paginate(2);
 		return View::make('administracion.pages.eventos.index')->with(array('Eventos'=>$Eventos, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
@@ -41,46 +41,44 @@ class eventosController extends \BaseController {
 		//$fecha=''
 		//$titulo=Input::get('titulo');
 		//$idproveedor=Input::get('idproveedor');
-		$authuser = Auth::user();
+		$authuser = Auth::user();		
 		if(!File::exists('images/eventos/')) {
 		    $result = File::makeDirectory('images/eventos/', 0777);
 		}
 		
-
-		$imagen_intro = Input::file('imagen');
-		foreach($imagen_intro as $file) {
-			$eventos = new Evento;
-		    $rules = array(
-		        'file' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
-		    );
-		    $validator = \Validator::make(array('file'=> $file), $rules);
-		    if($validator->passes()){
-
-		        $id = Str::random(14);
-
-		        $destinationPath    = 'images/eventos/';
-		        $filename           = $file->getClientOriginalName();
-		        $mime_type          = $file->getMimeType();
-		        $extension          = $file->getClientOriginalExtension();
-		        $upload_success     = $file->move($destinationPath, $filename);
-
-				$eventos->id=0;
-				$eventos->fecha=DB::raw('NOW()');
-				$eventos->usuario=1;
-				$eventos->titulo=Input::get('titulo');
-				$eventos->fecha_evento=Input::get('fecha_evento');		
-				$eventos->imagen=$filename;
-				$eventos->contenido=Input::get('contenido');
-				$eventos->save();
-				unset($eventos);
-				//$proveedores_galeria->destroy(1);
-
-		    } else {
-		        //return Redirect::back()->with('error', 'I only accept images.');
-		    }
-		    
-		}
+		$rules = array(
+			'titulo'      => 'required',
+			'contenido'   => 'required',
+			'fecha_evento' => 'required|date',
+			'imagen' => 'required|mimes:png,gif,jpeg|max:200000000'
+		);
+		$validator = Validator::make(Input::all(), $rules);		
 		
+		if ($validator->fails()) {
+			return Redirect::to('administracion/eventos/create')
+				->withErrors($validator)->withInput();
+		} else {
+			$file = Input::file('imagen');
+			$evento = new Evento;
+			$id = Str::random(4);
+			$date_now = new DateTime();
+
+		    $destinationPath    = 'images/eventos/';
+		    $filename           = $date_now->format('YmdHis').$id;
+		    $mime_type          = $file->getMimeType();
+		    $extension          = $file->getClientOriginalExtension();
+		    $upload_success     = $file->move($destinationPath, $filename.'.'.$extension);
+			
+			
+			$evento->fecha=$date_now;
+			$evento->usuario=$authuser->id;
+			$evento->titulo=Input::get('titulo');
+			$evento->fecha_evento=Input::get('fecha_evento');		
+			$evento->imagen=$filename.'.'.$extension;
+			$evento->contenido=Input::get('contenido');
+			$evento->save();
+		
+		}				
 		return Redirect::to("administracion/eventos")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		//
 	}

@@ -483,7 +483,7 @@ display: inline-block;
               <h1><img src="/index/images/Eventos.png" alt="Eventos"></h1><br>
             </div>
    	   <div class="row">
-   	    <div class="col-md-12 service_grid" style="background-color:#FFF; padding:20px;">
+   	    <div class="col-md-12 service_grid" style="background-color:#FFF; padding:20px;border-radius: 10px;">
 
 					<div style="width:100%; padding:10px">
 		                            <div class="owl-carousel-eventos">

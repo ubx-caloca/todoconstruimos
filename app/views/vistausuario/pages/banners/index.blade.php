@@ -166,6 +166,7 @@ hr.style-eight:after {
 																	   	    <div class="col-md-12 service_grid">
 																	   		  <p><img src="/images/banners/{{$banner->banner_img}} " alt="{{ $banner->banner_img }}" class="img-thumbnail"></p>
                                                                               <p><b>Sección:</b> {{$banner->seccion}}</p>
+																			  <p><b>Liga:</b> {{$banner->link==null || $banner->link==''?'(No hay liga)':$banner->link }}</p>
 																			  <p><b>Habilitado:</b> {{$banner->no_primer_cobro==0?  ($banner->habilitar==0?($banner->solicitar_habilitar==0?'No':'Por habilitar'):'Si'): ($banner->habilitar==0?'No &nbsp&nbsp<span style="color:darkmagenta;font-size: smaller;font-weight: 600;">(Pague premium)</span>':'Si') }}</p>
 																			  {{ Form::open(array('url' => '/vistausuario/banners/' . $banner->id, 'class' => '')) }}
 																			  {{ Form::hidden('_method', 'DELETE') }}

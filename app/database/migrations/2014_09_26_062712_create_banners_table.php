@@ -18,6 +18,7 @@ class CreateBannersTable extends Migration {
 		$table->integer('usuario_id')->unsigned();
 		$table->string('banner_img', 250);
 		$table->text('seccion')->nullable();
+		$table->text('link')->nullable();
 		$table->tinyInteger('habilitar');
 		$table->tinyInteger('solicitar_habilitar');
 		$table->tinyInteger('no_primer_cobro')->default(0);

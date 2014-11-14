@@ -163,8 +163,9 @@ hr.style-eight:after {
 																		<div class="row text-center">
 																	   	    <div class="col-md-12 service_grid">
 																	   		  <p><img src="/images/banners/{{$banner->banner_img}} " alt="{{ $banner->banner_img }}" class="img-thumbnail"></p>
-                                                                              <p><b>SECCIÓN:</b> {{$banner->seccion}}</p>
-																			  <p><b>USUARIO:</b> {{$banner->usuario->email}}</p>
+                                                                              <p><b>Sección:</b> {{$banner->seccion}}</p>
+																			  <p><b>Usuario:</b> {{$banner->usuario->email}}</p>
+																			  <p><b>Liga:</b> {{$banner->link==null || $banner->link==''?'(No hay liga)':$banner->link }}</p>
 																			  <p><b>Habilitado:</b> {{($banner->habilitar==0?($banner->solicitar_habilitar==0?'No':'Por habilitar'):'Si')}}</p>																		  
 																	          <p><br><a class="btn btn-default" href="<?php echo"/administracion/banners/editar/$banner->id"; ?>" ><span>Editar</span></a> | <a class="btn btn-default" href="<?php echo"/administracion/banners/borrar/$banner->id"; ?>" ><span>Borrar</span></a>
 																	   		</div>

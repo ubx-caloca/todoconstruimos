@@ -169,13 +169,28 @@
                                                             <hr/>
                                                             <div class="form-group">
 																	<p><b>Sección del banner:</b> {{$banner->seccion}}</p>
-                                                            </div>  
+                                                            </div>
+															<div class="form-group">
+																{{ Form::label('link', 'Liga a página web') }}
+																@if($errors->has())
+																	{{ Form::text('link', Input::old('link'), array( 'placeholder' => '',  'class' => 'form-control')) }}
+																@else
+																	{{ Form::text('link', $banner->link, array( 'placeholder' => '',  'class' => 'form-control')) }}
+																@endif
+																
+															</div>																
                                                             <hr>
                                                             <div class="form-group">
                                                                     {{ Form::label('imagen', 'Selecciona la ímagen del banner') }}
                                                                     {{ Form::file('imagen',[]) }}
                                                             </div>           
-                                                            <br>
+															<div  style="border-color: aliceblue;border-width: 2px;background-color: beige;border-radius: 10px;padding: 10px;margin-bottom: 15px;">
+																<div ><i class="fa fa-info-circle"></i><span style="font-size: smaller;font-weight: 700;margin-left: 5px;">Tamaños de imagenes</span></div>
+																<div style="margin-left: 20px;font-size: smaller;">
+																<span style="font-weight: 700;margin-right: 5px;">- Banners horizontales:</span> <span>400px de ancho por 170px de alto.</span><br>
+																<span style="font-weight: 700;margin-right: 18px;">- Banners verticales:</span> <span>170px de ancho por 400px de alto.</span>
+																</div>
+															</div>
                                                                 <center><h3>Banner actual</h3></center>
                                                             <br>
                                                             <p align="center"><img src="/images/banners/{{$banner->banner_img}} " alt="{{ $banner->banner_img }}" class="img-thumbnail"></p>                                                                   

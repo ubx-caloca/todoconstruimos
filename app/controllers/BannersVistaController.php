@@ -65,6 +65,7 @@ class BannersVistaController extends \BaseController {
 			$banner->banner_img=$filename.'.'.$extension;
 			$banner->solicitar_habilitar = 1;
 			$banner->habilitar = 0;
+			$banner->link = Input::get('link');
 			$banner->seccion=Input::get('seccion');
 			$banner->save();
 				
@@ -134,7 +135,7 @@ class BannersVistaController extends \BaseController {
 		    $result = File::makeDirectory('images/banners/', 0777);
 		}
 		$rules = array(
-			'imagen' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
+			'imagen' => 'mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
 		);
 		$validator = Validator::make(Input::all(), $rules);		
 		
@@ -142,7 +143,8 @@ class BannersVistaController extends \BaseController {
 			return Redirect::to('vistausuario/banners/'.$id.'/edit')
 				->withErrors($validator)->withInput();
 		} else {	
-			$banner = Banner::find($id);			
+			$banner = Banner::find($id);	
+			if(Input::hasFile('imagen')){			
 			File::delete('images/banners/'.$banner->banner_img);
 			
 			$file = Input::file('imagen');
@@ -157,6 +159,8 @@ class BannersVistaController extends \BaseController {
 				
 			
 			$banner->banner_img=$filename.'.'.$extension;
+			}
+			$banner->link = Input::get('link');
 			$banner->save();
 
 				return Redirect::to("vistausuario/banners")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
