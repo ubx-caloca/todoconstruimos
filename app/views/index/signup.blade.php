@@ -286,6 +286,24 @@ transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 .fileuploadbutton{
 margin-top: 5px;
 }
+
+.socialtop{
+	float: left;
+	margin-top: 5px;
+	margin-left: 10px;
+	position: absolute;
+}
+
+.socialtop ul li:first-child, ol li:first-child {
+margin-top: 0px;
+margin-left: 0;
+}
+.socialtop li {
+background: none;
+display: inline-block;
+}
+
+
 		</style>
 </head>
 
@@ -304,6 +322,13 @@ margin-top: 5px;
 
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs" style="height: 220px;">
+			<div class="socialtop">	
+		      <ul>	
+			   <li class="facebook"><a href="http://www.facebook.com/todoconstruimos" target="_blank"><span> </span></a></li>
+			   <li class="twitter"><a href="#" target="_blank"><span> </span></a></li>
+			   <li class="google"><a href="#" target="_blank"><span> </span></a></li>			
+		     </ul>
+			</div>
 
 		<div class="logo">
 			<a href="/"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
@@ -315,13 +340,17 @@ margin-top: 5px;
 <div class="panel panel-default" style="background-color: initial;border-width: 0px;">
 
   <div class="panel-heading">
-   <center> <h3 class="panel-title" style="font-size: 24px;font-weight: bold;">REGISTRO</h3></center>
+   <center> <h3 class="panel-title" style="font-size: 24px;font-weight: bold;">REGISTRO DE NUEVO USUARIO</h3></center>
   </div>
 
 
 
   <div class="panel-body" style="background: url(./index/images/contact.png);padding-top:3em;padding-left:4em;padding-right:4em;border-bottom-left-radius: 5px;
 border-bottom-right-radius: 5px;">
+  
+    <div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
   
 	@if ($errors->has())
 <div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
@@ -400,7 +429,12 @@ color: #a71b2a;padding-top: 10px;padding-bottom: 10px;margin-bottom: 30px;
   	{{ Form::close() }}
   </div>
 </div>
-</div>	
+
+</div>
+<div class="col-md-1"></div>
+
+</div>
+</div>
    	</div> 
     
     
@@ -408,19 +442,7 @@ color: #a71b2a;padding-top: 10px;padding-bottom: 10px;margin-bottom: 30px;
     
     <!-- ************* -->
    	<div class="footer">
-   		<div class="container">
-   			<div class="copy">
-		       <p>&copy; 2014 <a href="/" > Todo construimos</a></p>
-		    </div>
-		    <div class="social">	
-		      <ul>	
-			   <li class="facebook"><a href="#"><span> </span></a></li>
-			   <li class="twitter"><a href="#"><span> </span></a></li>
-			   <li class="google"><a href="#"><span> </span></a></li>			
-		     </ul>
-			</div>
-			<div class="clearfix"></div>
-   		</div>
+   		@include('index.include_footer')
    	</div>
     <!-- ************* -->
     

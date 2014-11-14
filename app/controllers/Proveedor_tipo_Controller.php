@@ -35,13 +35,11 @@ class Proveedor_tipo_Controller extends \BaseController {
 	public function store()
 	{
 		$proveedores_tipo = new ProveedorTipo;
-		$proveedores_tipo->id=0;
 		$proveedores_tipo->tipo=Input::get('tipo');
 		$proveedores_tipo->icono=Input::get('icono');
 		$proveedores_tipo->save();
 		
-		$authuser = Auth::user();
-		return Redirect::to("administracion/proveedores/categorias")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		return Redirect::to("administracion/proveedores/categorias");	
 
 		//
 	}
@@ -83,7 +81,11 @@ class Proveedor_tipo_Controller extends \BaseController {
 	 */
 	public function update($id)
 	{
-		return 'called Proveedor_tipo update('.$id.') method';
+		$proveedores_tipo = ProveedorTipo::find($id);
+		$proveedores_tipo->tipo=Input::get('categoria');
+		$proveedores_tipo->icono=Input::get('icono');
+		$proveedores_tipo->save();	
+		return Redirect::to("administracion/proveedores/categorias");		
 	}
 
 
@@ -95,7 +97,13 @@ class Proveedor_tipo_Controller extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		return 'called Proveedor_tipo destroy('.$id.') method';
+		$proveedores_tipo = ProveedorTipo::find($id);
+		$proveedores = $proveedores_tipo->proveedores;
+		foreach($proveedores as $prov){
+			$success = File::deleteDirectory('images/proveedores/'.$prov->nombre_usuario); //Borrar todas las imagenes adentro y el folder
+		}
+		$proveedores_tipo->delete();
+		return Redirect::to("administracion/proveedores/categorias");
 	}
 
 

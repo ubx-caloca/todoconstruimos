@@ -11,7 +11,7 @@ class blogController extends \BaseController {
 	{
 		$authuser = Auth::user();
 		//$listaDePost = Proveedor::paginate(15);
-		$Posts = DB::table('blog')->orderBy('id','desc')->paginate(2);
+		$Posts = Blog::orderBy('id','desc')->paginate(2);
 		return View::make('administracion.pages.blog.index')->with(array('Posts'=>$Posts, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
@@ -45,40 +45,35 @@ class blogController extends \BaseController {
 		if(!File::exists('images/blog/')) {
 		    $result = File::makeDirectory('images/blog/', 0777);
 		}
+		$rules = array(
+			'titulo'      => 'required',
+			'contenido'   => 'required',
+			'imagen' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
+		);
+		$validator = Validator::make(Input::all(), $rules);		
 		
-
-		$imagen_intro = Input::file('imagen');
-		foreach($imagen_intro as $file) {
+		if ($validator->fails()) {
+			return Redirect::to('administracion/blog/create')
+				->withErrors($validator)->withInput();
+		} else {
+			$file = Input::file('imagen');
 			$blog = new Blog;
-		    $rules = array(
-		        'file' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
-		    );
-		    $validator = \Validator::make(array('file'=> $file), $rules);
-		    if($validator->passes()){
+			$id = Str::random(4);
+			$date_now = new DateTime();
 
-		        $id = Str::random(14);
+		    $destinationPath    = 'images/blog/';
+		    $filename           = $date_now->format('YmdHis').$id;
+		    $mime_type          = $file->getMimeType();
+		    $extension          = $file->getClientOriginalExtension();
+		    $upload_success     = $file->move($destinationPath, $filename.'.'.$extension);
 
-		        $destinationPath    = 'images/blog/';
-		        $filename           = $file->getClientOriginalName();
-		        $mime_type          = $file->getMimeType();
-		        $extension          = $file->getClientOriginalExtension();
-		        $upload_success     = $file->move($destinationPath, $filename);
-
-				$blog->id=0;
-				$blog->fecha=DB::raw('NOW()');
-				$blog->usuario=1;
-				$blog->titulo=Input::get('titulo');		
-				$blog->imagen=$filename;
-				$blog->contenido=Input::get('contenido');
-				$blog->save();
-				unset($blog);
-				//$proveedores_galeria->destroy(1);
-
-		    } else {
-		        //return Redirect::back()->with('error', 'I only accept images.');
-		    }
-		    
-		}
+			$blog->fecha=$date_now;
+			$blog->usuario=$authuser->id;
+			$blog->titulo=Input::get('titulo');		
+			$blog->imagen=$filename.'.'.$extension;
+			$blog->contenido=Input::get('contenido');
+			$blog->save();			
+		}		
 		
 		return Redirect::to("administracion/blog")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		//
@@ -121,39 +116,44 @@ class blogController extends \BaseController {
 	public function update($id)
 	{
 		$authuser = Auth::user();
-		$blog = Blog::find($id);
-		//dd($blog);
-
-		$imagen_intro = Input::file('imagen');
-		if(!empty($imagen_intro)){
-			foreach($imagen_intro as $file) {
-			    $rules = array(
-			        'file' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
-			    );
-			    $validator = \Validator::make(array('file'=> $file), $rules);
-			    if($validator->passes()){
-
-			        $id = Str::random(14);
-
-			        $destinationPath    = 'images/blog/';
-			        $filename           = $file->getClientOriginalName();
-			        $mime_type          = $file->getMimeType();
-			        $extension          = $file->getClientOriginalExtension();
-			        $upload_success     = $file->move($destinationPath, $filename);
-			        $blog->imagen=$filename;
-					//$proveedores_galeria->destroy(1);
-
-			    } else {
-			        //return Redirect::back()->with('error', 'I only accept images.');
-			    }
-			    
-			}
+		if(!File::exists('images/blog/')) {
+		    $result = File::makeDirectory('images/blog/', 0777);
 		}
-				$blog->titulo=Input::get('titulo');						
-				$blog->contenido=Input::get('contenido');
-				$blog->save();
-				unset($blog);	
-				return Redirect::to("administracion/blog")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));				
+		$rules = array(
+			'titulo'      => 'required',
+			'contenido'   => 'required',
+			'imagen' => 'mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:200000000'
+		);
+		$validator = Validator::make(Input::all(), $rules);		
+		
+		if ($validator->fails()) {
+			return Redirect::to('administracion/blog/editar/'.$id)
+				->withErrors($validator)->withInput();
+		} else {
+			$blog = Blog::find($id);		
+			if(Input::hasFile('imagen')){
+				File::delete('images/banners/'.$blog->imagen); //Delete old image
+				
+				//save new image
+				$file = Input::file('imagen');
+				$id = Str::random(4);
+				$date_now = new DateTime();
+
+				$destinationPath    = 'images/blog/';
+				$filename           = $date_now->format('YmdHis').$id;
+				$mime_type          = $file->getMimeType();
+				$extension          = $file->getClientOriginalExtension();
+				$upload_success     = $file->move($destinationPath, $filename.'.'.$extension);
+
+				$blog->imagen=$filename.'.'.$extension;
+			}
+			$blog->titulo=Input::get('titulo');		
+			$blog->contenido=Input::get('contenido');
+			$blog->save();		
+
+		}		
+	
+		return Redirect::to("administracion/blog")->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));				
 
 	}
 
@@ -184,14 +184,10 @@ class blogController extends \BaseController {
 	 */
 	public function mostrarPost($id)
 	{
-		$bannersizquierda = DB::table('banners')->whereRaw("seccion='BLOG-IZQUIERDA' and habilitar=1")->orderBy('id','asc')->get();
-		$bannersderecha = DB::table('banners')->whereRaw("seccion='BLOG-DERECHA' and habilitar=1")->orderBy('id','asc')->get();
-		$categorias = DB::table('proveedor_tipo')->get();
-		$blog = DB::table('blog')->orderBy('id','desc')->take(4)->get();
-		$clasificadosvip = Clasificado::where('premium', '=', 1)->where('habilitar', '=', 1)->orderBy('fecha_publicacion','DESC')->get();
-		$categoriasClasif = ClasificadoCategoria::all();
+		$bannersizquierda = Banner::where('seccion', '=', 'BLOG-IZQUIERDA')->where('habilitar','=', '1')->orderBy('id','asc')->get();
+		$bannersderecha =  Banner::where('seccion', '=', 'BLOG-DERECHA')->where('habilitar','=', '1')->orderBy('id','asc')->get();
+		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
 		$anuncios = Anuncio::all();
-		$eventos = DB::table('eventos')->orderBy('fecha','desc')->get();
 		
 		$rolusuarioLogueado = '';
 		$mailusuarioLogueado = '';
@@ -207,15 +203,16 @@ class blogController extends \BaseController {
 		}
 
 		$post = Blog::find($id);
-		return View::make('index.blogPost')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'post'=>$post, 'categorias'=>$categorias,'blog'=>$blog, 'clasificadosvip' => $clasificadosvip, 'anuncios' => $anuncios, 'categoriasClasif' => $categoriasClasif, 'eventos' => $eventos, 'username'=> $mailusuarioLogueado, 'nameuser'=> $nombreusuarioLogueado, 'roluser'=> $rolusuarioLogueado));
+		return View::make('index.blogPost')->with(array('bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha,'post'=>$post, 'anuncios' => $anuncios, 'username'=> $mailusuarioLogueado, 'nameuser'=> $nombreusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersindexarriba'=>$bannersindexarriba));
 		//
 	}
 	public function mostrarBlog()
 	{
 		//$Posts = DB::table('blog')->orderBy('id','desc')->paginate(2);
 		//$bannersizquierda = DB::table('banners')->where('seccion', '=', 'BLOG-IZQUIERDA','AND')->where('habilitar', '=', '1')->orderBy('id','asc')->get();
-		$bannersizquierda = DB::table('banners')->whereRaw("seccion='BLOG-IZQUIERDA' and habilitar=1")->orderBy('id','asc')->get();
-		$bannersderecha = DB::table('banners')->whereRaw("seccion='BLOG-DERECHA' and habilitar=1")->orderBy('id','asc')->get();
+
+		$bannersizquierda = Banner::where('seccion', '=', 'BLOG-IZQUIERDA')->where('habilitar','=', '1')->orderBy('id','asc')->get();
+		$bannersderecha =  Banner::where('seccion', '=', 'BLOG-DERECHA')->where('habilitar','=', '1')->orderBy('id','asc')->get();
 		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
 		
 		$blog = Blog::orderBy('fecha','desc')->paginate(5);

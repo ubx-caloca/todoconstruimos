@@ -38,7 +38,7 @@
 
 				$('.owl-carousel').owlCarousel({
 					loop:true,
-					margin:10,
+
 					responsiveClass:true,
 					responsive:{
 						0:{
@@ -46,11 +46,11 @@
 							nav:false
 						},
 						600:{
-							items:3,
+							items:2,
 							nav:false
 						},
 						1000:{
-							items:6,
+							items:4,
 							nav:false,
 							loop:true,
 							
@@ -59,66 +59,8 @@
 							loop:true,
 							autoplay:true,
 						    autoplayTimeout:2500,
-						    autoplayHoverPause:true					
+						    autoplayHoverPause:true				
 				});	
-				$('.owl-carousel-clasificados').owlCarousel({
-					loop:true,
-					margin:10,
-					responsiveClass:true,
-					responsive:{
-						0:{
-							items:1,
-							nav:false
-						},
-						600:{
-							items:2,
-							nav:false
-						},
-						1000:{
-							items:3,
-							nav:false,
-							loop:true,
-							
-						}
-					},
-							loop:true,
-							autoplay:true,
-						    autoplayTimeout:2000,
-						    autoplayHoverPause:true,
-							mouseDrag:true,
-							touchDrag:true,
-							nav:true,
-							dots:true			
-				});
-				$('.owl-carousel-eventos').owlCarousel({
-					loop:true,
-					margin:30,
-					responsiveClass:true,
-					responsive:{
-						0:{
-							items:1,
-							nav:false
-						},
-						600:{
-							items:2,
-							nav:false
-						},
-						1000:{
-							items:2,
-							nav:false,
-							loop:true,
-							
-						}
-					},
-							loop:true,
-							autoplay:true,
-						    autoplayTimeout:4000,
-						    autoplayHoverPause:true,
-							mouseDrag:true,
-							touchDrag:true,
-							nav:true,
-							dots:true			
-				});		
 
 			    $('.subMenu').smint({
 			    	'scrollSpeed' : 1000,
@@ -197,16 +139,16 @@ padding-right: 10px;
 padding-top: 3px; 
 padding-bottom: 3px; 
 font-weight: 700;
-
+}
 
 /* unvisited link */
 a:link {
-    color: #FF0000;
+    color: #FFFFFF;
 }
 
 /* visited link */
 a:visited {
-    color: #00FF00;
+    color: #FFFFFF;
 }
 
 /* mouse over link */
@@ -219,7 +161,29 @@ a:active {
     color: #0000FF;
 }
 
+.class1 A:link {text-decoration: none;color: #191919;}
+.class1 A:visited {text-decoration: none;color: #191919;}
+.class1 A:active {text-decoration: none;color: #191919;}
+.class1 A:hover {text-decoration: underline;color: #191919;}
+A.signuplink:hover {color: #FCB200;}
+
+.socialtop{
+	float: left;
+	margin-top: 5px;
+	margin-left: 10px;
+	position: absolute;
 }
+
+.socialtop ul li:first-child, ol li:first-child {
+margin-top: 0px;
+margin-left: 0;
+}
+.socialtop li {
+background: none;
+display: inline-block;
+}
+
+
 </style>
 
 <link href="http://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
@@ -244,13 +208,20 @@ a:active {
 
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs">
+			<div class="socialtop">	
+		      <ul style="-webkit-padding-start: 0px;">	
+			   <li class="facebook"><a href="http://www.facebook.com/todoconstruimos" target="_blank"><span> </span></a></li>
+			   <li class="twitter"><a href="#" target="_blank"><span> </span></a></li>
+			   <li class="google"><a href="#" target="_blank"><span> </span></a></li>			
+		     </ul>
+			</div>
 			@include('index.include_login')	
 
 
 
 		
 		<div class="logo">
-			<a href="index.html"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
+			<a href="/"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
 		</div>
 	    <div class="slider_container">
         
@@ -289,7 +260,7 @@ a:active {
     
     
     
-                 <div style="width:100%; background-color:#ffffff; border-top: 7px solid #ffffff; border-bottom: 7px solid #ffffff;">
+                 <div style="width:100%; background-color:#FAFFBD; border-bottom: 5px solid #FAFFBD;border-top: 5px solid #FAFFBD">
 						@include('index.include_logos')       
                 </div>   
     

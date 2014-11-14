@@ -3,7 +3,7 @@
 				$count=0;
 				?>
 				@foreach ($bannersderecha as $banner)
-	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" class="img-responsive"/>
+	   	    		<img src="/images/banners/{{$banner->banner_img}}" alt="" style="width: 170px;height: 400px;" class="img-responsive"/>
 	   	    		<?php $count++;?>
    	    		@endforeach
 				<?php

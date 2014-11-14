@@ -134,18 +134,38 @@
 											<div class="hero-unit" style="margin-top:40px">
 												{{ Form::open(array('url' => 'administracion/blog', 'files' => true)) }}
 													<h2>Nuevo post</h2>
+											@if ($errors->has())
+										<div style="background: rgba(242,222, 223,255); margin: 5px;padding-left: 10px; padding-right: 10px;border: 2px #dd9d9d solid;
+
+										background-color: #F2DEDF;
+										-webkit-border-radius: 8px;
+										-moz-border-radius: 8px;
+										border-radius: 8px;
+										color: #a71b2a;
+										">
+										<p><strong>Errores:</strong> </p>
+											<ul>		
+													@foreach ($errors->all() as $error)
+														<li>
+														{{ $error }} 
+														</li>
+
+													@endforeach
+											</ul>
+										</div>		
+											@endif
 													<hr/>
 													<div class="form-group">
 															{{ Form::label('titulo', 'Título') }}
-															{{ Form::text('titulo','', array( 'placeholder' => '',  'class' => 'form-control')) }}
+															{{ Form::text('titulo',Input::old('titulo'), array( 'placeholder' => '',  'class' => 'form-control')) }}
 													</div>	
 													<hr>
 													<div class="form-group">
 															{{ Form::label('imagen', 'Selecciona una imagen') }}
-															{{ Form::file('imagen[]',['multiple' => true]) }}
+															{{ Form::file('imagen',[]) }}
 													</div>					
 													<hr>
-													<textarea name="contenido" class="textarea" placeholder="Escribe el contenido" style="width: 810px; height: 200px"></textarea>
+													<textarea name="contenido" class="textarea" placeholder="Escribe el contenido" style="width: 810px; height: 200px">{{Input::old('contenido')}}</textarea>
 													<hr>
 													<div class="form-group">
 														<center>{{ Form::submit('Publicar post', array('class' => 'btn btn-success')) }}</center>
