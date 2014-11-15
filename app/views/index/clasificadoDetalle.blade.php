@@ -356,51 +356,96 @@ a:active {
 	
 	</div>
 	<div class="col-md-6">	
-		<div class="row" style="padding-left: 0em;padding-right: 0em;padding-top: 1em;">
+		<div class="row" style="padding-left: 0em;padding-top: .5em;padding-right: 0em;padding-bottom: .5em;">
+			<div class="col-md-12">
+				<center><p style="font-weight: 700;" >Datos de Usuario</p></center>
+			</div>
+		</div>
+		<div class="row" style="padding-left: 0em;padding-right: 0em;">
 			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700" >Categoría:</p>
+				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Nombre:</p>
 			</div>
 			<div class="col-md-8">
-				<p style="text-align: -webkit-left;" >{{$clasificado->categoria->categoria}}</p>
+				<p style="text-align: -webkit-left;font-size: smaller;" >{{$clasificado->usuario->nombre}}</p>
+			</div>
+		</div>
+		<div class="row" style="padding-left: 0em;padding-right: 0em;">
+			<div class="col-md-4">
+				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Teléfono fijo:</p>
+			</div>
+			<div class="col-md-8">
+				<p style="text-align: -webkit-left;font-size: smaller;" >{{$clasificado->usuario->telefono}}</p>
+			</div>
+		</div>
+		<div class="row" style="padding-left: 0em;padding-right: 0em;">
+			<div class="col-md-4">
+				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Celular:</p>
+			</div>
+			<div class="col-md-8">
+				<p style="text-align: -webkit-left;font-size: smaller;" >{{$clasificado->usuario->telefono}}</p>
+			</div>
+		</div>
+		<div class="row" style="padding-left: 0em;padding-right: 0em;">
+			<div class="col-md-4">
+				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Nextel:</p>
+			</div>
+			<div class="col-md-8">
+				<p style="text-align: -webkit-left;font-size: smaller;" >{{$clasificado->usuario->nextel}}</p>
+			</div>
+		</div>	
+		<div class="row" style="padding-left: 0em;padding-right: 0em;">
+			<div class="col-md-4">
+				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Email:</p>
+			</div>
+			<div class="col-md-8">
+				<p style="text-align: -webkit-left;font-size: smaller;" >{{$clasificado->usuario->email}}</p>
 			</div>
 		</div>
 		<br>
-		<div class="row" style="padding-left: 0em;padding-right: 0em;">
+		<div class="row" style="padding-left: 0em;padding-top: .5em;padding-right: 0em;padding-bottom: .5em;">
+			<div class="col-md-12">
+				<center><p style="font-weight: 700" >Datos de Clasificado</p></center>
+			</div>
+		</div>	
+		<div class="row" style="padding-left: 0em;padding-right: 0em;padding-top: 0em;">
 			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700" >Creado por:</p>
+				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Categoría:</p>
 			</div>
 			<div class="col-md-8">
-				<p style="text-align: -webkit-left;" >{{$clasificado->usuario->nombre}}</p>
+				<p style="text-align: -webkit-left;font-size: smaller;" >{{$clasificado->categoria->categoria}}</p>
 			</div>
-		</div>
-		<br>	
+		</div>	
 		<div class="row" style="padding-left: 0em;padding-right: 0em;">
 			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700" >Fecha de publicación:</p>
+				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Publicado:</p>
 			</div>
 			<div class="col-md-8">
-				<p style="text-align: -webkit-left;" > {{date_format($tj_date, "d M Y H:i a")}}</p>
+				<p style="text-align: -webkit-left;font-size: smaller;" > {{date_format($tj_date, "d M Y H:i a")}}</p>
 			</div>
-		</div>
-		<br>	
+		</div>	
 		<div class="row" style="padding-left: 0em;padding-right: 0em;">
 			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700" >Precio:</p>
+				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Precio:</p>
 			</div>
 			<div class="col-md-8">
-				<p style="text-align: -webkit-left;" > {{$clasificado->precio.' '.$clasificado->moneda}}</p>
+				<p style="text-align: -webkit-left;font-size: smaller;" > {{$clasificado->precio.' '.$clasificado->moneda}}</p>
 			</div>
 		</div>
 		
 	</div>
 	</div>
-	<div class="row" style="padding-left: 2em;padding-right: 2em;">						
+	<br>
+	<div class="row" style="padding-left: 0em;padding-right: 0em;">
+			<div class="col-md-12">
+				<center><p style="font-weight: 700" >Descripción de Clasificado</p></center>
+			</div>
+		</div>	
+	<div class="row" style="padding-left: 2em;padding-right: 2em;">		
 		<div class="col-md-12">
 	
-		<br>
 		<div class="row" style="padding-left: 2em;padding-right: 2em;">
 			<div class="col-md-12">
-				<p style="text-align: -webkit-left;" > {{$clasificado->descripcion}}</p>
+				<p style="text-align: justify;" > {{$clasificado->descripcion}}</p>
 			</div>
 		</div>
 	
