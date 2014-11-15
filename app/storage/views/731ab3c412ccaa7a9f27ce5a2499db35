@@ -355,89 +355,97 @@ a:active {
 	</div>	
 	
 	</div>
-	<div class="col-md-6">	
-		<div class="row" style="padding-left: 0em;padding-top: .5em;padding-right: 0em;padding-bottom: .5em;">
+	<div class="col-md-6" style="font-size:15px">	
+		<div class="row" style="padding-left: 0em;padding-top: .5em;padding-right: 0em;">
 			<div class="col-md-12">
-				<center><p style="font-weight: 700;" >Datos de Usuario</p></center>
+				<p style="font-weight: 800;font-size:16px;text-align: -webkit-left;" >Datos de Usuario</p>
+			</div>
+		</div>
+		
+<div style="padding-left: 3em;">		
+		<div class="row" style="padding-left: 0em;padding-right: 0em;">
+			<div class="col-md-4">
+				<p style="text-align: -webkit-left;font-weight: 700;" >Nombre:</p>
+			</div>
+			<div class="col-md-8">
+				<p style="text-align: -webkit-left;" ><?php echo $clasificado->usuario->nombre; ?></p>
 			</div>
 		</div>
 		<div class="row" style="padding-left: 0em;padding-right: 0em;">
 			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Nombre:</p>
+				<p style="text-align: -webkit-left;font-weight: 700;" >Teléfono fijo:</p>
 			</div>
 			<div class="col-md-8">
-				<p style="text-align: -webkit-left;font-size: smaller;" ><?php echo $clasificado->usuario->nombre; ?></p>
+				<p style="text-align: -webkit-left;" ><?php echo $clasificado->usuario->telefono; ?></p>
 			</div>
 		</div>
 		<div class="row" style="padding-left: 0em;padding-right: 0em;">
 			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Teléfono fijo:</p>
+				<p style="text-align: -webkit-left;font-weight: 700;" >Celular:</p>
 			</div>
 			<div class="col-md-8">
-				<p style="text-align: -webkit-left;font-size: smaller;" ><?php echo $clasificado->usuario->telefono; ?></p>
+				<p style="text-align: -webkit-left;" ><?php echo $clasificado->usuario->telefono; ?></p>
 			</div>
 		</div>
 		<div class="row" style="padding-left: 0em;padding-right: 0em;">
 			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Celular:</p>
+				<p style="text-align: -webkit-left;font-weight: 700;" >Nextel:</p>
 			</div>
 			<div class="col-md-8">
-				<p style="text-align: -webkit-left;font-size: smaller;" ><?php echo $clasificado->usuario->telefono; ?></p>
-			</div>
-		</div>
-		<div class="row" style="padding-left: 0em;padding-right: 0em;">
-			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Nextel:</p>
-			</div>
-			<div class="col-md-8">
-				<p style="text-align: -webkit-left;font-size: smaller;" ><?php echo $clasificado->usuario->nextel; ?></p>
+				<p style="text-align: -webkit-left;" ><?php echo $clasificado->usuario->nextel; ?></p>
 			</div>
 		</div>	
 		<div class="row" style="padding-left: 0em;padding-right: 0em;">
 			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Email:</p>
+				<p style="text-align: -webkit-left;font-weight: 700;" >Email:</p>
 			</div>
 			<div class="col-md-8">
-				<p style="text-align: -webkit-left;font-size: smaller;" ><?php echo $clasificado->usuario->email; ?></p>
+				<p style="text-align: -webkit-left;" ><?php echo $clasificado->usuario->email; ?></p>
 			</div>
 		</div>
+</div>
 		<br>
-		<div class="row" style="padding-left: 0em;padding-top: .5em;padding-right: 0em;padding-bottom: .5em;">
+		<div class="row" style="padding-left: 0em;padding-top: .5em;padding-right: 0em;">
 			<div class="col-md-12">
-				<center><p style="font-weight: 700" >Datos de Clasificado</p></center>
+				<p style="font-weight: 800;font-size:16px;text-align: -webkit-left;" >Datos de Clasificado</p>
 			</div>
 		</div>	
+<div style="padding-left: 3em;">		
 		<div class="row" style="padding-left: 0em;padding-right: 0em;padding-top: 0em;">
 			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Categoría:</p>
+				<p style="text-align: -webkit-left;font-weight: 700;" >Categoría:</p>
 			</div>
 			<div class="col-md-8">
-				<p style="text-align: -webkit-left;font-size: smaller;" ><?php echo $clasificado->categoria->categoria; ?></p>
+				<p style="text-align: -webkit-left;" ><?php echo $clasificado->categoria->categoria; ?></p>
 			</div>
 		</div>	
 		<div class="row" style="padding-left: 0em;padding-right: 0em;">
 			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Publicado:</p>
+				<p style="text-align: -webkit-left;font-weight: 700;" >Publicado:</p>
 			</div>
 			<div class="col-md-8">
-				<p style="text-align: -webkit-left;font-size: smaller;" > <?php echo date_format($tj_date, "d M Y H:i a"); ?></p>
+				<p style="text-align: -webkit-left;" > <?php echo date_format($tj_date, "d M Y H:i a"); ?></p>
 			</div>
 		</div>	
 		<div class="row" style="padding-left: 0em;padding-right: 0em;">
 			<div class="col-md-4">
-				<p style="text-align: -webkit-left;font-weight: 700;font-size: smaller;" >Precio:</p>
+				<p style="text-align: -webkit-left;font-weight: 700;" >Precio:</p>
 			</div>
+			<?php
+				setlocale(LC_MONETARY, 'en_US');
+			?>
 			<div class="col-md-8">
-				<p style="text-align: -webkit-left;font-size: smaller;" > <?php echo $clasificado->precio.' '.$clasificado->moneda; ?></p>
+				<p style="text-align: -webkit-left;" > <?php echo '$ '.number_format (  $clasificado->precio , 2 ,  '.' , ',' ).' '.$clasificado->moneda; ?></p>
 			</div>
 		</div>
+	</div>
 		
 	</div>
 	</div>
 	<br>
-	<div class="row" style="padding-left: 0em;padding-right: 0em;">
-			<div class="col-md-12">
-				<center><p style="font-weight: 700" >Descripción de Clasificado</p></center>
+	<div class="row" style="padding-left: 0em;padding-right: 0em;margin-bottom: .5em;margin-top: .5em;">
+			<div class="col-md-12" >
+				<center><p style="font-weight: 800" >Descripción de Clasificado</p></center>
 			</div>
 		</div>	
 	<div class="row" style="padding-left: 2em;padding-right: 2em;">		
@@ -480,7 +488,16 @@ a:active {
     
     
     
-    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56776636-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
    	<script src="/index/js/bootstrap.min.js"></script>
 </body>
 </html>
