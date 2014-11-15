@@ -456,29 +456,25 @@ display: inline-block;
 				</div>		  	
 		  	@endforeach
 				<div class="col_1_of_4 span_1_of_4">
-			 	   <a href="/proveedores/{{$nombreDeUsuario}}#work" class="b-link-stripe b-animate-go  thickbox">
+			 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
 					<?php echo "<img src=\"/images/galeriapremiumdisponible.png\" class=\"img-responsive\" alt=\"\"/>"; ?>
-					    <div class="b-wrapper">
-						    <h2 class="b-animate b-from-left    b-delay03 ">
-							 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-							 <span><?php echo strtoupper($nombre); ?></span>
-							 <button >Ver galería</button>
-							</h2>
-						</div>
 					</a>
 				</div>
 				<div class="col_1_of_4 span_1_of_4">
-			 	   <a href="/proveedores/{{$nombreDeUsuario}}#work" class="b-link-stripe b-animate-go  thickbox">
+			 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
 					<?php echo "<img src=\"/images/galeriapremiumdisponible.png\" class=\"img-responsive\" alt=\"\"/>"; ?>
-					    <div class="b-wrapper">
-						    <h2 class="b-animate b-from-left    b-delay03 ">
-							 <img src="/index/images/p_logo.png" class="img-responsive" alt=""/>
-							 <span><?php echo strtoupper($nombre); ?></span>
-							 <button >Anunciate</button>
-							</h2>
-						</div>
 					</a>
-				</div>						  	
+				</div>
+				<div class="col_1_of_4 span_1_of_4">
+			 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
+					<?php echo "<img src=\"/images/galeriapremiumdisponible.png\" class=\"img-responsive\" alt=\"\"/>"; ?>
+					</a>
+				</div>
+				<div class="col_1_of_4 span_1_of_4">
+			 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
+					<?php echo "<img src=\"/images/galeriapremiumdisponible.png\" class=\"img-responsive\" alt=\"\"/>"; ?>
+					</a>
+				</div>										  	
 
 
 
