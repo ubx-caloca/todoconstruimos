@@ -494,7 +494,7 @@ display: inline-block;
 		                                        <div class="col-md-12" style="background-color:#ffffff;text-align:left;">
 		                                              <p><img src="images/eventos/{{$evento->imagen}} " alt="{{ $evento->titulo }}" class="img-thumbnail"></p>
 		                                               <h3 class="m_1" style="text-align:center;"><a href="#">{{$evento->titulo}}</a></h3>
-		                                               <p class="m_2" style="text-align:center;">Fecha: {{Str::limit($evento->fecha,400)}}</p>
+		                                               <p class="m_2" style="text-align:center;">Fecha del evento: {{Str::limit($evento->fecha_evento,400)}}</p>
 		                                              <p class="m_2" style="text-align:justify;">{{$evento->contenido}}</p>
 		                                        </div>                              
 		                                    </div>                          
@@ -658,7 +658,16 @@ display: inline-block;
    	</div>
     <!-- ************* -->
 
-    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56776636-1', 'auto');
+  ga('send', 'pageview');
+
+</script>    
 
 </body>
 </html>
