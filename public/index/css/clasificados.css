@@ -23,6 +23,8 @@ nav {
 nav ul {
 	list-style: none;
 	overflow: hidden;
+	text-decoration: none;
+	font-weight: normal;
 	
 }
 
@@ -33,6 +35,7 @@ nav li a {
 	float: left;
 	font: 400 13px/1.4 'Ubuntu', Helvetica, Verdana, Arial, sans-serif;
 	padding: 10px;
+	font-weight: normal;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -52,6 +55,7 @@ nav li a:hover {
 	background: #282828;
 	text-decoration: none;
 	color: #fff;
+	font-weight: normal;
 }
 
 /*SMALL*/

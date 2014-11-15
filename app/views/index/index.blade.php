@@ -412,7 +412,7 @@ display: inline-block;
 						<ul>   		  		
 				@foreach ($categorias as $categoria)
 					
-					<li><a href="directorio/{{ $categoria->tipo }}" style="font-size:13px;"><i class="fa {{ $categoria->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ $categoria->tipo }}</a></li>
+					<li><a href="directorio/{{ $categoria->tipo }}" style="font-size:13px;border-radius:4px;"><i class="fa {{ $categoria->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ $categoria->tipo }}</a></li>
 					
 				@endforeach
 						</ul>
@@ -539,11 +539,11 @@ display: inline-block;
 						@foreach ($categoriasClasif as $categoriaC)
 
 							
-							<li><a href="directorioClasif/{{ $categoriaC->id }}"style="font-size:13px;"><i class="fa {{ $categoriaC->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ mb_strtoupper($categoriaC->categoria, 'utf-8') }}</a></li>
+							<li><a href="directorioClasif/{{ $categoriaC->id }}"style="font-size:13px;border-radius:4px;"><i class="fa {{ $categoriaC->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ mb_strtoupper($categoriaC->categoria, 'utf-8') }}</a></li>
 
 				
 						@endforeach
-							<li><a href="directorioClasif/all"style="font-size:13px;"><i class="fa fa-bars" style="color:#FFB500; font-size:13px;"></i> {{ mb_strtoupper('Todos', 'utf-8')}}</a></li>
+							<li><a href="directorioClasif/all"style="font-size:13px;border-radius:4px;"><i class="fa fa-bars" style="color:#FFB500; font-size:13px;"></i> {{ mb_strtoupper('Todos', 'utf-8')}}</a></li>
 							</ul>
 						</nav>							
 
