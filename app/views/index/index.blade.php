@@ -459,21 +459,6 @@ display: inline-block;
 			 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
 					<?php echo "<img src=\"/images/galeriapremiumdisponible.png\" class=\"img-responsive\" alt=\"\"/>"; ?>
 					</a>
-				</div>
-				<div class="col_1_of_4 span_1_of_4">
-			 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<?php echo "<img src=\"/images/galeriapremiumdisponible.png\" class=\"img-responsive\" alt=\"\"/>"; ?>
-					</a>
-				</div>
-				<div class="col_1_of_4 span_1_of_4">
-			 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<?php echo "<img src=\"/images/galeriapremiumdisponible.png\" class=\"img-responsive\" alt=\"\"/>"; ?>
-					</a>
-				</div>
-				<div class="col_1_of_4 span_1_of_4">
-			 	   <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<?php echo "<img src=\"/images/galeriapremiumdisponible.png\" class=\"img-responsive\" alt=\"\"/>"; ?>
-					</a>
 				</div>										  	
 
 
