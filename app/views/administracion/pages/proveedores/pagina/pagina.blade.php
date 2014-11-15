@@ -61,7 +61,16 @@
 								background-size: 256px 256px, cover;
 								background-attachment: fixed, fixed;
 								background-position: top left, center center;
-							}		
+							}	
+						/*********************************************************************************/
+						/* Galeria                                                                           */
+						/*********************************************************************************/
+						
+							#galeria {
+								background: url('images/overlay.png'), url('/images/fondoproveedores.png');
+								background-attachment: fixed, fixed;
+								background-position: top left, center center;
+							}									
 		</style>    
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -73,7 +82,7 @@
 			<header id="header">
 
 				<!-- Logo -->
-					<h1 id="logo">{{ $proveedores->nombre }}</h1>
+					<h1 id="logo"><a href="/"><i class="fa fa-home" style="color:#FFB500;"></i> Todo Construimos</a> | {{ $proveedores->nombre }}</h1>
 				
 				<!-- Nav -->
 					<nav id="nav">
@@ -81,7 +90,7 @@
 							<li><a href="#intro">Intro</a></li>
 							<li><a href="#one">Qué hacemos</a></li>
 							<li><a href="#two">Quiénes somos</a></li>
-							<li><a href="#work">Nuestro trabajo</a></li>
+							<li><a href="#galeria">Nuestro trabajo</a></li>
 							<li><a href="#contact">Contacto</a></li>
 						</ul>
 					</nav>
@@ -125,7 +134,7 @@
 			
 			
 		<!-- Work -->
-			<section id="work" class="main style3 primary">
+			<section id="galeria" class="main style3 secondary" style"background-color: #00ff00;>
 				<div class="content container">
 					<header>
 						<h2>Nuestro trabajo</h2>
