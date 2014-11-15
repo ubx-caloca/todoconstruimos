@@ -4,7 +4,7 @@
 		@include('administracion.head')
 
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -15,7 +15,7 @@
 
               <script>
               $(function() {
-                $( "#fecha_evento" ).datepicker({ dateFormat: "yy-mm-dd" });
+                $( "#fecha_evento" ).datepicker({ format: "yyyy-mm-dd" });
               });
               </script>
     </head>

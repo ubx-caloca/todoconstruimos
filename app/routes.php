@@ -37,6 +37,11 @@ Route::filter('auth.user', function($route, $request){
 
 });
 
+// ===============================================
+// BLOG
+// ===============================================
+Route::get('/blog/{post}','blogController@mostrarPost');
+Route::get('/blog','blogController@mostrarBlog');
 
 Route::resource('/','indexController');
 Route::get('/directorio/{directorioCategoria}','DirectorioController@directorio');
@@ -181,9 +186,3 @@ Route::group(array('prefix' => 'vistausuario', 'before' => 'auth.user'), functio
 		// });
 
 Route::get('/proveedores/{nombreDeUsuario}','ProveedorPaginaController@datosProveedor');
-
-// ===============================================
-// BLOG
-// ===============================================
-Route::get('/blog/{post}','blogController@mostrarPost');
-Route::get('/blog/','blogController@mostrarBlog');
