@@ -213,6 +213,28 @@ a:active {
     color: #0000FF;
 }
 
+.class1 A:link {text-decoration: none;color: #191919;}
+.class1 A:visited {text-decoration: none;color: #191919;}
+.class1 A:active {text-decoration: none;color: #191919;}
+.class1 A:hover {text-decoration: underline;color: #191919;}
+A.signuplink:hover {color: #FCB200;}
+
+.socialtop{
+	float: left;
+	margin-top: 5px;
+	margin-left: 10px;
+	position: absolute;
+}
+
+.socialtop ul li:first-child, ol li:first-child {
+margin-top: 0px;
+margin-left: 0;
+}
+.socialtop li {
+background: none;
+display: inline-block;
+}
+
 </style>
 
 
@@ -220,6 +242,13 @@ a:active {
 
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs">
+			<div class="socialtop">	
+		      <ul style="-webkit-padding-start: 0px;">	
+			   <li class="facebook"><a href="http://www.facebook.com/todoconstruimos" target="_blank"><span> </span></a></li>
+			   <li class="twitter"><a href="#" target="_blank"><span> </span></a></li>
+			   <li class="google"><a href="#" target="_blank"><span> </span></a></li>			
+		     </ul>
+			</div>
 			@include('index.include_login')	
 		<div class="logo">
 			<a href="/"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
@@ -252,7 +281,7 @@ a:active {
     
 	</div> 
     <!-- ENCABEZADO -->
-	<div style="width:100%; background-color:#ffffff; border-bottom: 5px solid #ffffff;margin-top: -5px;border-top: 5px solid #ffffff">
+	<div style="width:100%; background-color:#FAFFBD; border-bottom: 5px solid #FAFFBD;border-top: 5px solid #FAFFBD">
 		@include('index.include_logos')       
     </div>
 	
@@ -431,9 +460,6 @@ a:active {
 			<div class="col-md-4">
 				<p style="text-align: -webkit-left;font-weight: 700;" >Precio:</p>
 			</div>
-			<?php
-				setlocale(LC_MONETARY, 'en_US');
-			?>
 			<div class="col-md-8">
 				<p style="text-align: -webkit-left;" > {{'$ '.number_format (  $clasificado->precio , 2 ,  '.' , ',' ).' '.$clasificado->moneda}}</p>
 			</div>

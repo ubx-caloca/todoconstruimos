@@ -199,6 +199,13 @@ padding-bottom: 3px;
 font-weight: 700;
 }
 
+.class1 A:link {text-decoration: none;color: #191919;}
+.class1 A:visited {text-decoration: none;color: #191919;}
+.class1 A:active {text-decoration: none;color: #191919;}
+.class1 A:hover {text-decoration: underline;color: #191919;}
+A.signuplink:hover {color: #FCB200;}
+
+
 /* unvisited link */
 a:link {
     color: #FFFFF;
@@ -354,7 +361,7 @@ display: inline-block;
    	    	<div class="row">
    	    		
    	    		@foreach ($eventos as $evento)
-   	    			<div class="col-md-12" style="background:rgba(255,255,255,0.97);padding:20px; color:#000;">
+   	    			<div class="col-md-12" style="background:rgba(255,255,255,0.97);padding:20px; color:#000;border-radius: 10px;">
    	    			<p align="center"><img src="/images/eventos/{{$evento->imagen}}" alt="" class="thumbnail"/></p><br>
    	    			<p align="center" style="font: 400 30px/1.3 'Bree Serif', Georgia, serif;"><?php echo mb_strtoupper($evento->titulo,'utf8');?></p>
    	    			<p align="center" class="m_1">Publicado el <?php echo mb_strtoupper($evento->fecha,'utf-8');?></p>

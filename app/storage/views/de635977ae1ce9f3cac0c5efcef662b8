@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale = 1.0, user-scalable=0">
 <title>Todo Construimos</title>
+<link rel="shortcut icon" href="<?php echo asset('images/favicon2.ico'); ?>">
 <link href="/index/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!--<link href="/index/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <script src="/index/js/bootstrap.min.js"></script>-->
@@ -208,6 +209,27 @@ a:active {
     color: #0000FF;
 }
 
+.class1 A:link {text-decoration: none;color: #191919;}
+.class1 A:visited {text-decoration: none;color: #191919;}
+.class1 A:active {text-decoration: none;color: #191919;}
+.class1 A:hover {text-decoration: underline;color: #191919;}
+A.signuplink:hover {color: #FCB200;}
+
+.socialtop{
+	float: left;
+	margin-top: 5px;
+	margin-left: 10px;
+	position: absolute;
+}
+
+.socialtop ul li:first-child, ol li:first-child {
+margin-top: 0px;
+margin-left: 0;
+}
+.socialtop li {
+background: none;
+display: inline-block;
+}
 
 
   </style>
@@ -228,6 +250,13 @@ a:active {
 
 	<!-- ENCABEZADO -->
 	<div class="header sTop hidden-xs">
+			<div class="socialtop">	
+		      <ul style="-webkit-padding-start: 0px;">	
+			   <li class="facebook"><a href="http://www.facebook.com/todoconstruimos" target="_blank"><span> </span></a></li>
+			   <li class="twitter"><a href="#" target="_blank"><span> </span></a></li>
+			   <li class="google"><a href="#" target="_blank"><span> </span></a></li>			
+		     </ul>
+			</div>
 			<?php echo $__env->make('index.include_login', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>	
 		<div class="logo">
 			<a href="/"><img src="/index/images/logoTodoConstruimos.png" alt=""/></a>
@@ -260,7 +289,7 @@ a:active {
     
 	</div> 
     <!-- ENCABEZADO --> 
-	<div style="width:100%; background-color:#ffffff; border-bottom: 5px solid #ffffff;margin-top: -5px;border-top: 5px solid #ffffff">
+	<div style="width:100%; background-color:#FAFFBD; border-bottom: 5px solid #FAFFBD;border-top: 5px solid #FAFFBD">
 		<?php echo $__env->make('index.include_logos', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>       
     </div> 
 	
@@ -337,8 +366,8 @@ a:active {
 							<div class="col-md-10" >
 								<h3 style="text-align: -webkit-left;color:black"><?php echo mb_strtoupper($cat->titulo, 'utf-8'); ?></h3>
 								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: mediumblue;" > Publicado el <?php echo date_format($tj_date, "d M Y H:i a"); ?> por <?php echo $cat->usuario->nombre; ?></p>
-								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: black;" > Precio: <?php echo $cat->precio.' '.$cat->moneda; ?></p>
-								<p style="text-align: -webkit-left;color:black;" ><?php echo Str::limit($cat->descripcion, 1000); ?></p>
+								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: black;" > Precio: <?php echo '$ '.number_format (  $cat->precio , 2 ,  '.' , ',' ).' '.$cat->moneda; ?></p>
+								<p style="text-align: -webkit-left;color:black;" ><?php echo Str::limit($cat->descripcion, 500); ?></p>
 								
 							</div>
 						</div>
@@ -368,8 +397,8 @@ a:active {
 							<div class="col-md-10">
 								<h3 style="text-align: -webkit-left;color:black"><?php echo mb_strtoupper($cat->titulo,'utf-8'); ?></h3>
 								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: mediumblue;" > Publicado el <?php echo date_format($tj_date, "d M Y H:i a"); ?> por <?php echo $cat->usuario->nombre; ?></p>
-								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: black;" > Precio: <?php echo $cat->precio.' '.$cat->moneda; ?></p>
-								<p style="text-align: -webkit-left;color:black;" ><?php echo Str::limit($cat->descripcion, 1000); ?></p>
+								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: black;" > Precio: <?php echo '$ '.number_format (  $cat->precio , 2 ,  '.' , ',' ).' '.$cat->moneda; ?></p>
+								<p style="text-align: -webkit-left;color:black;" ><?php echo Str::limit($cat->descripcion, 500); ?></p>
 							</div>
 						</div>
 						</a>
@@ -404,7 +433,16 @@ a:active {
     
     
     
-    
+   <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56776636-1', 'auto');
+  ga('send', 'pageview');
+
+</script> 
     
    	<script src="/index/js/bootstrap.min.js"></script>
 </body>

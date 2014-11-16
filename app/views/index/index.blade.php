@@ -368,6 +368,23 @@ display: inline-block;
 					   		  <p><img src="images/blog/{{$post->imagen}} " alt="{{ $post->titulo }}" class="img-thumbnail"></p>
 					   		  <h3 class="m_1"><a href="#">{{$post->titulo}}</a></h3>
 					   		  <p class="m_2" style="text-align:justify;"><?php  echo Str::limit(strip_tags($post->contenido), 400); ?></p>
+							 <!--
+					   		  <span class="class1"><p align="right"><br><a href="/blog/{{$post->id}}" target="_self"><span><i class="fa fa-plus-circle"></i> Leer más...</span></a></p></span>
+							  -->
+					   		</div>
+
+								
+						@endforeach
+
+
+
+   	  </div>
+   	   <div class="row text-center">
+
+
+						@foreach ($blog as $post)
+
+					   	    <div class="col-md-3 service_grid">
 					   		  <span class="class1"><p align="right"><br><a href="/blog/{{$post->id}}" target="_self"><span><i class="fa fa-plus-circle"></i> Leer más...</span></a></p></span>
 					   		</div>
 
@@ -377,7 +394,6 @@ display: inline-block;
 
 
    	  </div>
-
 <br>
 			<div style="width:100%; background-color:#eaa600; color:#fff; padding:10px;">
 
