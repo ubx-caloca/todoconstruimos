@@ -303,7 +303,7 @@ border-color: chocolate;
 															
 															<p><strong>Fecha de publicación:</strong> {{ date_format($tj_date, 'd M Y H:i a') }}</p>
 															<p><strong>Premium:</strong> {{ (($clasificado->premium>0)?'Si': 'No') }} </p>
-															<p><strong>Precio:</strong> {{ ''.$clasificado->precio.' '.$clasificado->moneda}}</p>
+															<p><strong>Precio:</strong> {{ '$ '.number_format (  $clasificado->precio , 2 ,  '.' , ',' ).' '.$clasificado->moneda}}</p>
 															<!--
 											        		<p><strong><a href=" <?php echo"/vistausuario/clasificados/galeria/$clasificado->id"; ?> ">Agregar fotos a clasificado</a></strong></p>
 															-->

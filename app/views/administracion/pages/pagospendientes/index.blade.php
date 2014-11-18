@@ -316,10 +316,10 @@ hr.style-eight:after {
 															<p style="color: darkorange;"><strong>Metodo de cobro:</strong> {{ (($pagop->metodoPago==null|| $pagop->metodoPago==null)? '(Por confirmar por usuario)': $pagop->metodoPago)}}</p>
 															<p style="color: darkorange;"><strong>Referencia de cobro:</strong> {{ (($pagop->referenciaPago==null|| $pagop->referenciaPago==null)? '(Por confirmar por usuario)': $pagop->referenciaPago) }}</p>
 															<p><strong>Pendiente desde:</strong> {{ date_format($tj_date, 'd M Y H:i a')  }}</p>
-															<br>
+															
 															<p><strong>Extensión de vigencia:</strong> {{ $pagop->cobro->tipo->diasVigencia }} días</p>
-															<p><strong>Precio de servicio:</strong> {{ $pagop->cobro->tipo->precio}}</p>											        		
-															<p><strong>Concepto:</strong> {{ $pagop->cobro_concepto }}</p>
+															<p><strong>Precio de servicio:</strong> {{ number_format (  $pagop->cobro->tipo->precio , 2 ,  '.' , ',' ). ' pesos'}}</p>											        		
+															<!--<p><strong>Concepto:</strong> {{ $pagop->cobro_concepto }}</p> -->
 														</div>
 											        </div>
 													<br><hr class="style-eight"><br>

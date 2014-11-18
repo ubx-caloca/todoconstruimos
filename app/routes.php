@@ -153,8 +153,15 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 // ===============================================
 Route::group(array('prefix' => 'vistausuario', 'before' => 'auth.user'), function(){
 		Route::get('/', function(){
-			$authuser = Auth::user();			
-			return View::make('vistausuario.index')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+			$authuser = Auth::user();		
+
+			//Super query
+			$cobrospusuario = CobroPendiente::whereIn('cobro_id', function($query) use ($authuser){
+				$query->select('id')
+				->from(with(new Cobro)->getTable())
+				->where('usuario_id', $authuser->id);
+			})->get();			
+			return View::make('vistausuario.index')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id, 'cpendientes'=>$cobrospusuario ));
 		});
 		
 		//CLASIFICADOS

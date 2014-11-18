@@ -289,7 +289,7 @@ hr.style-eight:after {
 											    		<div class="col-md-11">
 											        		<p><strong>Clave de tipo:</strong> {{$cobrot->tipo }}</p>
 															<p><strong>Descripción:</strong> {{ $cobrot->descripcion }}</p>
-															<p><strong>Precio de servicio:</strong> {{ $cobrot->precio. ' pesos'}}</p>
+															<p><strong>Precio de servicio:</strong> {{ number_format ( $cobrot->precio , 2 ,  '.' , ',' ). ' pesos'}}</p>
 															<p><strong>Duración de servicio:</strong> {{ $cobrot->diasVigencia. ' días' }}</p>
 														</div>
 											        </div>

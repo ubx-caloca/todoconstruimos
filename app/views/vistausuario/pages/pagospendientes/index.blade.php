@@ -285,9 +285,9 @@ margin-right: -10px;
 											        		<p><strong>Tipo:</strong> {{$pagop->cobro->tipo->descripcion }}</p>
 															<p><strong>Objeto de pago:</strong> Id: {{ $pagop->cobro->datosAdicionales }}</p>
 															<p><strong>Vigencia extendida por:</strong> {{ $pagop->cobro->tipo->diasVigencia }} días</p>
-															<p><strong>Precio a pagar:</strong> {{ $pagop->cobro->tipo->precio}}</p>
+															<p><strong>Precio a pagar:</strong> {{ number_format (  $pagop->cobro->tipo->precio , 2 ,  '.' , ',' ). ' pesos'}}</p>
 											        		<p><strong>Pendiente desde:</strong> {{ date_format($tj_date, 'd M Y H:i a')  }}</p>
-															<p><strong>Concepto:</strong> {{ $pagop->cobro_concepto }}</p>
+															<!--<p><strong>Concepto:</strong> {{ $pagop->cobro_concepto }}</p>-->
 														</div>
 											        </div>
 											        <hr>

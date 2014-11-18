@@ -310,7 +310,7 @@ hr.style-eight:after {
 									?>
 											    		<div class="col-md-11">
 															<p><strong>Fecha de pago:</strong> {{ (is_null ($tj_date))? '(Sin definir)': $myDateTime->format('d-M-Y H:i:s')  }}</p>
-															<p><strong>Concepto del pago:</strong> {{$cobroH->cobro_concepto }}</p>
+															<!--<p><strong>Concepto del pago:</strong> {{$cobroH->cobro_concepto }}</p>-->
 															<p><strong>Método de pago:</strong> {{ $cobroH->metodoPago }}</p>
 															<p><strong>Datos de referencia del pago:</strong> {{ $cobroH->referenciaPago }}</p>
 															<p><strong>Usuario asociado:</strong> {{$cobroH->usuario_email }}</p>

@@ -1,9 +1,23 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
 
             @include('vistausuario.head')
 
+		<style>
+		.linkp1{
+			color: firebrick;
+		}
+		.linkp1:hover {
+			color: rgb(255, 8, 8);
+		}
+		.linkp2{
+			
+		}
+		.linkp2:hover {
+		
+		}
+		</style>
     </head>
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
@@ -108,28 +122,81 @@
 
                 <!-- Main content -->
                 <section class="content">
-
-
-
-
-
-
-
-
+						
+						
 
 
 
                     <!-- Main row -->
                     <div class="row">
                         <!-- Left col -->
-                        <section class="col-lg-7 connectedSortable">                            
+                        <section class="col-lg-10 connectedSortable">                            
 
 
 
 
+						<div class="row">
+						<div class="col-md-12">
+						<div>
 
+						<div class="dropdown notifications-menu" style="font-size: 16px; margin-top:15px">
+						Tienes <span class="label label-warning">{{count($cpendientes)}}</span> notificaciones
+						</div>
+						</div>
+						</div>
+						</div>
+						
+						@foreach($cpendientes as $pendiente)
+						<div class="row" style="margin-left: 20px;">
+						<div class="col-md-12">
+						<ul class="notificacion">
+							<li>
+								<?php
+									$fecPubString = $pendiente->fecha;
+									$utc_date = new DateTime(
+									                $fecPubString, 
+									                new DateTimeZone('UTC')
+									);
 
-
+									$tj_date = $utc_date;
+									$tj_date->setTimeZone(new DateTimeZone('America/Tijuana'));
+									
+									
+									//Aqui ya depende del tipo de cobro
+									$stringsobreid = "";
+									if($pendiente->cobro->tipo->tipo == 'ser_proveedor'){		
+										$stringsobreid = '.';
+									}
+									if($pendiente->cobro->tipo->tipo == 'clasificado_premium'){
+										$stringsobreid =' con Id = '. $pendiente->cobro->datosAdicionales.'.';
+									}	
+									if($pendiente->cobro->tipo->tipo == 'imagen_proveedor'){
+										$stringsobreid =' con Id = '. $pendiente->cobro->datosAdicionales.'.';
+									}
+									$cobrotipoprefix = substr ( $pendiente->cobro->tipo->tipo , 0, 7 );
+									if($cobrotipoprefix == 'BANNER-'){
+										$stringsobreid =' con Id = '. $pendiente->cobro->datosAdicionales.'.';
+									}
+									$stringSobreAction = '';	
+									$tipoPendiente = 0;									
+									if(is_null($pendiente->referenciaPago) || $pendiente->referenciaPago='' || is_null($pendiente->metodoPago)){
+										$stringSobreAction = ' Ir a sección de pago pendientes para introducir datos del pago.';
+										$tipoPendiente=1;
+									}
+									else{
+										$stringSobreAction = ' En espera de aprobación por parte del administrador.';
+										$tipoPendiente =2;
+									}
+									
+									?>
+                                <a href="{{$tipoPendiente==1?'/vistausuario/pagospendientes': '#'}}" >
+                                    <i class="{{$tipoPendiente==1?'fa fa-warning': 'fa-info-circle'}}" ></i> <span style="margin-left: 5px;">Pago pendiente desde {{date_format($tj_date, 'd M Y H:i a')}} referente a <b>{{$pendiente->cobro->tipo->descripcion}}</b>{{$stringsobreid }}{{$stringSobreAction}}</span>
+                                </a>
+                            </li>
+						</ul>
+						</div>
+						</div>	
+						@endforeach
 
 
 
