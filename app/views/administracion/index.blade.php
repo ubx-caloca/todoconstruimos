@@ -3,7 +3,6 @@
     <head>
 
             @include('administracion.head')
-
     </head>
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
@@ -123,18 +122,8 @@
                     <div class="row">
                         <!-- Left col -->
                         <section class="col-lg-7 connectedSortable">                            
-
-
-
-
-
-
-
-
-
-
-
-
+						
+						
 
                         </section><!-- /.Left col -->
  

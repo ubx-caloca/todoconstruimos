@@ -3,7 +3,41 @@
     <head>
 
             @include('administracion.head')
+			<style>
+			.gmnoprint img { max-width: none !important;}
+			</style>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
 
+<script>
+
+function init_map(){
+	var myOptions = {
+		zoom:14,
+		center:new google.maps.LatLng({{(Input::old('latitud')==''?$latitud_ens: Input::old('latitud'))}},{{(Input::old('longitud')==''?$longitud_ens: Input::old('longitud'))}}),
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+	marker = new google.maps.Marker({
+		map: map,
+		position: new google.maps.LatLng({{(Input::old('latitud')==''?$latitud_ens: Input::old('latitud'))}},{{(Input::old('longitud')==''?$longitud_ens: Input::old('longitud'))}}),
+		title: 'Set lat/lon values for this property',
+		draggable: true
+	});
+	infowindow = new google.maps.InfoWindow({content:"Localización" });
+	google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});
+	infowindow.open(map,marker);
+	
+	google.maps.event.addListener(marker, 'dragend', function(a) {
+	//window.alert("lat="+this.getPosition().lat()+" lon="+this.getPosition().lng());
+	document.getElementById("latitud_id").value = this.getPosition().lat();
+    document.getElementById("longitud_id").value = this.getPosition().lng();
+    // bingo!
+    // a.latLng contains the co-ordinates where the marker was dropped
+});
+	}
+google.maps.event.addDomListener(window, 'load', init_map);
+</script>
     </head>
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
@@ -192,6 +226,13 @@
 														{{ Form::label('clasf_habilitar', 'Habilitar') }}
 														{{ Form::select('clasf_habilitar', array('1' => 'Si', '0' => 'No') , Input::old('clasf_habilitar'), array( 'placeholder' => '',  'class' => 'form-control')) }}
 												</div>
+												<div class="form-group">
+														{{ Form::label('localizacion', 'Punto de venta de clasificado') }}
+														{{ Form::hidden('latitud', (Input::old('latitud')==''?$latitud_ens: Input::old('latitud')), array('id' => 'latitud_id')) }}
+														{{ Form::hidden('longitud', (Input::old('longitud')==''?$longitud_ens: Input::old('longitud')), array('id' => 'longitud_id')) }}
+														<center><div id="googleMap" style="height:330px;margin-top: 10px;"></div>
+														<div style="font-style: italic;font-size: small;">Arrastra el marcador a la localización deseada</div></center>
+												</div>												
 												<hr>
 												<center><h4>Imagenes del clasificado</h4></center>
 												<hr>

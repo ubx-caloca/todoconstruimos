@@ -27,7 +27,10 @@ class ClasificadosDetalleController extends \BaseController {
 		$bannersderecha = Banner::where('seccion', '=', 'CLASIFICADOS-DERECHA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
 		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
 		
-		return View::make('index.clasificadoDetalle')->with(array('anuncios'=>$anuncios, 'categoriasClasif' => $categoriasClasif, 'clasificado'=> $clasf, 'bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha, 'username'=> $mailusuarioLogueado, 'nameuser'=> $nombreusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersindexarriba'=>$bannersindexarriba));
+		$latitud_ens = "31.865092739341954";
+		$longitud_ens = "-116.62914315185549";
+		
+		return View::make('index.clasificadoDetalle')->with(array('anuncios'=>$anuncios, 'categoriasClasif' => $categoriasClasif, 'clasificado'=> $clasf, 'bannersizquierda'=>$bannersizquierda,'bannersderecha'=>$bannersderecha, 'username'=> $mailusuarioLogueado, 'nameuser'=> $nombreusuarioLogueado, 'roluser'=> $rolusuarioLogueado, 'bannersindexarriba'=>$bannersindexarriba, 'latitud_ens'=>$latitud_ens, 'longitud_ens'=>$longitud_ens));
 		//
 	}
 

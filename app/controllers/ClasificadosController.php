@@ -46,7 +46,11 @@ class ClasificadosController extends \BaseController {
 		//
 		$authuser = Auth::user();
 		$listaCategoriasClasificados = array('NA' => 'Elige una categoria para el clasificado')+ClasificadoCategoria::lists('categoria','id');
-		return View::make('administracion.pages.clasificados.nuevo')->with(array('listaCategoriasClasificados'=>$listaCategoriasClasificados, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
+		
+		$latitud_ens = "31.865092739341954";
+		$longitud_ens = "-116.62914315185549";
+		
+		return View::make('administracion.pages.clasificados.nuevo')->with(array('listaCategoriasClasificados'=>$listaCategoriasClasificados, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id, 'latitud_ens'=>$latitud_ens, 'longitud_ens'=>$longitud_ens));
 	}
 
 
@@ -103,6 +107,8 @@ class ClasificadosController extends \BaseController {
 			$clasificado->fecha_publicacion = new DateTime();
 			$usuario_id = Session::get('usuario_id', function() { return 1; });
 			$clasificado->usuario_id = $usuario_id;
+			$clasificado->latitud = Input::get('latitud');
+			$clasificado->longitud = Input::get('longitud');
 			$clasificado->save();
 			
 			
@@ -178,9 +184,12 @@ class ClasificadosController extends \BaseController {
 		$clasificado = Clasificado::find($id);
 		$imgg = $clasificado->imagenes;
 		
+		$latitud_ens = "31.865092739341954";
+		$longitud_ens = "-116.62914315185549";
+		
 		//return  gettype ( $clasificado->fecha_publicacion ). ' '. $clasificado->fecha_publicacion;
 		$listaCategoriasClasificados = array('NA' => 'Elige una categoria para el clasificado')+ClasificadoCategoria::lists('categoria','id');
-		return View::make('administracion.pages.clasificados.editar')->with(array('listaCategoriasClasificados'=>$listaCategoriasClasificados, 'clasificado'=>$clasificado, 'imagenes'=>$imgg, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));		
+		return View::make('administracion.pages.clasificados.editar')->with(array('listaCategoriasClasificados'=>$listaCategoriasClasificados, 'clasificado'=>$clasificado, 'imagenes'=>$imgg, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id, 'latitud_ens'=>$latitud_ens, 'longitud_ens'=>$longitud_ens));		
 		//
 	}
 
@@ -230,6 +239,8 @@ class ClasificadosController extends \BaseController {
 			$clasificado->precio = Input::get('clasf_precio');
 			$clasificado->moneda = Input::get('clasf_moneda');
 			$clasificado->habilitar = Input::get('clasf_habilitar');
+			$clasificado->latitud = Input::get('latitud');
+			$clasificado->longitud = Input::get('longitud');
 			/*
 			$utc_date ='';
 			if(Input::get('clasf_fechapub') != '' ){

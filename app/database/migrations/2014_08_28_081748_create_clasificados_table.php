@@ -26,8 +26,8 @@ class CreateClasificadosTable extends Migration {
 			$table->string('moneda');
 			$table->dateTime('fecha_publicacion');
 			$table->tinyInteger('habilitar');
-			$table->float('latitud')->nullable();
-			$table->float('longitud')->nullable();
+			$table->string('longitud', 250)->nullable();
+			$table->string('latitud', 250)->nullable();
 			$table->tinyInteger('no_primer_cobro')->default(0);
 			$table->timestamps();	
 			

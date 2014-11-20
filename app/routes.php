@@ -74,7 +74,7 @@ Route::group(array('prefix' => 'administracion', 'before' => 'auth.admin'), func
 			$authuser = Auth::user();			
 			return View::make('administracion.index')->with(array('usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 		});
-
+		
 		//CATEGORIAS PROVEEDORES
 		Route::resource('proveedores/categorias','Proveedor_tipo_Controller');
 		Route::resource('proveedores/categorias/agregar','Proveedor_tipo_Controller');

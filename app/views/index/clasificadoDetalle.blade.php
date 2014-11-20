@@ -89,6 +89,39 @@
 			});
 	
 		</script>	
+
+<style>
+	.gmnoprint img { max-width: none !important;}
+</style>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+
+<script>
+
+function init_map(){
+	var myOptions = {
+		zoom:14,
+		center:new google.maps.LatLng({{($clasificado->latitud==''?$latitud_ens: $clasificado->latitud)}},{{($clasificado->longitud==''?$longitud_ens: $clasificado->longitud)}}),
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+	
+	
+	@if($clasificado->latitud!='' && $clasificado->longitud!='')
+	marker = new google.maps.Marker({
+		map: map,
+		position: new google.maps.LatLng({{($clasificado->latitud==''?$latitud_ens: $clasificado->latitud)}},{{($clasificado->longitud==''?$longitud_ens: $clasificado->longitud)}}),
+		title: 'Set lat/lon values for this property'
+	});
+	
+	infowindow = new google.maps.InfoWindow({content:"Localización " });
+	google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});
+	infowindow.open(map,marker);
+	@endif
+	
+	}
+google.maps.event.addDomListener(window, 'load', init_map);
+</script>		
 		
 </head>
 
@@ -387,7 +420,7 @@ display: inline-block;
 	<div class="col-md-6" style="font-size:15px">	
 		<div class="row" style="padding-left: 0em;padding-top: .5em;padding-right: 0em;">
 			<div class="col-md-12">
-				<p style="font-weight: 800;font-size:16px;text-align: -webkit-left;" >Datos de Usuario</p>
+				<p style="font-weight: 800;font-size:16px;text-align: -webkit-left;" >Datos de usuario</p>
 			</div>
 		</div>
 		
@@ -436,7 +469,7 @@ display: inline-block;
 		<br>
 		<div class="row" style="padding-left: 0em;padding-top: .5em;padding-right: 0em;">
 			<div class="col-md-12">
-				<p style="font-weight: 800;font-size:16px;text-align: -webkit-left;" >Datos de Clasificado</p>
+				<p style="font-weight: 800;font-size:16px;text-align: -webkit-left;" >Datos de clasificado</p>
 			</div>
 		</div>	
 <div style="padding-left: 3em;">		
@@ -471,9 +504,9 @@ display: inline-block;
 	<br>
 	<div class="row" style="padding-left: 0em;padding-right: 0em;margin-bottom: .5em;margin-top: .5em;">
 			<div class="col-md-12" >
-				<center><p style="font-weight: 800" >Descripción de Clasificado</p></center>
+				<center><p style="font-weight: 800" >Descripción de clasificado</p></center>
 			</div>
-		</div>	
+	</div>	
 	<div class="row" style="padding-left: 2em;padding-right: 2em;">		
 		<div class="col-md-12">
 	
@@ -485,7 +518,23 @@ display: inline-block;
 	
 		</div>
 	</div>
-
+	<div class="row" style="padding-left: 0em;padding-right: 0em;margin-bottom: .5em;margin-top: 1em;">
+			<div class="col-md-12" >
+				<center><p style="font-weight: 800" >Punto de venta de clasificado</p></center>
+			</div>
+	</div>
+	<div class="row" style="padding-left: 2em;padding-right: 2em;">		
+		<div class="col-md-12">
+	
+		<div class="row" style="padding-left: 2em;padding-right: 2em;">
+			<div class="col-md-12">
+				<center><div id="googleMap" style="height:330px;margin-top: 10px;"></div>
+			</div>
+		</div>
+	
+		</div>
+	</div>
+	
 	</div>		
 	
 	
