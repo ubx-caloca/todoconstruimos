@@ -23,10 +23,10 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="line-height: 10px;padding-top: 10px;padding-bottom: 10px; background-color: #FAFFBD">{{$nameuser}} <span class="glyphicon glyphicon-user pull-right" style="margin-top: -3px;"></span></a>
           <ul class="dropdown-menu" style="background-color: #FAFFBD">
 			@if($roluser == 'admin')			
-            <li><a href="administracion/">Ir a vista de administrador<span class="glyphicon glyphicon-list-alt pull-right"></span></a></li>
+            <li><a href="/administracion">Ir a vista de administrador<span class="glyphicon glyphicon-list-alt pull-right"></span></a></li>
             <li class="divider"></li>	
 			@else
-			    <li><a href="vistausuario/">Ir a vista del usuario <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+			    <li><a href="/vistausuario">Ir a vista del usuario <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
 				<!--<<li class="divider"></li>
 				<li><a href="vistausuario/clasificados/create">Agregar nuevo clasificado <span class="glyphicon glyphicon-edit pull-right"></span></a></li> -->
 				<li class="divider"></li>			

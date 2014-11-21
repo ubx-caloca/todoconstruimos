@@ -32,6 +32,7 @@ class ClasificadosController extends \BaseController {
 		$authuser = Auth::user();
 		$listaDeClasificados = Clasificado::paginate(15);
 		$listaDeCategorias = ClasificadoCategoria::all();
+		
 		return View::make('administracion.pages.clasificados.index')->with(array('listaDeClasificados'=>$listaDeClasificados, 'listaDeCategorias'=>$listaDeCategorias, 'usuarioimg'=>$authuser->imagen, 'usuarionombre'=>$authuser->nombre, 'usuarioid'=>$authuser->id));
 	}
 
