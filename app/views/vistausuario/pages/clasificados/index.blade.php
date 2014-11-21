@@ -3,6 +3,110 @@
     <head>
 
             @include('vistausuario.head')
+
+<script src="/index/js/jquery.min.js"></script>
+<style>
+/**** Slider *****/
+.slider_container{
+	width:100%;
+	margin:0 auto;
+}
+.banner-wrap {
+	width: 70%;
+	margin: 0 auto;
+}
+/**** Slider *****/
+.wmuSlider {
+	position: relative;
+	overflow: hidden;
+}
+.wmuSlider.example1 {
+	height:210px !important
+}
+.wmuSlider .wmuSliderWrapper article {
+	text-align: center;
+}
+.wmuSlider .wmuSliderWrapper article img {
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	display:block;
+}
+/* Default Skin */
+.wmuSliderPagination {
+	z-index: 2;
+	position: absolute;
+	left: 48em;
+	bottom:1em;
+	padding: 0;
+}
+.wmuSliderPagination li {
+	float: left;
+	margin: 0 6px 0 0;
+	list-style-type: none;
+}
+.wmuSliderPagination a {
+	display: block;
+	text-indent: -9999px;
+	width: 13px;
+	height: 13px;
+	background:none;
+	border: 1px solid #787575;
+	border-radius: 1em;
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	-o-border-radius: 1em;
+}
+.wmuSliderPagination a.wmuActive {
+	background:#ffb500;
+}
+/* Default Skin */
+.wmuGallery .wmuGalleryImage {
+	margin-bottom: 10px;
+}
+.wmuSliderPrev, .wmuSliderNext {
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	text-indent: -9999px;
+	background: url(../images/img-sprite.png)no-repeat;
+	top:5%;
+	z-index: 2;
+	cursor: pointer;
+}
+.wmuSliderPrev {
+	background-position: -13px -8px;
+	left: 0px;
+}
+.wmuSliderNext {
+	background-position:-83px -8px;
+	right: 0px;
+}
+
+#clasfSlider a{
+	top:30%;
+}
+
+.wmuSliderPrev, .wmuSliderNext {
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	text-indent: -9999px;
+	background: url(../index/images/img-sprite-darker.png)no-repeat;
+	top:5%;
+	z-index: 2;
+	cursor: pointer;
+}
+.wmuSliderPrev {
+background-position: -13px -8px;
+left: 0px;
+}
+.wmuSliderNext {
+background-position: -83px -8px;
+right: 0px;
+}
+</style>
+			
 <style>
 .formbutton{
 margin-left: -12px;
@@ -308,17 +412,35 @@ border-color: chocolate;
 											        		<p><strong><a href=" <?php echo"/vistausuario/clasificados/galeria/$clasificado->id"; ?> ">Agregar fotos a clasificado</a></strong></p>
 															-->
 															<p><strong>Imagenes:</strong></p>
-															<div style="width:100%; background-color:#ffffff; border-top: 7px solid #ffffff; border-bottom: 7px solid #ffffff;">
-															    <div >
-															<!--
-									                            <div class="owl-carousel">
-																-->
-																 @foreach ($clasificado->imagenes as $img)		
-									                              <div> <img src="/images/clasificados/{{$img->nombre_imagen}}" alt=""  class="img-thumbnail" style="width: 150px;height: 100px;"/> </div>
-																  @endforeach
-									                            </div>        
-															</div> 
-											        	</div>
+															<div class="row">
+															<div class="col-md-3">
+															</div>
+															<div class="col-md-6">
+															
+															<div class="slider_container" style="padding-right: 15px;">
+															<div id="clasfSlider" class="wmuSlider example2 ">
+																<div class="wmuSliderWrapper" >
+																@foreach ($clasificado->imagenes as $img)
+																	<article style="position: absolute; width: 100%; opacity: 0;"> 
+																		<center><img src="/images/clasificados/{{$img->nombre_imagen}}" alt=""  style="height:200px" ></center>
+																	</article>
+																@endforeach				
+																</div>                        
+															</div>
+															</div>
+															<script src="/index/js/jquery.wmuSlider.js"></script> 
+															<script>
+															$('.example2').wmuSlider({						   
+																paginationControl: false,
+																touch: true,
+						   
+															});         
+															</script> 
+
+															</div>
+															<div class="col-md-3">
+															</div>
+															</div>
 											        </div>
 											        <hr>
 											    <?php endforeach; ?>
