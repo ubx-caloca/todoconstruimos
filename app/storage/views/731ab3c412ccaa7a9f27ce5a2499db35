@@ -528,7 +528,7 @@ display: inline-block;
 	
 		<div class="row" style="padding-left: 2em;padding-right: 2em;">
 			<div class="col-md-12">
-				<center><div id="googleMap" style="height:330px;margin-top: 10px;"></div>
+				<center><div id="googleMap" style="height:330px;margin-top: 10px;"></div></center>
 			</div>
 		</div>
 	

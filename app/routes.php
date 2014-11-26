@@ -15,6 +15,8 @@
 //	return View::make('index.index');
 //});
 
+Route::get('/proximamente','indexController@mostrarProximamente');
+
 Route::filter('auth.admin', function($route, $request){
     // Check user type admin/general etc
 	$authuser = Auth::user();

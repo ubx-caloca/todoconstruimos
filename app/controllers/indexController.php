@@ -117,6 +117,16 @@ class indexController extends \BaseController {
 	{
 		//
 	}
+	
+	public function mostrarProximamente(){
+		$anuncios = Anuncio::all();
+
+		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
+		
+		//return View::make('index.index')->with(array('proveedores'=>$proveedores,'proveedores_detalle'=>$proveedores_detalle,'galeria'=>$galeria));
+		return View::make('index.proximamente')->with(array('anuncios' => $anuncios, 'bannersindexarriba'=>$bannersindexarriba));
+		//		
+	}
 
 
 }

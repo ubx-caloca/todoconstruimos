@@ -3,6 +3,10 @@
     <head>
 
             @include('administracion.head')
+			
+	<style>
+	
+	</style>
     </head>
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
