@@ -9,9 +9,14 @@ class directorioController extends \BaseController {
 	 */
 	public function index($directorioCategoria)
 	{
-		$categorias = DB::table('proveedor_tipo')->get();
+		$categorias = ProveeorTipo::all();
 		$listaProveedores = DB::select('select * from proveedor_tipo,proveedores,proveedor_detalle where proveedor_tipo.id=proveedores.proveedor_tipo_idproveedor_tipo and proveedores.id=proveedor_detalle.proveedores_idproveedor');
+		if($directorioCategoria=='all' ){
+		$listaCategoria = DB::select("select * from proveedor_tipo,proveedores,proveedor_detalle where proveedor_tipo.id=proveedores.proveedor_tipo_idproveedor_tipo and proveedores.id=proveedor_detalle.proveedores_idproveedor");
+		}
+		else{
 		$listaCategoria = DB::select("select * from proveedor_tipo,proveedores,proveedor_detalle where proveedor_tipo.id=proveedores.proveedor_tipo_idproveedor_tipo and proveedores.id=proveedor_detalle.proveedores_idproveedor and proveedor_tipo.tipo='$directorioCategoria'");
+		}
 		//$proveedores = DB::table('proveedores')->where('nombre_usuario', '=', "$nombre_usuario")->first();
 		//$proveedores_detalle = Proveedor_detalle::where('proveedores_idproveedor', '=', $proveedores->id)->first();
 		//$galeria = DB::table('proveedor_galeria')->where('proveedores_idproveedor', '=', $proveedores->id)->get();
@@ -43,7 +48,12 @@ class directorioController extends \BaseController {
 		$bannersindexarriba = Banner::where('seccion', '=', 'INDEX-ARRIBA')->where('habilitar', '=', 1)->orderBy('id','asc')->get();
 		$categorias = DB::table('proveedor_tipo')->get();
 		$listaProveedores = DB::select('select * from proveedor_tipo,proveedores,proveedor_detalle where proveedor_tipo.id=proveedores.proveedor_tipo_idproveedor_tipo and proveedores.id=proveedor_detalle.proveedores_idproveedor');
+		if($directorioCategoria=='all' ){
+		$listaCategoria = DB::select("select * from proveedor_tipo,proveedores,proveedor_detalle where proveedor_tipo.id=proveedores.proveedor_tipo_idproveedor_tipo and proveedores.id=proveedor_detalle.proveedores_idproveedor");
+		}
+		else{
 		$listaCategoria = DB::select("select * from proveedor_tipo,proveedores,proveedor_detalle where proveedor_tipo.id=proveedores.proveedor_tipo_idproveedor_tipo and proveedores.id=proveedor_detalle.proveedores_idproveedor and proveedor_tipo.tipo='$directorioCategoria'");
+		}	
 		//$proveedores = DB::table('proveedores')->where('nombre_usuario', '=', "$nombre_usuario")->first();
 		//$proveedores_detalle = Proveedor_detalle::where('proveedores_idproveedor', '=', $proveedores->id)->first();
 		//$galeria = DB::table('proveedor_galeria')->where('proveedores_idproveedor', '=', $proveedores->id)->get();

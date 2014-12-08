@@ -53,7 +53,31 @@
 							nav:false,
 							loop:true,
 							
-						}
+						},
+						1500:{
+							items:5,
+							nav:false,
+							loop:true,
+							
+						},
+						2300:{
+							items:6,
+							nav:false,
+							loop:true,
+							
+						},
+						2700:{
+							items:7,
+							nav:false,
+							loop:true,
+							
+						},
+						3100:{
+							items:8,
+							nav:false,
+							loop:true,
+							
+						}	
 					},
 							loop:true,
 							autoplay:true,
@@ -222,6 +246,13 @@ a:active {
 .class1 A:visited {text-decoration: none;color: #191919;}
 .class1 A:active {text-decoration: none;color: #191919;}
 .class1 A:hover {text-decoration: underline;color: #191919;}
+
+ A.proveedorlink:link {text-decoration: none;color: #FFFFFF;}
+A.proveedorlink:visited {text-decoration: none;color: #FFFFFF;}
+A.proveedorlink:active {text-decoration: none;color: #FFFFFF;}
+A.proveedorlink:hover {text-decoration: underline;color: #FAFFBD;}
+
+
 A.signuplink:hover {color: #FCB200;}
 
 .socialtop{
@@ -363,29 +394,31 @@ display: inline-block;
 					<li><a href="/directorio/{{ $categoria->tipo }}" style="font-size:13px;"><i class="fa {{ $categoria->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ $categoria->tipo }}</a></li>
 					
 				@endforeach
+					<li><a href="/directorio/all" style="font-size:13px;"><i class="fa fa-bars" style="color:#FFB500; font-size:13px;"></i> {{ mb_strtoupper('Todos', 'utf-8')}}</a></li>
 						</ul>
 					</nav>
    	    		<?php
    	    			$i=0;
 					?>
 					@foreach($listaCategoria as $cat)
-   	    				<div class="row" align="left" style="background:rgba(0,0,0,0.3);padding:20px; color:#FFF;border-radius: 10px;margin-bottom: 5px;">   	    					
-		   	    			<div class='row'>
-		   	    				<div class='col-md-12'>{{$cat->nombre}}</div>
-		   	    			</div>
-		   	    			<div class='row'>
-		   	    				<div class='col-md-12'>{{$cat->productos}}<br><br></div>
-		   	    			</div>
-		   	    			<div class='row'>
-		   	    				<div class='col-md-12'>{{$cat->direccion}} <br> Tel: {{$cat->telefono}}</div>
-		   	    			</div>
-		   	    			<div class='row'>
-		   	    				<div class='col-md-12'><br>Visitar página: <a href='/proveedores/{{$cat->nombre_usuario}}'> {{$cat->nombre_usuario}} </a></div>
-		   	    			</div>
-		   	    		<?php
-	   	    				$i++;
-						?>
-	   	    			</div>
+					
+						<div class="row" align="left" style="background:rgba(0,0,0,0.3);padding:20px; color:#FFF;border-radius: 10px;margin-bottom: 5px;"> 				
+							<div class="col-md-2" style="padding-right: 0px;">					
+								<img src="{{'../images/proveedores/'.$cat->nombre_usuario.'/'.$cat->imagen_descripcion }}" class="img-responsive" style="margin: 0 0 0 -12px;">
+							</div>
+							<div class="col-md-10" >
+								<h3 style="text-align: -webkit-left;color:#FCB200">{{mb_strtoupper($cat->nombre, 'utf-8')}}</h3>
+								<br>
+								<p style="text-align: -webkit-left;font-style: normal;color: #FCB200;" >{{$cat->productos}}</p>
+								<p style="text-align: -webkit-left;font-style: normal;color: #FCB200;" >Tel: {{$cat->telefono}}</p>
+								<br>
+								<p style="text-align: -webkit-left;color:#FCB200;" >Visitar página: <a class="proveedorlink" href='/proveedores/{{$cat->nombre_usuario}}'> {{$cat->nombre_usuario}} </a></p>
+								
+							</div>
+						</div>
+					
+											
+
    	    			@endforeach 	    			
 
    	    		

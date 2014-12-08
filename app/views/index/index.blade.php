@@ -70,7 +70,31 @@
 							nav:false,
 							loop:true,
 							
-						}
+						},
+						1500:{
+							items:5,
+							nav:false,
+							loop:true,
+							
+						},
+						2300:{
+							items:6,
+							nav:false,
+							loop:true,
+							
+						},
+						2700:{
+							items:7,
+							nav:false,
+							loop:true,
+							
+						},
+						3100:{
+							items:8,
+							nav:false,
+							loop:true,
+							
+						}						
 					},
 							loop:true,
 							autoplay:true,
@@ -95,7 +119,19 @@
 							nav:false,
 							loop:true,
 							
-						}
+						},
+						1500:{
+							items:4,
+							nav:false,
+							loop:true,
+							
+						},
+						2500:{
+							items:5,
+							nav:false,
+							loop:true,
+							
+						}						
 					},
 							loop:true,
 							autoplay:true,
@@ -431,6 +467,7 @@ display: inline-block;
 					<li><a href="directorio/{{ $categoria->tipo }}" style="font-size:13px;border-radius:4px;"><i class="fa {{ $categoria->icono }}" style="color:#FFB500; font-size:13px;"></i> {{ $categoria->tipo }}</a></li>
 					
 				@endforeach
+					<li><a href="/directorio/all" style="font-size:13px;"><i class="fa fa-bars" style="color:#FFB500; font-size:13px;"></i> {{ mb_strtoupper('Todos', 'utf-8')}}</a></li>				
 						</ul>
 					</nav>
 

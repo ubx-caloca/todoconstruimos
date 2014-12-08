@@ -50,6 +50,30 @@
 							nav:false,
 							loop:true,
 							
+						},
+						1500:{
+							items:5,
+							nav:false,
+							loop:true,
+							
+						},
+						2300:{
+							items:6,
+							nav:false,
+							loop:true,
+							
+						},
+						2700:{
+							items:7,
+							nav:false,
+							loop:true,
+							
+						},
+						3100:{
+							items:8,
+							nav:false,
+							loop:true,
+							
 						}
 					},
 							loop:true,
@@ -114,7 +138,7 @@ function init_map(){
 		title: 'Set lat/lon values for this property'
 	});
 	
-	infowindow = new google.maps.InfoWindow({content:"Localización " });
+	infowindow = new google.maps.InfoWindow({content:"<br>Ubicación de clasificado" });
 	google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});
 	infowindow.open(map,marker);
 	@endif

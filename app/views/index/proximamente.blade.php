@@ -70,7 +70,30 @@
 							nav:false,
 							loop:true,
 							
-						}
+						},
+						1500:{
+							items:5,
+							nav:false,
+							loop:true,
+							
+						},
+						2300:{
+							items:6,
+							nav:false,
+							loop:true,
+							
+						},
+						2700:{
+							items:7,
+							nav:false,
+							loop:true,
+							
+						},
+						3100:{
+							items:8,
+							nav:false,
+							loop:true,
+							
 					},
 							loop:true,
 							autoplay:true,

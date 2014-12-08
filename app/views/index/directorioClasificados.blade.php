@@ -53,6 +53,30 @@
 							nav:false,
 							loop:true,
 							
+						},
+						1500:{
+							items:5,
+							nav:false,
+							loop:true,
+							
+						},
+						2300:{
+							items:6,
+							nav:false,
+							loop:true,
+							
+						},
+						2700:{
+							items:7,
+							nav:false,
+							loop:true,
+							
+						},
+						3100:{
+							items:8,
+							nav:false,
+							loop:true,
+							
 						}
 					},
 							loop:true,
@@ -367,6 +391,7 @@ display: inline-block;
 								<h3 style="text-align: -webkit-left;color:black">{{mb_strtoupper($cat->titulo, 'utf-8')}}</h3>
 								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: mediumblue;" > Publicado el {{date_format($tj_date, "d M Y H:i a")}} por {{$cat->usuario->nombre }}</p>
 								<p style="text-align: -webkit-left;font-size: smaller;font-style: normal;color: black;" > Precio: {{'$ '.number_format (  $cat->precio , 2 ,  '.' , ',' ).' '.$cat->moneda}}</p>
+								<br>
 								<p style="text-align: -webkit-left;color:black;" >{{Str::limit($cat->descripcion, 500)}}</p>
 								
 							</div>
